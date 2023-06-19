@@ -159,7 +159,7 @@ class Scene(object):
         self.setup()
         try:
             print('\n')
-            log.info('===entering construct')
+            log.info('entering construct')
             self.construct()
             self.interact()
         except EndScene:
