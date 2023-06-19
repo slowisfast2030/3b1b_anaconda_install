@@ -148,7 +148,7 @@ class Animation(object):
     # Methods for interpolation, the mean of an Animation
     def interpolate(self, alpha: float) -> None:
         self.count += 1
-        log.info(f"animation interpolate {self.count}")
+        #log.info(f"animation interpolate {self.count}")
         self.interpolate_mobject(alpha)
 
     def update(self, alpha: float) -> None:
