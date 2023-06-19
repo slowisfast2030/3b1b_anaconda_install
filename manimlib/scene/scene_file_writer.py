@@ -250,6 +250,12 @@ class SceneFileWriter(object):
         if self.should_open_file():
             self.open_file()
 
+    """
+    This is a Python function named open_movie_pipe which accepts a string 
+    argument named file_path and returns None. It seems to be a part of a 
+    larger codebase that uses FFMPEG library to create a video file from 
+    a sequence of image frames.
+    """
     def open_movie_pipe(self, file_path: str) -> None:
         stem, ext = os.path.splitext(file_path)
         self.final_file_path = file_path
