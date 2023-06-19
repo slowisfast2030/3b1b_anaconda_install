@@ -1,5 +1,12 @@
 from manimlib import *
 
+"""
+python -m manimlib start.py SquareToCircle -o --hd
+or
+manimgl start.py SquareToCircle -o --hd
+
+客观评价下，manimgl没有manimce库细节做的好
+"""
 class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()

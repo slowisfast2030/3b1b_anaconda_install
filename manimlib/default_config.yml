@@ -40,7 +40,7 @@ camera_resolutions:
   med: "1280x720"
   high: "1920x1080"
   4k: "3840x2160"
-  default_resolution: "high"
+  default_resolution: "low"
 fps: 30
 embed_exception_mode: "Verbose"
 embed_error_sound: False
