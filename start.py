@@ -29,13 +29,13 @@ class SquareToCircle(Scene):
 manimgl：初始化conda环境后，下载了manimgl的源码，执行python -m pip install -e .
 manimgl_3b1b：初始化conda环境后，执行python -m pip install manimgl
 
-manimgl环境下执行manim start.py SquareToCircle会报错
+manimgl环境下执行manim start.py SquareToCircle不会报错
 manimgl_3b1b环境下执行manim start.py SquareToCircle会报错
 
 vscode选中manimgl环境，变量不能跳转
 vscode选中manimgl_3b1b环境，变量可以跳转
 
-头疼。。。
+头疼。。。不能双全。。。
 
 cd /opt/anaconda3/envs/manimgl/lib/python3.9/site-packages
 可以发现没有manimlib文件夹，但是manimlib_3b1b环境下有这个文件夹
