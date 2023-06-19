@@ -12,6 +12,9 @@ class SquareToCircle(Scene):
         self.play(ReplacementTransform(square, circle))
         self.wait()
 
+# ins = SquareToCircle()
+# ins.run()
+# print('over')
 """
 安装了两个manimgl环境
 manimgl：初始化conda环境后，下载了manimgl的源码，执行python -m pip install -e .
