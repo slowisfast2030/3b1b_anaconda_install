@@ -25,7 +25,7 @@ def main():
         log.info(f"\n===scenes: {scenes}\n")
         for scene in scenes:
             scene.run()
-            log.info('\nall is well')
+            log.info('\n===all is well')
 
 
 if __name__ == "__main__":
