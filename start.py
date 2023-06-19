@@ -9,6 +9,7 @@ python start.py (需要将下面的类实例化，并调用run方法)
 
 客观评价下，manimgl没有manimce库细节做的好
 """
+
 class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()
@@ -24,6 +25,7 @@ class SquareToCircle(Scene):
 # ins = SquareToCircle()
 # ins.run()
 # print('over')
+
 """
 安装了两个manimgl环境
 manimgl：初始化conda环境后，下载了manimgl的源码，执行python -m pip install -e .
