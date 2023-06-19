@@ -20,6 +20,7 @@ class SquareToCircle(Scene):
 
         self.play(ShowCreation(square))
         self.wait()
+
         self.play(ReplacementTransform(square, circle))
         self.wait()
 
