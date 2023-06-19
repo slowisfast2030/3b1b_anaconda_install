@@ -635,6 +635,7 @@ class Scene(object):
                 alpha = t / animation.run_time
                 animation.interpolate(alpha)
             self.update_frame(dt)
+            # 下面这个函数似乎是将渲染的每一帧写到标准输出，被ffmpeg捕获
             self.emit_frame()
 
     def finish_animations(self, animations: Iterable[Animation]) -> None:
