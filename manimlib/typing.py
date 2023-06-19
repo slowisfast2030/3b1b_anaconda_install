@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
     # Abbreviations for a common types
     ManimColor = Union[str, Color, None]
-    RangeSpecifier = Tuple[float, float, float] | Tuple[float, float]
+    RangeSpecifier = Tuple[float, float, float] | Tuple[float, float] #type: ignore
 
 
     Span = tuple[int, int]
@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     ]
     Selector = Union[SingleSelector, Iterable[SingleSelector]]
 
-    UniformDict = Dict[str, float | bool | np.ndarray | tuple]
+    UniformDict = Dict[str, float | bool | np.ndarray | tuple] #type: ignore
 
     # These are various alternate names for np.ndarray meant to specify
     # certain shapes.
