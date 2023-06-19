@@ -62,7 +62,7 @@ class Animation(object):
         # played.  As much initialization as possible,
         # especially any mobject copying, should live in
         # this method
-        log.info('\n')
+        print('\n')
         log.info(f"animation begin")
         if self.time_span is not None:
             start, end = self.time_span
@@ -84,7 +84,7 @@ class Animation(object):
         self.interpolate(0)
 
     def finish(self) -> None:
-        log.info('\n')
+        print('\n')
         log.info(f"animation finish")
         self.interpolate(self.final_alpha_value)
         self.mobject.set_animating_status(False)
