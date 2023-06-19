@@ -1,5 +1,6 @@
 from manimlib import *
 
+
 class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()
@@ -7,3 +8,4 @@ class SquareToCircle(Scene):
         circle.set_stroke(BLUE_E, width=4)
 
         self.add(circle)
+        self.wait()
