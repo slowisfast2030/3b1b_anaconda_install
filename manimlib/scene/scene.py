@@ -661,10 +661,15 @@ class Scene(object):
         animations = list(map(prepare_animation, proto_animations))
         for anim in animations:
             anim.update_rate_info(run_time, rate_func, lag_ratio)
+        # 打开ffmpey的写入管道
         self.pre_play()
+        # 开始渲染
         self.begin_animations(animations)
+        # 渲染中间每一帧，并写入管道：标准输入
         self.progress_through_animations(animations)
+        # 结束渲染
         self.finish_animations(animations)
+        # 关闭ffmpey的写入管道
         self.post_play()
 
     def wait(
