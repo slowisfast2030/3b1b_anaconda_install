@@ -217,8 +217,8 @@ class Camera(object):
             frame_height = frame_width / aspect_ratio
         else:
             frame_width = aspect_ratio * frame_height
-        self.frame.set_height(frame_height, stretch=true)
-        self.frame.set_width(frame_width, stretch=true)
+        self.frame.set_height(frame_height, stretch=true) #type: ignore
+        self.frame.set_width(frame_width, stretch=true) #type: ignore
 
     # Rendering
     def capture(self, *mobjects: Mobject) -> None:
