@@ -22,10 +22,10 @@ def main():
         config = manimlib.config.get_configuration(args)
         scenes = manimlib.extract_scene.main(config)
 
-        log.info(f"\n===scenes: {scenes}\n")
+        log.info(f"===scenes: {scenes}")
         for scene in scenes:
             scene.run()
-            log.info('\n===all is well')
+            log.info('===all is well')
 
 
 if __name__ == "__main__":

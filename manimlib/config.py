@@ -359,7 +359,7 @@ def init_global_config(config_file):
         init_customization()
 
     elif not os.path.exists(__config_file__):
-        log.info('\n')
+        print('\n')
         log.info(f"Using the default configuration file, which you can modify in `{global_defaults_file}`")
         log.info(
             "If you want to create a local configuration file, you can create a file named" + \
