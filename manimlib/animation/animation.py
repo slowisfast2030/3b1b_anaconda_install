@@ -19,6 +19,7 @@ if TYPE_CHECKING:
 DEFAULT_ANIMATION_RUN_TIME = 1.0
 DEFAULT_ANIMATION_LAG_RATIO = 0
 
+from manimlib.logger import log
 
 class Animation(object):
     def __init__(
@@ -49,6 +50,8 @@ class Animation(object):
         self.lag_ratio = lag_ratio
         self.suspend_mobject_updating = suspend_mobject_updating
 
+        self.count = 0
+
         assert(isinstance(mobject, Mobject))
 
     def __str__(self) -> str:
@@ -59,6 +62,7 @@ class Animation(object):
         # played.  As much initialization as possible,
         # especially any mobject copying, should live in
         # this method
+        log.info(f"animation begin")
         if self.time_span is not None:
             start, end = self.time_span
             self.run_time = max(end, self.run_time)
@@ -79,6 +83,7 @@ class Animation(object):
         self.interpolate(0)
 
     def finish(self) -> None:
+        log.info(f"animation finish")
         self.interpolate(self.final_alpha_value)
         self.mobject.set_animating_status(False)
         if self.suspend_mobject_updating:
@@ -140,6 +145,8 @@ class Animation(object):
 
     # Methods for interpolation, the mean of an Animation
     def interpolate(self, alpha: float) -> None:
+        self.count += 1
+        log.info(f"animation interpolate {self.count}")
         self.interpolate_mobject(alpha)
 
     def update(self, alpha: float) -> None:
