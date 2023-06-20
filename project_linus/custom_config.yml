@@ -34,13 +34,13 @@ full_screen: False
 # to form the full scene.  Sometimes video-editing is made
 # easier when working with the broken up scene, which
 # effectively has cuts at all the places you might want.
-break_into_partial_movies: True
+break_into_partial_movies: False
 camera_resolutions:
   low: "854x480"
   med: "1280x720"
   high: "1920x1080"
   4k: "3840x2160"
-  default_resolution: "low"
+  default_resolution: "high"
 fps: 30
 embed_exception_mode: "Verbose"
 embed_error_sound: False
