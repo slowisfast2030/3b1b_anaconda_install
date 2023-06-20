@@ -47,7 +47,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Callable, Iterable, Tuple, Any
     from manimlib.typing import ManimColor, Vect3, Vect4, Vect3Array, Vect4Array, Self
-    from moderngl.context import Context
+    from moderngl.context import Context # type: ignore
 
 DEFAULT_STROKE_COLOR = GREY_A
 DEFAULT_FILL_COLOR = GREY_C
