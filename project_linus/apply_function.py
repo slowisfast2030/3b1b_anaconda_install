@@ -31,16 +31,16 @@ class AnimatingMethods(Scene):
 
         # Even more generally, you could apply Mobject.apply_function,
         # which takes in functions form R^3 to R^3
-        # self.play(
-        #     grid.animate.apply_function(
-        #         lambda p: [
-        #             p[0] + 0.5 * math.sin(p[1]),
-        #             p[1] + 0.5 * math.sin(p[0]),
-        #             p[2]
-        #         ]
-        #     ),
-        #     run_time=5,
-        # )
+        self.play(
+            grid.animate.apply_function(
+                lambda p: [
+                    p[0] + 0.5 * math.sin(p[1]),
+                    p[1] + 0.5 * math.sin(p[0]),
+                    p[2]
+                ]
+            ),
+            run_time=5,
+        )
 
         self.play(
             grid.animate.apply_function(
