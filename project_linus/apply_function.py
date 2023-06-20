@@ -20,8 +20,8 @@ class AnimatingMethods(Scene):
         # self.wait()
         self.play(grid.animate.set_submobject_colors_by_gradient(BLUE, GREEN))
         self.wait()
-        # self.play(grid.animate.set_height(TAU - MED_SMALL_BUFF))
-        # self.wait()
+        self.play(grid.animate.set_height(TAU - MED_SMALL_BUFF))
+        self.wait()
 
         # The method Mobject.apply_complex_function lets you apply arbitrary
         # complex functions, treating the points defining the mobject as
@@ -50,6 +50,6 @@ class AnimatingMethods(Scene):
                     p[2]
                 ]
             ),
-            run_time=5,
+            run_time=1,
         )
         self.wait()
