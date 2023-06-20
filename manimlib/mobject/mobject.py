@@ -53,8 +53,8 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3, Vect4, Vect3Array, UniformDict, Self
     from moderngl.context import Context #type: ignore
 
-    TimeBasedUpdater = Callable[["Mobject", float], "Mobject" | None]
-    NonTimeUpdater = Callable[["Mobject"], "Mobject" | None]
+    TimeBasedUpdater = Callable[["Mobject", float], "Mobject" | None] #type: ignore
+    NonTimeUpdater = Callable[["Mobject"], "Mobject" | None] #type: ignore
     Updater = Union[TimeBasedUpdater, NonTimeUpdater]
 
 
