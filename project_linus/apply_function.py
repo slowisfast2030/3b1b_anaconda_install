@@ -39,17 +39,17 @@ class AnimatingMethods(Scene):
                     p[2]
                 ]
             ),
-            run_time=5,
+            run_time=1,
         )
 
-        # self.play(
-        #     grid.animate.apply_function(
-        #         lambda p: [
-        #             p[0] + 3,
-        #             p[1] + 3,
-        #             p[2]
-        #         ]
-        #     ),
-        #     run_time=1,
-        # )
+        self.play(
+            grid.animate.apply_function(
+                lambda p: [
+                    p[0] + 1,
+                    p[1] + 1,
+                    p[2]
+                ]
+            ),
+            run_time=1,
+        )
         self.wait()
