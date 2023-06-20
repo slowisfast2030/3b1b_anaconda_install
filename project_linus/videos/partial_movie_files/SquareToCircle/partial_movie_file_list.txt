@@ -1,4 +1,0 @@
-file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/SquareToCircle/00000.mp4'
-file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/SquareToCircle/00001.mp4'
-file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/SquareToCircle/00002.mp4'
-file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/SquareToCircle/00003.mp4'
