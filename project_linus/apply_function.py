@@ -4,7 +4,8 @@ class AnimatingMethods(Scene):
     def construct(self):
         plane = NumberPlane()
         grid = Tex(R"\pi").get_grid(3, 3, height=3)
-        self.add(grid, plane)
+        line = Line(LEFT, RIGHT).set_color(RED).shift(UP).shift(RIGHT)
+        self.add(grid, plane, line)
 
         # You can animate the application of mobject methods with the
         # ".animate" syntax:
@@ -43,17 +44,17 @@ class AnimatingMethods(Scene):
         #     run_time=1,
         # )
 
-        self.play(
-            grid.animate.apply_function(
-                lambda p: [
-                    p[0] + 1,
-                    p[1] + 1,
-                    p[2]
-                ]
-            ),
-            run_time=1,
-        )
-        self.wait()
+        # self.play(
+        #     grid.animate.apply_function(
+        #         lambda p: [
+        #             p[0] + 1,
+        #             p[1] + 1,
+        #             p[2]
+        #         ]
+        #     ),
+        #     run_time=1,
+        # )
+        # self.wait()
 
-        self.play(plane.animate.apply_complex_function(np.exp), run_time=5)
+        self.play(line.animate.apply_complex_function(np.exp), run_time=5)
         self.wait()
