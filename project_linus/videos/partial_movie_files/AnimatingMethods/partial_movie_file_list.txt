@@ -4,4 +4,3 @@ file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linu
 file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/AnimatingMethods/00003.mp4'
 file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/AnimatingMethods/00004.mp4'
 file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/AnimatingMethods/00005.mp4'
-file '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/project_linus/videos/partial_movie_files/AnimatingMethods/00006.mp4'

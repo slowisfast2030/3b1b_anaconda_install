@@ -34,22 +34,22 @@ class AnimatingMethods(Scene):
         self.play(
             grid.animate.apply_function(
                 lambda p: [
-                    p[0] + 0.5 * math.sin(p[1]),
-                    p[1] + 0.5 * math.sin(p[0]),
+                    p[0] + 0.5* math.sin(p[1]),
+                    p[1] + 0.5* math.sin(p[0]),
                     p[2]
                 ]
             ),
             run_time=5,
         )
 
-        self.play(
-            grid.animate.apply_function(
-                lambda p: [
-                    p[0] + 3,
-                    p[1] + 3,
-                    p[2]
-                ]
-            ),
-            run_time=1,
-        )
+        # self.play(
+        #     grid.animate.apply_function(
+        #         lambda p: [
+        #             p[0] + 3,
+        #             p[1] + 3,
+        #             p[2]
+        #         ]
+        #     ),
+        #     run_time=1,
+        # )
         self.wait()
