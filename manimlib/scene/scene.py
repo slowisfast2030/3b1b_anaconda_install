@@ -634,6 +634,7 @@ class Scene(object):
                 animation.update_mobjects(dt)
                 alpha = t / animation.run_time
                 animation.interpolate(alpha)
+            # 更新每一帧，并拍照
             self.update_frame(dt)
             # 下面这个函数似乎是将渲染的每一帧写到标准输出，被ffmpeg捕获
             self.emit_frame()
