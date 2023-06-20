@@ -2,7 +2,7 @@ from manimlib import *
 
 class AnimatingMethods(Scene):
     def construct(self):
-        grid = Tex(R"\pi").get_grid(10, 10, height=4)
+        grid = Tex(R"\pi").get_grid(3, 3, height=10)
         self.add(grid)
 
         # You can animate the application of mobject methods with the
