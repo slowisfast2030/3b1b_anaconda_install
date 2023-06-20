@@ -34,7 +34,7 @@ full_screen: False
 # to form the full scene.  Sometimes video-editing is made
 # easier when working with the broken up scene, which
 # effectively has cuts at all the places you might want.
-break_into_partial_movies: False
+break_into_partial_movies: True
 camera_resolutions:
   low: "854x480"
   med: "1280x720"
