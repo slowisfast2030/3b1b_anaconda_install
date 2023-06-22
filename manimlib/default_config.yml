@@ -4,7 +4,7 @@ directories:
   # sourcecode generating that video
   mirror_module_path: False
   # Where should manim output video and image files?
-  output: ""
+  output: "/Users/linus/Desktop"
   # If you want to use images, manim will look to these folders to find them
   raster_images: ""
   vector_images: ""

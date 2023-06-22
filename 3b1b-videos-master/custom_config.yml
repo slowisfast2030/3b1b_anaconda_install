@@ -1,7 +1,7 @@
 directories:
   mirror_module_path: True
   removed_mirror_prefix: "/Users/grant/cs/videos/"
-  output: "/Users/grant/3Blue1Brown Dropbox/3Blue1Brown/videos"
+  output: "/Users/linus/Desktop/videos"
   raster_images: "/Users/grant/3Blue1Brown Dropbox/3Blue1Brown/images/raster"
   vector_images: "/Users/grant/3Blue1Brown Dropbox/3Blue1Brown/images/vector"
   pi_creature_images: "/Users/grant/3Blue1Brown Dropbox/3Blue1Brown/images/pi_creature/svg"
