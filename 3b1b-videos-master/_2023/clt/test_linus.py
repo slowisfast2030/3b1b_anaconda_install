@@ -162,19 +162,25 @@ class CylinderSlices(GaussianIntegral):
         self.add(axes)
 
         # Animate in by rotating e^{-x^2}
-        bell_halves = Group(*(
-            axes.get_parametric_surface(
-                lambda r, theta: np.array(
-                    [r * np.cos(theta), r * np.sin(theta), np.exp(-r**2)
-                ]),
-                u_range=(0, 3),
-                v_range=v_range,
-            )
-            for v_range in [(0, PI), (PI, TAU)]
-        ))
-        for half in bell_halves:
-            half.match_style(graph)
-            half.set_opacity(0.5)
+        # bell_halves = Group(*(
+        #     axes.get_parametric_surface(
+        #         lambda r, theta: np.array(
+        #             [r * np.cos(theta), r * np.sin(theta), np.exp(-r**2)
+        #         ]),
+        #         u_range=(0, 3),
+        #         v_range=v_range,
+        #     )
+        #     for v_range in [(0, PI), (PI, TAU)]
+        # ))
+        
+            
+        
+
+
+
+        # for half in bell_halves:
+        #     half.match_style(graph)
+        #     half.set_opacity(0.5)
 
         bell2d = self.get_x_slice(axes, 0)
         bell2d.set_stroke(TEAL, 3)
@@ -198,22 +204,22 @@ class CylinderSlices(GaussianIntegral):
         )
         self.wait()
 
-        self.play(
-            ShowCreation(bell_halves[0]),
-            ShowCreation(bell_halves[1]),
-            Rotate(bell2d, PI, axis=OUT, about_point=axes.c2p(0, 0, 0)),
-            frame.animate.move_to(ORIGIN).reorient(-20, 70),
-            Restore(axes),
-            TransformMatchingTex(label2d.copy(), label3d, time_span=(0, 2)),
-            label2d.animate.next_to(label3d, UP, MED_LARGE_BUFF, LEFT),
-            run_time=6
-        )
+        # self.play(
+        #     ShowCreation(bell_halves[0]),
+        #     ShowCreation(bell_halves[1]),
+        #     Rotate(bell2d, PI, axis=OUT, about_point=axes.c2p(0, 0, 0)),
+        #     frame.animate.move_to(ORIGIN).reorient(-20, 70),
+        #     Restore(axes),
+        #     TransformMatchingTex(label2d.copy(), label3d, time_span=(0, 2)),
+        #     label2d.animate.next_to(label3d, UP, MED_LARGE_BUFF, LEFT),
+        #     run_time=6
+        # )
         self.wait()
-        self.play(
-            FadeOut(bell_halves, 0.01 * IN),
-            FadeOut(bell2d, 0.1 * IN),
-            FadeIn(graph, 0.01 * IN),
-        )
+        # self.play(
+        #     FadeOut(bell_halves, 0.01 * IN),
+        #     FadeOut(bell2d, 0.1 * IN),
+        #     FadeIn(graph, 0.01 * IN),
+        # )
         self.play(Write(graph_mesh, stroke_width=1, lag_ratio=0.01))
         self.wait()
 
