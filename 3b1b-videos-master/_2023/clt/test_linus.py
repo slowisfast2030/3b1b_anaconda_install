@@ -192,6 +192,8 @@ class CylinderSlices(GaussianIntegral):
         for label in func_labels:
             label.fix_in_frame()
             label.move_to(4 * LEFT + 2 * UP)
+        # 需要分开两个label，重合了
+        label.move_to(4 * LEFT + UP)
 
         axes.save_state()
         frame.reorient(0, 90)
