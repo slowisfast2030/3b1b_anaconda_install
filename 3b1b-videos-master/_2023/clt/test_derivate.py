@@ -36,7 +36,7 @@ class AntiDerivative(InteractiveScene):
 
         self.add(titles)
         self.add(ad_word)
-
+ 
         # High graph
         x_tracker = ValueTracker(0)
         get_x = x_tracker.get_value
