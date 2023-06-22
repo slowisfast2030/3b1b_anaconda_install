@@ -18,7 +18,7 @@ directories:
   temporary_storage: ""
 universal_import_line: "from manimlib import *"
 style:
-  tex_template: "CENTER"
+  tex_template: "default"
   font: "CMU Serif"
   text_alignment: "LEFT"
   background_color: "#000000"
