@@ -33,6 +33,8 @@ class Introduce3DGraph(InteractiveScene):
 
         # 这一行代码用途是什么？
         # 如果将这一行注释掉，第一帧的图形会出现在屏幕左侧 
+        # 保留这一行，第一帧的图形会出现在屏幕中央，然后马上移动到屏幕左侧
+        # 思考一下再抖音的场景下如何使用此技巧？
         self.frame.move_to(all_axes)
 
         for char, axes in zip("xy", all_axes):
