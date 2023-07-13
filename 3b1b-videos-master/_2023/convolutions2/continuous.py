@@ -236,7 +236,7 @@ class TransitionToContinuousProbability(InteractiveScene):
             self.play(range_tracker.animate.set_value(pair), run_time=3)
             self.wait()
 
-
+# 有图片
 class CompareFormulas(InteractiveScene):
     def construct(self):
         # Setup division
