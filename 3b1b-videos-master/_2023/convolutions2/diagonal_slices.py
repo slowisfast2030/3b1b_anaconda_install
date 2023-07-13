@@ -4,7 +4,7 @@ sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3
 from manim_imports_ext import *
 from _2023.convolutions2.continuous import *
 
-
+# 漂亮的图形
 class Introduce3DGraph(InteractiveScene):
     plane_config = dict(
         x_range=(-2, 2),
@@ -275,7 +275,7 @@ class Introduce3DGraph(InteractiveScene):
     def g(self, y):
         return double_lump(y)
 
-
+# 报错
 class DiagonalSlices(Introduce3DGraph):
     mesh_resolution = (21, 21)
     shadow_opacity = 0.25
