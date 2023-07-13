@@ -32,6 +32,7 @@ class Introduce3DGraph(InteractiveScene):
         all_axes.to_edge(LEFT)
 
         # 这一行代码用途是什么？
+        # 如果将这一行注释掉，第一帧的图形会出现在屏幕左侧 
         self.frame.move_to(all_axes)
 
         for char, axes in zip("xy", all_axes):
