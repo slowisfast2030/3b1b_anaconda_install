@@ -524,7 +524,8 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         graph.set_stroke(self.graph_colors[2])
         return graph
 
-
+# 可以执行
+# manimgl continuous.py SampleTwoNormals -o -l
 class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
     random_seed = 1
     sigma1 = 1
@@ -740,7 +741,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
 class IntroAnnotations(SampleTwoNormals):
     annotations = True
 
-
+# 可以执行
 class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
     dot_fade_factor = 0.75
 
@@ -858,7 +859,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
             color=self.graph_colors[2]
         )
 
-
+# 可以执行
 class SampleWedgePlusDoubleLump(RepeatedSamplesFromContinuousDistributions):
     def construct(self):
         # Plots
@@ -895,7 +896,7 @@ class SampleWedgePlusDoubleLump(RepeatedSamplesFromContinuousDistributions):
     def get_pdfs(self):
         return [wedge_func, double_lump]
 
-
+# 可以执行
 class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
     def construct(self):
         plots = self.get_plots()
@@ -927,7 +928,7 @@ class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
         self.play(FadeIn(question), GrowArrow(arrow))
         self.wait()
 
-
+# 可以执行
 class UniformSamples(RepeatedSamplesFromContinuousDistributions):
     def construct(self):
         # Plots
@@ -1458,7 +1459,10 @@ class ProbConvolutions(Convolutions):
 
         self.play(FadeOut(conv_cover))
         self.play(Transform(
-            VGroup(indicator, s_label).copy().clear_updaters(),
+            # 下面这一行代码报错。indicator变量没有定义。应该是s_indicator或者conv_s_indicator
+            #VGroup(indicator, s_label).copy().clear_updaters(),
+            #VGroup(s_indicator, s_label).copy().clear_updaters(),
+            VGroup(conv_s_indicator, s_label).copy().clear_updaters(),
             conv_s_indicator.copy().clear_updaters(),
             remover=True
         ))
