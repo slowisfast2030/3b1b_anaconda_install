@@ -30,6 +30,8 @@ class Introduce3DGraph(InteractiveScene):
         ))
         all_axes.arrange(DOWN, buff=1.5)
         all_axes.to_edge(LEFT)
+
+        # 这一行代码用途是什么？
         self.frame.move_to(all_axes)
 
         for char, axes in zip("xy", all_axes):
