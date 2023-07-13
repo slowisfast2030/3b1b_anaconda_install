@@ -69,9 +69,12 @@ class Introduce3DGraph(InteractiveScene):
         get_x = x_tracker.get_value
         get_y = y_tracker.get_value
 
+        # ArrowTip是三角形箭头
         x_indicator, y_indicator = indicators = ArrowTip(90 * DEGREES).replicate(2)
         indicators.scale(0.5)
         indicators.set_fill(GREY_B)
+        # c2p: coordinate to point
+        # 将坐标映射成点
         x_indicator.add_updater(lambda m: m.move_to(f_axes.c2p(get_x(), 0), UP))
         y_indicator.add_updater(lambda m: m.move_to(g_axes.c2p(get_y(), 0), UP))
 
