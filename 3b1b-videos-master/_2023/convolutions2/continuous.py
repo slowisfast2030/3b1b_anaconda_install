@@ -34,7 +34,7 @@ def get_conv_graph(axes, f, g, dx=0.1):
     conv_graph.set_points_smoothly(axes.c2p(x_samples, conv_samples * dx))
     return conv_graph
 
-
+# 报错
 class TransitionToContinuousProbability(InteractiveScene):
     def construct(self):
         # Setup axes and initial graph
@@ -158,10 +158,13 @@ class TransitionToContinuousProbability(InteractiveScene):
         sub_area_opacity_tracker = ValueTracker(0)
 
         def get_subarea():
+            # 非常奇怪，get_area_under_graph函数还未定义
             result = axes.get_area_under_graph(
                 graph, range_tracker.get_value()
             )
-            result.set_stroke(width=0)
+            # 下面两行报错
+            # result.set_stroke(width=0)
+            # result.set_fill(TEAL, sub_area_opacity_tracker.get_value())
             result.set_fill(TEAL, sub_area_opacity_tracker.get_value())
             return result
 
