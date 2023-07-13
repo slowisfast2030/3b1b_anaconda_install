@@ -1224,7 +1224,7 @@ class Convolutions(InteractiveScene):
     def g(self, x):
         return np.exp(-x**2) * np.sin(2 * x)
 
-
+# 可以执行
 class ProbConvolutions(Convolutions):
     jagged_product = True
 
@@ -1511,7 +1511,7 @@ class ProbConvolutions(Convolutions):
     def g(self, x):
         return double_lump(x)
 
-
+# 可以执行
 class ConvolveTwoUniforms(Convolutions):
     jagged_product = True
     jagged_convolution = True
@@ -1646,7 +1646,7 @@ class AltConvolutions(Convolutions):
     def g(self, x):
         return np.exp(-3 * x**2)
 
-
+# 报错
 class MovingAverageAsConvolution(Convolutions):
     g_graph_x_step = 0.1
     jagged_product = True
@@ -1827,7 +1827,7 @@ class GaussConvolutions(Convolutions):
     def g(self, x):
         return np.exp(-x**2)
 
-
+# 可以执行
 class RepeatedConvolution(MovingAverageAsConvolution):
     resolution = 0.01
     n_iterations = 12
@@ -2124,7 +2124,7 @@ class RepeatedConvolutionGaussian(RepeatedConvolution):
 
 
 # Old rect material
-
+# 可以执行
 class MovingAverageOfRectFuncs(Convolutions):
     f_graph_x_step = 0.01
     g_graph_x_step = 0.01
@@ -2147,7 +2147,7 @@ class MovingAverageOfRectFuncs(Convolutions):
     def g(self, x):
         return 1.5 * rect_func(1.5 * x)
 
-
+# 报错
 class RectConvolutionsNewNotation(MovingAverageOfRectFuncs):
     def construct(self):
         # Setup axes
@@ -2268,7 +2268,7 @@ class RectConvolutionsNewNotation(MovingAverageOfRectFuncs):
     def get_rect_k_def(self, k):
         return Tex(Rf"\text{{rect}}_{{{k}}}(x) := {k} \cdot \text{{rect}}({k}x)")[0]
 
-
+# 报错
 class RectConvolutionFacts(InteractiveScene):
     def construct(self):
         # Equations
