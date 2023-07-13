@@ -37,11 +37,14 @@ class Introduce3DGraph(InteractiveScene):
         # 思考一下再抖音的场景下如何使用此技巧？
         self.frame.move_to(all_axes)
 
+        # 为坐标轴添加标签
         for char, axes in zip("xy", all_axes):
             axis_label = Tex(char, font_size=24)
             axis_label.next_to(axes.x_axis.get_right(), UP)
             axes.add(axis_label)
 
+        # 为坐标轴添加函数图像
+        # 研究下源码，看看这里的函数图像是如何生成的
         f_graph = f_axes.get_graph(self.f, use_smoothing=False)
         f_graph.set_stroke(BLUE, 3)
         g_graph = g_axes.get_graph(self.g)
