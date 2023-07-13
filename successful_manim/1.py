@@ -88,6 +88,9 @@ class Introduce3DGraph(InteractiveScene):
         Axes.get_v_line_to_graph
         x_line = Line().set_stroke(WHITE, 1)
         y_line = Line().set_stroke(WHITE, 1)
+
+        # i2gp: inverse to get point
+        # 通过横坐标获得图像上的纵坐标
         x_line.add_updater(lambda m: m.put_start_and_end_on(
             f_axes.c2p(get_x(), 0), f_axes.i2gp(get_x(), f_graph)
         ))
@@ -95,6 +98,8 @@ class Introduce3DGraph(InteractiveScene):
             g_axes.c2p(get_y(), 0), g_axes.i2gp(get_y(), g_graph)
         ))
 
+        # 至此为止，所有的add_updater()都和value_tracker绑定
+        # 但是还没有运动起来，仅仅完成了绑定
         x_dot = GlowDot(color=BLUE)
         y_dot = GlowDot(color=YELLOW)
         x_dot.add_updater(lambda m: m.move_to(f_axes.i2gp(get_x(), f_graph)))
@@ -116,6 +121,7 @@ class Introduce3DGraph(InteractiveScene):
         # Scan over inputs
         x_tracker.set_value(-2)
         y_tracker.set_value(-2)
+        # 这几个对象都添加了updater
         self.add(x_indicator, x_label, x_line, x_dot)
         self.add(y_indicator, y_label, y_line, y_dot)
         self.play(LaggedStart(
@@ -135,6 +141,7 @@ class Introduce3DGraph(InteractiveScene):
         y_indicator2.rotate(-90 * DEGREES)
         VGroup(x_indicator2, y_indicator2).scale(0.8)
 
+        # 深入研究下plane的c2p方法
         x_indicator2.add_updater(lambda m: m.move_to(plane.c2p(get_x()), UP))
         y_indicator2.add_updater(lambda m: m.move_to(plane.c2p(0, get_y()), RIGHT))
 
@@ -148,6 +155,8 @@ class Introduce3DGraph(InteractiveScene):
             TransformFromCopy(f_axes[-1], plane.axis_labels[0]),
             TransformFromCopy(g_axes[-1], plane.axis_labels[1]),
         )
+
+        # 先显示背景线，后面似乎有些线消失了
         self.play(
             Write(plane.background_lines, stroke_width=0.5, lag_ratio=0.01),
             Write(plane.faded_lines, stroke_width=0.5, lag_ratio=0.01),
