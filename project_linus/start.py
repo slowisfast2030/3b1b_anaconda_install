@@ -52,4 +52,6 @@ cd /opt/anaconda3/envs/manimgl/lib/python3.9/site-packages
 -e的意思是editable，即可编辑的，这种安装方式会在site-packages目录下创建一个egg-link文件，指向源码目录
 
 下载的源码路径：/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim
+
+删除了manimgl_3b1b环境
 """
