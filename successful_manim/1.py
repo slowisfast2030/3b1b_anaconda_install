@@ -75,13 +75,16 @@ class Introduce3DGraph(InteractiveScene):
         indicators.set_fill(GREY_B)
         # c2p: coordinate to point
         # 将坐标映射成点
+        # 这里为何是up？
         x_indicator.add_updater(lambda m: m.move_to(f_axes.c2p(get_x(), 0), UP))
         y_indicator.add_updater(lambda m: m.move_to(g_axes.c2p(get_y(), 0), UP))
 
         x_label, y_label = DecimalNumber(font_size=24).replicate(2)
+        # fix_in_frame()的作用是什么？
         x_label.add_updater(lambda m: m.set_value(get_x()).next_to(x_indicator, DOWN, SMALL_BUFF).fix_in_frame())
         y_label.add_updater(lambda m: m.set_value(get_y()).next_to(y_indicator, DOWN, SMALL_BUFF).fix_in_frame())
 
+        # 为何这里不是函数调用？
         Axes.get_v_line_to_graph
         x_line = Line().set_stroke(WHITE, 1)
         y_line = Line().set_stroke(WHITE, 1)
