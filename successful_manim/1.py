@@ -230,6 +230,8 @@ class Introduce3DGraph(InteractiveScene):
             g_axes, g_graph, g_label, y_indicator, y_label, y_line, y_dot,
             label,
         ]
+        # 固定一些元素，使其不3d化
+        # 这个功能很有用，可以用来实现一些特殊的效果
         for mobject in to_fix:
             mobject.fix_in_frame()
         plane.set_flat_stroke(False)
