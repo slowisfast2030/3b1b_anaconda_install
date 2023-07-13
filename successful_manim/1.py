@@ -4,6 +4,7 @@ sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3
 from manim_imports_ext import *
 from _2023.convolutions2.continuous import *
 
+# manimgl 1.py Introduce3DGraph -o --hd
 # 漂亮的图形
 class Introduce3DGraph(InteractiveScene):
     plane_config = dict(
