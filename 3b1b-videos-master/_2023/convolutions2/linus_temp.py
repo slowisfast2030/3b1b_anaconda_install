@@ -51,6 +51,8 @@ class Introduce3DGraph(InteractiveScene):
         self.add(f_axes, f_graph, f_label)
         self.add(g_axes, g_graph, g_label)
 
+        # self.embed()
+
         # Hook up trackers
         x_tracker = ValueTracker()
         y_tracker = ValueTracker()
@@ -289,6 +291,7 @@ class DiagonalSlices(Introduce3DGraph):
         self.s_tracker = ValueTracker(-2 * plane.x_range[1])
         get_s = self.s_tracker.get_value
         self.add_surface_group(axes, get_s)
+        # 下面这句报错
         self.add_slice_graph(get_s)
 
         self.init_func_name()
@@ -426,6 +429,7 @@ class DiagonalSlices(Introduce3DGraph):
         graph.set_flat_stroke(False)
         graph.set_stroke(stroke_color, stroke_width)
         graph.set_fill(fill_color, fill_opacity)
+        # 下面这句报错
         graph.add_updater(lambda m: m.set_points_as_corners(get_points(get_s())))
 
         self.add(graph)
