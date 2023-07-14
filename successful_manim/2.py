@@ -136,13 +136,20 @@ class TalkAboutSignOfConstant3D(VariableCWithF):
 
         # Graph
         def get_graph(c):
+            # 这里的axes是三维坐标轴
             surface = axes.get_graph(lambda x, y: np.exp(c * (x**2 + y**2)))
+            # 什么意思？
             surface.always_sort_to_camera(self.camera)
             surface.set_color(BLUE_E, 0.5)
+
+            # surface和mesh是什么关系？
             mesh = SurfaceMesh(surface, (31, 31))
             mesh.set_stroke(WHITE, 0.5, 0.5)
             mesh.shift(0.001 * OUT)
+
+            # 视频中的红线
             x_slice = ParametricCurve(
+                # 参数方程。xz平面，y=0
                 lambda t: axes.c2p(t, 0, np.exp(c * t**2)),
                 t_range=(-4, 4, 0.1)
             )
