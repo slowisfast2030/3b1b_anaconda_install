@@ -55,10 +55,12 @@ class BellCurveArea(InteractiveScene):
         rects = axes.get_riemann_rectangles(graph, dx=0.2, colors=colors)
         rects.set_stroke(WHITE, 1)
         rects.set_fill(opacity=0.75)
+        # 其中一个矩形
         rect = rects[len(rects) // 2 - 2].copy()
         rect.set_opacity(1)
         graph_label.set_backstroke(width=5)
 
+        # 花括号
         brace = Brace(rect, UP, SMALL_BUFF)
         brace.set_backstroke(width=3)
         dx_label = brace.get_tex("dx", buff=SMALL_BUFF)
