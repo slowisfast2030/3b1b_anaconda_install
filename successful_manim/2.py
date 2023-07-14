@@ -27,6 +27,7 @@ class VariableC(InteractiveScene):
 
         c_interval.move_to(axes, UR)
         c_interval.shift(0.5 * DOWN)
+        # 数轴、箭头、文字 
         self.add(c_interval, c_tip, c_label)
 
         # 需要深入研究下函数实现
@@ -48,7 +49,7 @@ class VariableC(InteractiveScene):
         c_interval.set_stroke(WHITE, 1)
         c_interval.add_numbers([-1, 0, 1], num_decimal_places=1, font_size=16)
         
-        # 三角箭头
+        # 箭头
         c_tip = ArrowTip(angle=-90 * DEGREES)
         c_tip.scale(0.5)
         c_tip.set_fill(RED)
