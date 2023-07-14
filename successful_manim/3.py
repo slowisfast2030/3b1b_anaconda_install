@@ -96,10 +96,12 @@ class BellCurveArea(InteractiveScene):
         rects.set_stroke(WHITE, 1)
         self.play(
             graph_label.animate.set_height(0.7).next_to(graph.pfp(0.4), UL),
-            rects.animate.set_opacity(0.75),
-            FadeOut(rect)
+            rects.animate.set_opacity(0.75), # rects再现
+            FadeOut(rect)                    # rect消失
         )
         self.wait()
+
+        # genius!!!
         self.play(
             LaggedStart(*(
                 r.animate.shift(0.25 * UP).set_color(YELLOW).set_anim_args(rate_func=there_and_back)
