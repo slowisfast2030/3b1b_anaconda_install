@@ -38,6 +38,7 @@ class BellCurveArea(InteractiveScene):
         integral = Tex(R"\int_{-\infty}^\infty e^{-x^2} dx", t2c=t2c)
         integral.to_edge(UP)
 
+        # 为graph覆盖区域添加颜色
         self.play(graph.animate.set_fill(BLUE, 0.5))
         self.wait()
         self.play(
@@ -49,6 +50,8 @@ class BellCurveArea(InteractiveScene):
 
         # Show rectangles
         colors = (BLUE_E, BLUE_D, TEAL_D, TEAL_E)
+        # 在坐标轴和图像之间生成矩形
+        # colors参数竟然可以传递一个数组。真是天才！
         rects = axes.get_riemann_rectangles(graph, dx=0.2, colors=colors)
         rects.set_stroke(WHITE, 1)
         rects.set_fill(opacity=0.75)
