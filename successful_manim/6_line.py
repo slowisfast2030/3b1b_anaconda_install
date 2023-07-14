@@ -196,8 +196,10 @@ class CylinderSlices(GaussianIntegral):
         frame.save_state()
         graph_mesh.save_state()
         func_labels.use_winding_fill(False)
+
+        # 这几个动作是同时进行的吗？
         self.play(
-            frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES),
+            frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES), # 调整视角为俯视图
             graph.animate.set_opacity(0.25), # 这一行很重要，显示出了图像，而不是只有网格
             func_labels.animate.scale(0.75).to_corner(UL),
             graph_mesh.animate.set_stroke(width=1), # 线宽
