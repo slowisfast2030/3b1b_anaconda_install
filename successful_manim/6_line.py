@@ -160,6 +160,7 @@ class CylinderSlices(GaussianIntegral):
 
         self.add(axes)
 
+        # xoz平面的曲线
         bell2d = self.get_x_slice(axes, 0)
         bell2d.set_stroke(TEAL, 3)
         kw = dict(t2c={"x": BLUE, "y": YELLOW})
@@ -173,9 +174,13 @@ class CylinderSlices(GaussianIntegral):
         # 需要分开两个label，重合了
         label.move_to(4 * LEFT + UP)
 
+        # 这一行代码作用？
         axes.save_state()
+        # frame的角度
         frame.reorient(0, 90)
+        # frame在平面的位置
         frame.move_to(OUT + 2 * UP)
+
         axes.y_axis.set_opacity(0)
         axes.labels.set_opacity(0)
         self.play(
