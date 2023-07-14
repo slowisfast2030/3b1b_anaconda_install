@@ -86,6 +86,8 @@ class VariableC(InteractiveScene):
         return label
 
 # ok
+# 终于明白了，上面的类为啥不直接定义坐标轴，而是定义了一个get_axes方法，这样可以在子类中重写这个方法，从而实现不同的坐标轴
+# 继承玩得溜
 class VariableCWithF(VariableC):
     def get_axes(self):
         axes = Axes(
