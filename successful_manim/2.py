@@ -41,14 +41,18 @@ class VariableC(InteractiveScene):
         c_tracker = ValueTracker(1)
         get_c = c_tracker.get_value
 
+        # 数轴
         c_interval = NumberLine(
             (-1, 1, 0.25), width=3, tick_size=0.05, numbers_with_elongated_ticks=[-1, 0, 1],
         )
         c_interval.set_stroke(WHITE, 1)
         c_interval.add_numbers([-1, 0, 1], num_decimal_places=1, font_size=16)
+        
+        # 三角箭头
         c_tip = ArrowTip(angle=-90 * DEGREES)
         c_tip.scale(0.5)
         c_tip.set_fill(RED)
+        # 数轴也有类似于坐标轴的c2p方法，n2p将数值转换为坐标
         c_tip.add_updater(lambda m: m.move_to(c_interval.n2p(get_c()), DOWN))
 
         c_label = Tex("c = 1.00", t2c={"c": RED}, font_size=36)
