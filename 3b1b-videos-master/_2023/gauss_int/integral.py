@@ -14,7 +14,7 @@ class LastTime(VideoWrapper):
 class AltBuildUpGaussian(BuildUpGaussian):
     pass
 
-
+# ok
 class BellCurveArea(InteractiveScene):
     def construct(self):
         # Setup
@@ -207,7 +207,7 @@ class BellCurveArea(InteractiveScene):
         )
         self.wait()
 
-
+# ok
 class AntiDerivative(InteractiveScene):
     def construct(self):
         # Add both planes
@@ -282,7 +282,7 @@ class AntiDerivative(InteractiveScene):
             self.play(x_tracker.animate.set_value(value), run_time=3)
             self.wait()
 
-
+# ok
 class UsualFunctionTypes(InteractiveScene):
     def construct(self):
         t2c = {"x": YELLOW}
@@ -448,6 +448,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         return x_slice, y_tracker
 
 # 报错：AttributeError: 'ThreeDAxes' object has no attribute 'get_parametric_surface'
+# 如果一段很长的代码中部分报错，可以先注释掉报错的部分，看看其他部分是否正常运行
 class CylinderSlices(GaussianIntegral):
     def construct(self):
         # Setup
@@ -893,7 +894,7 @@ class CylinderSlices(GaussianIntegral):
         frame.add_updater(lambda m: m.reorient(20 * math.cos(0.1 * (self.time - t0))))
         self.wait(30)
 
-
+# ok 公式
 class CylinderIntegral(InteractiveScene):
     def construct(self):
         # Set up equations
@@ -1211,7 +1212,7 @@ class CartesianSlices(GaussianIntegral):
         self.play(FadeIn(brace))
         self.wait(60)
 
-
+# ok 公式
 class CartesianSliceOverlay(InteractiveScene):
     def construct(self):
         # Show integral
