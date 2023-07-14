@@ -181,6 +181,7 @@ class CylinderSlices(GaussianIntegral):
         # frame在平面的位置
         frame.move_to(OUT + 2 * UP)
 
+        # 之前还好奇：y轴怎么不见了
         axes.y_axis.set_opacity(0)
         axes.labels.set_opacity(0)
         self.play(
