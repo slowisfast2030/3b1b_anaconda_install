@@ -148,6 +148,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 启发：
 1.本来是三维的坐标轴，通过调整camera的角度，变成了二维的坐标轴
 2.在上述二维的坐标轴上，画出了二维的高斯函数图像
+3.所有camera的操作都是通过frame来实现的
 """
 class CylinderSlices(GaussianIntegral):
     def construct(self):
