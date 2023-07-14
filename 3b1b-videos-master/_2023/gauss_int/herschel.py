@@ -1,7 +1,10 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 from _2023.clt.main import *
 
-
+# 报错：NameError: name 'Dartboard' is not defined
 class TwoDGaussianAsADistribution(InteractiveScene):
     n_points = 2000
     n_dots_per_moment = 10
@@ -315,7 +318,7 @@ class ShowPointR0(TwoDGaussianAsADistribution):
         )
         self.wait()
 
-
+# ok
 class RescaleG(InteractiveScene):
     def construct(self):
         def g(x):
@@ -359,7 +362,7 @@ class RescaleG(InteractiveScene):
         self.play(curve.animate.set_fill(BLUE, 0.5))
         self.wait()
 
-
+# ok
 class ManyDifferentFs(InteractiveScene):
     def construct(self):
         axes = Axes((0, 4), (0, 1, 0.25), width=6, height=3)
@@ -402,7 +405,7 @@ class ManyDifferentFs(InteractiveScene):
             name = new_name
             self.wait()
 
-
+# ok
 class VariableInputs(InteractiveScene):
     def construct(self):
         equation = Tex(R"f(\sqrt{(1.00)^2 + (0.00)^2}) = f(1.00)f(0.00)")
@@ -427,7 +430,7 @@ class VariableInputs(InteractiveScene):
             self.play(y_tracker.animate.set_value(random.random() * 10))
             self.wait(0.5)
 
-
+# ok
 class RationalNumbers(InteractiveScene):
     def construct(self):
         # Interval
@@ -496,7 +499,7 @@ class RationalNumbers(InteractiveScene):
         )
         self.wait()
 
-
+# ok
 class TwoProperties(InteractiveScene):
     def construct(self):
         # Name properties
@@ -1087,7 +1090,7 @@ class TwoProperties(InteractiveScene):
         )
         self.wait()
 
-
+# ok
 class VariableC(InteractiveScene):
     c_values = [1.0, 0.5, -1.0, -0.7, -0.5, 0.25, -0.2, -0.4, -0.9, -0.1, 0.5, 0.3, 0.1]
 
@@ -1153,7 +1156,7 @@ class VariableC(InteractiveScene):
         label.next_to(axes.c2p(0, 2.7), RIGHT)
         return label
 
-
+# ok
 class VariableCWithF(VariableC):
     def get_axes(self):
         axes = Axes(
@@ -1172,7 +1175,7 @@ class VariableCWithF(VariableC):
         label.next_to(axes.c2p(0, 2), LEFT)
         return label
 
-
+# ok 3d
 class TalkAboutSignOfConstant3D(VariableCWithF):
     def construct(self):
         # Setup
@@ -1231,7 +1234,7 @@ class TalkAboutSignOfConstant3D(VariableCWithF):
             )
             self.wait()
 
-
+# 报错：NameError: name 'plane' is not defined
 class OldTalkAboutSignOfConstantScraps(InteractiveScene):
     def construct(self):
         plane.bind_graph_to_func(graph, lambda x: self.func(x, get_c()))
@@ -1249,6 +1252,7 @@ class OldTalkAboutSignOfConstantScraps(InteractiveScene):
 
         area.add_updater(update_area)
 
+# ok
 class OldTwoKeyProperties(InteractiveScene):
     def construct(self):
         # Setup equations

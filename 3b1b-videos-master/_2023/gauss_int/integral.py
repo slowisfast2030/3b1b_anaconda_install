@@ -447,7 +447,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
         return x_slice, y_tracker
 
-
+# 报错：AttributeError: 'ThreeDAxes' object has no attribute 'get_parametric_surface'
 class CylinderSlices(GaussianIntegral):
     def construct(self):
         # Setup
@@ -1007,7 +1007,7 @@ class CylinderIntegral(InteractiveScene):
         self.play(FlashAround(answer, run_time=2, time_width=1.5, color=TEAL))
         self.wait()
 
-
+# 很漂亮，就是字母有点糊
 class CartesianSlices(GaussianIntegral):
     def construct(self):
         # Setup
