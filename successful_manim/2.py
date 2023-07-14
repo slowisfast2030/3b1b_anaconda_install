@@ -28,6 +28,7 @@ class VariableC(InteractiveScene):
         c_interval.shift(0.5 * DOWN)
         self.add(c_interval, c_tip, c_label)
 
+        # 需要深入研究下函数实现
         axes.bind_graph_to_func(curve, lambda x: self.func(x, get_c()))
 
         # Animate
@@ -58,6 +59,7 @@ class VariableC(InteractiveScene):
         return [c_tracker, c_interval, c_tip, c_label]
 
     def get_axes(self):
+        # 这里的坐标和宽高的关系是什么？
         axes = Axes(
             (-1, 5), (0, 4),
             width=6, height=4,
