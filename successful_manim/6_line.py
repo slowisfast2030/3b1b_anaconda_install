@@ -148,12 +148,14 @@ class CylinderSlices(GaussianIntegral):
         frame = self.frame
         axes = self.get_axes()
 
+        # graph可以单独显示，也可以用来生成graph_mesh
         graph = self.get_gaussian_graph(axes)
         graph.set_opacity(0.8)
-        graph.always_sort_to_camera(self.camera)
+        # 什么意思？
+        graph.always_sort_to_camera(self.camera) # 对比了注释后的视频，没发现区别
 
-        graph_mesh = SurfaceMesh(graph, resolution=(21, 21))
-        graph_mesh.set_stroke(WHITE, 0.5, opacity=0.25)
+        graph_mesh = SurfaceMesh(graph, resolution=(21, 21)) # 分辨率越高，网格越密集
+        graph_mesh.set_stroke(WHITE, 0.5, opacity=0.25) #opacity=0全透明，opacity=1不透明
         graph_mesh.set_flat_stroke(False)
 
         self.add(axes)
