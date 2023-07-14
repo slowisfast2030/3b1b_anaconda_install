@@ -227,3 +227,36 @@ class CylinderSlices(GaussianIntegral):
         )
 
         self.wait()
+
+        # Explain meaning of r
+        x, y = (1.5, 0.75)
+        # 这里的axes是三维的，为何参数只有两个？
+        dot = Dot(axes.c2p(x, y), fill_color=RED)
+        dot.set_stroke(WHITE, 0.5) # 外围的圆圈
+        coords = Tex("(x, y)", font_size=36)
+        coords.next_to(dot, UR, SMALL_BUFF)
+
+        x_line = Line(axes.get_origin(), axes.c2p(x, 0, 0))
+        y_line = Line(axes.c2p(x, 0, 0), axes.c2p(x, y, 0))
+        r_line = Line(axes.c2p(x, y, 0), axes.get_origin())
+        x_line.set_stroke(BLUE, 3)
+        y_line.set_stroke(YELLOW, 3)
+        r_line.set_stroke(RED, 3)
+        lines = VGroup(x_line, y_line, r_line)
+        labels = VGroup(*map(Tex, "xyr"))
+        for label, line in zip(labels, lines):
+            label.match_color(line)
+            label.scale(0.85)
+            label.next_to(line.get_center(), rotate_vector(line.get_vector(), -90 * DEGREES), SMALL_BUFF)
+
+        self.add(dot, coords, set_depth_test=False)
+        self.play(
+            FadeIn(dot, scale=0.5),
+            FadeIn(coords),
+        )
+        for line, label in zip(lines, labels):
+            self.add(line, label, dot, set_depth_test=False)
+            self.play(
+                ShowCreation(line),
+                Write(label),
+            )
