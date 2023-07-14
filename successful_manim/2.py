@@ -71,7 +71,9 @@ class VariableC(InteractiveScene):
         return np.exp(c * x)
 
     def get_label(self, axes):
+        # 可以为个别字母设置颜色
         label = Tex("e^{cx}", t2c={"c": RED})
+        # 这里的坐标是相对于axes的坐标
         label.next_to(axes.c2p(0, 2.7), RIGHT)
         return label
 
