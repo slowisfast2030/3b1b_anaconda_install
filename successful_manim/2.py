@@ -165,7 +165,7 @@ class TalkAboutSignOfConstant3D(VariableCWithF):
 
         # Animations
         # 这里也实现了坐标轴上的图像随c变化
-        # 上面使用的是bind_graph_to_func方法。三维坐标轴自己实现了。
+        # 上面使用的是bind_graph_to_func方法。三维坐标轴自己实现了
         for value in [-0.5, -0.8, -0.3, -1.0, -0.3, 0.05, 0.1, -0.3, -1.0, -0.7, -1.0]:
             new_graph = get_graph(value)
             self.play(
