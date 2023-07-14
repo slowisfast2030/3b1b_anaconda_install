@@ -149,6 +149,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 1.本来是三维的坐标轴，通过调整camera的角度，变成了二维的坐标轴
 2.在上述二维的坐标轴上，画出了二维的高斯函数图像
 3.所有camera的操作都是通过frame来实现的
+4.这里把3维通过视角转换变成了2维，也可以反过来
 """
 class CylinderSlices(GaussianIntegral):
     def construct(self):
@@ -206,7 +207,7 @@ class CylinderSlices(GaussianIntegral):
         self.play(
             frame.animate.set_theta(20 * DEGREES), #调整camera的角度 
             rate_func=there_and_back,
-            run_time=10,
+            run_time=5,
         )
 
         # Reposition to 2d view
@@ -217,7 +218,8 @@ class CylinderSlices(GaussianIntegral):
 
         # 这几个动作是同时进行的吗？
         self.play(
-            frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES), # 调整视角为俯视图
+            #frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES), # 调整视角为俯视图
+            frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES),
             graph.animate.set_opacity(0.25), # 这一行很重要，显示出了图像，而不是只有网格
             func_labels.animate.scale(0.75).to_corner(UL),
             graph_mesh.animate.set_stroke(width=1), # 线宽
