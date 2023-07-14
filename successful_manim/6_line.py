@@ -260,3 +260,56 @@ class CylinderSlices(GaussianIntegral):
                 ShowCreation(line),
                 Write(label),
             )
+
+        # Plug in r
+        r_label_rect = SurroundingRectangle(labels[2], buff=SMALL_BUFF)
+        r_label_rect.set_stroke(RED, 2)
+        arrow = Arrow(r_label_rect, axes.c2p(-3, 3, 0) + 3.2 * LEFT + 0.25 * UP, path_arc=45 * DEGREES)
+        arrow.set_stroke(RED)
+
+        self.always_depth_test = False
+        self.play(ShowCreation(r_label_rect)) # 效果在哪里？
+        self.play(ShowCreation(arrow))
+        self.wait()
+
+        # Show Pythagorean equations
+        r_func = Tex("= e^{-r^2}", t2c={"r": RED})
+        r_func.match_height(label2d["= e^{-x^2}"])
+        r_func.next_to(label3d, RIGHT, MED_SMALL_BUFF, UP)
+        r_func.fix_in_frame()
+
+        r_rect = SurroundingRectangle(r_func["r^2"], buff=0.025)
+        xy_rect = SurroundingRectangle(label3d["x^2 + y^2"], buff=0.025)
+        VGroup(r_rect, xy_rect).set_stroke(TEAL, 1)
+        VGroup(r_rect, xy_rect).fix_in_frame()
+
+        pythag = Tex("x^2 + y^2 = r^2", t2c={"x": BLUE, "y": YELLOW, "r": RED})
+        pythag.next_to(label3d, DOWN, buff=2.0, aligned_edge=LEFT)
+        pythag.fix_in_frame()
+
+        self.play(
+            FadeTransform(label2d["= e^{-x^2}"].copy(), r_func),
+            FadeOut(arrow, scale=0.8, shift=DR + RIGHT),
+            FadeOut(r_label_rect)
+        )
+        self.wait()
+        line_copies = lines.copy()
+        self.add(*line_copies, set_depth_test=False)
+        self.play(
+            *(
+                VShowPassingFlash(line.insert_n_curves(20).set_stroke(width=8), time_width=1.5)
+                for line in line_copies
+            ),
+            *map(ShowCreation, lines)
+        )
+        self.play(
+            FadeTransform(r_func["r^2"][0].copy(), pythag["r^2"]),
+            FadeTransform(label3d["x^2 + y^2"][0].copy(), pythag["x^2 + y^2"]),
+            Write(pythag["="]),
+        )
+        self.wait()
+        self.wait()
+        self.play(ShowCreation(xy_rect))
+        self.wait()
+        self.play(Transform(xy_rect, r_rect))
+        self.play(FadeOut(xy_rect))
