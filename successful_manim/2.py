@@ -123,6 +123,7 @@ class TalkAboutSignOfConstant3D(VariableCWithF):
         label = Tex("f(r) = e^{cr^2}", t2c={"c": RED}, font_size=72)
         label.next_to(ORIGIN, LEFT)
         label.to_edge(UP)
+        # 这段文本是固定的，不随坐标轴移动
         label.fix_in_frame()
 
         c_tracker, c_interval, c_tip, c_label = self.get_c_group()
