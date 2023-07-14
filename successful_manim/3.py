@@ -117,6 +117,7 @@ class BellCurveArea(InteractiveScene):
         self.wait()
 
         # Thinner rectangles
+        # 天才！！！
         for dx in [0.1, 0.075, 0.05, 0.03, 0.02, 0.01, 0.005]:
             new_rects = axes.get_riemann_rectangles(graph, dx=dx, colors=colors)
             new_rects.set_stroke(WHITE, 1)
@@ -147,7 +148,7 @@ class BellCurveArea(InteractiveScene):
         answer_box.add(q_marks)
 
         self.play(
-            frame.animate.set_height(9, about_edge=DOWN),
+            frame.animate.set_height(9, about_edge=DOWN), # frame究竟什么意思
             integral.animate.next_to(equals, LEFT),
             FadeIn(equals),
             Write(answer_box),
@@ -201,7 +202,7 @@ class BellCurveArea(InteractiveScene):
         self.wait()
         self.play(
             LaggedStartMap(FadeIn, functions, shift=DOWN, lag_ratio=0.5),
-            frame.animate.shift(4 * RIGHT),
+            frame.animate.shift(4 * RIGHT), # 这个frame是整个屏幕可以看见的部分
             run_time=3
         )
         self.wait()
