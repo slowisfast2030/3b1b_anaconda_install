@@ -11,6 +11,7 @@ class VariableC(InteractiveScene):
     c_values = [1.0, 0.5, -1.0, -0.7, -0.5, 0.25, -0.2, -0.4, -0.9, -0.1, 0.5, 0.3, 0.1]
 
     def construct(self):
+        # 为什么这种写法？直接定义不好吗？
         axes = self.get_axes()
         self.add(axes)
 
