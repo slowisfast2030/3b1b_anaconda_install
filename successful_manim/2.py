@@ -111,6 +111,7 @@ class TalkAboutSignOfConstant3D(VariableCWithF):
     def construct(self):
         # Setup
         frame = self.frame
+        # 作用是什么？
         frame.add_updater(lambda m: m.reorient(20 * math.cos(0.1 * self.time), 75))
 
         axes = ThreeDAxes((-4, 4), (-4, 4), (0, 1), depth=2)
