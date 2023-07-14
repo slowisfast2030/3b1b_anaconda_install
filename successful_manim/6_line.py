@@ -200,6 +200,8 @@ class CylinderSlices(GaussianIntegral):
             frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES),
             graph.animate.set_opacity(0.25), # 这一行很重要，显示出了图像，而不是只有网格
             func_labels.animate.scale(0.75).to_corner(UL),
-            graph_mesh.animate.set_stroke(width=1),
+            graph_mesh.animate.set_stroke(width=1), # 线宽
             run_time=3,
         )
+
+        self.wait()
