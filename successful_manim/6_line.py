@@ -39,6 +39,8 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
             axes.plane = plane
             axes.add(plane)
 
+        # 这里定义了xyz轴的标签
+        # 不过后面没有用
         x, y, z = axis_labels = VGroup(*map(Tex, "xyz"))
         axis_labels.use_winding_fill(False)
         x.next_to(axes.x_axis, RIGHT)
@@ -60,6 +62,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         shading=(0.2, 0.2, 0.4),
     ):
         graph = axes.get_graph(self.func)
+        # 下面几个参数反应了图像的颜色、透明度、阴影
         graph.set_color(color)
         graph.set_opacity(opacity)
         graph.set_shading(*shading)
@@ -141,7 +144,11 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
         return x_slice, y_tracker
 
-
+"""
+启发：
+1.本来是三维的坐标轴，通过调整camera的角度，变成了二维的坐标轴
+2.在上述二维的坐标轴上，画出了二维的高斯函数图像
+"""
 class CylinderSlices(GaussianIntegral):
     def construct(self):
         # Setup
@@ -196,12 +203,13 @@ class CylinderSlices(GaussianIntegral):
 
         # Rotate the frame
         self.play(
-            frame.animate.set_theta(20 * DEGREES),
+            frame.animate.set_theta(20 * DEGREES), #调整camera的角度 
             rate_func=there_and_back,
             run_time=10,
         )
 
         # Reposition to 2d view
+        # 下面这几行有什么用？
         frame.save_state()
         graph_mesh.save_state()
         func_labels.use_winding_fill(False)
