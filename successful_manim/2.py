@@ -55,8 +55,11 @@ class VariableC(InteractiveScene):
         # 数轴也有类似于坐标轴的c2p方法，n2p将数值转换为坐标
         c_tip.add_updater(lambda m: m.move_to(c_interval.n2p(get_c()), DOWN))
 
+        # 文字
         c_label = Tex("c = 1.00", t2c={"c": RED}, font_size=36)
+        # 竟然可以tex对象的一部分是可改变的
         c_label.make_number_changable("1.00")
+        # tex对象竟然是数组
         c_label[-1].scale(0.8, about_edge=LEFT)
         c_label.add_updater(lambda m: m[-1].set_value(get_c()))
         c_label.add_updater(lambda m: m.next_to(c_tip, UP, aligned_edge=LEFT))
