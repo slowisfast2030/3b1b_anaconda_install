@@ -71,7 +71,10 @@ class AntiDerivative(InteractiveScene):
 
         become()函数的作用是将一个VMobject变成另一个VMobject
         pointwise_become_partial()函数的作用是将一个VMobject的一部分变成另一个VMobject的一部分
-        
+
+        遗留问题：
+        pointwise_become_partial()函数是部分变换，但是部分变换可以有无穷种方式
+        如何指定部分变换的方式？从上到下 or 从左到右？
         """
         def update_area(area: VMobject):
             x = get_x()
