@@ -17,7 +17,7 @@ class AntiDerivative(InteractiveScene):
                 width=5.5, height=2.75,
                 background_line_style=dict(stroke_color=GREY, stroke_width=1, stroke_opacity=1.0),
                 faded_line_ratio=3,
-            )
+            ) # 不得不说，这个NumberPlane很漂亮。
             for x in range(2)
         ))
         planes.arrange(DOWN, buff=LARGE_BUFF)
