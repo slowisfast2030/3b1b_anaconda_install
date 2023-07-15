@@ -194,6 +194,13 @@ class CartesianSlices(GaussianIntegral):
         y_unit = axes.y_axis.get_unit_size()
         # 这就不是很明白了。需要搞清楚set_clip_plane的用法
         # 需要认真研究这一行：如何使得graph部分显示！！！！！
+        """
+        Manim中的 set_clip_plane 函数用于将3D对象裁剪到某个平面。
+        当您只想显示 3D 对象的一部分或想要创建 3D 对象的横截面时，这非常有用。
+        要使用 set_clip_plane ，您首先需要使用 Manim 的 ThreeDScene 类创建一个 3D 对象。
+        然后，您可以在对象上调用 set_clip_plane 函数并传入法线向量和平面上的点。
+        法线向量确定平面的方向，点确定平面在 3D 空间中的位置。
+        """
         graph.add_updater(lambda m: m.set_clip_plane(UP, -y_tracker.get_value() * y_unit))
 
         x_max = axes.x_range[1]
