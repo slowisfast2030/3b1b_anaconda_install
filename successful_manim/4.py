@@ -47,6 +47,7 @@ class AntiDerivative(InteractiveScene):
 
         high_area = high_graph.copy()
 
+        # 这个函数真是不好理解
         def update_area(area: VMobject):
             x = get_x()
             area.become(high_graph)
