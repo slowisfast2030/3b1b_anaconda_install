@@ -135,8 +135,11 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         ys = np.ones(len(xs)) * y
         # 这里会得到很多个点，然后用这些点构成一个平面？
         # 但这些点都在曲线上啊，怎么会构成一个平面呢？
+        # 终于明白了，这里的graph本来就是一条曲线！！！
+        # 为了有平面的效果，后面使用了set_fill进行了颜色填充！！！看上去就像一个平面了
         points = axes.c2p(xs, ys, self.func(xs, y))
         graph = VMobject().set_points_smoothly(points)
+        #graph = VMobject().set_points_as_corners(points) 改成这种方式效果也可以
         graph.use_winding_fill(False)
         #graph.use_winding_fill(True)
         return graph
@@ -158,6 +161,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         
         # 设置属性 
         x_slice.set_stroke(stroke_color, stroke_width)
+        # 下面这一行可以注释掉看看效果：将曲线显示为曲面！genius!!!
         x_slice.set_fill(fill_color, fill_opacity)
 
         # 添加updater
