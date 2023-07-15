@@ -518,6 +518,12 @@ class VMobject(Mobject):
         self.append_points([handle, anchor])
         return self
 
+    """
+    From manimce:
+    Add a straight line from the last point of VMobject to the given point.
+
+    
+    """
     def add_line_to(self, point: Vect3) -> Self:
         self.throw_error_if_no_points()
         last_point = self.get_last_point()
