@@ -138,6 +138,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         points = axes.c2p(xs, ys, self.func(xs, y))
         graph = VMobject().set_points_smoothly(points)
         graph.use_winding_fill(False)
+        #graph.use_winding_fill(True)
         return graph
 
     def get_dynamic_slice(
