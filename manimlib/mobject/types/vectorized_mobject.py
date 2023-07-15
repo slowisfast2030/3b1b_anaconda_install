@@ -522,7 +522,7 @@ class VMobject(Mobject):
     From manimce:
     Add a straight line from the last point of VMobject to the given point.
 
-    
+    这里有一个新的认知：VMobject的点是有顺序的
     """
     def add_line_to(self, point: Vect3) -> Self:
         self.throw_error_if_no_points()
