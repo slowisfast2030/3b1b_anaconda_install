@@ -155,6 +155,7 @@ class CartesianSlices(GaussianIntegral):
         graph_mesh.set_flat_stroke(False)
 
         self.add(axes, graph, graph_mesh)
+        # self.wait() 这一行不能加
 
         # Dynamic slice
         x_slice, y_tracker = self.get_dynamic_slice(axes)
