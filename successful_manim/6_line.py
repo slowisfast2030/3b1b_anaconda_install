@@ -374,3 +374,27 @@ class CylinderSlices(GaussianIntegral):
         )
         self.wait()
         self.play(*map(FadeOut, [r_line, dot, r_label, coords, circle]))
+
+        # Dynamic cylinder
+        # 不清楚这里的cylinder有啥作用
+        cylinder, r_tracker = self.get_dynamic_cylinder(axes)
+        delta_r = 0.1
+        # 得到了很多个cylinder
+        cylinders = Group(*(
+            self.get_cylinder(axes, r, opacity=0.5)
+            for r in np.arange(0, 3, delta_r)
+        ))
+
+        r_tracker.set_value(0)
+        self.add(cylinder, cylinders, graph, graph_mesh)
+        self.play(
+            graph.animate.set_opacity(0.1).set_anim_args(time_span=(0, 2)),
+            FadeIn(cylinders, lag_ratio=0.9), # lag_ratio参数单独视觉效果真是棒！
+            r_tracker.animate.set_value(3).set_anim_args(
+                rate_func=linear,
+                time_span=(0.5, 10),
+            ),
+            frame.animate.reorient(-15, 75).set_height(5.5),
+            run_time=10,
+        )
+        self.wait()
