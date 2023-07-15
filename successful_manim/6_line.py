@@ -313,3 +313,45 @@ class CylinderSlices(GaussianIntegral):
         self.wait()
         self.play(Transform(xy_rect, r_rect))
         self.play(FadeOut(xy_rect))
+
+        functions = VGroup(label2d, label3d, r_func)
+        functions.fix_in_frame()
+
+        # Emphasize rotational symmetry
+        self.always_depth_test = True
+        x_label, y_label, r_label = labels
+        self.play(
+            *map(FadeOut, [x_line, y_line, x_label, y_label, pythag])
+        )
+
+        def get_circle(point, z_shift=0.02):
+            origin = axes.c2p(0, 0, 0)
+            point[2] = origin[2]
+            radius = get_norm(point - origin)
+            circle = Circle(radius=radius, n_components=96)
+            x = axes.x_axis.p2n(point)
+            y = axes.y_axis.p2n(point)
+            circle.move_to(axes.c2p(0, 0, self.func(x, y) + z_shift))
+            circle.set_stroke(RED, 2)
+            circle.rotate(np.arctan2(y, x))
+            circle.set_flat_stroke(False)
+            return circle
+
+        # r_label一直在r_line附近，因为后面r_line要旋转
+        r_label.add_updater(lambda m: m.next_to(r_line.get_center(), UL, SMALL_BUFF))
+        # r_line的端点处有一个红点，随着r_line的旋转而旋转
+        dot.add_updater(lambda m: m.move_to(r_line.get_start()))
+        # (x,y)坐标和红点的移动而移动
+        coords.add_updater(lambda m: m.next_to(dot, UR, SMALL_BUFF))
+        # 上面三行给人很大启示：r_line ---> r_label(dot) ---> coords
+
+        # 获得随r_line旋转的圆
+        circle = get_circle(r_line.get_start())
+
+        self.play(
+            Rotate(r_line, TAU, about_point=axes.get_origin()),
+            ShowCreation(circle),
+            frame.animate.reorient(30, 60).move_to(ORIGIN).set_height(8).set_field_of_view(45 * DEGREES),
+            Restore(graph_mesh),
+            run_time=7,
+        )
