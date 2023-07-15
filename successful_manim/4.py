@@ -66,6 +66,7 @@ class AntiDerivative(InteractiveScene):
 
         # 这里需要深刻思考下high_area的实现
         self.add(high_graph, high_area)
+        # self.add(high_area)
 
         # Low graph
         dist = scipy.stats.norm(0, 1)
