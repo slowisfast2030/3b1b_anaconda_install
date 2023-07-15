@@ -76,6 +76,26 @@ class AntiDerivative(InteractiveScene):
         pointwise_become_partial()函数是部分变换，但是部分变换可以有无穷种方式
         如何指定部分变换的方式？从上到下 or 从左到右？
         """
+        """
+        class MyScene(Scene):
+        def construct(self):
+            # Create a VMobject
+            my_vmobject = VMobject()
+
+            # Add points to the VMobject
+            my_vmobject.set_points_as_corners([ORIGIN, RIGHT, UP, LEFT-1, LEFT+DOWN+RIGHT])
+            self.add(my_vmobject)
+            self.wait(1)
+            print("*"*100)
+            print(my_vmobject.get_last_point())
+
+            # Add a line to the VMobject
+            my_vmobject.add_line_to(2*RIGHT)
+
+            # Display the VMobject on the screen
+            self.play(Create(my_vmobject))
+            self.wait()
+        """
         def update_area(area: VMobject):
             x = get_x()
             # 这一行不是很明白。为什么要用become()函数？用copy()函数不行吗？实际执行的结果是不行的。
