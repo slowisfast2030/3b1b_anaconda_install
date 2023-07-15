@@ -57,7 +57,7 @@ class AntiDerivative(InteractiveScene):
             area.set_stroke(width=0)
             area.set_fill(BLUE, 0.5)
             # 这一行什么意思？
-            area.pointwise_become_partial(
+            area.pointwise_become_partial( # 很庆幸，在manimce版本中也有实现
                 high_graph, 0, inverse_interpolate(x_min, x_max, x)
             )
             # 这两行不是很明白。add_line_to()函数是什么意思？有没有办法能够测试一下？
