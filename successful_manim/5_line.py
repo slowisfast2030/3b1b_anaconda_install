@@ -140,9 +140,12 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         x_slice.set_fill(fill_color, fill_opacity)
 
         # 添加updater
+        # 这里是头一次见到为一个对象添加多个updater
+        # x_slice的高度随着graph的变化而变化
         x_slice.add_updater(
             lambda m: m.set_depth(self.func(0, get_y()) * z_unit, stretch=True)
         )
+        # x_slice的位置随着graph的变化而变化
         x_slice.add_updater(lambda m: m.move_to(axes.c2p(0, get_y(), 0), IN))
 
         return x_slice, y_tracker
