@@ -362,3 +362,15 @@ class CylinderSlices(GaussianIntegral):
             Restore(graph_mesh),
             run_time=7,
         )
+
+        # r_line和circle缩小
+        self.wait()
+        self.play(
+            r_line.animate.scale(0.1, about_point=axes.get_origin()),
+            # UpdateFromFunc这个动作第一次见
+            UpdateFromFunc(circle, lambda c: c.replace(get_circle(r_line.get_start()))),
+            rate_func=there_and_back,
+            run_time=8,
+        )
+        self.wait()
+        self.play(*map(FadeOut, [r_line, dot, r_label, coords, circle]))
