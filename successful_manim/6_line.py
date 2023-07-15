@@ -324,6 +324,7 @@ class CylinderSlices(GaussianIntegral):
             *map(FadeOut, [x_line, y_line, x_label, y_label, pythag])
         )
 
+        # 下面的旋转操作真帅！！！
         def get_circle(point, z_shift=0.02):
             origin = axes.c2p(0, 0, 0)
             point[2] = origin[2]
@@ -347,7 +348,8 @@ class CylinderSlices(GaussianIntegral):
 
         # 获得随r_line旋转的圆
         circle = get_circle(r_line.get_start())
-
+        
+        # 现在可以确定，play函数传入多个动作，它们会一起执行
         self.play(
             Rotate(r_line, TAU, about_point=axes.get_origin()),
             ShowCreation(circle),
