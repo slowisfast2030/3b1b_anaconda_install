@@ -54,6 +54,7 @@ class AntiDerivative(InteractiveScene):
             area.become(high_graph)
             area.set_stroke(width=0)
             area.set_fill(BLUE, 0.5)
+            # 这一行什么意思？
             area.pointwise_become_partial(
                 high_graph, 0, inverse_interpolate(x_min, x_max, x)
             )
