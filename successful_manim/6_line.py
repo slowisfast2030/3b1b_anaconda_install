@@ -325,15 +325,19 @@ class CylinderSlices(GaussianIntegral):
         )
 
         # 下面的旋转操作真帅！！！
+        # 一开始看视频，会以为circle的绘制是和r_line绑定的。后来才发现，两者是独立的。
+        # 只不过同时进行，所以看起来是绑定的。
         def get_circle(point, z_shift=0.02):
             origin = axes.c2p(0, 0, 0)
             point[2] = origin[2]
+            # 两点之间的距离
             radius = get_norm(point - origin)
             circle = Circle(radius=radius, n_components=96)
             x = axes.x_axis.p2n(point)
             y = axes.y_axis.p2n(point)
             circle.move_to(axes.c2p(0, 0, self.func(x, y) + z_shift))
             circle.set_stroke(RED, 2)
+            # 旋转的起始角度。否则，圆的起始角度是0，会落后于r_line
             circle.rotate(np.arctan2(y, x))
             circle.set_flat_stroke(False)
             return circle
