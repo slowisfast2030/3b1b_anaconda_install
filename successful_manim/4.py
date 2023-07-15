@@ -59,8 +59,8 @@ class AntiDerivative(InteractiveScene):
                 high_graph, 0, inverse_interpolate(x_min, x_max, x)
             )
             # 这两行不是很明白
-            area.add_line_to(planes[0].c2p(x, 0))
-            area.add_line_to(planes[0].c2p(x_min, 0))
+            area.add_line_to(planes[0].c2p(x, 0)) # 这一行不能注释。否则会是倾斜着改变矩形的大小
+            area.add_line_to(planes[0].c2p(x_min, 0)) # 这一行注释掉似乎影响不大
             return area
 
         high_area.add_updater(update_area) # x.add_updater(func)，func的参数是x本身
