@@ -682,6 +682,9 @@ class Mobject(object):
             mobject = pickle.load(fp)
         return mobject
 
+    # 如果对于manimgl中的某一个函数的功能不是很理解，可以看manimce版本的代码，看看是否有对应的函数实现。
+    # 对比了两个版本的become函数实现，代码有一些相似性
+    # manimce版本给出了示例
     def become(self, mobject: Mobject, match_updaters=False) -> Self:
         """
         Edit all data and submobjects to be idential
