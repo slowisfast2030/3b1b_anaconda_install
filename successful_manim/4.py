@@ -58,10 +58,12 @@ class AntiDerivative(InteractiveScene):
             #area = high_graph.copy()
             area.set_stroke(width=0)
             area.set_fill(BLUE, 0.5)
+            
             # 这一行什么意思？
             area.pointwise_become_partial( # 很庆幸，在manimce版本中也有实现。不过没有给示例，所以还是不太清楚
                 high_graph, 0, inverse_interpolate(x_min, x_max, x) # inverse_interpolate()函数的返回结果是一个float
             )
+            
             # 这两行不是很明白。add_line_to()函数是什么意思？有没有办法能够测试一下？
             area.add_line_to(planes[0].c2p(x, 0)) # 这一行不能注释。否则会有一条线倾斜着改变矩形的大小
             area.add_line_to(planes[0].c2p(x_min, 0)) # 这一行注释掉似乎影响不大
