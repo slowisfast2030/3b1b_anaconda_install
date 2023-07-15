@@ -53,7 +53,7 @@ class AntiDerivative(InteractiveScene):
         # 即使不理解，但是可以模仿这个函数的用法
         def update_area(area: VMobject):
             x = get_x()
-            area.become(high_graph)
+            area.become(high_graph) # 如果manimgl版本的源码不好懂，可以查看manimce版本的实现。manimce版本的实现更加清晰。
             area.set_stroke(width=0)
             area.set_fill(BLUE, 0.5)
             # 这一行什么意思？
