@@ -75,7 +75,7 @@ class AntiDerivative(InteractiveScene):
         low_dot.add_updater(lambda m: m.move_to(planes[1].i2gp(get_x(), low_graph))) # dot在curve上移动
 
         low_line = always_redraw(lambda: DashedLine(
-            planes[1].c2p(get_x(), 0), planes[1].i2gp(get_x(), low_graph),
+            planes[1].c2p(get_x(), 0), planes[1].i2gp(get_x(), low_graph), # 这里可以更加清楚的看到c2p和i2gp的用法
         ).set_stroke(WHITE, 2))
 
         self.add(low_graph, low_dot, low_line)
