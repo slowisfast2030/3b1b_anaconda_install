@@ -61,8 +61,10 @@ class AntiDerivative(InteractiveScene):
                 high_graph, 0, inverse_interpolate(x_min, x_max, x) # inverse_interpolate()函数的返回结果是一个float
             )
             # 这两行不是很明白。add_line_to()函数是什么意思？有没有办法能够测试一下？
-            area.add_line_to(planes[0].c2p(x, 0)) # 这一行不能注释。否则会有一条线倾斜着改变矩形的大小
+            area.add_line_to(planes[0].c2p(x, 0)+(0,1,0)) # 这一行不能注释。否则会有一条线倾斜着改变矩形的大小
             area.add_line_to(planes[0].c2p(x_min, 0)) # 这一行注释掉似乎影响不大
+            #print("*"*200)
+            #print(area.get_last_point())
             return area
 
         high_area.add_updater(update_area) # x.add_updater(func)，func的参数是x本身
