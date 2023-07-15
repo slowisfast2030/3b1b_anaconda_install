@@ -51,14 +51,36 @@ class AntiDerivative(InteractiveScene):
 
         # 这个函数真是不好理解
         # 即使不理解，但是可以模仿这个函数的用法
+        """
+        from manim import *
+
+        class BecomeScene(Scene):
+            def construct(self):
+                circ = Circle(fill_color=RED, fill_opacity=0.8)
+                square = Square(fill_color=YELLOW, fill_opacity=0.2)
+                self.add(circ)
+                self.wait(1)
+                circ.become(square)
+                self.wait(1)
+                circ.pointwise_become_partial(square, 0, 0.6)
+                self.wait(0.5)
+        """
+        """
+        终于搞明白update_area函数的细节了!!!哈哈哈
+        这里的关键是明白become()和pointwise_become_partial()的区别和联系
+
+        become()函数的作用是将一个VMobject变成另一个VMobject
+        pointwise_become_partial()函数的作用是将一个VMobject的一部分变成另一个VMobject的一部分
+        
+        """
         def update_area(area: VMobject):
             x = get_x()
             # 这一行不是很明白。为什么要用become()函数？用copy()函数不行吗？实际执行的结果是不行的。
             area.become(high_graph) # 如果manimgl版本的源码不好懂，可以查看manimce版本的实现。manimce版本的实现更加清晰
             #area = high_graph.copy()
             area.set_stroke(width=0)
-            area.set_fill(BLUE, 0.5)
-            
+            area.set_fill(BLUE, 0.5) # 对一个graph进行填充，会给graph和坐标轴之间上色
+
             # 这一行什么意思？
             area.pointwise_become_partial( # 很庆幸，在manimce版本中也有实现。不过没有给示例，所以还是不太清楚
                 high_graph, 0, inverse_interpolate(x_min, x_max, x) # inverse_interpolate()函数的返回结果是一个float
