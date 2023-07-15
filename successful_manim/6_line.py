@@ -456,3 +456,36 @@ class CylinderSlices(GaussianIntegral):
         )
         self.play(ReplacementTransform(pre_rect, rect), run_time=2) # 原来cylinder到长方形是通过这个函数实现的
         self.wait()
+
+        # Show cylinder area
+        circle = get_circle(cylinder.get_points()[0], z_shift=0)
+        height_line = Line(cylinder.get_corner(IN + DOWN), cylinder.get_corner(OUT + DOWN))
+        height_line.set_stroke(PINK, 3)
+        height_line.set_flat_stroke(False)
+
+        circ_brace = Brace(area_eq2[R"2 \pi {r}"], DOWN, SMALL_BUFF)
+        height_brace = Brace(area_eq2[R"e^{-{r}^2}"], DOWN, SMALL_BUFF)
+        VGroup(circ_brace, height_brace).fix_in_frame()
+
+        circ_word = area_eq1["(Circumference)"]
+        height_word = area_eq1["(Height)"]
+
+        self.add(circle, set_depth_test=False)
+        self.play(
+            ShowCreation(circle),
+            ShowCreation(rect_top),
+        )
+        self.play(
+            FadeIn(circ_brace),
+            circ_word.animate.scale(0.75).next_to(circ_brace, DOWN, SMALL_BUFF),
+            Write(area_eq2[R"2 \pi {r}"]),
+            height_word.animate.next_to(area_eq2[R"2 \pi {r}"], RIGHT)
+        )
+        self.wait()
+        self.add(height_line, set_depth_test=False)
+        self.play(
+            FadeOut(circle),
+            FadeOut(rect_top),
+            ShowCreation(rect_side),
+            ShowCreation(height_line),
+        )
