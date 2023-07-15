@@ -62,7 +62,7 @@ class AntiDerivative(InteractiveScene):
             area.add_line_to(planes[0].c2p(x_min, 0))
             return area
 
-        high_area.add_updater(update_area)
+        high_area.add_updater(update_area) # x.add_updater(func)，func的参数是x本身
 
         # 这里需要深刻思考下high_area的实现
         self.add(high_graph, high_area)
