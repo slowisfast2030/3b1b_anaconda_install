@@ -172,3 +172,36 @@ class CartesianSlices(GaussianIntegral):
             rate_func=linear,
         )
         self.wait()
+
+        # Show many slices
+        def get_x_slices(dx=0.25):
+            original_y_value = y_tracker.get_value()
+            x_slices = VGroup()
+            x_min, x_max = axes.x_range[:2]
+            for y in np.arange(x_max, x_min, -dx):
+                y_tracker.set_value(y)
+                x_slice.update()
+                # x_slice似乎不仅仅是一条线，还是一个平面
+                x_slices.add(x_slice.copy().clear_updaters())
+            x_slices.use_winding_fill(False)
+            x_slices.deactivate_depth_test()
+            x_slices.set_stroke(BLUE, 2, 0.5)
+            x_slices.set_flat_stroke(False)
+            y_tracker.set_value(original_y_value)
+            return x_slices
+
+        x_slices = get_x_slices(dx=0.25)
+        self.add(x_slice, x_slices, graph, graph_mesh)
+        self.play(
+            FadeOut(graph, time_span=(0, 1)),
+            FadeOut(x_slice, time_span=(0, 1)),
+            FadeIn(x_slices, 0.1 * OUT, lag_ratio=0.1), # lag_ratio的效果就是很好
+            axes.labels[2].animate.set_opacity(0),
+            frame.animate.reorient(-80),
+            run_time=4
+        )
+        self.play(
+            frame.animate.reorient(-100),
+            run_time=3,
+        )
+        self.wait()
