@@ -134,8 +134,12 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
         z_unit = axes.z_axis.get_unit_size()
         x_slice = self.get_x_slice(axes, 0)
+        
+        # 设置属性 
         x_slice.set_stroke(stroke_color, stroke_width)
         x_slice.set_fill(fill_color, fill_opacity)
+
+        # 添加updater
         x_slice.add_updater(
             lambda m: m.set_depth(self.func(0, get_y()) * z_unit, stretch=True)
         )
@@ -149,7 +153,7 @@ class CartesianSlices(GaussianIntegral):
         frame = self.frame
         axes = self.get_axes()
 
-        graph = self.get_gaussian_graph(axes)
+        graph = self.get_gaussian_graph(axes, opacity=0.5)
         graph_mesh = SurfaceMesh(graph, resolution=(21, 21))
         graph_mesh.set_stroke(WHITE, 0.5, opacity=0.25)
         graph_mesh.set_flat_stroke(False)
