@@ -53,7 +53,9 @@ class AntiDerivative(InteractiveScene):
         # 即使不理解，但是可以模仿这个函数的用法
         def update_area(area: VMobject):
             x = get_x()
+            # 这一行不是很明白。为什么要用become()函数？用copy()函数不行吗？实际执行的结果是不行的。
             area.become(high_graph) # 如果manimgl版本的源码不好懂，可以查看manimce版本的实现。manimce版本的实现更加清晰
+            #area = high_graph.copy()
             area.set_stroke(width=0)
             area.set_fill(BLUE, 0.5)
             # 这一行什么意思？
