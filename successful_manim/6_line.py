@@ -377,6 +377,8 @@ class CylinderSlices(GaussianIntegral):
 
         # Dynamic cylinder
         # 不清楚这里的cylinder有啥作用
+        # 经过仔细观察后发现，很多个cylinder延迟出现后，又有一个cylinder在动
+        # 3b1b真实匠心独运
         cylinder, r_tracker = self.get_dynamic_cylinder(axes)
         delta_r = 0.1
         # 得到了很多个cylinder
@@ -395,6 +397,6 @@ class CylinderSlices(GaussianIntegral):
                 time_span=(0.5, 10),
             ),
             frame.animate.reorient(-15, 75).set_height(5.5),
-            run_time=10,
+            run_time=3,
         )
         self.wait()
