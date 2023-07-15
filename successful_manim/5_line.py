@@ -113,6 +113,22 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         result.clear_updaters()
         return result
 
+    """
+    class myScene(Scene):
+        def construct(self):
+            points = [ORIGIN, UP, RIGHT, LEFT]
+            dots = VMobject()
+            dots.set_points_smoothly(points)
+            self.add(dots)
+            self.play(Create(dots))
+            self.wait()
+
+            dots2 = VMobject()
+            dots2.set_points_as_corners(points)
+            self.add(dots2)
+            self.play(Create(dots2))
+            self.wait()
+    """
     def get_x_slice(self, axes, y, x_range=(-3, 3.1, 0.1)):
         # xs是一个数组，从-3开始，到3结束，间隔0.1
         xs = np.arange(*x_range)
