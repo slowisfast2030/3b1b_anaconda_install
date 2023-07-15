@@ -34,7 +34,7 @@ class AntiDerivative(InteractiveScene):
 
         ad_word = Text("Antiderivative")
         ad_word.next_to(titles[1], UP, MED_LARGE_BUFF)
-        VGroup(ad_word, titles[1]).match_y(planes[1])
+        VGroup(ad_word, titles[1]).match_y(planes[1]) # match_y()是什么意思？这里的VGroup有什么用吗？
 
         self.add(titles)
         self.add(ad_word)
@@ -55,12 +55,14 @@ class AntiDerivative(InteractiveScene):
             area.pointwise_become_partial(
                 high_graph, 0, inverse_interpolate(x_min, x_max, x)
             )
+            # 这两行不是很明白
             area.add_line_to(planes[0].c2p(x, 0))
             area.add_line_to(planes[0].c2p(x_min, 0))
             return area
 
         high_area.add_updater(update_area)
 
+        # 这里需要深刻思考下high_area的实现
         self.add(high_graph, high_area)
 
         # Low graph
