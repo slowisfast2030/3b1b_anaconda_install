@@ -45,6 +45,8 @@ class AntiDerivative(InteractiveScene):
         high_graph = planes[0].get_graph(lambda x: np.exp(-x**2))
         high_graph.set_stroke(BLUE, 3)
 
+        # 一开始以为area随着graph的变化而变化，但实际上area和graph同时随着x的变化而变化
+        # 进而导致area和graph的变化是一致的，看上去就像是area随着graph的变化而变化
         high_area = high_graph.copy()
 
         # 这个函数真是不好理解
