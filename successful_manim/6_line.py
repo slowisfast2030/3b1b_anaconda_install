@@ -400,3 +400,59 @@ class CylinderSlices(GaussianIntegral):
             run_time=3,
         )
         self.wait()
+
+        # Isolate one particular cylinder
+        self.play(
+            r_tracker.animate.set_value(0.7), # 单独的cylinder的半径逐渐缩小
+            cylinders.animate.set_opacity(0.1), # 众多的cylinder逐渐变透明
+            frame.animate.reorient(-27, 71),
+            run_time=3,
+        )
+
+        # Unwrap cylinder
+        axes.labels[2].set_opacity(0)
+        R = cylinder.get_width() / 2
+        rect = Square3D(resolution=cylinder.resolution)
+        rect.set_width(TAU * R)
+        rect.set_height(cylinder.get_depth(), stretch=True)
+        rect.match_color(cylinder)
+        rect_top = Line(rect.get_corner(UL), rect.get_corner(UR))
+        rect_top.set_stroke(RED, 3)
+        rect_side = Line(rect.get_corner(DL), rect.get_corner(UL))
+        rect_side.set_stroke(PINK, 3)
+        VGroup(rect_top, rect_side).set_flat_stroke(False)
+        rect_group = Group(rect, rect_top, rect_side)
+        rect_group.apply_matrix(frame.get_orientation().as_matrix())
+        rect_group.next_to(cylinder, [1, 0, 1], LARGE_BUFF)
+
+        eq_kw = dict(
+            font_size=35,
+            t2c={"{r}": RED},
+        )
+        area_eq1 = TexText("Area = (Circumference)(Height)", **eq_kw)
+        area_eq2 = TexText(R"Area = $2 \pi {r} \cdot e^{-{r}^2}$", **eq_kw)
+        for eq in area_eq1, area_eq2:
+            eq.fix_in_frame()
+            eq.to_corner(UL)
+        area_eq1.shift(area_eq2[0].get_center() - area_eq1[0].get_center())
+
+        self.add(functions)
+        functions.fix_in_frame()
+        functions.deactivate_depth_test()
+        functions.use_winding_fill(False)
+        self.play(
+            FadeIn(area_eq1, DOWN),
+            functions.animate.shift(1.5 * DOWN).scale(0.7, about_edge=DL).set_fill(opacity=0.75)
+        )
+        self.wait()
+
+        pre_rect = cylinder.copy()
+        pre_rect.clear_updaters()
+        self.add(pre_rect, graph)
+        self.play(
+            pre_rect.animate.scale(0.95).next_to(cylinder, OUT, buff=1.0),
+            frame.animate.set_height(7).move_to([1.0, 0.15, 1.0]), 
+            run_time=2,
+        )
+        self.play(ReplacementTransform(pre_rect, rect), run_time=2) # 原来cylinder到长方形是通过这个函数实现的
+        self.wait()
