@@ -332,6 +332,7 @@ class CylinderSlices(GaussianIntegral):
             point[2] = origin[2]
             # 两点之间的距离
             radius = get_norm(point - origin)
+            # n_components参数有什么用？circle是由多段arc拼接而成，n_components越大，圆越圆滑
             circle = Circle(radius=radius, n_components=96)
             x = axes.x_axis.p2n(point)
             y = axes.y_axis.p2n(point)
