@@ -230,6 +230,7 @@ class Surface(Mobject):
         self.add_updater(updater)
         return self
 
+    # 这个函数啥作用？
     def set_clip_plane(
         self,
         vect: Vect3 | None = None,

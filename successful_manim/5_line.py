@@ -160,11 +160,12 @@ class CartesianSlices(GaussianIntegral):
         # Dynamic slice
         x_slice, y_tracker = self.get_dynamic_slice(axes)
         y_unit = axes.y_axis.get_unit_size()
+        # 这就不是很明白了。需要搞清楚set_clip_plane的用法
         graph.add_updater(lambda m: m.set_clip_plane(UP, -y_tracker.get_value() * y_unit))
 
         x_max = axes.x_range[1]
         y_tracker.set_value(x_max)
-        self.add(x_slice)
+        self.add(x_slice) # 这是一条线，平行于xoz平面。如果不加，动态效果的边缘不好看
         self.play(
             y_tracker.animate.set_value(-x_max),
             run_time=5,
