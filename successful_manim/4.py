@@ -72,7 +72,7 @@ class AntiDerivative(InteractiveScene):
         low_graph = planes[1].get_graph(lambda x: math.sqrt(PI) * dist.cdf(x))
         low_graph.set_stroke(YELLOW, 2)
         low_dot = GlowDot()
-        low_dot.add_updater(lambda m: m.move_to(planes[1].i2gp(get_x(), low_graph)))
+        low_dot.add_updater(lambda m: m.move_to(planes[1].i2gp(get_x(), low_graph))) # dot在curve上移动
 
         low_line = always_redraw(lambda: DashedLine(
             planes[1].c2p(get_x(), 0), planes[1].i2gp(get_x(), low_graph),
