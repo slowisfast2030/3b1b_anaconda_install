@@ -133,6 +133,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         get_y = y_tracker.get_value
 
         z_unit = axes.z_axis.get_unit_size()
+        # 这个函数需要深入研究：如果得到这个平面。
         x_slice = self.get_x_slice(axes, 0)
         
         # 设置属性 
@@ -143,7 +144,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         # 这里是头一次见到为一个对象添加多个updater
         # x_slice的高度随着graph的变化而变化
         x_slice.add_updater(
-            lambda m: m.set_depth(self.func(0, get_y()) * z_unit, stretch=True)
+            lambda m: m.set_depth(self.func(0, get_y()) * z_unit, stretch=True) # depth是高度
         )
         # x_slice的位置随着graph的变化而变化
         x_slice.add_updater(lambda m: m.move_to(axes.c2p(0, get_y(), 0), IN))
@@ -168,11 +169,12 @@ class CartesianSlices(GaussianIntegral):
         x_slice, y_tracker = self.get_dynamic_slice(axes)
         y_unit = axes.y_axis.get_unit_size()
         # 这就不是很明白了。需要搞清楚set_clip_plane的用法
+        # 需要认真研究这一行：如何使得graph部分显示！！！！！
         graph.add_updater(lambda m: m.set_clip_plane(UP, -y_tracker.get_value() * y_unit))
 
         x_max = axes.x_range[1]
         y_tracker.set_value(x_max)
-        self.add(x_slice) # 这是一条线，平行于xoz平面。如果不加，动态效果的边缘不好看
+        self.add(x_slice) # 这是一个平面，平行于xoz平面。如果不加，动态效果的边缘不好看
         self.play(
             y_tracker.animate.set_value(-x_max),
             run_time=5,
