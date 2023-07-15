@@ -205,3 +205,14 @@ class CartesianSlices(GaussianIntegral):
             run_time=3,
         )
         self.wait()
+
+        y_tracker.set_value(-x_max)
+        self.add(x_slice, x_slices, graph, graph_mesh)
+        self.play(
+            FadeOut(x_slices, 0.1 * IN, time_span=(0, 2.5)),
+            FadeIn(graph, time_span=(0, 2.5)),
+            VFadeIn(x_slice),
+            frame.animate.reorient(-15).set_height(6),
+            y_tracker.animate.set_value(0), # 会导致graph发生变化
+            run_time=5,
+        )
