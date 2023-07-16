@@ -156,7 +156,8 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         # 终于明白了，这里的graph本来就是一条曲线！！！
         # 为了有平面的效果，后面使用了set_fill进行了颜色填充！！！看上去就像一个平面了
         points = axes.c2p(xs, ys, self.func(xs, y))
-        graph = VMobject().set_points_smoothly(points)
+        # 这种获取曲线的方法真是暴力
+        graph = VMobject().set_points_smoothly(points) # 一切二维或者三维的对象都是由点构成的
         #graph = VMobject().set_points_as_corners(points) 改成这种方式效果也可以
         graph.use_winding_fill(False)
         #graph.use_winding_fill(True)
