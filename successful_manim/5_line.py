@@ -201,6 +201,7 @@ class CartesianSlices(GaussianIntegral):
         然后，您可以在对象上调用 set_clip_plane 函数并传入法线向量和平面上的点。
         法线向量确定平面的方向，点确定平面在 3D 空间中的位置。
         """
+        # 实现graph的动态效果
         graph.add_updater(lambda m: m.set_clip_plane(UP, -y_tracker.get_value() * y_unit))
 
         x_max = axes.x_range[1]
