@@ -27,6 +27,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
             width=width, height=height, depth=depth
         )
         axes.set_stroke(GREY_C)
+        
         if include_plane:
             plane = NumberPlane(
                 x_range, y_range,
