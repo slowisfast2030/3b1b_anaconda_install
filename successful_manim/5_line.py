@@ -79,7 +79,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         def func(self, x, y):
             return np.exp(-x**2 - y**2)
         """
-        graph = axes.get_graph(self.func)
+        graph = axes.get_graph(self.func) # 有必要深入研究下坐标轴上如何画图
         graph.set_color(color)
         graph.set_opacity(opacity)
         graph.set_shading(*shading)
