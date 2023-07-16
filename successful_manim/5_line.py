@@ -203,6 +203,9 @@ class CartesianSlices(GaussianIntegral):
         """
         # 实现graph的动态效果
         graph.add_updater(lambda m: m.set_clip_plane(UP, -y_tracker.get_value() * y_unit))
+        # 测试下set_clip_plane函数的效果。可以用来得到一个三维图形的横截面。
+        # 下面代码可以获得垂直于z轴的平面
+        #graph.add_updater(lambda m: m.set_clip_plane(OUT, -0.1 * axes.z_axis.get_unit_size()))
 
         x_max = axes.x_range[1]
         y_tracker.set_value(x_max)
