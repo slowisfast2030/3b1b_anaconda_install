@@ -53,7 +53,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         print(list(result)) # 使用list函数将map对象转换为列表
         """
         # 坐标轴上的标签不是axes自带的么？需要自定义
-        x, y, z = axis_labels = VGroup(*map(Tex, "xyz"))
+        x, y, z = axis_labels = VGroup(*map(Tex, "xyz")) # 坐标轴标签是Tex对象，不是Text对象
         axis_labels.use_winding_fill(False)
         x.next_to(axes.x_axis, RIGHT)
         y.next_to(axes.y_axis, UP)
