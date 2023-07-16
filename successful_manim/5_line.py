@@ -179,7 +179,7 @@ class CartesianSlices(GaussianIntegral):
     def construct(self):
         # Setup
         frame = self.frame
-        axes = self.get_axes()
+        axes = self.get_axes(include_plane=False)
 
         graph = self.get_gaussian_graph(axes, opacity=0.5)
         graph_mesh = SurfaceMesh(graph, resolution=(21, 21))
