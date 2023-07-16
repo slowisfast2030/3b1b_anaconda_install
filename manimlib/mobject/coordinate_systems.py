@@ -549,6 +549,7 @@ class ThreeDAxes(Axes):
             axis.add(label)
         self.axis_labels = labels
 
+    # 研究下代码实现
     def get_graph(self, func, color=BLUE_E, opacity=0.9, **kwargs):
         xu = self.x_axis.get_unit_size()
         yu = self.y_axis.get_unit_size()
