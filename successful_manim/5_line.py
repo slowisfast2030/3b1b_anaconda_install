@@ -70,11 +70,15 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
     def get_gaussian_graph(
         self,
-        axes,
+        axes: ThreeDAxes,
         color=interpolate_color(BLUE_E, BLACK, 0.6),
         opacity=1.0,
         shading=(0.2, 0.2, 0.4),
-    ):
+    ):  
+        """
+        def func(self, x, y):
+            return np.exp(-x**2 - y**2)
+        """
         graph = axes.get_graph(self.func)
         graph.set_color(color)
         graph.set_opacity(opacity)
