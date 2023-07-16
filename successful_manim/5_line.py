@@ -52,7 +52,9 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         result = map(square, lst) # 返回一个map对象
         print(list(result)) # 使用list函数将map对象转换为列表
         """
-        # 坐标轴上的标签不是axes自带的么？需要自定义
+        # 坐标轴上的标签不是axes自带的么？需要自定义？
+        # 看了axes的源码后，确实自带标签函数：add_axis_labels()
+        # 函数实现方式和下面代码类似
         x, y, z = axis_labels = VGroup(*map(Tex, "xyz")) # 坐标轴标签是Tex对象，不是Text对象
         axis_labels.use_winding_fill(False)
         x.next_to(axes.x_axis, RIGHT)
