@@ -70,7 +70,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
     def get_gaussian_graph(
         self,
-        axes: ThreeDAxes,
+        axes: ThreeDAxes, # 只要补充了变量类型，下面的代码就可以自动跳转到源码了
         color=interpolate_color(BLUE_E, BLACK, 0.6),
         opacity=1.0,
         shading=(0.2, 0.2, 0.4),
