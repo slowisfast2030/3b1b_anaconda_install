@@ -42,6 +42,16 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
             axes.plane = plane
             axes.add(plane)
 
+        """
+        map函数语法: map(function, iterable, …)
+        
+        def square(x):
+            return x ** 2
+
+        lst = [1, 2, 3, 4, 5]
+        result = map(square, lst) # 返回一个map对象
+        print(list(result)) # 使用list函数将map对象转换为列表
+        """
         x, y, z = axis_labels = VGroup(*map(Tex, "xyz"))
         axis_labels.use_winding_fill(False)
         x.next_to(axes.x_axis, RIGHT)
