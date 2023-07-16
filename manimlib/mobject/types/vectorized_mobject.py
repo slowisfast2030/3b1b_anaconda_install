@@ -628,11 +628,18 @@ class VMobject(Mobject):
         return self
 
     def set_points_as_corners(self, points: Iterable[Vect3]) -> Self:
+        # 这里的anchor和handle是贝塞尔曲线的控制点
+        # anchor是锚点，handle是控制点
+        # anchor是曲线经过的点，handle是曲线的切线方向
+        # 这里的anchor和handle是如何计算的？
         anchors = np.array(points)
         handles = 0.5 * (anchors[:-1] + anchors[1:])
         self.set_anchors_and_handles(anchors, handles)
         return self
 
+    # 点动成线
+    # 这里的点是构成线的点，不是贝塞尔曲线的控制点
+    # 后面肯定有方法将线的点转成贝塞尔曲线的控制点(anchor and handle)
     def set_points_smoothly(
         self,
         points: Iterable[Vect3],
