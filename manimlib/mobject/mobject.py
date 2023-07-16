@@ -893,6 +893,7 @@ class Mobject(object):
 
     # Transforming operations
 
+    # shift使得构成mobject的点的坐标都加上了vector
     def shift(self, vector: Vect3) -> Self:
         self.apply_points_function(
             lambda points: points + vector,

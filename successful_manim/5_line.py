@@ -25,9 +25,9 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         axes = ThreeDAxes(
             x_range, y_range, z_range,
             width=width, height=height, depth=depth
-        )
+        ) 
         axes.set_stroke(GREY_C)
-        
+
         if include_plane:
             plane = NumberPlane(
                 x_range, y_range,
@@ -51,7 +51,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         axes.labels = axis_labels
         axes.add(axis_labels)
 
-        axes.shift(center - axes.c2p(0, 0, 0))
+        axes.shift(center - axes.c2p(0, 0, 0)) # shift和move_to的区别是什么？前者给出的是相对坐标，后者给出的是绝对坐标
         axes.set_flat_stroke(False)
         return axes
 
