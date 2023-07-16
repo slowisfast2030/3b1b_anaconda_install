@@ -19,7 +19,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         width=8,
         height=8,
         depth=3, # 坐标轴的高度（视觉）
-        center=0.5 * IN,
+        center=0.5 * IN, # 这个参数是什么意思？
         include_plane=False
     ):
         axes = ThreeDAxes(
