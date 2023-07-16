@@ -61,7 +61,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         y.next_to(axes.y_axis, UP)
         z.rotate(90 * DEGREES, RIGHT)
         z.next_to(axes.z_axis, OUT)
-        axes.labels = axis_labels
+        axes.labels = axis_labels # 这里是为axes添加了一个属性
         axes.add(axis_labels)
 
         axes.shift(center - axes.c2p(0, 0, 0)) # shift和move_to的区别是什么？前者给出的是相对坐标，后者给出的是绝对坐标
