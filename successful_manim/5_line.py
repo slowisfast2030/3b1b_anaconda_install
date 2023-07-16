@@ -15,10 +15,10 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         self,
         x_range=(-3, 3),
         y_range=(-3, 3),
-        z_range=(0, 1.5, 0.5),
+        z_range=(0, 1.5, 0.5), # 坐标轴上的刻度
         width=8,
         height=8,
-        depth=3,
+        depth=3, # 坐标轴的高度（视觉）
         center=0.5 * IN,
         include_plane=False
     ):
