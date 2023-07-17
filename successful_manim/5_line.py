@@ -147,7 +147,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
             self.play(Create(dots2))
             self.wait()
     """
-    def get_x_slice(self, axes, y, x_range=(-3, 3.1, 0.1)):
+    def get_x_slice(self, axes: ThreeDAxes, y, x_range=(-3, 3.1, 0.1)):
         # xs是一个数组，从-3开始，到3结束，间隔0.1
         xs = np.arange(*x_range)
         ys = np.ones(len(xs)) * y
