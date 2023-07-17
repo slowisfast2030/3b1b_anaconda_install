@@ -100,7 +100,6 @@ class CylinderSlices(GaussianIntegral):
             for v_range in [(0, PI), (PI, TAU)]
         ))
         
-
         for half in bell_halves:
             #half.match_style(graph)
             half.set_opacity(0.5)
