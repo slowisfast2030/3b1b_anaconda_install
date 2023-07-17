@@ -155,7 +155,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         # 但这些点都在曲线上啊，怎么会构成一个平面呢？
         # 终于明白了，这里的graph本来就是一条曲线！！！
         # 为了有平面的效果，后面使用了set_fill进行了颜色填充！！！看上去就像一个平面了
-        points = axes.c2p(xs, ys, self.func(xs, y))
+        points = axes.c2p(xs, ys, self.func(xs, y)) # 可以和ParametricSurface函数的实现进行对比。本质一样！
         # 这种获取曲线的方法真是暴力
         graph = VMobject().set_points_smoothly(points) # 一切二维或者三维的对象都是由点构成的
         #graph = VMobject().set_points_as_corners(points) 改成这种方式效果也可以

@@ -555,9 +555,11 @@ class ThreeDAxes(Axes):
         yu = self.y_axis.get_unit_size()
         zu = self.z_axis.get_unit_size()
         x0, y0, z0 = self.get_origin()
+        # 曲线：需要点集（所有的点在一个平面上）
+        # 曲面：需要点集（曲面的底面是一个围棋面）
         return ParametricSurface(
             lambda u, v: [xu * u + x0, yu * v + y0, zu * func(u, v) + z0], # 坐标轴上的刻度 * 单位长度 = 实际的长度
-            u_range=self.x_range[:2],
+            u_range=self.x_range[:2], # x轴的范围。x_range = (-6.0, 6.0, 1.0)。x_range[:2] = (-6.0, 6.0)。
             v_range=self.y_range[:2],
             color=color,
             opacity=opacity,
