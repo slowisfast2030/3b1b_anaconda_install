@@ -4,6 +4,7 @@ sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3
 from manim_imports_ext import *
 import scipy.spatial
 
+# 库的版本更新后，一些可视化效果有变化
 
 # Helpers
 def project_to_xy_plane(p1, p2):
@@ -142,8 +143,8 @@ class ShadowScene(ThreeDScene):
         "stroke_width": 0,
         "fill_color": GREY_A,
         "fill_opacity": 0.5,
-        "gloss": 0.5,
-        "shadow": 0.2,
+        #"gloss": 0.5,
+        #"shadow": 0.2,
     }
     limited_plane_extension = 0
     object_style = {
@@ -151,9 +152,9 @@ class ShadowScene(ThreeDScene):
         "stroke_width": 0.5,
         "fill_color": BLUE_E,
         "fill_opacity": 0.7,
-        "reflectiveness": 0.3,
-        "gloss": 0.1,
-        "shadow": 0.5,
+        #"reflectiveness": 0.3,
+        #"gloss": 0.1,
+        #"shadow": 0.5,
     }
     inf_light = False
     glow_radius = 10
@@ -190,7 +191,7 @@ class ShadowScene(ThreeDScene):
         plane = Rectangle()
         plane.replace(grid, stretch=True)
         # 这一行会报错，可能版本更新了
-        #plane.set_style(**self.plane_style)
+        plane.set_style(**self.plane_style)
         plane.set_stroke(width=0)
         if self.limited_plane_extension > 0:
             plane.set_height(height // 2 + self.limited_plane_extension, about_edge=UP, stretch=True)
@@ -209,7 +210,7 @@ class ShadowScene(ThreeDScene):
         cube.deactivate_depth_test()
         cube.set_height(2)
         # 又报错
-        #cube.set_style(**self.object_style)
+        cube.set_style(**self.object_style)
         # Wrap in group so that strokes and fills
         # are rendered in separate passes
         cube = self.cube = Group(*cube)
@@ -482,49 +483,49 @@ class IntroduceShadow(ShadowScene):
         self.wait()
 
         # Light straight above
-        self.play(
-            frame.animate.set_height(12).set_z(4),
-            light.animate.set_z(10),
-            run_time=3,
-        )
-        self.wait()
-        self.play(light.animate.move_to(75 * OUT), run_time=3)
-        self.wait()
-        self.play(
-            frame.animate.set_height(8).set_z(2),
-            LaggedStart(*map(FadeOut, (question, subquestion, light_comment))),
-            run_time=2
-        )
+        # self.play(
+        #     frame.animate.set_height(12).set_z(4),
+        #     light.animate.set_z(10),
+        #     run_time=3,
+        # )
+        # self.wait()
+        # self.play(light.animate.move_to(75 * OUT), run_time=3)
+        # self.wait()
+        # self.play(
+        #     frame.animate.set_height(8).set_z(2),
+        #     LaggedStart(*map(FadeOut, (question, subquestion, light_comment))),
+        #     run_time=2
+        # )
 
         # Flat projection
-        verts = np.array([*cube[0].get_vertices(), *cube[5].get_vertices()])
-        vert_dots = DotCloud(verts)
-        vert_dots.set_glow_factor(0.5)
-        vert_dots.set_color(WHITE)
-        proj_dots = vert_dots.copy()
-        proj_dots.apply_function(flat_project)
-        proj_dots.set_color(GREY_B)
-        vert_proj_lines = VGroup(*(
-            DashedLine(*pair)
-            for pair in zip(verts, proj_dots.get_points())
-        ))
-        vert_proj_lines.set_stroke(WHITE, 1, 0.5)
+        # verts = np.array([*cube[0].get_vertices(), *cube[5].get_vertices()])
+        # vert_dots = DotCloud(verts)
+        # vert_dots.set_glow_factor(0.5)
+        # vert_dots.set_color(WHITE)
+        # proj_dots = vert_dots.copy()
+        # proj_dots.apply_function(flat_project)
+        # proj_dots.set_color(GREY_B)
+        # vert_proj_lines = VGroup(*(
+        #     DashedLine(*pair)
+        #     for pair in zip(verts, proj_dots.get_points())
+        # ))
+        # vert_proj_lines.set_stroke(WHITE, 1, 0.5)
 
-        point = verts[np.argmax(verts[:, 0])]
-        xyz_label = OldTex("(x, y, z)")
-        xy0_label = OldTex("(x, y, 0)")
-        for label in xyz_label, xy0_label:
-            label.rotate(PI / 2, RIGHT)
-            label.set_backstroke()
-        xyz_label.next_to(point, RIGHT)
-        xy0_label.next_to(flat_project(point), RIGHT)
+        # point = verts[np.argmax(verts[:, 0])]
+        # xyz_label = OldTex("(x, y, z)")
+        # xy0_label = OldTex("(x, y, 0)")
+        # for label in xyz_label, xy0_label:
+        #     label.rotate(PI / 2, RIGHT)
+        #     label.set_backstroke()
+        # xyz_label.next_to(point, RIGHT)
+        # xy0_label.next_to(flat_project(point), RIGHT)
 
-        vert_dots.save_state()
-        vert_dots.set_glow_factor(5)
-        vert_dots.set_radius(0.5)
-        vert_dots.set_opacity(0)
-        self.play(
-            Restore(vert_dots),
-            Write(xyz_label),
-        )
-        self.wait()
+        # vert_dots.save_state()
+        # vert_dots.set_glow_factor(5)
+        # vert_dots.set_radius(0.5)
+        # vert_dots.set_opacity(0)
+        # self.play(
+        #     Restore(vert_dots),
+        #     Write(xyz_label),
+        # )
+        # self.wait()
