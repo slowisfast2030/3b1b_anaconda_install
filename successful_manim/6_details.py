@@ -100,6 +100,7 @@ class CylinderSlices(GaussianIntegral):
         #     for v_range in [(0, PI), (PI, TAU)]
         # ))
 
+        # ParametricSurface类的第一个参数是一个函数。函数的参数可以是u, v，也可以是r, theta
         bell_halves = Group(*(
             ParametricSurface(
                 lambda u, v: np.array(
