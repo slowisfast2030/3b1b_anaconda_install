@@ -2,9 +2,7 @@ import sys
 sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
 
 from manim_imports_ext import *
-from _2023.clt.main import *
 
-# /Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/_2023/gauss_int/integral.py
 class GaussianIntegral(ThreeDScene, InteractiveScene):
     def func(self, x, y):
         return np.exp(-x**2 - y**2)
