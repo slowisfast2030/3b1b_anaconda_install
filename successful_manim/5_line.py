@@ -15,7 +15,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         self,
         x_range=(-3, 3),
         y_range=(-3, 3),
-        z_range=(0, 1.5, 0.5), # 坐标轴上的刻度
+        z_range=(0, 1.5, 0.5), # 坐标轴上的刻度，并不是实际的长度。可以认为坐标轴的刻度是虚拟的长度。需要乘以单位长度。
         width=8,
         height=8,
         depth=3, # 坐标轴的高度（视觉）
