@@ -101,7 +101,8 @@ class CylinderSlices(GaussianIntegral):
         ))
         
         for half in bell_halves:
-            #half.match_style(graph)
+            # AttributeError: 'ParametricSurface' object has no attribute 'match_style'
+            # half.match_style(graph)
             half.set_opacity(0.5)
 
         bell2d = self.get_x_slice(axes, 0)
