@@ -199,6 +199,16 @@ class CylinderSlices(GaussianIntegral):
             Write(label2d)
         )
         self.wait()
+        
+        self.play(
+            Rotate(bell2d, PI, axis=OUT, about_point=axes.c2p(0, 0, 0)),
+            frame.animate.move_to(ORIGIN).reorient(-20, 70),
+            Restore(axes),
+            TransformMatchingTex(label2d.copy(), label3d, time_span=(0, 2)),
+            label2d.animate.next_to(label3d, UP, MED_LARGE_BUFF, LEFT),
+            run_time=6
+        )
+        self.wait()
 
         self.play(Write(graph_mesh, stroke_width=1, lag_ratio=0.01))
         self.wait()
