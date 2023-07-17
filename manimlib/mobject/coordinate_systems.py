@@ -556,7 +556,7 @@ class ThreeDAxes(Axes):
         zu = self.z_axis.get_unit_size()
         x0, y0, z0 = self.get_origin()
         return ParametricSurface(
-            lambda u, v: [xu * u + x0, yu * v + y0, zu * func(u, v) + z0],
+            lambda u, v: [xu * u + x0, yu * v + y0, zu * func(u, v) + z0], # 坐标轴上的刻度 * 单位长度 = 实际的长度
             u_range=self.x_range[:2],
             v_range=self.y_range[:2],
             color=color,
