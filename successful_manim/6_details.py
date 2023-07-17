@@ -102,7 +102,7 @@ class CylinderSlices(GaussianIntegral):
         label.move_to(4 * LEFT + UP)
 
         axes.save_state()
-        frame.reorient(0, 90)
+        frame.reorient(0, 90) # 调整照相机的视角
         frame.move_to(OUT + 2 * UP)
         axes.y_axis.set_opacity(0)
         axes.labels.set_opacity(0)
