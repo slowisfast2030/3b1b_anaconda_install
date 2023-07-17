@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 
 
@@ -10,8 +13,14 @@ class EarthMorph(Scene):
         torus1 = Torus(r1=1, r2=1)
         torus2 = Torus(r1=3, r2=1)
         sphere = Sphere(radius=3, resolution=torus1.resolution)
+        # earths = [
+        #     TexturedSurface(surface, "EarthTextureMap", "NightEarthTextureMap")
+        #     for surface in [sphere, torus1, torus2]
+        # ]
+        day = '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/_2020/1280px-Whole_world_-_land_and_oceans.jpg'
+        night = '/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/_2020/1280px-The_earth_at_night.jpg'
         earths = [
-            TexturedSurface(surface, "EarthTextureMap", "NightEarthTextureMap")
+            TexturedSurface(surface, day, night)
             for surface in [sphere, torus1, torus2]
         ]
         for mob in earths:

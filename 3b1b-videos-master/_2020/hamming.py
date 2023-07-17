@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 from _2020.chess import string_to_bools
 
@@ -338,6 +341,9 @@ class Thumbnail(Scene):
         self.add(phrases)
         self.add(group)
 
+        # 添加了一行
+        self.wait()
+
 
 class AltThumbnail(Scene):
     def construct(self):
@@ -410,7 +416,7 @@ class AltThumbnail(Scene):
         background.set_opacity(0.2)
         return background
 
-
+# 跑不动
 class DiskOfBits(Scene):
     def construct(self):
         # Setup disc
@@ -952,7 +958,7 @@ class TripleRedundancy(Scene):
         self.play(ReplacementTransform(bangs, q_marks, lag_ratio=0.2))
         self.wait()
 
-
+# bad
 class TimeLine(Scene):
     def construct(self):
         # Time line
@@ -965,7 +971,7 @@ class TimeLine(Scene):
         timeline.add_numbers(
             decades,
             group_with_commas=False,
-            height=0.2,
+            #height=0.2,
         )
         timeline.numbers.set_stroke(BLACK, 4, background=True)
 
@@ -2347,7 +2353,7 @@ class ParityChecks(Scene):
         self.play(receiver.change, "erm")
         self.wait()
 
-
+# good
 class ChangeAnywhereToOneBit(Scene):
     CONFIG = {
         "random_seed": 3,
@@ -2456,11 +2462,12 @@ class ComplainAboutParityCheckWeakness(TeacherStudentsScene):
         )
         self.wait()
 
-
+# file
 class ArrayOfValidMessages(Scene):
     def construct(self):
         # Messages
-        title = OldTexText("All possible messages")
+        #title = OldTexText("All possible messages")
+        title = Text("All possible messages")
         title.to_edge(UP)
         nr = 22
         nc = 46
@@ -2478,10 +2485,12 @@ class ArrayOfValidMessages(Scene):
         self.wait()
 
         # Valid messages
-        subset = OldTex("\\subset")
+        #subset = OldTex("\\subset")
+        subset = Tex("\\subset")
         subset.set_height(0.4)
         subset.to_edge(UP)
-        valid_label = OldTexText("Valid messages")
+        #valid_label = OldTexText("Valid messages")
+        valid_label = Text("Valid messages")
         valid_label.set_color(YELLOW)
         valid_label.next_to(subset, LEFT)
 
@@ -2498,14 +2507,18 @@ class ArrayOfValidMessages(Scene):
             LaggedStartMap(MoveToTarget, valid_dots, run_time=3),
             Write(subset),
             FadeIn(valid_label, LEFT),
-            title.next_to, subset, RIGHT,
+            #title.next_to, subset, RIGHT,
         )
         self.wait()
 
         # Words analogy
+        # example_words = VGroup(
+        #     OldTexText("Hello world", color=YELLOW),
+        #     OldTexText("Helho world", color=GREY_B),
+        # )
         example_words = VGroup(
-            OldTexText("Hello world", color=YELLOW),
-            OldTexText("Helho world", color=GREY_B),
+            Text("Hello world", color=YELLOW),
+            Text("Helho world", color=GREY_B),
         )
         example_words.scale(1.25)
         index = 12 * nc + 21
