@@ -1,8 +1,11 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 from _2023.clt.main import *
 import sympy
 
-
+# ok
 class GaltonBoardName(InteractiveScene):
     def construct(self):
         # Test
@@ -19,7 +22,7 @@ class GaltonBoardName(InteractiveScene):
         self.play(GrowArrow(arrow))
         self.wait()
 
-
+# ok
 class NormalName(InteractiveScene):
     def construct(self):
         # Names
@@ -65,7 +68,7 @@ class NormalName(InteractiveScene):
         ))
         self.wait()
 
-
+# ok nice
 class ErdosKac(InteractiveScene):
     def construct(self):
         # Title
@@ -159,7 +162,9 @@ class ErdosKac(InteractiveScene):
         parts = [Tex("=", **kw)]
         for factor, exp in sympy.factorint(num_mob.get_value()).items():
             base = Integer(factor, **kw)
-            underline = Underline(base, stretch_factor=1)
+            # 报错  
+            #underline = Underline(base, stretch_factor=1)
+            underline = Underline(base)
             underline.set_stroke(YELLOW, 2)
             underline.set_y(base[0].get_y(DOWN) - 0.05)
             base.add(underline)
@@ -182,7 +187,7 @@ class ErdosKac(InteractiveScene):
 
         return result
 
-
+# bad
 class PopulationHeights(InteractiveScene):
     random_seed = 2
 
@@ -315,7 +320,7 @@ class VideoPlan(InteractiveScene):
         self.play(*map(GrowArrow, arrows))
         self.wait()
 
-
+# ok
 class NextVideoInlay(InteractiveScene):
     def construct(self):
         # Graph

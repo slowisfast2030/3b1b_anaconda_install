@@ -1,6 +1,9 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 
-
+# ok
 class IntersectionAndUnion(InteractiveScene):
     def construct(self):
         self.camera.frame.scale(1.1)
@@ -74,7 +77,7 @@ class IntersectionAndUnion(InteractiveScene):
         )
         self.wait(3)
 
-
+# ok
 class WinnerCategories(InteractiveScene):
     def construct(self):
         # Text

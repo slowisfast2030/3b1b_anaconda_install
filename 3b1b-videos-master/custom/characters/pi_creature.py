@@ -80,6 +80,8 @@ class PiCreature(SVGMobject):
         self.refresh_triangulation()
 
     def get_svg_file_path(self, mode):
+        # 直接写死路径
+        return "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/custom/characters/PiCreatures_plain.svg"
         folder = get_directories()["pi_creature_images"]
         path = os.path.join(folder, f"{mode}.svg")
         if os.path.exists(path):
