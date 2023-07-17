@@ -55,7 +55,7 @@ def get_multi_sinc_integral(ks=[1], dots_at=None, rhs="", insertion=""):
         result.set_color_by_tex(tex, color)
     return result
 
-
+# good
 class ShowIntegrals(InteractiveScene):
     # add_axis_labels = True
     add_axis_labels = False
@@ -322,7 +322,8 @@ class ShowIntegrals(InteractiveScene):
 class SineLimit(InteractiveScene):
     def construct(self):
         axes = Axes((-4, 4), (-2, 2), width=14, height=7, axis_config=dict(tick_size=0))
-        radius = axes.x_axis.unit_size
+        #radius = axes.x_axis.unit_size
+        radius = 1
         circle = Circle(radius=radius)
         circle.move_to(axes.get_origin())
         circle.set_stroke(WHITE, 1)
