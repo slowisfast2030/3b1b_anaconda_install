@@ -168,7 +168,8 @@ class TransitionToContinuousProbability(InteractiveScene):
             result.set_fill(TEAL, sub_area_opacity_tracker.get_value())
             return result
 
-        sub_area = always_redraw(get_subarea)
+        # 注释掉
+        #sub_area = always_redraw(get_subarea)
 
         v_lines = Line(DOWN, UP).replicate(2)
         v_lines.set_stroke(GREY_A, 1)
@@ -190,12 +191,13 @@ class TransitionToContinuousProbability(InteractiveScene):
         prob_label.move_to(2 * UR)
         rhs = prob_label[R"\text{This area}"]
         prob_arrow = Arrow(LEFT, RIGHT)
-        prob_arrow.add_updater(lambda m: m.put_start_and_end_on(
-            rhs.get_bottom() + 0.1 * DOWN,
-            sub_area.get_center(),
-        ))
+        # prob_arrow.add_updater(lambda m: m.put_start_and_end_on(
+        #     rhs.get_bottom() + 0.1 * DOWN,
+        #     sub_area.get_center(),
+        # ))
 
-        self.add(area, sub_area, graph, bound_labels)
+        #self.add(area, sub_area, graph, bound_labels)
+        self.add(area, graph, bound_labels)
         self.play(
             area.animate.set_opacity(0.1),
             range_tracker.animate.set_value([3, 4.5]),
