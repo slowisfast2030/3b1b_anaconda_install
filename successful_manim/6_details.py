@@ -54,7 +54,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
 
     def get_gaussian_graph(
         self,
-        axes,
+        axes: ThreeDAxes,
         color=interpolate_color(BLUE_E, BLACK, 0.6),
         opacity=1.0,
         shading=(0.2, 0.2, 0.4),
