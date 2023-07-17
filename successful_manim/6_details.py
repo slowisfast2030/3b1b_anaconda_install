@@ -88,35 +88,6 @@ class CylinderSlices(GaussianIntegral):
 
         self.add(axes)
 
-        # Animate in by rotating e^{-x^2}
-        # bell_halves = Group(*(
-        #     ParametricSurface(
-        #         lambda r, theta: np.array(
-        #             [r * np.cos(theta), r * np.sin(theta), np.exp(-r**2)
-        #         ]),
-        #         u_range=(0, 3),
-        #         v_range=v_range,
-        #     )
-        #     for v_range in [(0, PI), (PI, TAU)]
-        # ))
-
-        # ParametricSurface类的第一个参数是一个函数。函数的参数可以是u, v，也可以是r, theta
-        bell_halves = Group(*(
-            ParametricSurface(
-                lambda u, v: np.array(
-                    [u * np.cos(v), u * np.sin(v), np.exp(-u**2)
-                ]),
-                u_range=(0, 3),
-                v_range=v_range,
-            )
-            for v_range in [(0, PI), (PI, TAU)]
-        ))
-        
-        for half in bell_halves:
-            # AttributeError: 'ParametricSurface' object has no attribute 'match_style'
-            # half.match_style(graph)
-            half.set_opacity(0.5)
-
         bell2d = self.get_x_slice(axes, 0)
         bell2d.set_stroke(TEAL, 3)
         kw = dict(t2c={"x": BLUE, "y": YELLOW})
@@ -142,8 +113,6 @@ class CylinderSlices(GaussianIntegral):
         self.wait()
 
         self.play(
-            ShowCreation(bell_halves[0]),
-            ShowCreation(bell_halves[1]),
             Rotate(bell2d, PI, axis=OUT, about_point=axes.c2p(0, 0, 0)),
             frame.animate.move_to(ORIGIN).reorient(-20, 70),
             Restore(axes),
@@ -153,9 +122,27 @@ class CylinderSlices(GaussianIntegral):
         )
         self.wait()
         self.play(
-            FadeOut(bell_halves, 0.01 * IN),
             FadeOut(bell2d, 0.1 * IN),
             FadeIn(graph, 0.01 * IN),
         )
         self.play(Write(graph_mesh, stroke_width=1, lag_ratio=0.01))
         self.wait()
+
+        # Rotate the frame
+        self.play(
+            frame.animate.set_theta(20 * DEGREES),
+            rate_func=there_and_back,
+            run_time=30,
+        )
+
+        # Reposition to 2d view
+        frame.save_state()
+        graph_mesh.save_state()
+        func_labels.use_winding_fill(False)
+        self.play(
+            frame.animate.reorient(0, 0).set_height(10).move_to(1.5 * LEFT).set_field_of_view(1 * DEGREES),
+            graph.animate.set_opacity(0.25),
+            func_labels.animate.scale(0.75).to_corner(UL),
+            graph_mesh.animate.set_stroke(width=1),
+            run_time=3,
+        )
