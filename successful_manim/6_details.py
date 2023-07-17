@@ -73,6 +73,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         graph.use_winding_fill(False)
         return graph
 
+
 class CylinderSlices(GaussianIntegral):
     def construct(self):
         # Setup
