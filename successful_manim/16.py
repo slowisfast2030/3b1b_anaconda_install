@@ -593,6 +593,8 @@ class SurfaceExample(ThreeDScene):
 
         day_texture = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/successful_manim/1280px-Whole_world_-_land_and_oceans.jpg"
         night_texture = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/successful_manim/1280px-The_earth_at_night.jpg"
+        day_texture = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/successful_manim/huoying.jpeg"
+        night_texture = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/successful_manim/huoying.jpeg"
 
         surfaces = [
             TexturedSurface(surface, day_texture, night_texture)
