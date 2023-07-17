@@ -246,6 +246,7 @@ class CartesianSlices(GaussianIntegral):
                 y_tracker.set_value(y)
                 x_slice.update()
                 # x_slice似乎不仅仅是一条线，还是一个平面
+                # x_slice是一条曲线，不过经过填充后，看上去就像一个平面了
                 x_slices.add(x_slice.copy().clear_updaters())
             x_slices.use_winding_fill(False)
             x_slices.deactivate_depth_test()
