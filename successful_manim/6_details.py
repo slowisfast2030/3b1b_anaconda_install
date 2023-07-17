@@ -65,6 +65,13 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         graph.set_shading(*shading)
         return graph
     
+    def get_x_slice(self, axes, y, x_range=(-3, 3.1, 0.1)):
+        xs = np.arange(*x_range)
+        ys = np.ones(len(xs)) * y
+        points = axes.c2p(xs, ys, self.func(xs, y))
+        graph = VMobject().set_points_smoothly(points)
+        graph.use_winding_fill(False)
+        return graph
 
 class CylinderSlices(GaussianIntegral):
     def construct(self):
