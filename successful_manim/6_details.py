@@ -89,10 +89,21 @@ class CylinderSlices(GaussianIntegral):
         self.add(axes)
 
         # Animate in by rotating e^{-x^2}
+        # bell_halves = Group(*(
+        #     ParametricSurface(
+        #         lambda r, theta: np.array(
+        #             [r * np.cos(theta), r * np.sin(theta), np.exp(-r**2)
+        #         ]),
+        #         u_range=(0, 3),
+        #         v_range=v_range,
+        #     )
+        #     for v_range in [(0, PI), (PI, TAU)]
+        # ))
+
         bell_halves = Group(*(
             ParametricSurface(
-                lambda r, theta: np.array(
-                    [r * np.cos(theta), r * np.sin(theta), np.exp(-r**2)
+                lambda u, v: np.array(
+                    [u * np.cos(v), u * np.sin(v), np.exp(-u**2)
                 ]),
                 u_range=(0, 3),
                 v_range=v_range,
