@@ -231,6 +231,7 @@ class Surface(Mobject):
         return self
 
     # 这个函数啥作用？
+    # 获取曲面的截面
     def set_clip_plane(
         self,
         vect: Vect3 | None = None,
