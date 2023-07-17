@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 from manim_imports_ext import *
 import scipy.spatial
 
@@ -186,7 +189,8 @@ class ShadowScene(ThreeDScene):
 
         plane = Rectangle()
         plane.replace(grid, stretch=True)
-        plane.set_style(**self.plane_style)
+        # 这一行会报错，可能版本更新了
+        #plane.set_style(**self.plane_style)
         plane.set_stroke(width=0)
         if self.limited_plane_extension > 0:
             plane.set_height(height // 2 + self.limited_plane_extension, about_edge=UP, stretch=True)
@@ -204,7 +208,8 @@ class ShadowScene(ThreeDScene):
         cube = VCube()
         cube.deactivate_depth_test()
         cube.set_height(2)
-        cube.set_style(**self.object_style)
+        # 又报错
+        #cube.set_style(**self.object_style)
         # Wrap in group so that strokes and fills
         # are rendered in separate passes
         cube = self.cube = Group(*cube)
@@ -963,7 +968,7 @@ class PauseAndPonder(TeacherStudentsScene):
 
         self.embed()
 
-
+# ok
 class StartSimple(Scene):
     def construct(self):
         # Words
@@ -3960,7 +3965,7 @@ class ParticularValuesUnhelpfulOverlay(Scene):
         )
         self.wait()
 
-
+# ok
 class SurfaceAreaOfSphere(Scene):
     def construct(self):
         sphere = Sphere(radius=3)
