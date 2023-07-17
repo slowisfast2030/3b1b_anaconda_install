@@ -68,7 +68,7 @@ class GaussianIntegral(ThreeDScene, InteractiveScene):
         axes.set_flat_stroke(False)
         return axes
 
-    def get_x_slice(self, axes: ThreeDAxes, y, x_range=(-3, 3.1, 0.001)):
+    def get_x_slice(self, axes: ThreeDAxes, y, x_range=(-3, 3.1, 0.1)):
         # xs是一个数组，从-3开始，到3结束，间隔0.1
         xs = np.arange(*x_range)
         ys = np.ones(len(xs)) * y
@@ -93,4 +93,12 @@ class CartesianSlices(GaussianIntegral):
         # set_fill()函数的实现很有意思
         x_slice.set_fill(BLUE_E, 0.5)
         self.add(x_slice, axes)
+        self.wait(1)
+        annulus = ParametricSurface(
+            lambda u, v: (0.5+u) * np.array([math.cos(v), math.sin(v), 0]),
+            u_range=(0, 1),
+            v_range=(0, TAU),
+        )
+        annulus.set_color(BLUE_E)
+        self.add(annulus)
         self.wait(3)
