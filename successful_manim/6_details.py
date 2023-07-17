@@ -121,18 +121,20 @@ class CylinderSlices(GaussianIntegral):
             run_time=6
         )
         self.wait()
+        
         self.play(
             FadeOut(bell2d, 0.1 * IN),
             FadeIn(graph, 0.01 * IN),
         )
         self.play(Write(graph_mesh, stroke_width=1, lag_ratio=0.01))
+
         self.wait()
 
         # Rotate the frame
         self.play(
             frame.animate.set_theta(20 * DEGREES),
             rate_func=there_and_back,
-            run_time=30,
+            run_time=6,
         )
 
         # Reposition to 2d view
