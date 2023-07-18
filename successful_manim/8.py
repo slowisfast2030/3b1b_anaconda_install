@@ -232,7 +232,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
         # Repeated samples of X
         frame = self.frame
         frame.move_to(plots[0])
-        frame.set_height(plots[0].get_height() + 2)
+        frame.set_height(plots[0].get_height() + 2) # 视角集中到第一个坐标轴上，为了更加好看，需要把视角放大一点
 
         self.add(plots[0])
 

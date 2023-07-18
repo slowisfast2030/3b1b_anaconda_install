@@ -251,7 +251,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
         # Repeated samples of X
         frame = self.frame
         frame.move_to(plots[0])
-        frame.set_height(plots[0].get_height() + 2)
+        #frame.set_height(plots[0].get_height() + 2)
 
         self.add(plots[0])
 
