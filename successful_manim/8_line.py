@@ -52,7 +52,7 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
     def get_plots(self):
         # Axes and graphs
         all_axes = self.get_axes() # 生成3个坐标轴
-        left_axes = all_axes[:2]
+        left_axes = all_axes[:2] # all_axes是VGoup，可以用切片
         left_axes.arrange(DOWN, buff=1.5) # 左侧有两个，上下排列
         left_axes.to_edge(LEFT)
         all_axes[2].center().to_edge(RIGHT) # 右侧有一个，居中，靠右
@@ -82,6 +82,9 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         ))
         return plots
 
+    # 好像从来没有深刻思考过VGoup的用法
+    # 为什么需要VGoup? 
+    # 因为它可以把多个对象组合在一起，然后可以一起操作
     def get_axes(self):
         return VGroup(*(
             Axes(
