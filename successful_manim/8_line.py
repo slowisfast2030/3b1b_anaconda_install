@@ -292,6 +292,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
             curve_copy = graph.copy()
             curve_copy.set_stroke(TEAL, 7, 1)
 
+            # VShowPassingFlash的动画效果真牛逼
             self.play(
                 LaggedStartMap(FadeOut, VGroup(
                     sample_words, sample_arrow, rv_arrow, rv_words,
@@ -305,17 +306,17 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
             # Show area
             bound_tracker = ValueTracker([-1, -1])
             # 这一行报错。可以尝试下debug
-            area = always_redraw(lambda: axes.get_area_under_graph(
-                graph, bound_tracker.get_value()
-            ))
+            # area = always_redraw(lambda: axes.get_area_under_graph(
+            #     graph, bound_tracker.get_value()
+            # ))
 
-            self.add(area)
-            self.play(
-                bound_tracker.animate.set_value([-1, 2]),
-                run_time=3
-            )
-            self.wait()
-            self.play(FadeOut(area))
+            # self.add(area)
+            # self.play(
+            #     bound_tracker.animate.set_value([-1, 2]),
+            #     run_time=3
+            # )
+            # self.wait()
+            # self.play(FadeOut(area))
 
         else:
             self.repeated_samples(plots[:1], 30, time_before_fade=0.5)
