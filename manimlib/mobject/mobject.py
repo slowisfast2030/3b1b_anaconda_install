@@ -1271,8 +1271,8 @@ class Mobject(object):
         buff: float = MED_SMALL_BUFF
     ) -> Self:
         self.replace(mobject, dim_to_match, stretch)
-        length = mobject.length_over_dim(dim_to_match)
-        self.scale((length + buff) / length)
+        length = mobject.length_over_dim(dim_to_match) # 获取mobject在dim_to_match维度上的长度。理论上，这里任何维度都可以。
+        self.scale((length + buff) / length) # 比例伸缩
         return self
 
     def put_start_and_end_on(self, start: Vect3, end: Vect3) -> Self:
