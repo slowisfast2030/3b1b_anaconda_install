@@ -54,6 +54,7 @@ class SurfaceMesh(VGroup):
         )
         self.set_flat_stroke(flat_stroke)
 
+    # mesh面是由很多线组成
     def init_points(self) -> None:
         uv_surface = self.uv_surface
 
@@ -87,7 +88,7 @@ class SurfaceMesh(VGroup):
                 nudged_points[int(math.ceil(vi))::full_nv],
                 vi % 1
             ))
-            self.add(path)
+            self.add(path) # 这里有很多条线
 
 
 # 3D shapes
@@ -170,6 +171,7 @@ class Cylinder(Surface):
         self.set_depth(self.height, stretch=True)
         self.apply_matrix(z_to_vector(self.axis))
 
+    # 柱坐标系
     def uv_func(self, u: float, v: float) -> np.ndarray:
         return np.array([np.cos(u), np.sin(u), v])
 
@@ -218,7 +220,7 @@ class Disk3D(Surface):
             0
         ])
 
-
+# 平面
 class Square3D(Surface):
     def __init__(
         self,
@@ -239,7 +241,7 @@ class Square3D(Surface):
     def uv_func(self, u: float, v: float) -> np.ndarray:
         return np.array([u, v, 0])
 
-
+# 面动成体
 def square_to_cube_faces(square: T) -> list[T]:
     radius = square.get_height() / 2
     square.move_to(radius * OUT)
