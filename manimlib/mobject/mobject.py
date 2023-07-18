@@ -1238,6 +1238,7 @@ class Mobject(object):
     # 上面的注释来源于manim kindgarten版本
     # 为什么可以知道每一个函数的作用呢？应该没有看视频源码吧？难道是一个个测试的？
     # 真的将源码研究之后，发现这个函数的难度也不是很高。
+    # replace这个函数名有歧义，给人的感觉像是替换，但是实际上是放到和 ``mobject`` 的位置，并且大小相同
     def replace(self, mobject: Mobject, dim_to_match: int = 0, stretch: bool = False) -> Self:
         if not mobject.get_num_points() and not mobject.submobjects:
             self.scale(0)
