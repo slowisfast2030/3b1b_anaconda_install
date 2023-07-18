@@ -300,7 +300,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
             self.repeated_samples(plots[:1], 30, time_before_fade=0.5)
 
         # Show Y
-        frame.generate_target()
+        frame.generate_target() # 这个函数是干啥的？'''通过复制自身作为自己的 target, 生成一个 target 属性'''
         frame.target.set_height(plots[:2].get_height() + 2)
         frame.target.move_to(plots[:2])
 
@@ -328,7 +328,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
 
         # Show sum
         self.play(
-            frame.animate.to_default_state(),
+            frame.animate.to_default_state(), # 相机恢复到默认位置
             FadeIn(plots[2]),
             FadeOut(self.all_dots),
         )
