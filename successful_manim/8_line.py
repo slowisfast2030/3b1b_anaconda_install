@@ -215,7 +215,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
     sigma2 = 1.5
 
     # 代码中是False
-    annotations = True
+    annotations = False
 
     def construct(self):
         # Setup plots
