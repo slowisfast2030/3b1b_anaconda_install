@@ -1259,6 +1259,9 @@ class Mobject(object):
     # 如果想包围一个mobject，那么分两步：
     # 1. replace
     # 2. scale
+
+    # 进一步思考：所有的mobject都是点集。至于点集是如何被显示的，有底层的ffmpeg
+    # 我的主要精力是搞清楚点集的数学变化。
     def surround(
         self,
         mobject: Mobject,
