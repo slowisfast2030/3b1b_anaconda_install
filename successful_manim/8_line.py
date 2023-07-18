@@ -121,6 +121,8 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         xy_samples = np.round(self.get_samples(), 2)
         sample_sum = sum(xy_samples)
         samples = [*xy_samples[:2], sample_sum]
+        print("*"*100)
+        print(samples)
         dots = Group()
         labels = VGroup()
         lines = VGroup()
@@ -132,6 +134,8 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
             label.scale(0.75, about_edge=DOWN)
             label.set_fill(GREY_A)
 
+            # sample: float
+            # graph: ParametricCurve
             line = axes.get_v_line_to_graph(sample, graph, line_func=Line)
             line.set_stroke(YELLOW, 2)
 
