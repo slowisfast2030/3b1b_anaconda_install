@@ -214,7 +214,8 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
     sigma1 = 1
     sigma2 = 1.5
 
-    annotations = False
+    # 代码中是False
+    annotations = True
 
     def construct(self):
         # Setup plots
@@ -303,6 +304,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
 
             # Show area
             bound_tracker = ValueTracker([-1, -1])
+            # 这一行报错。可以尝试下debug
             area = always_redraw(lambda: axes.get_area_under_graph(
                 graph, bound_tracker.get_value()
             ))
