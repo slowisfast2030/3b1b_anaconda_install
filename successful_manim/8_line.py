@@ -221,10 +221,18 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
         sum_graph.set_opacity(0)
         sum_label.shift(DOWN)
 
+        print("="*100)
+        print(plots)
+        print(len(plots))
+        # 这里的plots应该有3个元素
+        # [self.sigma1, self.sigma2]只有两个元素
+        # 为什么可以用zip呢？
         normal_parameters = VGroup(*(
             self.get_normal_parameter_labels(plot, 0, sigma)
             for plot, sigma in zip(plots, [self.sigma1, self.sigma2])
         ))
+        print(len(normal_parameters))
+
         normal_words = VGroup(*(
             Text("Normal\ndistribution", font_size=30, alignment="LEFT").next_to(
                 parameters, UP, MED_LARGE_BUFF, LEFT
@@ -242,7 +250,10 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
 
         self.add(plots[0])
 
+        # 下面的代码都没有执行
         if self.annotations:
+            print("*"*100)
+            print("all is well")
             # Describe X
             axes, graph, label = plots[0]
             label_rect = SurroundingRectangle(label, buff=0.05)
