@@ -1232,7 +1232,12 @@ class Mobject(object):
         point_to_align = self.get_bounding_box_point(aligned_edge)
         self.shift((target - point_to_align) * coor_mask)
         return self
-
+    
+    # 这个函数的作用是啥？
+    # '''放到和 ``mobject`` 的位置，并且大小相同'''
+    # 上面的注释来源于manim kindgarten版本
+    # 为什么可以知道每一个函数的作用呢？应该没有看视频源码吧？难道是一个个测试的？
+    # 真的将源码研究之后，发现这个函数的难度也不是很高。
     def replace(self, mobject: Mobject, dim_to_match: int = 0, stretch: bool = False) -> Self:
         if not mobject.get_num_points() and not mobject.submobjects:
             self.scale(0)
@@ -1249,6 +1254,11 @@ class Mobject(object):
         self.shift(mobject.get_center() - self.get_center())
         return self
 
+    # '''环绕着 mobject'''
+    # 看完replace源码后，进一步看一下surround源码，就更清晰了
+    # 如果想包围一个mobject，那么分两步：
+    # 1. replace
+    # 2. scale
     def surround(
         self,
         mobject: Mobject,
