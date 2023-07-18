@@ -232,6 +232,8 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
         # Repeated samples of X
         frame = self.frame
         frame.move_to(plots[0])
+        # 视角的变换是一个特别重要的技巧，可以让我们的动画更加生动
+        # frame是相机拍摄的视频帧，可以通过frame.set_height()来调整帧的大小
         frame.set_height(plots[0].get_height() + 2) # 视角集中到第一个坐标轴上，为了更加好看，需要把视角放大一点
 
         self.add(plots[0])
