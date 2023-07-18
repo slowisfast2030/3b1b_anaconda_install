@@ -197,7 +197,7 @@ class ShadowScene(ThreeDScene):
             plane.set_height(height // 2 + self.limited_plane_extension, about_edge=UP, stretch=True)
         self.plane = plane
 
-        plane.add(grid)
+        #plane.add(grid)
         self.add(plane)
 
     def add_solid(self):
