@@ -70,12 +70,15 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
                 self.graph_colors
             )
         ))
-        graphs.add(self.get_sum_graph(all_axes[2]))
+        # 这里为何又增加一个graph呢？
+        graphs.add(self.get_sum_graph(all_axes[2])) 
         graphs.set_stroke(width=self.graph_stroke_width)
 
         # Labels
         labels = self.get_axes_labels(all_axes)
 
+        # 这里的all_axes, graphs, labels都是VGroup
+        # 操作上感觉很像列表
         plots = VGroup(*(
             VGroup(*tup)
             for tup in zip(all_axes, graphs, labels)
