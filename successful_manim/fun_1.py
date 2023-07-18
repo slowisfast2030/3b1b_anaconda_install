@@ -11,9 +11,9 @@ class Test(Scene):
         self.camera.frame.reorient(-30, 75)
         self.camera.frame.move_to(self.frame_center)
 
-        text = Text("This is a test").shift(UP)
-        self.play(Write(text))
-        self.wait()
+        # text = Text("This is a test").shift(UP)
+        # self.play(Write(text))
+        # self.wait()
 
         width, height = 20, 20
         grid = NumberPlane(
@@ -31,7 +31,7 @@ class Test(Scene):
         grid.set_flat_stroke(True)
         grid.insert_n_curves(3)
 
-        self.add(grid)
+        self.play(Write(grid))
         self.wait()
 
         plane = Rectangle()
@@ -54,6 +54,25 @@ class Test(Scene):
         print("\nplane:")
         print(plane.get_points())
         print(plane.get_family())
+
+        cube = VCube()
+        #cube.set_height(2)
+        cube.move_to((0,0,3))
+        object_style = {
+        "stroke_color": WHITE,
+        "stroke_width": 2,
+        "fill_color": BLUE_E,
+        "fill_opacity": 0.3,
+        #"reflectiveness": 0.3,
+        #"gloss": 0.1,
+        #"shadow": 0.5,
+        }
+        cube.set_style(**object_style)
+        self.play(Write(cube))
+        self.wait()
+
+        self.add(Sphere())
+        self.wait()
 
 
         

@@ -109,6 +109,9 @@ class Sphere(Surface):
             **kwargs
         )
 
+    # 这里的uv分别是什么角？球坐标系
+    # v是半径与z轴的夹角
+    # u是半径投影到xy平面上与x轴的夹角
     def uv_func(self, u: float, v: float) -> np.ndarray:
         return self.radius * np.array([
             math.cos(u) * math.sin(v),
