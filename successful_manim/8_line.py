@@ -61,7 +61,7 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
             axes.x_axis.add_numbers(font_size=16)
             axes.y_axis.set_stroke(opacity=0.5)
 
-        pdfs = self.get_pdfs()
+        pdfs = self.get_pdfs() # 这一行似乎是多余的
         graphs = VGroup(*(
             axes.get_graph(func).set_stroke(color)
             for axes, func, color in zip(
