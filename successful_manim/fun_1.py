@@ -74,5 +74,8 @@ class Test(Scene):
         self.add(Sphere())
         self.wait()
 
+        self.add(Square3D())
+        self.wait()
+
 
         
