@@ -216,7 +216,7 @@ class SampleTwoNormals(RepeatedSamplesFromContinuousDistributions):
         # Setup plots
         plots = self.get_plots()
         plots.to_edge(UP, buff=1.0)
-        sum_axes, sum_graph, sum_label = plots[2]
+        sum_axes, sum_graph, sum_label = plots[2] # 对第三个plot进行特殊操作
         sum_axes.y_axis.set_opacity(0)
         sum_graph.set_opacity(0)
         sum_label.shift(DOWN)
