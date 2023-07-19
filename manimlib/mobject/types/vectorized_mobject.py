@@ -1223,7 +1223,11 @@ class VMobject(Mobject):
         return wrapper
 
     def set_points(self, points: Vect3Array, refresh_joints: bool = True) -> Self:
-        assert(len(points) == 0 or len(points) % 2 == 1)
+        # 点的数量要么是0，要么是奇数
+        # 因为三个点构成一个二阶贝塞尔曲线
+        # 两段二阶贝塞尔曲线首尾相连
+        # 所以是奇数
+        assert(len(points) == 0 or len(points) % 2 == 1) 
         super().set_points(points)
         self.refresh_triangulation()
         if refresh_joints:
