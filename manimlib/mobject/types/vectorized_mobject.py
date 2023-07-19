@@ -632,6 +632,9 @@ class VMobject(Mobject):
             self.add_line_to(point)
         return self
 
+    # 这里需要明确，有两种方式可以设置曲线
+    # 一：直接设置曲线的点
+    # 二：设置曲线的锚点和控制点（贝塞尔曲线）
     def set_points_as_corners(self, points: Iterable[Vect3]) -> Self:
         # 这里的anchor和handle是贝塞尔曲线的控制点
         # anchor是锚点，handle是控制点
