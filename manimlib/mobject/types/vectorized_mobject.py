@@ -659,7 +659,7 @@ class VMobject(Mobject):
         但是，因为manimgl中所有的曲线都是贝塞尔曲线（直线也是）
         所以，这里需要通过points计算出anchors和handles
 
-        
+        需要进一步认识到，计算出的anchors和handles，是二阶贝塞尔曲线
         """
         anchors = np.array(points) 
         handles = 0.5 * (anchors[:-1] + anchors[1:])
