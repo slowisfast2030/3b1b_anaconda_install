@@ -33,6 +33,11 @@ class test(InteractiveScene):
         m3 = VMobject()
         m3.set_points(dots)
         m3.set_color(YELLOW_B)
-        m3.shift(DOWN)
+        m3.shift(DOWN*2)
         self.add(m3)
+        self.wait()
+
+        dots = m3.get_points()
+        for dot in dots:
+            self.add(Dot(dot).set_color(YELLOW_B))
         self.wait()
