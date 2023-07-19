@@ -479,6 +479,11 @@ class VMobject(Mobject):
         anchor2: Vect3
     ) -> Self:
         self.start_new_path(anchor1)
+        # 想知道，执行到了这里，self.get_points()是什么
+        print("&"*100)
+        print(self.get_points())
+        print("&"*100)
+        
         self.add_cubic_bezier_curve_to(handle1, handle2, anchor2)
         return self
 
