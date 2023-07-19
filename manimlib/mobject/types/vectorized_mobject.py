@@ -675,6 +675,12 @@ class VMobject(Mobject):
         return bool((dots > 1 - 1e-3).all())
 
     def change_anchor_mode(self, mode: str) -> Self:
+        '''改变曲线连接模式
+
+        - ``jagged`` : 折线
+        - ``approx_smooth`` : 大致平滑
+        - ``true_smooth`` : 真正平滑
+        '''
         assert(mode in ("jagged", "approx_smooth", "true_smooth"))
         subpaths = self.get_subpaths()
         self.clear_points()
