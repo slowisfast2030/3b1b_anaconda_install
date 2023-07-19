@@ -8,7 +8,7 @@ class test(InteractiveScene):
         plane = NumberPlane()
         m = VMobject()
         m.add_cubic_bezier_curve(
-            np.array([-2, -1, 0]),  # start of first curve
+            np.array([-2, -1, 0]),  
             np.array([-3, 1, 0]),
             np.array([0, 3, 0]),
             np.array([1, 3, 0])
