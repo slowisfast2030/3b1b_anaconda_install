@@ -24,8 +24,15 @@ class test(InteractiveScene):
 
         self.add(m1, m2, plane)
 
-        dots = np.concatenate((m1.get_points(), m2.get_points()))
+        dots = np.concatenate((m1.get_points(), m2.get_points()[1:]))
         print(dots)
         for dot in dots:
             self.add(Dot(dot).set_color(RED))
+        self.wait()
+
+        m3 = VMobject()
+        m3.set_points(dots)
+        m3.set_color(YELLOW_B)
+        m3.shift(DOWN)
+        self.add(m3)
         self.wait()
