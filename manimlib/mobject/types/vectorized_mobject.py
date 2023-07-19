@@ -457,9 +457,9 @@ class VMobject(Mobject):
     ) -> Self:
         assert(len(anchors) == len(handles) + 1)
         points = resize_array(self.get_points(), 2 * len(anchors) - 1)
-        points[0::2] = anchors
-        points[1::2] = handles
-        self.set_points(points)
+        points[0::2] = anchors # 将anchors设置为points的偶数索引列
+        points[1::2] = handles # 将handles设置为points的奇数索引列
+        self.set_points(points) # 符合认知。这里的points是二阶贝塞尔曲线
         return self
 
     def start_new_path(self, point: Vect3) -> Self:
