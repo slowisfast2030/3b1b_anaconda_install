@@ -13,7 +13,6 @@ class test(InteractiveScene):
             np.array([-3, 1, 0]),
             np.array([0, 3, 0]),
             np.array([1, 3, 0]),  # end of first curve
-            np.array([1, 3, 0]),  # start of second curve
             np.array([0, 1, 0]),
             np.array([4, 3, 0]),
             np.array([4, -2, 0]),  # end of second curve
