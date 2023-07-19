@@ -640,7 +640,13 @@ class VMobject(Mobject):
         # anchor是锚点，handle是控制点
         # anchor是曲线经过的点，handle是曲线的切线方向
         # 这里的anchor和handle是如何计算的？
-        anchors = np.array(points)
+
+        """
+        传入的参数都是曲线上的点，点与点之间是折线
+        对于直线来说，每一个点都是anchor
+        知道两个anchor，就可以计算出handle（两个anchor的中点）
+        """
+        anchors = np.array(points) 
         handles = 0.5 * (anchors[:-1] + anchors[1:])
         self.set_anchors_and_handles(anchors, handles)
         return self
