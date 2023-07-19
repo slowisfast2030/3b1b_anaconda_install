@@ -17,9 +17,9 @@ class test(InteractiveScene):
             np.array([4, 3, 0]),
             np.array([4, -2, 0]),  # end of second curve
             ]
-        #m.set_points_as_corners(points)
+        m.set_points_as_corners(points)
 
-        m.set_points_smoothly(points)
+        #m.set_points_smoothly(points)
 
         self.add(m, plane)
         self.wait()

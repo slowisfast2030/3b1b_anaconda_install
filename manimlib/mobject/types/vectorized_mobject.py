@@ -457,6 +457,13 @@ class VMobject(Mobject):
     ) -> Self:
         assert(len(anchors) == len(handles) + 1)
         points = resize_array(self.get_points(), 2 * len(anchors) - 1) # 2 * len(anchors) - 1是因为每个anchor都有一个handle，除了最后一个anchor
+        # 想知道到此为止，points中都有啥？
+        # print("="*10)
+        # print(points)
+        # print(len(points))
+        # print("="*10)
+        # 打印后发现，就是初始化了一个空的数组，数组里的每一个数都是一个三维的 zero vector
+
         points[0::2] = anchors # 将anchors设置为points的偶数索引列
         points[1::2] = handles # 将handles设置为points的奇数索引列
         self.set_points(points) # 符合认知。这里的points是二阶贝塞尔曲线
