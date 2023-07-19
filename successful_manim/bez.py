@@ -22,7 +22,6 @@ class test(InteractiveScene):
             self.add(Dot(dot))
         self.wait()
 
-
         m2 = VMobject()
         m2.set_points(dots)
         m2.set_color(RED)
