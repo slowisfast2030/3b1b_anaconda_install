@@ -7,6 +7,15 @@ class test(InteractiveScene):
     def construct(self):
         plane = NumberPlane()
         m = VMobject()
+        """
+        看源码可以发现：
+        add_cubic_bezier_curve函数是三阶贝塞尔曲线，需要四个点，第一个和最后一个是anchor，中间两个是handle
+        在add_cubic_bezier_curve内部，会将三阶贝塞尔曲线转化为两个二阶贝塞尔曲线
+        二阶贝塞尔曲线需要三个点，第一个和最后一个是anchor，中间一个是handle
+        两条二阶贝塞尔曲线一共有5个点
+
+        self.data["points"]中存储的就是这5个点
+        """
         m.add_cubic_bezier_curve(
             np.array([-2, -1, 0]),  
             np.array([-3, 1, 0]),
