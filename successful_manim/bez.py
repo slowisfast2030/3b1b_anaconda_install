@@ -36,3 +36,12 @@ class test(InteractiveScene):
         m3.set_color(BLUE)
         self.add(m3)
         self.wait()
+        print("\n", m3.get_points())
+
+        m4 = VMobject()
+        m4.start_new_path(dots[2])
+        m4.add_quadratic_bezier_curve_to(dots[3], dots[4])
+        m4.set_color(GREEN)
+        self.add(m4)
+        self.wait()
+        print("\n", m4.get_points())
