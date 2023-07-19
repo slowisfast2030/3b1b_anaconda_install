@@ -21,3 +21,11 @@ class test(InteractiveScene):
         for dot in dots:
             self.add(Dot(dot))
         self.wait()
+
+
+        m2 = VMobject()
+        m2.set_points(dots)
+        m2.set_color(RED)
+        self.add(m2)
+        self.wait()
+        print("\n", m2.get_points())
