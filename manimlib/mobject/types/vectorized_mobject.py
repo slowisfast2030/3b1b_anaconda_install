@@ -653,6 +653,14 @@ class VMobject(Mobject):
         对于直线来说，每一个点都是anchor
         知道两个anchor，就可以计算出handle（两个anchor的中点）
         """
+
+        """
+        从直觉上来看，可以直接通过points画出折线图
+        但是，因为manimgl中所有的曲线都是贝塞尔曲线（直线也是）
+        所以，这里需要通过points计算出anchors和handles
+
+        
+        """
         anchors = np.array(points) 
         handles = 0.5 * (anchors[:-1] + anchors[1:])
         self.set_anchors_and_handles(anchors, handles)
