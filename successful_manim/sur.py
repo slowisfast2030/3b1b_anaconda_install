@@ -16,7 +16,7 @@ class test(InteractiveScene):
 
         a = ThreeDAxes()
 
-        s = ParametricSurface(func, u_range=(-1,1), v_range=(-1,1), resolution=(4, 4))
+        s = ParametricSurface(func, u_range=(-2,2), v_range=(-2,2), resolution=(4, 4))
         self.add(a, s)
         self.wait()
 
