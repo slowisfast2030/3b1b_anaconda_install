@@ -20,3 +20,6 @@ class test(InteractiveScene):
         self.wait()
         print("\n", "="*100)
         print(len(points))
+
+        self.add(CurvedArrow(points[0], points[-2]))
+        self.wait()
