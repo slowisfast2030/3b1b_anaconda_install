@@ -99,6 +99,9 @@ class PiCreature(SVGMobject):
         # Figma exports with superfluous parts, so this
         # hardcodes how to extract what we want.
         parts = self.submobjects
+        # print("-"*200, parts)
+        # print(len(parts))
+        # 上面的代码显示，self.submobjects中确实有元素
         self.eyes: VGroup = self.draw_eyes(
             original_irises=VGroup(parts[2], parts[6]),
             original_pupils=VGroup(parts[8], parts[9])
