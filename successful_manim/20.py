@@ -9,6 +9,7 @@ class SumsOfSizeFive(TeacherStudentsScene):
     def construct(self):
         #morty = self.teacher
         #self.add(morty)
+        self.teacher_says("hello")
         self.wait()
 
 # 这一行可以正常显示svg图像：pi

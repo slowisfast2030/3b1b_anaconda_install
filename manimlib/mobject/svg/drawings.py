@@ -341,6 +341,7 @@ class ClockPassesTime(AnimationGroup):
 
 class Bubble(SVGMobject):
     file_name: str = "Bubbles_speech.svg"
+    #file_name: str = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/custom/characters/Bubbles_speech.svg"
 
     def __init__(
         self,
