@@ -17,7 +17,7 @@ class temp(InteractiveScene):
     def construct(self):
         c = Circle()
         s = Square()
-        m = Mobject()
-        mm = m.interpolate(c, s, 0.5)
-        self.add(mm)
+        #m = Mobject()
+        c.interpolate(c, s, 0)
+        #self.add(m)
         self.wait()

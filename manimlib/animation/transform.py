@@ -118,6 +118,7 @@ class Transform(Animation):
             ]
         ])
 
+    # 特别注意，这个函数和父类的同名函数，参数个数不一致
     def interpolate_submobject(
         self,
         submob: Mobject,
