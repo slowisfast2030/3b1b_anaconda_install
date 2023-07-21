@@ -25,3 +25,9 @@ class test(InteractiveScene):
         self.add(pi2)
         pi2.move_to(DOWN*2)
         self.wait()
+
+        pi2.look_at(LEFT)
+        self.wait()
+
+        pi2.shrug()
+        self.wait()
