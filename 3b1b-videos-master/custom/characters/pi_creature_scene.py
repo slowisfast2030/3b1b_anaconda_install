@@ -280,6 +280,7 @@ class TeacherStudentsScene(PiCreatureScene):
         self.add(self.background)
         self.bring_to_back(self.background)
 
+    # 在老师和学生这个场景下，有3个学生和1个老师
     def create_pi_creatures(self):
         self.teacher = Mortimer(color=self.teacher_color)
         self.teacher.to_corner(DOWN + RIGHT)
