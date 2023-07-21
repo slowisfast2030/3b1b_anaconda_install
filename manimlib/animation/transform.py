@@ -126,11 +126,12 @@ class Transform(Animation):
         alpha: float
     ):  
         # 想知道这一行代码有没有被执行
-        #print("linus"*5)
+        # print("linus"*5)
         # 经过测试，这一行确实被执行了
         # 进一步查看函数的参数
-        print(submob, start, target_copy, alpha)
-        
+        # print(submob, start, target_copy, alpha)
+        # 打印的参数也符合预期
+        # 但我直接调用却会报错
         submob.interpolate(start, target_copy, alpha, self.path_func)
         return self
 

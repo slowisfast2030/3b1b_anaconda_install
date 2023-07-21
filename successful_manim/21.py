@@ -12,11 +12,11 @@ class test(InteractiveScene):
         self.wait()
 
 
-class Interpolate(InteractiveScene):
+class temp(InteractiveScene):
     def construct(self):
         c = Circle()
         s = Square()
-        m = VMobject()
+        m = Mobject()
         mm = m.interpolate(c, s, 0.5)
         self.add(mm)
         self.wait()
