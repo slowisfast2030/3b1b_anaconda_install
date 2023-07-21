@@ -12,7 +12,7 @@ class test(InteractiveScene):
         self.play(Transform(c, s))
         self.wait()
 
-
+# 报错
 class temp(InteractiveScene):
     def construct(self):
         c = Circle()
