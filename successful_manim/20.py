@@ -32,3 +32,11 @@ class test(InteractiveScene):
 
         pi2.shrug()
         self.wait()
+
+class logo(InteractiveScene):
+    def construct(self):
+        logo_path = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/custom/characters/logo.svg"
+        logo = SVGMobject(logo_path).scale(3)
+        self.play(Write(logo), run_time=7)
+
+        self.wait()
