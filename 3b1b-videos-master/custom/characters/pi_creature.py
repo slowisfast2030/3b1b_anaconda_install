@@ -30,6 +30,8 @@ if TYPE_CHECKING:
 
 PI_CREATURE_SCALE_FACTOR: float = 0.5
 
+# 每一个svg文件读入后，都会解析有多少个组成部分
+# plain.svg通过看源文件，有6个组成部分
 LEFT_EYE_INDEX: int = 0
 RIGHT_EYE_INDEX: int = 1
 LEFT_PUPIL_INDEX: int = 2
