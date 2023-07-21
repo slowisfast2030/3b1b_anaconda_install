@@ -10,3 +10,13 @@ class test(InteractiveScene):
         self.add(c)
         self.play(Transform(c, s))
         self.wait()
+
+
+class Interpolate(InteractiveScene):
+    def construct(self):
+        c = Circle()
+        s = Square()
+        m = VMobject()
+        mm = m.interpolate(c, s, 0.5)
+        self.add(mm)
+        self.wait()

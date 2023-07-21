@@ -1779,6 +1779,14 @@ class Mobject(object):
         alpha: float,
         path_func: Callable[[np.ndarray, np.ndarray, float], np.ndarray] = straight_path
     ) -> Self:
+        
+        # 很好奇这个函数在动画期间有没有被调用
+        # print("all"*5)
+        # 经过测试后，确实可以被打印（在动画play的过程中）
+        # but
+        # 直接调用这个函数，会报错
+        # 真奇怪
+
         keys = [k for k in self.data.dtype.names if k not in self.locked_data_keys]
         if keys:
             self.note_changed_data()
