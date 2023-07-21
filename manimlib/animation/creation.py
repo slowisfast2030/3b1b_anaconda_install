@@ -52,7 +52,7 @@ class ShowCreation(ShowPartial):
     def get_bounds(self, alpha: float) -> tuple[float, float]:
         return (0, alpha)
 
-
+# 需要研究下倒放机制
 class Uncreate(ShowCreation):
     def __init__(
         self,

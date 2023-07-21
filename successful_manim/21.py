@@ -21,3 +21,9 @@ class temp(InteractiveScene):
         c.interpolate(c, s, 0)
         #self.add(m)
         self.wait()
+
+class test2(InteractiveScene):
+    def construct(self):
+        c = Circle()
+        self.play(DrawBorderThenFill(c))
+        self.wait()

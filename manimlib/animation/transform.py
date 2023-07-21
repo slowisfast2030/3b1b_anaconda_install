@@ -133,7 +133,13 @@ class Transform(Animation):
         # print(submob, start, target_copy, alpha)
         # 打印的参数也符合预期
         # 但我直接调用却会报错
+
+        # 这一行代码是没有返回值的，然而，我可以给它加一个
         submob.interpolate(start, target_copy, alpha, self.path_func)
+        # mm = submob.interpolate(start, target_copy, alpha, self.path_func)
+        # print(start.get_points())
+        # print(mm.get_points())
+        # mm和submob的points是变化的，start和target_copy的points是不变的
         return self
 
 
