@@ -402,7 +402,7 @@ class CoordinateSystem(ABC):
         # TODO
         pass
 
-
+# 没想到，Axes继承自VGroup
 class Axes(VGroup, CoordinateSystem):
     default_axis_config: dict = dict()
     default_x_axis_config: dict = dict()
