@@ -250,6 +250,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
             VGroup(plot[1], label).copy()
             for plot, label in zip(plots, graph_labels)
         ))
+        
         graph_groups.generate_target()
         for graph_group in graph_groups.target:
             graph_group[0].stretch(0.5, 0, about_edge=LEFT)
