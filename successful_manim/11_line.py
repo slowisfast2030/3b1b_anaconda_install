@@ -21,7 +21,7 @@ class Convolutions(InteractiveScene):
     g_graph_x_step = 0.1
     f_label_tex = "f(x)"
     g_label_tex = "g(s - x)"
-    fg_label_tex = R"f(x) \cdot g(s - x)"
+    fg_label_tex = R"f(x) \cdot g(s - x)" # 这里的R是什么意思
     conv_label_tex = R"[f * g](s) = \int_{-\infty}^\infty f(x) \cdot g(s - x) dx"
     label_config = dict(font_size=36)
     t_color = TEAL
@@ -42,6 +42,7 @@ class Convolutions(InteractiveScene):
         f_axes, g_axes, fg_axes, conv_axes = all_axes
         x_min, x_max = self.axes_config["x_range"][:2]
 
+        # 这个函数有啥用
         self.disable_interaction(*all_axes)
         self.add(*all_axes)
 

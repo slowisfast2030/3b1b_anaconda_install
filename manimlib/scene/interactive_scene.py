@@ -238,6 +238,7 @@ class InteractiveScene(Scene):
 
     # Related to selection
 
+    # 竟然可以深入到场景的源码，厉害！
     def toggle_selection_mode(self):
         self.select_top_level_mobs = not self.select_top_level_mobs
         self.refresh_selection_scope()
