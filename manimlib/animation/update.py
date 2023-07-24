@@ -11,6 +11,12 @@ if TYPE_CHECKING:
 
 # 非常有用的动画类
 # manimce版本没有这个类
+"""
+self.play(
+    ShowCreation(inner_rect, run_time=2),
+    UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
+)
+"""
 class UpdateFromFunc(Animation):
     """
     update_function of the form func(mobject), presumably
