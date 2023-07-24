@@ -32,7 +32,8 @@ frame是对这个绝对空间的一个裁剪
 尽管显示器有大有小，但我们看到的都是长方形完全显示在frame中
 
 如果，将frame的绝对尺寸改为2*(8*16/9, 8)
-
+视觉效果就是，长方形变小了
+其实是frame变大了
 """
 class FullScreenRectangle(ScreenRectangle):
     def __init__(
