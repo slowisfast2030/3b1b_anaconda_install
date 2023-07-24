@@ -119,6 +119,7 @@ class VMobject(Mobject):
         self.needs_new_joint_products = True
         self.outer_vert_indices = np.zeros(0, dtype='i4')
 
+        # 一直很好奇**kwargs参数如何被处理
         super().__init__(**kwargs)
 
     def get_group_class(self):
@@ -1443,6 +1444,7 @@ def get_plots(self):
 """
 # 思考下VGoup的使用场景
 class VGroup(VMobject):
+    # 这里有一个绝佳的例子，演示了*args和**kwargs的用法
     def __init__(self, *vmobjects: VMobject, **kwargs):
         super().__init__(**kwargs)
         # 以前对Mobject感到特别困惑的就是sub_mobjects这个属性
