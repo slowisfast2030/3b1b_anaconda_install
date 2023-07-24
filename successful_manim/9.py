@@ -266,7 +266,9 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         lp, rp = parens = Tex("()", **kw)
         parens.stretch(1.5, 1) # 沿着y轴方向拉伸1.5倍
         parens.match_height(graph_groups.target[0])
-        
+
+        # 画出等式
+        # 这里给出了VGoup一个很有意思的用法
         equation = VGroup(
             lp.copy(), graph_groups.target[0], rp.copy(),
             Tex("*", **kw),
