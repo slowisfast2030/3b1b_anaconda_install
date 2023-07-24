@@ -257,8 +257,8 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         for graph_group in graph_groups.target:
             # graph_group[0]是plot
             # graph_group[1]是label
-            graph_group[0].stretch(0.5, 0, about_edge=LEFT)
-            graph_group[0].set_stroke(width=4)
+            graph_group[0].stretch(0.5, 0, about_edge=LEFT) # 沿着x轴方向缩放0.5倍。视觉表现上就是横向压缩
+            graph_group[0].set_stroke(width=4) # 设置线条的宽度
             graph_group[1].shift(SMALL_BUFF * UP)
 
         kw = dict(font_size=96)
