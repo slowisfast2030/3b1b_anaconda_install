@@ -238,7 +238,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         # Graph equation
         frame = self.frame
         fs_rect = FullScreenRectangle()
-        fs_rect.set_stroke(GREY_B, 1)
+        fs_rect.set_stroke(RED, 2)
         fs_rect.set_fill(BLACK, 1)
         fuller_rect = FullScreenRectangle()
         fuller_rect.set_fill(GREY_E, 1)
@@ -280,14 +280,15 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         equation[:3].space_out_submobjects(0.9)
         equation[4:7].space_out_submobjects(0.9)
         equation.next_to(plots, UP, buff=1.5)
-        
+
         symbols = VGroup(*(
             mob for mob in equation
             if mob not in graph_groups.target
         ))
 
         self.play(
-            frame.animate.set_height(13, about_point = 3 * DOWN),
+            # 这里如果将参数从13改为8，会发现图像变大小没有变化。因为，默认的frame的高度就是8
+            frame.animate.set_height(13, about_point = 3 * DOWN), # set_height的值越大，图像就越小。
             FadeIn(fuller_rect),
             FadeIn(fs_rect),
             MoveToTarget(graph_groups, run_time=2),
