@@ -229,7 +229,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Initial samples
         self.repeated_samples(
-            plots, 40,
+            plots, 3,
             animate=False,
             time_between_samples=0.1,
             time_before_fade=0.5
@@ -243,8 +243,9 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         fuller_rect = FullScreenRectangle()
         fuller_rect.set_fill(GREY_E, 1)
         fuller_rect.scale(3)
-        self.add(fuller_rect, fs_rect, *self.mobjects)
+        self.add(fuller_rect, fs_rect, *self.mobjects) # 添加后，从视频上其实看不出任何变化
 
+        # plot = [axe, graph, label]
         graph_groups = VGroup(*(
             VGroup(plot[1], label).copy()
             for plot, label in zip(plots, graph_labels)
@@ -294,7 +295,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # More repeated samples
         self.repeated_samples(
-            plots, 50,
+            plots, 3,
             animate=False,
             time_between_samples=0.1,
             time_before_fade=0.5
