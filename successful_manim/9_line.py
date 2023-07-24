@@ -231,29 +231,29 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Initial samples
         self.repeated_samples(
-            plots, 6,
+            plots, 10,
             animate=False,
             time_between_samples=0.1,
             time_before_fade=0.5
         )
 
         # Graph equation
-        frame = self.frame
+        # frame = self.frame
 
-        fs_rect = FullScreenRectangle()
-        fs_rect.set_stroke(RED_E, 2)
-        fs_rect.set_fill(BLACK, 1)
+        # fs_rect = FullScreenRectangle()
+        # fs_rect.set_stroke(RED_E, 2)
+        # fs_rect.set_fill(BLACK, 1)
 
-        fuller_rect = FullScreenRectangle()
-        fuller_rect.set_fill(GREY_E, 1)
-        fuller_rect.scale(3)
+        # fuller_rect = FullScreenRectangle()
+        # fuller_rect.set_fill(GREY_E, 1)
+        # fuller_rect.scale(3)
 
-        self.add(fuller_rect, fs_rect, *self.mobjects)
-        self.wait()
+        # self.add(fuller_rect, fs_rect, *self.mobjects)
+        # self.wait()
 
-        self.play(
-            frame.animate.set_height(13, about_point = 3 * DOWN),
-            # 下面这两个动作对于整个效果，可有可无
-            # FadeIn(fuller_rect),
-            # FadeIn(fs_rect)
-        )
+        # self.play(
+        #     frame.animate.set_height(13, about_point = 3 * DOWN),
+        #     # 下面这两个动作对于整个效果，可有可无
+        #     # FadeIn(fuller_rect),
+        #     # FadeIn(fs_rect)
+        # )
