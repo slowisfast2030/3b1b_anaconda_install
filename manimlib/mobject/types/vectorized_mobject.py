@@ -1445,6 +1445,9 @@ def get_plots(self):
 class VGroup(VMobject):
     def __init__(self, *vmobjects: VMobject, **kwargs):
         super().__init__(**kwargs)
+        # 以前对Mobject感到特别困惑的就是sub_mobjects这个属性
+        # 一个Mobject本身就是一个对象，为何还会包含子对象呢？
+        # 看了这里的源码，VGoup里所包含的众多子对象，其实就是一个个sub_mobject
         self.add(*vmobjects)
         if vmobjects:
             # 这里挺有趣。是不是默认VGroup的每一个元素都是同类别的？
