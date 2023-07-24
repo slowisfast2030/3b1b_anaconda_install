@@ -169,6 +169,8 @@ class Convolutions(InteractiveScene):
         all_axes[3].y_axis.stretch(
             self.conv_y_stretch_factor, 1
         )
+        # 我好像一直不知道to_edge是什么意思
+        # 可以简单写一段代码测试一下
         all_axes.to_edge(LEFT)
         all_axes.to_edge(DOWN, buff=0.1)
 
@@ -219,7 +221,7 @@ class ProbConvolutions(Convolutions):
         # Hit most of previous setup
         f_axes, g_axes, fg_axes, conv_axes = self.all_axes
         # 如果加了wait，一开始就会出现4幅图
-        #self.wait()
+        self.wait()
 
         f_graph, g_graph, prod_graphs, conv_graph = self.f_graph, self.g_graph, self.prod_graphs, self.conv_graph
         f_label, g_label, fg_label, conv_label = self.f_label, self.g_label, self.fg_label, self.conv_label
