@@ -26,6 +26,7 @@ DEFAULT_LAGGED_START_LAG_RATIO = 0.05
 
 
 class AnimationGroup(Animation):
+    '''动画组，可以传入一系列动画，统一播放'''
     def __init__(self,
         *animations: Animation | _AnimationBuilder,
         run_time: float = -1,  # If negative, default to sum of inputed animation runtimes
@@ -121,6 +122,7 @@ class AnimationGroup(Animation):
 
 
 class Succession(AnimationGroup):
+    '''使子动画逐一播放'''
     def __init__(
         self,
         *animations: Animation,
@@ -153,6 +155,7 @@ class Succession(AnimationGroup):
 
 
 class LaggedStart(AnimationGroup):
+    '''可以统一控制 ``lag_ratio`` 的动画组'''
     def __init__(
         self,
         *animations,
@@ -163,6 +166,7 @@ class LaggedStart(AnimationGroup):
 
 
 class LaggedStartMap(LaggedStart):
+    '''统一控制 **动画类**、 ``mobjects``、 ``lag_ratio`` 的动画组'''
     def __init__(
         self,
         anim_func: Callable[[Mobject], Animation],
