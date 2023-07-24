@@ -34,7 +34,8 @@ class CameraFrame(Mobject):
 
         self.default_orientation = Rotation.identity()
         self.view_matrix = np.identity(4)
-        self.camera_location = OUT  # This will be updated by set_points
+        # 相机的位置
+        self.camera_location = OUT # This will be updated by set_points
 
         self.set_points(np.array([ORIGIN, LEFT, RIGHT, DOWN, UP]))
         # 设置了frame的宽和高
