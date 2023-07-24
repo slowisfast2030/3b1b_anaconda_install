@@ -9,7 +9,8 @@ if TYPE_CHECKING:
 
     from manimlib.mobject.mobject import Mobject
 
-
+# 非常有用的动画类
+# manimce版本没有这个类
 class UpdateFromFunc(Animation):
     """
     update_function of the form func(mobject), presumably
