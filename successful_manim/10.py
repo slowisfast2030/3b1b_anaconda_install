@@ -239,7 +239,7 @@ class SampleWedgePlusDoubleLump(RepeatedSamplesFromContinuousDistributions):
 class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
     def construct(self):
         plots = self.get_plots()
-        plots[0][1].make_jagged()
+        plots[0][1].make_jagged() # 使得图形更像折线
         # self.add(plots)
 
         # plots有3个plot
@@ -256,7 +256,7 @@ class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
             label.next_to(graph.pfp(0.4), LEFT)
             self.play(
                 Write(label, time_span=(1, 2)),
-                VShowPassingFlash(graph, time_width=1.5, run_time=3),
+                VShowPassingFlash(graph, time_width=1.5, run_time=3), # 能实现这个效果是真牛逼！
             )
 
         # Question
