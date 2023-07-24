@@ -28,18 +28,21 @@ class PoolTableReflections(InteractiveScene):
             height=table.get_height() - 2 * buff,
         )
         irt.move_to(table)
+
+        # 竟然通过这种方式画矩形
         inner_rect = VMobject()
         inner_rect.start_new_path(irt.get_right())
         for corner in [UR, UL, DL, DR]:
             inner_rect.add_line_to(irt.get_corner(corner))
         inner_rect.add_line_to(irt.get_right())
+
         inner_rect.set_stroke(RED, 3)
         inner_rect.insert_n_curves(20)
 
-        self.play(ball.animate.move_to(inner_rect.get_start()))
-        # 很有启发性
-        self.play(
-            ShowCreation(inner_rect, run_time=2),
-            UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
-        )
-        self.wait()
+        # self.play(ball.animate.move_to(inner_rect.get_start()))
+        # # 很有启发性
+        # self.play(
+        #     ShowCreation(inner_rect, run_time=2),
+        #     UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
+        # )
+        # self.wait()
