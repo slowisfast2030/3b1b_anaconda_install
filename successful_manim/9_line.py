@@ -172,6 +172,8 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
             self.add(sum_label)
             self.add(dots[2])
         self.wait(time_before_fade)
+
+        # 将一些对象从场景中移除
         kw = dict(run_time=0.25 if animate else 0)
         self.play(
             LaggedStart(*(
@@ -229,7 +231,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Initial samples
         self.repeated_samples(
-            plots, 3,
+            plots, 6,
             animate=False,
             time_between_samples=0.1,
             time_before_fade=0.5
@@ -244,7 +246,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         fuller_rect = FullScreenRectangle()
         fuller_rect.set_fill(GREY_E, 1)
-        fuller_rect.scale(1.3)
+        fuller_rect.scale(3)
 
         self.add(fuller_rect, fs_rect, *self.mobjects)
         self.wait()
