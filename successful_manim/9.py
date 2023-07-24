@@ -237,6 +237,8 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Graph equation
         frame = self.frame
+        print("="*100, frame.get_width(), frame.get_height())
+
         fs_rect = FullScreenRectangle()
         fs_rect.set_stroke(RED, 2)
         fs_rect.set_fill(BLACK, 1)
@@ -298,6 +300,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
             Write(symbols, run_time=2),
         )
         self.wait()
+        print("="*100, frame.get_width(), frame.get_height())
 
         # Label convolution
         conv_label = Text("Convolution", font_size=72)
