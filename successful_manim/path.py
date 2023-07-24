@@ -7,7 +7,7 @@ class test(InteractiveScene):
     def construct(self):
         c = Dot()
         self.add(c)
-        p = TracedPath(c.get_center, stroke_color=RED, time_traced=1)
+        p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
         
         #p = TracingTail(c.get_center, stroke_color=RED)
 

@@ -94,7 +94,7 @@ class AnimatedBoundary(VGroup):
             sm1.pointwise_become_partial(sm2, a, b)
         return self
 
-
+# 可以在代码库中搜索TracedPath，看看3b1b的使用方法
 class TracedPath(VMobject):
     def __init__(
         self,
