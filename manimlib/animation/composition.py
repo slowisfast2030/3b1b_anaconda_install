@@ -153,7 +153,14 @@ class Succession(AnimationGroup):
             self.active_animation = animation
         animation.interpolate(subalpha)
 
-
+"""
+self.play(LaggedStart(
+        Transform(dots[0].copy(), dots[2].copy().set_opacity(0.5), remover=True),
+        Transform(dots[1].copy(), dots[2].copy().set_opacity(0.5), remover=True),
+        FadeTransform(sum_label[:3].copy(), sum_label[3:]),
+        run_time=1.0 if animate else 0,
+))
+"""
 class LaggedStart(AnimationGroup):
     '''可以统一控制 ``lag_ratio`` 的动画组'''
     def __init__(
@@ -164,7 +171,16 @@ class LaggedStart(AnimationGroup):
     ):
         super().__init__(*animations, lag_ratio=lag_ratio, **kwargs)
 
-
+"""
+self.play(
+        LaggedStart(*(
+            dot.animate.set_radius(0.1).set_opacity(self.dot_fade_factor)
+            for dot in dots
+        ), **kw),
+        LaggedStartMap(FadeOut, labels, **kw),
+        LaggedStartMap(FadeOut, lines[:2], **kw),
+)
+"""
 class LaggedStartMap(LaggedStart):
     '''统一控制 **动画类**、 ``mobjects``、 ``lag_ratio`` 的动画组'''
     def __init__(
