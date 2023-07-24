@@ -1447,6 +1447,7 @@ class VGroup(VMobject):
         super().__init__(**kwargs)
         self.add(*vmobjects)
         if vmobjects:
+            # 这里挺有趣。是不是默认VGroup的每一个元素都是同类别的？
             self.uniforms.update(vmobjects[0].uniforms)
 
     """
