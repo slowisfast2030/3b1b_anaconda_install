@@ -57,6 +57,11 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         left_axes.to_edge(LEFT)
         all_axes[2].center().to_edge(RIGHT)
 
+        # 每一个Axes都是由两条NumberLine构成的
+        # 真正开发的时候，如果想对某一个对象做更加深入的美化
+        # 有两种方法
+        # 1.看源代码
+        # 2.在3b1b的视频代码库中搜索，看看他是怎么做的，吸取经验
         for axes in all_axes:
             axes.x_axis.add_numbers(font_size=16)
             axes.y_axis.set_stroke(opacity=0.5)
