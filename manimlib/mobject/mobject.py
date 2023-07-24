@@ -470,6 +470,10 @@ class Mobject(object):
 
     # Submobject organization
 
+    # 从VGroup的用法跳转而来
+    """
+    equation.arrange(RIGHT, buff=0.5)
+    """
     def arrange(
         self,
         direction: Vect3 = RIGHT,
