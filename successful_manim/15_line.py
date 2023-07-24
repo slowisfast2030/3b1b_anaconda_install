@@ -37,12 +37,12 @@ class PoolTableReflections(InteractiveScene):
         inner_rect.add_line_to(irt.get_right())
 
         inner_rect.set_stroke(RED, 3)
-        inner_rect.insert_n_curves(20)
+        #inner_rect.insert_n_curves(20)
 
-        # self.play(ball.animate.move_to(inner_rect.get_start()))
-        # # 很有启发性
-        # self.play(
-        #     ShowCreation(inner_rect, run_time=2),
-        #     UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
-        # )
-        # self.wait()
+        self.play(ball.animate.move_to(inner_rect.get_start()))
+        # 很有启发性
+        self.play(
+            ShowCreation(inner_rect, run_time=2),
+            UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
+        )
+        self.wait()

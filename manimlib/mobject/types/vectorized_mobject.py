@@ -999,6 +999,7 @@ class VMobject(Mobject):
         return self
 
     def insert_n_curves(self, n: int, recurse: bool = True) -> Self:
+        '''将物件切割成 n 个小段的拼接，常用于复杂函数变换'''
         for mob in self.get_family(recurse):
             if mob.get_num_curves() > 0:
                 new_points = mob.insert_n_curves_to_point_list(n, mob.get_points())
