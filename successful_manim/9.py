@@ -288,6 +288,9 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         self.play(
             # 这里如果将参数从13改为8，会发现图像变大小没有变化。因为，默认的frame的高度就是8
+            # frame.set_height的参数值越大，会导致相机拍摄的范围越大
+            # 但是，因为拍照的帧最终会在屏幕上显示
+            # 进而导致（显示的）图像变小（实际上是看到的范围变大了）
             frame.animate.set_height(13, about_point = 3 * DOWN), # set_height的值越大，图像就越小。
             FadeIn(fuller_rect),
             FadeIn(fs_rect),
