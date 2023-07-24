@@ -1441,6 +1441,7 @@ def get_plots(self):
     left_axes.to_edge(LEFT)
     all_axes[2].center().to_edge(RIGHT)    
 """
+# 思考下VGoup的使用场景
 class VGroup(VMobject):
     def __init__(self, *vmobjects: VMobject, **kwargs):
         super().__init__(**kwargs)
