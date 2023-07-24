@@ -5,7 +5,6 @@ from manim_imports_ext import *
 from _2023.clt.main import *
 from _2022.convolutions.discrete import *
 
-import scipy.stats
 
 class Convolutions(InteractiveScene):
     axes_config = dict(
