@@ -229,7 +229,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Initial samples
         self.repeated_samples(
-            plots, 5,
+            plots, 3,
             animate=False,
             time_between_samples=0.1,
             time_before_fade=0.5
@@ -244,7 +244,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         fuller_rect = FullScreenRectangle()
         fuller_rect.set_fill(GREY_E, 1)
-        fuller_rect.scale(3)
+        fuller_rect.scale(1.3)
 
         self.add(fuller_rect, fs_rect, *self.mobjects)
         self.wait()
