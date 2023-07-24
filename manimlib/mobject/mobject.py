@@ -402,6 +402,7 @@ class Mobject(object):
         # Remove list redundancies while preserving order
         return list(dict.fromkeys(ancestors))
 
+    # 注意观察，这里的mobjects是如何被处理的
     def add(self, *mobjects: Mobject) -> Self:
         if self in mobjects:
             raise Exception("Mobject cannot contain self")
