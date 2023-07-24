@@ -22,7 +22,18 @@ class ScreenRectangle(Rectangle):
             **kwargs
         )
 
+"""
+这里涉及到对frame的深入理解
+首先存在一个绝对空间，里面的所有Mobject都有绝对的尺寸
+frame是对这个绝对空间的一个裁剪
+假设，一个长方形的绝对尺寸是(8*16/9, 8)
+一个frame的绝对尺寸恰好也是是(8*16/9, 8)
+那么这个长方形就可以完全显示在frame中
+尽管显示器有大有小，但我们看到的都是长方形完全显示在frame中
 
+如果，将frame的绝对尺寸改为2*(8*16/9, 8)
+
+"""
 class FullScreenRectangle(ScreenRectangle):
     def __init__(
         self,
