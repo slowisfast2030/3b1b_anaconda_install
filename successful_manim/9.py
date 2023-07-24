@@ -262,9 +262,11 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
             graph_group[1].shift(SMALL_BUFF * UP)
 
         kw = dict(font_size=96)
+        # 左括号和右括号可以分别获得
         lp, rp = parens = Tex("()", **kw)
-        parens.stretch(1.5, 1)
+        parens.stretch(1.5, 1) # 沿着y轴方向拉伸1.5倍
         parens.match_height(graph_groups.target[0])
+        
         equation = VGroup(
             lp.copy(), graph_groups.target[0], rp.copy(),
             Tex("*", **kw),
