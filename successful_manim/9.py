@@ -110,6 +110,7 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         for n in range(n_repetitions):
             self.animate_samples(plots, **kwargs)
 
+    # 注意，这个函数模拟的是一次抽样的过程
     def animate_samples(
         self,
         plots,
