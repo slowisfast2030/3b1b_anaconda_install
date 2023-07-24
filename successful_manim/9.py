@@ -64,9 +64,10 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         # 2.在3b1b的视频代码库中搜索，看看他是怎么做的，吸取经验
         for axes in all_axes:
             axes.x_axis.add_numbers(font_size=16)
-            axes.y_axis.set_stroke(opacity=0.5)
+            axes.y_axis.set_stroke(opacity=0.5) # 对坐标轴进行美化
 
-        pdfs = self.get_pdfs()
+        
+        #pdfs = self.get_pdfs()
         graphs = VGroup(*(
             axes.get_graph(func).set_stroke(color)
             for axes, func, color in zip(
