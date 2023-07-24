@@ -37,6 +37,7 @@ class CameraFrame(Mobject):
         self.camera_location = OUT  # This will be updated by set_points
 
         self.set_points(np.array([ORIGIN, LEFT, RIGHT, DOWN, UP]))
+        # 设置了frame的宽和高
         self.set_width(frame_shape[0], stretch=True)
         self.set_height(frame_shape[1], stretch=True)
         self.move_to(center_point)
