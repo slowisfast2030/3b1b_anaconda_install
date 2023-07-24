@@ -1449,6 +1449,12 @@ class VGroup(VMobject):
         if vmobjects:
             self.uniforms.update(vmobjects[0].uniforms)
 
+    """
+    The __add__ function in Python is one of the magic methods that defines what happens 
+    when you use the addition operator (+) on two objects12. For example, if you have a class 
+    called A and you want to be able to add two instances of A together, 
+    you can implement the __add__ function in your class.
+    """
     def __add__(self, other: VMobject) -> Self:
         assert(isinstance(other, VMobject))
         return self.add(other)
