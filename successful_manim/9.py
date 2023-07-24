@@ -280,6 +280,7 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
         equation[:3].space_out_submobjects(0.9)
         equation[4:7].space_out_submobjects(0.9)
         equation.next_to(plots, UP, buff=1.5)
+        
         symbols = VGroup(*(
             mob for mob in equation
             if mob not in graph_groups.target
