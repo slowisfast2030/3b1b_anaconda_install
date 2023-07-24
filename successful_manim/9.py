@@ -121,6 +121,10 @@ class RepeatedSamplesFromContinuousDistributions(InteractiveScene):
         xy_samples = np.round(self.get_samples(), 2)
         sample_sum = sum(xy_samples)
         samples = [*xy_samples[:2], sample_sum]
+        print("~"*100)
+        print(xy_samples, sample_sum, samples)
+        # 产生一些随机数
+
         dots = Group()
         labels = VGroup()
         lines = VGroup()
