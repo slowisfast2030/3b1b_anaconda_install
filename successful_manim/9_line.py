@@ -237,12 +237,15 @@ class AddTwoGammaDistributions(RepeatedSamplesFromContinuousDistributions):
 
         # Graph equation
         frame = self.frame
+
         fs_rect = FullScreenRectangle()
-        fs_rect.set_stroke(GREY_B, 1)
+        fs_rect.set_stroke(RED_E, 1)
         fs_rect.set_fill(BLACK, 1)
+
         fuller_rect = FullScreenRectangle()
-        fuller_rect.set_fill(GREY_E, 1)
+        fuller_rect.set_fill(GREY_C, 1)
         fuller_rect.scale(3)
+
         self.add(fuller_rect, fs_rect, *self.mobjects)
         self.wait()
 
