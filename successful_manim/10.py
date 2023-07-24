@@ -242,6 +242,8 @@ class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
         plots[0][1].make_jagged()
         # self.add(plots)
 
+        # plots有3个plot
+        # 每一个plot都是一个Axes, 一个graph, 一个label
         thick_graphs = VGroup(*(
             plot[1].copy().set_stroke(width=10)
             for plot in plots
@@ -258,11 +260,11 @@ class ContinuousSampleAnnotations(SampleWedgePlusDoubleLump):
             )
 
         # Question
-        question = Text("What is this?")
-        question.move_to(plots[2][0].get_corner(UL)).shift(0.5 * RIGHT)
-        question.set_color(TEAL_A)
-        arrow = Arrow(question.get_bottom(), plots[2][1].pfp(0.25), buff=0.2)
-        arrow.set_color(TEAL_A)
+        # question = Text("What is this?")
+        # question.move_to(plots[2][0].get_corner(UL)).shift(0.5 * RIGHT)
+        # question.set_color(TEAL_A)
+        # arrow = Arrow(question.get_bottom(), plots[2][1].pfp(0.25), buff=0.2)
+        # arrow.set_color(TEAL_A)
 
-        self.play(FadeIn(question), GrowArrow(arrow))
+        # self.play(FadeIn(question), GrowArrow(arrow))
         self.wait()
