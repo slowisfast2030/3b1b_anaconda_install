@@ -1423,6 +1423,24 @@ class VMobject(Mobject):
         return [sw for sw in shader_wrappers if len(sw.vert_data) > 0]
 
 
+"""
+def get_axes(self):
+    return VGroup(*(
+        Axes(
+            (-5, 5), (0, 0.5, 0.25),
+            width=5.5,
+            height=2,
+        )
+        for x in range(3)
+    ))
+
+def get_plots(self):
+    all_axes = self.get_axes()
+    left_axes = all_axes[:2]
+    left_axes.arrange(DOWN, buff=1.5)
+    left_axes.to_edge(LEFT)
+    all_axes[2].center().to_edge(RIGHT)    
+"""
 class VGroup(VMobject):
     def __init__(self, *vmobjects: VMobject, **kwargs):
         super().__init__(**kwargs)
