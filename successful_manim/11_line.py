@@ -218,6 +218,9 @@ class ProbConvolutions(Convolutions):
     def construct(self):
         # Hit most of previous setup
         f_axes, g_axes, fg_axes, conv_axes = self.all_axes
+        # 如果加了wait，一开始就会出现4幅图
+        #self.wait()
+
         f_graph, g_graph, prod_graphs, conv_graph = self.f_graph, self.g_graph, self.prod_graphs, self.conv_graph
         f_label, g_label, fg_label, conv_label = self.f_label, self.g_label, self.fg_label, self.conv_label
         s_indicator = self.s_indicator
