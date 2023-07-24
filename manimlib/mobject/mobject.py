@@ -499,6 +499,12 @@ class Mobject(object):
         aligned_edge: Vect3 = ORIGIN,
         fill_rows_first: bool = True
     ) -> Self:
+        '''将子物件按表格方式排列
+
+        - ``n_rows``, ``n_cols`` : 行数、列数
+        - ``v_buff``, ``h_buff`` : 行距、列距
+        - ``aligned_edge`` : 对齐边缘
+        '''
         submobs = self.submobjects
         if n_rows is None and n_cols is None:
             n_rows = int(np.sqrt(len(submobs)))
