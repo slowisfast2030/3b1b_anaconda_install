@@ -35,7 +35,13 @@ class PrimeRace(InteractiveScene):
         self.add(labels)
 
         # Start the race
+        """
+        It takes two parameters, a and b, which are integers that define the range of interest. 
+        The function will return all prime numbers in the range [a, b), 
+        meaning that a is included but b is not.
+        """
         primes: list[int] = list(sympy.primerange(3, self.race_length))
+        print("*"*100, primes)
         team1 = VGroup()
         team3 = VGroup()
         teams = [team1, team3]
