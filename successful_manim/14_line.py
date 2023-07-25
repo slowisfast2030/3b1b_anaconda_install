@@ -84,16 +84,16 @@ class PrimeRace(InteractiveScene):
         # Last set
         curr = 30
         tups = [
-            (200, 10, linear, 1.25),
-            (len(blocks) - 100, 60, linear, 1.25),
+            (200, 5, linear, 1.25),
+            (len(blocks) - 100, 5, linear, 1.25),
             (len(blocks) - 1, 5, smooth, 0.8)
         ]
         print("*"*100, tups)
         """
         [
         (200, 10, <function linear at 0x13eb36160>, 1.25)
-        (138, 60, <function linear at 0x13eb36160>, 1.25)
-        (237, 5, <function smooth at 0x13eb361f0>, 0.8)
+        (138, 10, <function linear at 0x13eb36160>, 1.25)
+        (237, 10, <function smooth at 0x13eb361f0>, 0.8)
         ]
         """
 
@@ -101,6 +101,8 @@ class PrimeRace(InteractiveScene):
             frame.target = frame.generate_target()
             frame.target.scale(sf)
             frame.target.set_x(blocks[index].get_right()[0] + 1)
+            print("_"*100)
+            print(curr, index)
             self.play(
                 ShowIncreasingSubsets(VGroup(*blocks[curr:index])),
                 MoveToTarget(frame),
@@ -111,5 +113,6 @@ class PrimeRace(InteractiveScene):
 
         blocks = VGroup(*blocks)
         self.add(blocks)
-        self.play(frame.animate.set_height(8, about_point=blocks.get_right() + 2 * LEFT), run_time=3)
+        #self.play(frame.animate.set_height(8, about_point=blocks.get_right() + 2 * LEFT), run_time=3)
+        self.play(frame.animate.set_height(8, about_point=blocks.get_left()), run_time=3)
         self.wait()
