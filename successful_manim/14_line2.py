@@ -59,7 +59,7 @@ class RaceGraph(InteractiveScene):
 
         # Set blocking rectangle
         rect = FullScreenRectangle()
-        rect.set_fill(BLACK, 1)
+        rect.set_fill(GREY, 1) # 终于明白这个折线是如何逐渐显示的了，牛逼！！！
         rect.set_stroke(BLACK, 0)
         rect.match_x(axes.c2p(0, 0), LEFT)
 
