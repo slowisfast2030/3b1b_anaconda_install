@@ -53,7 +53,9 @@ class RaceGraph(InteractiveScene):
 
         self.add(axes)
         self.add(y_label)
+        # 可以一次性显示所有的图像
         #self.add(graph)
+        # self.wait(3)
 
         # Set blocking rectangle
         rect = FullScreenRectangle()
