@@ -53,7 +53,7 @@ class RaceGraph(InteractiveScene):
 
         self.add(axes)
         self.add(y_label)
-        self.add(graph)
+        #self.add(graph)
 
         # Set blocking rectangle
         rect = FullScreenRectangle()
@@ -92,14 +92,14 @@ class RaceGraph(InteractiveScene):
         )
 
         # Squish the graph
-        full_width = get_norm(axes.c2p(200, 0) - axes.c2p(0, 0))
-        origin = axes.c2p(0, 0)
+        # full_width = get_norm(axes.c2p(200, 0) - axes.c2p(0, 0))
+        # origin = axes.c2p(0, 0)
 
-        prime_label = Integer(primes[200])
-        prime_label.next_to(rect, LEFT, buff=0.7)
-        prime_label.to_edge(DOWN, buff=0.3)
-        prime_label.fix_in_frame()
-        self.add(prime_label)
+        # prime_label = Integer(primes[200])
+        # prime_label.next_to(rect, LEFT, buff=0.7)
+        # prime_label.to_edge(DOWN, buff=0.3)
+        # prime_label.fix_in_frame()
+        # self.add(prime_label)
 
         # def set_x_squish(x1, x2, **kwargs):
         #     group = VGroup(axes.x_axis, graph)
