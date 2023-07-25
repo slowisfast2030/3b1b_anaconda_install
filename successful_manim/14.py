@@ -102,7 +102,7 @@ class PrimeRace(InteractiveScene):
 
 # good
 class RaceGraph(InteractiveScene):
-    race_length = 26863
+    race_length = 1500
     y_range = (-4, 30, 2)
 
     def construct(self):
