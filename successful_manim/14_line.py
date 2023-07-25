@@ -6,7 +6,7 @@ import sympy
 
 # 无穷无尽的素数
 class PrimeRace(InteractiveScene):
-    race_length = 1500
+    race_length = 150
 
     def construct(self):
         ONE_COLOR = BLUE
@@ -69,14 +69,14 @@ class PrimeRace(InteractiveScene):
             self.play(FadeIn(block[0]), Write(block[1]))
 
         # Next sets
-        # frame = self.frame
-        # frame.target = frame.generate_target()
-        # frame.target.scale(1.75, about_edge=LEFT)
-        # self.play(
-        #     LaggedStartMap(
-        #         FadeIn, VGroup(*blocks[10:30]),
-        #         lag_ratio=0.9,
-        #     ),
-        #     MoveToTarget(frame, rate_func=rush_into),
-        #     run_time=12,
-        # )
+        frame = self.frame
+        frame.target = frame.generate_target()
+        frame.target.scale(1.75, about_edge=LEFT)
+        self.play(
+            LaggedStartMap(
+                FadeIn, VGroup(*blocks[10:30]),
+                lag_ratio=0.9,
+            ),
+            #MoveToTarget(frame, rate_func=rush_into),
+            run_time=12,
+        )
