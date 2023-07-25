@@ -979,7 +979,7 @@ class ExternalPatternEntry(WordleSceneWithAnalysis):
             self.pending_pattern.append(char)
         super().on_key_press(symbol, modifiers)
 
-
+# nice!
 class TitleCardScene(WordleScene):
     grid_height = 7
     words = ["three", "blues", "wonts"]
@@ -1080,7 +1080,7 @@ class AskWhatWorldeIs(TeacherStudentsScene):
         )
         self.wait(3)
 
-
+# nice!!!
 class IntroduceGame(WordleScene):
     secret_word = "brown"
     grid_center = 3.5 * LEFT
@@ -1274,7 +1274,7 @@ class InitialDemo(ExternalPatternEntry):
     ]
     # wordle_based_prior = True
 
-
+# nice!!!!!!
 class ShowTonsOfWords(Scene):
     def construct(self):
         words = get_word_list()
@@ -1305,7 +1305,7 @@ class FirstThoughtsTitleCard(TitleCardScene):
     words = ["first", "naive", "ideas"]
     secret_word = "start"
 
-
+# nice!!!
 class ChoosingBasedOnLetterFrequencies(IntroduceGame):
     def construct(self):
         # Reconfigure grid to be flat
@@ -1361,6 +1361,8 @@ class ChoosingBasedOnLetterFrequencies(IntroduceGame):
         freq_data.add_updater(lambda m: m)
         self.add(freq_data)
 
+        self.wait(3) #补充
+
     def add_letter(self, letter):
         super().add_letter(letter)
         self.update_freq_data_highlights()
@@ -1382,6 +1384,7 @@ class ChoosingBasedOnLetterFrequencies(IntroduceGame):
                 row.rect.set_stroke(width=0)
 
 
+# nice
 class ExampleGridColors(WordleScene):
     grid_center = ChoosingBasedOnLetterFrequencies.grid_center
     secret_word = "baker"
@@ -1408,7 +1411,7 @@ class ExampleGridColors(WordleScene):
 
         self.embed()
 
-
+# debug
 class PreviewGamePlay(WordleSceneWithAnalysis):
     n_games = 10
     pre_computed_first_guesses = [
@@ -1436,7 +1439,7 @@ class PreviewGamePlay(WordleSceneWithAnalysis):
 class UlteriorMotiveWrapper(VideoWrapper):
     title = "Ulterior motive: Lesson on entropy"
 
-
+# debug
 class IntroduceDistribution(WordleDistributions):
     secret_word = "brown"
     uniform_prior = True
@@ -1766,7 +1769,7 @@ class IntroduceDistribution(WordleDistributions):
         self.add(*trackers)
         return trackers
 
-
+# debug file not find
 class ButTheyreNotEquallyLikely(Scene):
     def construct(self):
         randy = Randolph()
@@ -1795,7 +1798,7 @@ class ButTheyreNotEquallyLikely(Scene):
         self.play(Blink(morty))
         self.wait()
 
-
+# nice
 class KeyIdea(Scene):
     def construct(self):
         title = Text("Key idea", font_size=72)
@@ -1816,7 +1819,7 @@ class KeyIdea(Scene):
         self.play(FlashAround(idea, run_time=2))
         self.wait()
 
-
+# nice!!! X号
 class ExpectedMatchesInsert(Scene):
     def construct(self):
         tex = OldTex(
@@ -1867,7 +1870,7 @@ class DescribeBit(TeacherStudentsScene):
         )
         self.wait(5)
 
-
+# very good
 class DefineInformation(Scene):
     def construct(self):
         # Spaces
@@ -2200,7 +2203,7 @@ class TwentyBitOverlay(Scene):
         self.play(Write(eq))
         self.wait()
 
-
+# ok
 class AddingBitsObservationOverlay(Scene):
     def construct(self):
         mystery = Square(side_length=0.5).get_grid(1, 5, buff=SMALL_BUFF)
@@ -2343,7 +2346,7 @@ class AskAboutPhysicsRelation(TeacherStudentsScene):
 
         return VGroup(labels, rects, pair)
 
-
+# nice
 class ContrastWearyAndSlate(WordleScene):
     def construct(self):
         grid = self.grid
@@ -2421,7 +2424,7 @@ class MaximumInsert(Scene):
         )
         self.wait()
 
-
+# debug
 class ShowEntropyCalculations(IntroduceDistribution):
     grid_height = 3.5
     grid_center = [-5.0, -1.0, 0]
@@ -2557,7 +2560,7 @@ class V2TitleCard(TitleCardScene):
     words = ["how-to", "prefer", "common", "words"]
     secret_word = "priors"
 
-
+# very good!!!
 class HowThePriorWorks(Scene):
     def construct(self):
         # Prepare columns
@@ -2809,7 +2812,11 @@ class HowThePriorWorks(Scene):
             bars.add(bar)
         return bars
 
-
+# very good!
+# 一个启发：可以读入所有的英文词汇，得到考研英语词汇的词频倒排表
+# 做出可视化过程
+# 非常nice!!!
+# 这就是创造性
 class ShowWordLikelihoods(Scene):
     title = "How likely is each word\\\\to be an answer?"
     n_shown = 20
