@@ -6,7 +6,7 @@ import sympy
 
 # 无穷无尽的素数
 class PrimeRace(InteractiveScene):
-    race_length = 150
+    race_length = 1500
 
     def construct(self):
         ONE_COLOR = BLUE
@@ -80,3 +80,36 @@ class PrimeRace(InteractiveScene):
             MoveToTarget(frame, rate_func=rush_into), # 这里需要进一步思考frame和frame中的mobject的区别
             run_time=12,
         )
+
+        # Last set
+        curr = 30
+        tups = [
+            (200, 10, linear, 1.25),
+            (len(blocks) - 100, 60, linear, 1.25),
+            (len(blocks) - 1, 5, smooth, 0.8)
+        ]
+        print("*"*100, tups)
+        """
+        [
+        (200, 10, <function linear at 0x13eb36160>, 1.25)
+        (138, 60, <function linear at 0x13eb36160>, 1.25)
+        (237, 5, <function smooth at 0x13eb361f0>, 0.8)
+        ]
+        """
+
+        for index, rt, func, sf in tups:
+            frame.target = frame.generate_target()
+            frame.target.scale(sf)
+            frame.target.set_x(blocks[index].get_right()[0] + 1)
+            self.play(
+                ShowIncreasingSubsets(VGroup(*blocks[curr:index])),
+                MoveToTarget(frame),
+                run_time=rt,
+                rate_func=func,
+            )
+            curr = index
+
+        blocks = VGroup(*blocks)
+        self.add(blocks)
+        self.play(frame.animate.set_height(8, about_point=blocks.get_right() + 2 * LEFT), run_time=3)
+        self.wait()
