@@ -2870,7 +2870,7 @@ class ShowWordLikelihoods(Scene):
         self.decs = decs
         self.word_mobs = word_mobs
 
-
+# nice!!!
 class SidewaysWordProbabilities(Scene):
     CONFIG = {"random_seed": 5}
 
@@ -2919,7 +2919,8 @@ class SidewaysWordProbabilities(Scene):
 class DistributionOverWord(ShowWordLikelihoods):
     CONFIG = {"random_seed": 2}
 
-
+# nice
+# 滚动字幕
 class LookThroughWindowsOfWords(Scene):
     def construct(self):
         # Copied from previous scene
@@ -2954,7 +2955,7 @@ class LookThroughWindowsOfWords(Scene):
         frame = self.camera.frame
         self.play(frame.animate.align_to(col4, DOWN), run_time=20)
 
-
+# nice
 class EntropyOfWordDistributionExample(WordleScene):
     grid_height = 4
     grid_center = 4.5 * LEFT
@@ -3201,7 +3202,7 @@ class WhatMakesWordleNice(TeacherStudentsScene):
         )
         self.wait(5)
 
-
+# 两个窗口
 class TwoInterpretationsWrapper(Scene):
     def construct(self):
         self.add(FullScreenRectangle())
@@ -3268,7 +3269,7 @@ class WordlePriorExample(WordleSceneWithAnalysis):
         "arise", "orate", "stare"
     ]
 
-
+# debug
 class HowToCombineEntropyAndProbability(FreqPriorExample):
     secret_word = "words"
 
@@ -3355,7 +3356,7 @@ class HowToCombineEntropyAndProbability(FreqPriorExample):
         )
         self.wait()
 
-
+# debug file not found
 class FirstThoughtsOnCombination(Scene):
     def construct(self):
         morty = Mortimer(height=2)
@@ -3434,7 +3435,7 @@ class FirstThoughtsOnCombination(Scene):
 
         self.embed()
 
-
+# debug file not find
 class EntropyToScoreData(Scene):
     def construct(self):
         # Axes
@@ -3544,7 +3545,7 @@ class LookTwoStepsAhead(WordleSceneWithAnalysis):
         "roast",
     ]
 
-
+# genius
 class HowLookTwoAheadWorks(Scene):
     prob_color = BLUE_D
     entropy_color = TEAL
@@ -3643,7 +3644,9 @@ class HowLookTwoAheadWorks(Scene):
                     arrow, guess2, h2_label, pattern_array2, prob_bars2,
                 )
                 self.add(group, second_ents)
-                self.wait(1 / self.camera.frame_rate, ignore_presenter_mode=True)
+                # 报错
+                #self.wait(1 / self.camera.frame_rate, ignore_presenter_mode=True)
+                self.wait()
                 if i in (0, 1) and j == 0:
                     self.wait(self.transition_time)
                 self.remove(group)
