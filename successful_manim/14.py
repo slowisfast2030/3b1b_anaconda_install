@@ -6,7 +6,7 @@ import sympy
 
 # 无穷无尽的素数
 class PrimeRace(InteractiveScene):
-    race_length = 26863
+    race_length = 2000
 
     def construct(self):
         ONE_COLOR = BLUE
