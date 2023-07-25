@@ -25,7 +25,7 @@ def get_ellipsis_vector(values, n_top_shown=3, n_bottom_shown=2, height=2):
     vector.set_height(3)
     return vector
 
-
+# genius
 class SumOfWaves(Scene):
     def construct(self):
         # Show single pure wave
@@ -141,8 +141,10 @@ class SumOfWaves(Scene):
             FadeIn(top_rect),
             FadeIn(top_axes),
             FadeIn(sum_label),
-            *(
-                Transform(wave.deepcopy(), comp_wave, remover=True)
+            *(  
+                # 报错
+                #Transform(wave.deepcopy(), comp_wave, remover=True)
+                Transform(wave.copy(), comp_wave, remover=True)
                 for wave in waves
             )
         )

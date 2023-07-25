@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
 import mpmath
 import sympy
 from manim_imports_ext import *
@@ -286,7 +289,7 @@ class PreviewFraming(TeacherStudentsScene):
         self.play(Blink(morty))
         self.wait(3)
 
-
+# genius
 class UnreasonableUsefulness(InteractiveScene):
     def construct(self):
         # Title
@@ -381,7 +384,7 @@ class UnreasonableUsefulness(InteractiveScene):
 
         zeta_spiril = ParametricCurve(
             lambda t: plane.n2p(complex(mpmath.zeta(complex(0.5, t)))),
-            t_range=(0, 42),
+            t_range=(0, 42, 1),
         )
         zeta_spiril.set_stroke([YELLOW, YELLOW, RED], 2)
 
@@ -415,7 +418,8 @@ class RiemannHypothesisMention(TeacherStudentsScene):
 class ZetaVideoWrapper(VideoWrapper):
     title = "From a previous video: Visualizing the Riemann Zeta Function"
 
-
+# genius
+# genius
 class ToyVsRH(InteractiveScene):
     def construct(self):
         # Screens
@@ -443,6 +447,7 @@ class ToyVsRH(InteractiveScene):
         self.add(titles)
 
         # Distance
+        # 硬核！！！直接通过贝塞尔曲线绘制曲线
         arrow = CubicBezier(
             screens[0].get_right() + SMALL_BUFF * RIGHT,
             screens[0].get_right() + 5 * RIGHT,
@@ -469,7 +474,7 @@ class ToyVsRH(InteractiveScene):
         self.play(FadeIn(or_is_it, 0.5 * DOWN))
         self.wait()
 
-
+# file not found
 class AnswerGuess(InteractiveScene):
     def construct(self):
         # Count total
@@ -598,6 +603,7 @@ class AnswerGuess(InteractiveScene):
         self.wait()
 
 
+# nice
 class GoThroughAllSubsets(InteractiveScene):
     n_searched = 2**6
     rate = 1
@@ -689,7 +695,7 @@ class GoThroughAllSubsetsFast(GoThroughAllSubsets):
     n_searched = 2**13
     rate = 120
 
-
+# genius
 class TwoThousandBinaryChoices(InteractiveScene):
     def construct(self):
         # Build parts
@@ -749,6 +755,7 @@ class TwoThousandBinaryChoices(InteractiveScene):
         self.wait()
 
 
+# nice 发光的箭头
 class AskAboutGuess(InteractiveScene):
     def construct(self):
         # Number line
