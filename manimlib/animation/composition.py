@@ -183,6 +183,15 @@ self.play(
         LaggedStartMap(FadeOut, lines[:2], **kw),
 )
 """
+"""
+self.play(
+        LaggedStartMap(
+            FadeIn, VGroup(*blocks[10:30]),
+            lag_ratio=0.9,
+        ),
+        run_time=12,
+)
+"""
 class LaggedStartMap(LaggedStart):
     '''统一控制 **动画类**、 ``mobjects``、 ``lag_ratio`` 的动画组'''
     def __init__(
