@@ -72,6 +72,7 @@ class RaceGraph(InteractiveScene):
 
         self.clear()
         self.add(graph, rect, axes.x_axis, axes.y_axis, y_label)
+        #self.add(rect, graph, axes.x_axis, axes.y_axis, y_label)
 
         #self.wait(5)
 
