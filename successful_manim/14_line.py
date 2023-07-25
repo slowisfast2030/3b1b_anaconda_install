@@ -6,7 +6,7 @@ import sympy
 
 # 无穷无尽的素数
 class PrimeRace(InteractiveScene):
-    race_length = 2000
+    race_length = 1500
 
     def construct(self):
         ONE_COLOR = BLUE
@@ -49,7 +49,7 @@ class PrimeRace(InteractiveScene):
         for prime in primes:
             index = int((prime % 4) == 3)
             square = Square(side_length=1)
-            square.set_fill(colors[index], 0.5)
+            square.set_fill(colors[index], 0.5) # 被3整除的质数，填充红色
             square.set_stroke(colors[index], 1.0)
             p_mob = Integer(prime)
             p_mob.set_max_width(0.8 * square.get_width())
@@ -59,7 +59,7 @@ class PrimeRace(InteractiveScene):
             blocks.append(block)
 
         for team, label in zip(teams, labels):
-            team.arrange(RIGHT, buff=0)
+            team.arrange(RIGHT, buff=0) # 有点小牛逼
             team.next_to(v_line, RIGHT, buff=SMALL_BUFF)
             team.match_y(label)
 
