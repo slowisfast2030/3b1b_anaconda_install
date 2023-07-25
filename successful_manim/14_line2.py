@@ -77,12 +77,12 @@ class RaceGraph(InteractiveScene):
         zoom_point = axes.c2p(0, 0)
         frame.set_height(3, about_point=zoom_point)
 
-        for x in range(10):
-            set_x_shift(x + 1)
+        # for x in range(10):
+        #     set_x_shift(x + 1)
 
-        for x in range(10, 30):
-            set_x_shift(x + 1, run_time = 6 / 20)
-            self.wait(6 / 20)
+        # for x in range(10, 30):
+        #     set_x_shift(x + 1, run_time = 6 / 20)
+        #     self.wait(6 / 20)
 
         # Next block
         set_x_shift(
