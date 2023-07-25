@@ -653,7 +653,14 @@ class WordleSceneWithAnalysis(WordleScene):
         # Word
         word_mob = Text(str(word), font="Consolas", font_size=font_size)
         index = np.argmin([c.get_height() for c in word_mob])
-        aligner = word_mob[index]
+        #print("_-"*100, index)
+        #print(word)
+        print(type(index))
+        # 这一行报错
+        # 报错的原因是index是一个numpy.int64类型的数据
+        # 而word_mob是一个VGroup类型的数据，所以不能直接用index来索引word_mob
+        #aligner = word_mob[index]
+        aligner = word_mob[int(index)]
         word_mob.shift(line.get_center() - aligner.get_bottom() + 0.5 * SMALL_BUFF * UP)
         word_mob.match_x(titles[0])
         row.add(word_mob)
@@ -688,6 +695,7 @@ class WordleSceneWithAnalysis(WordleScene):
         for mob, title in zip(row, titles):
             if mob is not word_mob:
                 mob.match_y(aligner, DOWN)
+                #pass # 新加
             mob.match_x(title)
 
         row.add(line)
