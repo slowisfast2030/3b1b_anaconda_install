@@ -314,7 +314,10 @@ class WordleScene(Scene):
         if not is_letter:
             super().on_key_press(symbol, modifiers)
 
-
+# bug已经fix
+"""
+源码中大部分都是正确的，只需要定位到最小问题，然后修复即可
+"""
 class WordleSceneWithAnalysis(WordleScene):
     grid_center = [-1.75, 1, 0]
     grid_height = 4.5
@@ -657,9 +660,12 @@ class WordleSceneWithAnalysis(WordleScene):
         #print(word)
         print(type(index))
         # 这一行报错
-        # 报错的原因是index是一个numpy.int64类型的数据
-        # 而word_mob是一个VGroup类型的数据，所以不能直接用index来索引word_mob
-        #aligner = word_mob[index]
+        # index是一个numpy.int64类型的数据
+        # 不能直接用index来索引word_mob
+        # aligner = word_mob[index]
+        """
+        找到最小问题
+        """
         aligner = word_mob[int(index)]
         word_mob.shift(line.get_center() - aligner.get_bottom() + 0.5 * SMALL_BUFF * UP)
         word_mob.match_x(titles[0])
