@@ -101,26 +101,26 @@ class RaceGraph(InteractiveScene):
         prime_label.fix_in_frame()
         self.add(prime_label)
 
-        def set_x_squish(x1, x2, **kwargs):
-            group = VGroup(axes.x_axis, graph)
-            self.add(group, rect)
+        # def set_x_squish(x1, x2, **kwargs):
+        #     group = VGroup(axes.x_axis, graph)
+        #     self.add(group, rect)
 
-            self.play(
-                UpdateFromAlphaFunc(
-                    group,
-                    lambda m, a: m.stretch(
-                        full_width / get_norm(axes.c2p(interpolate(x1, x2, a), 0) - origin),
-                        0,
-                        about_point=origin,
-                    ),
-                ),
-                UpdateFromAlphaFunc(
-                    prime_label,
-                    lambda m, a: m.set_value(
-                        primes[min(int(interpolate(x1, x2, a)), len(primes) - 1)]
-                    )
-                ),
-                **kwargs
-            )
+        #     self.play(
+        #         UpdateFromAlphaFunc(
+        #             group,
+        #             lambda m, a: m.stretch(
+        #                 full_width / get_norm(axes.c2p(interpolate(x1, x2, a), 0) - origin),
+        #                 0,
+        #                 about_point=origin,
+        #             ),
+        #         ),
+        #         UpdateFromAlphaFunc(
+        #             prime_label,
+        #             lambda m, a: m.set_value(
+        #                 primes[min(int(interpolate(x1, x2, a)), len(primes) - 1)]
+        #             )
+        #         ),
+        #         **kwargs
+        #     )
 
-        set_x_squish(200, len(primes) - 100, rate_func=linear, run_time=60)
+        # set_x_squish(200, len(primes) - 100, rate_func=linear, run_time=20)
