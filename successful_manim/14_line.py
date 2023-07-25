@@ -75,8 +75,8 @@ class PrimeRace(InteractiveScene):
         self.play(
             LaggedStartMap(
                 FadeIn, VGroup(*blocks[10:30]),
-                lag_ratio=0.9,
+                lag_ratio=0.9, # 将lag_ratio设置为0，所有的block同时出现
             ),
-            #MoveToTarget(frame, rate_func=rush_into),
+            MoveToTarget(frame, rate_func=rush_into),
             run_time=12,
         )
