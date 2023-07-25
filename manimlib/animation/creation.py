@@ -171,6 +171,14 @@ class Write(DrawBorderThenFill):
         return lag_ratio
 
 
+"""
+self.play(
+    ShowIncreasingSubsets(VGroup(*blocks[curr:index])),
+    MoveToTarget(frame),
+    run_time=rt,
+    rate_func=func,
+)
+"""
 class ShowIncreasingSubsets(Animation):
     def __init__(
         self,
