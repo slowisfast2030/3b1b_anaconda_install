@@ -77,6 +77,6 @@ class PrimeRace(InteractiveScene):
                 FadeIn, VGroup(*blocks[10:30]),
                 lag_ratio=0.9, # 将lag_ratio设置为0，所有的block同时出现
             ),
-            MoveToTarget(frame, rate_func=rush_into),
+            MoveToTarget(frame, rate_func=rush_into), # 这里需要进一步思考frame和frame中的mobject的区别
             run_time=12,
         )
