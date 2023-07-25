@@ -13,7 +13,7 @@ class RaceGraph(InteractiveScene):
         # Compute differences
         primes: list[int] = list(sympy.primerange(3, self.race_length))
         diffs = [0]
-        colors = [WHITE]
+        colors = [RED]
         y_max = self.y_range[1]
         for p in primes:
             diff = diffs[-1] + (p % 4 - 2)
