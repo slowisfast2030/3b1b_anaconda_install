@@ -3851,6 +3851,7 @@ class BestDoubleEntropies(Scene):
         # Out: 1.2229
 
 
+# nice
 class TripleComparisonFrame(Scene):
     def construct(self):
         self.add(FullScreenRectangle())
@@ -3874,9 +3875,10 @@ class TripleComparisonFrame(Scene):
 
         self.add(titles)
 
+        self.wait(3)
         self.embed()
 
-
+# very nice
 class InformationLimit(WordleScene):
     def construct(self):
         # Setup
@@ -4246,7 +4248,7 @@ class GenericWrapper(VideoWrapper):
 
 # Thumbnail
 
-
+# nice
 class Thumbnail(Scene):
     def construct(self):
         # Grid
@@ -4285,3 +4287,5 @@ class Thumbnail(Scene):
 
         self.rows = rows
         self.title = title
+
+        self.wait()
