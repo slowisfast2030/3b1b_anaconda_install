@@ -1768,7 +1768,7 @@ class ConvolutionTheoremDiagram(InteractiveScene):
         self.play(FlashAround(dot, buff=0, run_time=2, time_width=1))
         self.wait()
 
-# ❎ ✅
+# 叉号和对号
 class MultiplyBigNumbers(InteractiveScene):
     def construct(self):
         # Numbers
