@@ -73,6 +73,8 @@ class RaceGraph(InteractiveScene):
         self.clear()
         self.add(graph, rect, axes.x_axis, axes.y_axis, y_label)
 
+        #self.wait(5)
+
         # First blocks, total runtime should be 12
         frame = self.frame
         frame.save_state()
