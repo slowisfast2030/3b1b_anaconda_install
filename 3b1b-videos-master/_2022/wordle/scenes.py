@@ -808,8 +808,11 @@ class WordleDistributions(WordleScene):
         return label
 
     def get_bars(self, axes, values):
-        x_unit = axes.x_axis.unit_size
-        y_unit = axes.y_axis.unit_size
+        # 源码有变化，需要修改
+        # x_unit = axes.x_axis.unit_size
+        # y_unit = axes.y_axis.unit_size
+        x_unit = axes.x_axis.get_unit_size()
+        y_unit = axes.y_axis.get_unit_size()
         bars = Rectangle(width=x_unit, **self.bar_style).replicate(3**5)
 
         for x, bar, value in zip(it.count(), bars, values):
@@ -876,6 +879,14 @@ class WordleDistributions(WordleScene):
         row_copy.scale(0.25)
         ndp = len(tex[-1].split(".")[1])
         dec = DecimalNumber(0, num_decimal_places=ndp, font_size=font_size)
+        """
+        prob_label = self.get_dynamic_bar_label((
+                "p\\left(", "0000", "\\right)", "=",
+                "{" + "{:,}".format(num).replace(",", "{,}"), "\\over ",
+                "{:,}".format(denom).replace(",", "{,}") + "}", "=",
+                "0.0000",
+            ))
+        """
         result = VGroup(*Tex(*tex, font_size=font_size))
         row_copy.replace(result[1], dim_to_match=0)
         dec.replace(result[-1])
@@ -889,7 +900,9 @@ class WordleDistributions(WordleScene):
 
     def get_p_label(self, get_bar, max_y=1):
         poss_string = "{:,}".format(len(self.possibilities)).replace(",", "{,}")
-        strs = ["p\\left(", "00000", "\\right)", "="]
+        # 报错
+        #strs = ["p\\left(", "00000", "\\right)", "="]
+        strs = ["00000", "="]
         if self.show_fraction_in_p_label:
             strs.extend(["{" + poss_string, "\\over ", poss_string + "}", "=", ])
         strs.append("0.0000")
@@ -911,10 +924,18 @@ class WordleDistributions(WordleScene):
         return p_label
 
     def get_information_label(self, p_label, get_bar):
+        # 报错
+        # info_label = self.get_dynamic_bar_label(
+        #     (
+        #         "I\\left(", "00000", "\\right)", "=",
+        #         "\\log_2\\left(1 / p)", "=",
+        #         "0.00"
+        #     ),
+        # )
         info_label = self.get_dynamic_bar_label(
             (
-                "I\\left(", "00000", "\\right)", "=",
-                "\\log_2\\left(1 / p)", "=",
+                "=",
+                "=",
                 "0.00"
             ),
         )
@@ -1040,7 +1061,8 @@ class LessonTitleCard(Scene):
         self.play(title.animate.scale(1 / 1.5).to_edge(UP))
         self.wait()
 
-
+# 原来视频中的iphone是一张svg图片
+# 看来，svg和manim是可以很好的结合的
 class DrawPhone(Scene):
     def construct(self):
         morty = Mortimer().flip()
@@ -1425,7 +1447,8 @@ class ExampleGridColors(WordleScene):
 
         self.embed()
 
-# debug
+# bug已经fix
+# 就是上面的bug
 class PreviewGamePlay(WordleSceneWithAnalysis):
     n_games = 10
     pre_computed_first_guesses = [
@@ -1453,7 +1476,8 @@ class PreviewGamePlay(WordleSceneWithAnalysis):
 class UlteriorMotiveWrapper(VideoWrapper):
     title = "Ulterior motive: Lesson on entropy"
 
-# debug
+# bug已经fix
+# 连续解决了几个bug，比想象中简单
 class IntroduceDistribution(WordleDistributions):
     secret_word = "brown"
     uniform_prior = True
@@ -1496,11 +1520,16 @@ class IntroduceDistribution(WordleDistributions):
 
             num = match_label[0].get_value()
             denom = total_label[0].get_value()
+            # 报错
+            # prob_label = self.get_dynamic_bar_label((
+            #     "p\\left(", "0000", "\\right)", "=",
+            #     "{" + "{:,}".format(num).replace(",", "{,}"), "\\over ",
+            #     "{:,}".format(denom).replace(",", "{,}") + "}", "=",
+            #     "0.0000",
+            # ))
             prob_label = self.get_dynamic_bar_label((
-                "p\\left(", "0000", "\\right)", "=",
-                "{" + "{:,}".format(num).replace(",", "{,}"), "\\over ",
-                "{:,}".format(denom).replace(",", "{,}") + "}", "=",
-                "0.0000",
+                "=",
+                "0.0000"
             ))
             prob_label[-1].set_value(num / denom)
             prob_label.next_to(word_grid, UP)
@@ -1732,7 +1761,9 @@ class IntroduceDistribution(WordleDistributions):
             self.wait(note="Play around with distribution")
 
     def set_bars_to_values(self, bars, values, ent_rhs, run_time=3, added_anims=[]):
-        y_unit = self.axes.y_axis.unit_size
+        # 报错
+        #y_unit = self.axes.y_axis.unit_size
+        y_unit = self.axes.y_axis.get_unit_size()
         bars.generate_target()
         bar_template = bars[0].copy()
         entropy = entropy_of_distributions(np.array(values))
@@ -2438,7 +2469,9 @@ class MaximumInsert(Scene):
         )
         self.wait()
 
-# debug
+# bug已经fix
+# 只要将父类的bug修复就可以
+# very good
 class ShowEntropyCalculations(IntroduceDistribution):
     grid_height = 3.5
     grid_center = [-5.0, -1.0, 0]
