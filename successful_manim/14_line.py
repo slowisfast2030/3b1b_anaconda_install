@@ -6,7 +6,7 @@ import sympy
 
 # 无穷无尽的素数
 class PrimeRace(InteractiveScene):
-    race_length = 1500
+    race_length = 800
 
     def construct(self):
         ONE_COLOR = BLUE
@@ -84,19 +84,12 @@ class PrimeRace(InteractiveScene):
         # Last set
         curr = 30
         tups = [
-            (200, 5, linear, 1.25),
-            (len(blocks) - 100, 5, linear, 1.25),
+            (100, 5, linear, 1.25),
+            (len(blocks) - 50, 5, linear, 1.25),
             (len(blocks) - 1, 5, smooth, 0.8)
         ]
         print("*"*100, tups)
-        """
-        [
-        (200, 10, <function linear at 0x13eb36160>, 1.25)
-        (138, 10, <function linear at 0x13eb36160>, 1.25)
-        (237, 10, <function smooth at 0x13eb361f0>, 0.8)
-        ]
-        """
-
+        
         for index, rt, func, sf in tups:
             frame.target = frame.generate_target()
             frame.target.scale(sf)
