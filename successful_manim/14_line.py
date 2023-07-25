@@ -106,6 +106,7 @@ class PrimeRace(InteractiveScene):
 
         blocks = VGroup(*blocks)
         self.add(blocks)
-        #self.play(frame.animate.set_height(8, about_point=blocks.get_right() + 2 * LEFT), run_time=3)
-        self.play(frame.animate.set_height(8, about_point=blocks.get_left()), run_time=3)
+        # 这里的about_point是什么意思？
+        self.play(frame.animate.set_height(8, about_point=blocks.get_right() + 2 * LEFT), run_time=3)
+        # self.play(frame.animate.set_height(8, about_point=blocks.get_left()), run_time=3)
         self.wait()
