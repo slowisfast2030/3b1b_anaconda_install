@@ -1634,12 +1634,15 @@ class Mobject(object):
         )
 
     def match_width(self, mobject: Mobject, **kwargs) -> Self:
+        '''将自己的宽度与 ``mobject`` 匹配'''
         return self.match_dim_size(mobject, 0, **kwargs)
 
     def match_height(self, mobject: Mobject, **kwargs) -> Self:
+        '''将自己的高度与 ``mobject`` 匹配'''
         return self.match_dim_size(mobject, 1, **kwargs)
 
     def match_depth(self, mobject: Mobject, **kwargs) -> Self:
+        '''将自己的深度与 ``mobject`` 匹配（这里的深度指 z 轴方向的宽度）'''
         return self.match_dim_size(mobject, 2, **kwargs)
 
     def match_coord(
@@ -1659,6 +1662,7 @@ class Mobject(object):
         mobject_or_point: Mobject | Vect3,
         direction: Vect3 = ORIGIN
     ) -> Self:
+        '''移动到与 ``mobject`` 相同的 x 轴坐标'''
         return self.match_coord(mobject_or_point, 0, direction)
 
     def match_y(
@@ -1666,6 +1670,7 @@ class Mobject(object):
         mobject_or_point: Mobject | Vect3,
         direction: Vect3 = ORIGIN
     ) -> Self:
+        '''移动到与 ``mobject`` 相同的 y 轴坐标'''
         return self.match_coord(mobject_or_point, 1, direction)
 
     def match_z(
@@ -1673,6 +1678,7 @@ class Mobject(object):
         mobject_or_point: Mobject | Vect3,
         direction: Vect3 = ORIGIN
     ) -> Self:
+        '''移动到与 ``mobject`` 相同的 z 轴坐标'''
         return self.match_coord(mobject_or_point, 2, direction)
 
     def align_to(
@@ -1688,6 +1694,12 @@ class Mobject(object):
         mob1.align_to(mob2, alignment_vect = RIGHT) moves mob1
         horizontally so that it's center is directly above/below
         the center of mob2
+        """
+        """
+        对齐
+        
+        例子：
+        ``mob1.align_to(mob2, UP)`` 会将 ``mob1`` 垂直移动，顶部与 ``mob2`` 的上边缘对齐
         """
         if isinstance(mobject_or_point, Mobject):
             point = mobject_or_point.get_bounding_box_point(direction)
