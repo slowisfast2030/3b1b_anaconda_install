@@ -66,7 +66,7 @@ if TYPE_CHECKING:
     from typing import Tuple, Sequence, Callable
     from manimlib.typing import ManimColor, Vect3
 
-
+# 对号
 class Checkmark(TexTextFromPresetString):
     tex: str = R"\ding{51}"
     default_color: ManimColor = GREEN

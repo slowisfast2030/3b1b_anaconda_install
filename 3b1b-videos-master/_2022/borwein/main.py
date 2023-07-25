@@ -31,7 +31,7 @@ def get_sinc_tex(k=1):
 
 
 def get_multi_sinc_integral(ks=[1], dots_at=None, rhs="", insertion=""):
-    result = OldTex(
+    result = Tex(
         R"\int_{-\infty}^\infty",
         insertion,
         *(
@@ -318,12 +318,11 @@ class ShowIntegrals(InteractiveScene):
             "dx"
         ).to_corner(UL)
 
-
+# nice
 class SineLimit(InteractiveScene):
     def construct(self):
         axes = Axes((-4, 4), (-2, 2), width=14, height=7, axis_config=dict(tick_size=0))
-        #radius = axes.x_axis.unit_size
-        radius = 1
+        radius = axes.x_axis.get_unit_size()
         circle = Circle(radius=radius)
         circle.move_to(axes.get_origin())
         circle.set_stroke(WHITE, 1)
@@ -408,7 +407,7 @@ class SineLimit(InteractiveScene):
             alpha_tracker.animate.set_value(1 / 30).set_anim_args(run_time=1)
         )
 
-
+# nice
 class WriteFullIntegrals(InteractiveScene):
     def construct(self):
         # Integrals
@@ -421,9 +420,9 @@ class WriteFullIntegrals(InteractiveScene):
         for inter in ints:
             inter[-1].scale(1.5, about_edge=LEFT)
 
-        q_marks = OldTex("???", color=RED).scale(2)
+        q_marks = Tex("???", color=RED).scale(2)
         q_marks.next_to(ints[-1], RIGHT, buff=MED_LARGE_BUFF)
-        correction = OldTex("- 0.0000000000462...").scale(1.25)
+        correction = Tex("- 0.0000000000462...").scale(1.25)
         correction.next_to(ints[-1], RIGHT, SMALL_BUFF)
 
         # Show all
@@ -444,7 +443,7 @@ class WriteFullIntegrals(InteractiveScene):
         self.play(FadeTransform(q_marks, correction))
         self.wait()
 
-
+# nice
 class WriteMoreFullIntegrals(InteractiveScene):
     def construct(self):
         # Unfortunate copy pasting, but I'm in a rush
@@ -468,11 +467,13 @@ class WriteMoreFullIntegrals(InteractiveScene):
         ds = ValueTracker(0)
         frame.add_updater(lambda m, dt: m.scale(1 + 0.04 * dt, about_edge=UL).shift(ds.get_value() * dt * DOWN))
 
-        key_map = dict(
-            (ints[n][-1].get_tex(), ints[n + 1][-1].get_tex())
-            for n in range(-4, -1, 1)
-        )
-
+        # 报错    
+        # key_map = dict(
+        #     (ints[n][-1].get_tex(), ints[n + 1][-1].get_tex())
+        #     for n in range(-4, -1, 1)
+        # )
+        key_map = dict()
+                       
         self.add(ints[0], ds)
         for i in range(len(ints) - 1):
             self.wait()
@@ -697,7 +698,7 @@ class WriteTwoCosPattern(InteractiveScene):
         self.play(Write(rhs))
         self.wait()
 
-
+# genius
 class MovingAverages(InteractiveScene):
     sample_resolution = 1000
     graph_color = BLUE
@@ -889,8 +890,8 @@ class MovingAverages(InteractiveScene):
     def show_moving_average(self, top_axes, low_axes, low_graph, k):
         rs = self.rect_scalar
         window = Rectangle(
-            width=top_axes.x_axis.unit_size / k,
-            height=top_axes.y_axis.unit_size * 1.5,
+            width=top_axes.x_axis.get_unit_size() / k,
+            height=top_axes.y_axis.get_unit_size() * 1.5,
         )
         window.set_stroke(width=0)
         window.set_fill(self.window_color, self.window_opacity)
@@ -988,7 +989,7 @@ class LongerTimescaleMovingAverages(MovingAverages):
             result += fR" - \cdots - 1 / {2 * n + 1}"
         return result
 
-
+# nice
 class ShowReciprocalSums(InteractiveScene):
     max_shown_parts = 10
 
@@ -1010,7 +1011,9 @@ class ShowReciprocalSums(InteractiveScene):
 
         self.add(equations[0])
         for eq1, eq2 in zip(equations, equations[1:]):
-            self.play(TransformMatchingTex(eq1.copy(), eq2, fade_transform_mismatches=True))
+            # 报错
+            #self.play(TransformMatchingTex(eq1.copy(), eq2, fade_transform_mismatches=True))
+            self.play(TransformMatchingTex(eq1.copy(), eq2))
             self.wait()
         self.wait()
 
@@ -1030,7 +1033,7 @@ class ShowReciprocalSums(InteractiveScene):
             tally += 1 / (2 * k + 1)
         tex_parts[-1] = "="
         tex_parts.append(R"{:.06f}\dots".format(tally))
-        return OldTex(*tex_parts)
+        return Tex(*tex_parts)
 
 
 class LongerReciprocalSums(ShowReciprocalSums):
@@ -1155,7 +1158,7 @@ class MoreGeneralFact(InteractiveScene):
         )
         self.wait()
 
-
+# nice
 class WaysToCombineFunctions(InteractiveScene):
     def construct(self):
         # Axes
@@ -1219,7 +1222,7 @@ class WaysToCombineFunctions(InteractiveScene):
             self.wait()
             self.play(*map(FadeOut, [graph, label, word]))
 
-
+# genius
 class ReplaceXWithPiX(InteractiveScene):
     def construct(self):
         # Setup graphs
@@ -1326,7 +1329,7 @@ class FourierProblemSolvingSchematic(InteractiveScene):
     def construct(self):
         pass
 
-
+# excellent
 class WhatWeNeedToShow(InteractiveScene):
     def construct(self):
         # Title
@@ -1585,7 +1588,7 @@ class WhatWeNeedToShow(InteractiveScene):
         )
         self.wait()
 
-
+# genius
 class ConvolutionTheoremDiagram(InteractiveScene):
     def construct(self):
         # Axes
@@ -1719,8 +1722,8 @@ class ConvolutionTheoremDiagram(InteractiveScene):
         ))
 
         # Show convolution
-        x_unit = right_axes[1].x_axis.unit_size
-        y_unit = right_axes[1].y_axis.unit_size
+        x_unit = right_axes[1].x_axis.get_unit_size()
+        y_unit = right_axes[1].y_axis.get_unit_size()
         rect = Rectangle(width=x_unit / 2, height=2 * y_unit)
         rect.set_stroke(YELLOW, 1)
         rect.set_fill(YELLOW, 0)
@@ -1765,7 +1768,7 @@ class ConvolutionTheoremDiagram(InteractiveScene):
         self.play(FlashAround(dot, buff=0, run_time=2, time_width=1))
         self.wait()
 
-
+# ❎ ✅
 class MultiplyBigNumbers(InteractiveScene):
     def construct(self):
         # Numbers

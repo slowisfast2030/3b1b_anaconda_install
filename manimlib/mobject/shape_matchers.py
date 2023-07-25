@@ -85,7 +85,7 @@ class BackgroundRectangle(SurroundingRectangle):
     def get_fill_color(self) -> Color:
         return Color(self.color)
 
-
+# 叉号
 class Cross(VGroup):
     def __init__(
         self,
