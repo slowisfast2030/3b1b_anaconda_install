@@ -381,6 +381,13 @@ class CoordinateSystem(ABC):
         # 同一个Mobject可以有多个updater
         if not jagged:
             graph.add_updater(lambda g: g.make_smooth(approx=True))
+        
+        """
+        如何深入理解add_updater?
+        视频是由多个帧组成的，每一个帧内有多个对象需要渲染
+        如果对象没有添加任何updater，那么它的渲染是固定的
+        如果对象添加了updater，那么它的渲染是动态的，即每一帧的时候都需要重新计算
+        """
         return graph
 
     def get_graph_label(
