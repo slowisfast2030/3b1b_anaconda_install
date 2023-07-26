@@ -95,6 +95,9 @@ class CoordinateSystem(ABC):
         return self.point_to_coords(point)
 
     def get_origin(self) -> Vect3:
+        """
+        获取坐标原点的绝对坐标
+        """
         return self.c2p(*[0] * self.dimension)
 
     @abstractmethod
@@ -106,15 +109,27 @@ class CoordinateSystem(ABC):
         raise Exception("Not implemented")
 
     def get_axis(self, index: int) -> NumberLine:
+        """
+        获取第index维的坐标轴Mobject
+        """
         return self.get_axes()[index]
 
     def get_x_axis(self) -> NumberLine:
+        """
+        获取x轴Mobject
+        """
         return self.get_axis(0)
 
     def get_y_axis(self) -> NumberLine:
+        """
+        获取y轴Mobject
+        """
         return self.get_axis(1)
 
     def get_z_axis(self) -> NumberLine:
+        """
+        获取z轴Mobject
+        """
         return self.get_axis(2)
 
     def get_x_axis_label(
@@ -151,10 +166,10 @@ class CoordinateSystem(ABC):
     ) -> Tex:
         label = Tex(label_tex)
         label.next_to(
-            axis.get_edge_center(edge), direction,
+            axis.get_edge_center(edge), direction, # 研究
             buff=buff
         )
-        label.shift_onto_screen(buff=MED_SMALL_BUFF)
+        label.shift_onto_screen(buff=MED_SMALL_BUFF) # 研究
         return label
 
     def get_axis_labels(
@@ -162,6 +177,9 @@ class CoordinateSystem(ABC):
         x_label_tex: str = "x",
         y_label_tex: str = "y"
     ) -> VGroup:
+        """
+        获取x轴和y轴的标签
+        """
         self.axis_labels = VGroup(
             self.get_x_axis_label(x_label_tex),
             self.get_y_axis_label(y_label_tex),
@@ -182,9 +200,15 @@ class CoordinateSystem(ABC):
         return line
 
     def get_v_line(self, point: Vect3, **kwargs):
+        """
+        传入一个点，过该点做铅垂线
+        """
         return self.get_line_from_axis_to_point(0, point, **kwargs)
 
     def get_h_line(self, point: Vect3, **kwargs):
+        """
+        传入一个点，过该点做水平线
+        """
         return self.get_line_from_axis_to_point(1, point, **kwargs)
 
     # Useful for graphing
