@@ -75,12 +75,15 @@ class CoordinateSystem(ABC):
     @abstractmethod
     def coords_to_point(self, *coords: float | VectN) -> Vect3 | Vect3Array:
         """
-        抽象方法，需在子类中实现
+        输入坐标轴上的二维坐标，返回场景中的绝对三维坐标，(x, y) --> array[x', y', 0]
         """
         raise Exception("Not implemented")
 
     @abstractmethod
     def point_to_coords(self, point: Vect3 | Vect3Array) -> tuple[float | VectN, ...]:
+        """
+        输入场景中的绝对三维坐标，返回坐标轴上的二维坐标，array[x, y, 0] --> (x', y')
+        """
         raise Exception("Not implemented")
 
     def c2p(self, *coords: float) -> Vect3 | Vect3Array:
