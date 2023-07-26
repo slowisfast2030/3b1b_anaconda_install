@@ -58,6 +58,9 @@ class ParametricCurve(VMobject):
         return np.array(self.t_func(t))
 
     def init_points(self):
+        """
+        获取参数曲线，本质在于获得曲线上的点，然后用折线连接起来
+        """
         t_min, t_max, step = self.t_range
 
         jumps = np.array(self.discontinuities)
