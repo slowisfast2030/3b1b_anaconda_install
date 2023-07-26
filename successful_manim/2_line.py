@@ -36,6 +36,16 @@ class VariableC(InteractiveScene):
         rects.set_fill(opacity=0.75)
         self.add(rects)
 
+
+        height_vect = axes.i2gp(3, curve) - axes.c2p(3, 0)
+        rect = Rectangle(
+            width=axes.x_axis.n2p(3+0.5)[0] - axes.x_axis.n2p(3)[0],
+            height=get_norm(height_vect),
+        )
+        rect.set_stroke(RED, 3)
+        rect.move_to(axes.c2p(3, 0), DL)
+        self.add(rect)
+
         self.wait()
 
         # axes.bind_graph_to_func(curve, lambda x: self.func(x, 1))
