@@ -94,7 +94,8 @@ class Surface(Mobject):
             ).reshape((nu * nv, dim))
             for grid in (uv_grid, uv_plus_du, uv_plus_dv)
         ]
-        self.set_points(points)
+        # surface类也调用了set_points()方法，而这个方法是和贝塞尔曲线有关
+        self.set_points(points) 
         self.data["normal"] = normalize_along_axis(cross(
             (du_points - points) / self.epsilon,
             (dv_points - points) / self.epsilon,

@@ -206,6 +206,11 @@ class Mobject(object):
 
     @affects_data
     def set_points(self, points: Vect3Array | list[Vect3]) -> Self:
+        """
+        设置anchor和handle
+
+        VMobject是由一段段贝塞尔曲线拼接起来的
+        """
         self.resize_points(len(points), resize_func=resize_preserving_order)
         self.data["point"][:] = points
         return self
