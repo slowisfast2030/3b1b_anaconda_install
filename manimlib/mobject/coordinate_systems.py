@@ -481,6 +481,10 @@ class CoordinateSystem(ABC):
         line.move_to(self.input_to_graph_point(x, graph))
         return line
 
+    """
+    colors = (BLUE_E, BLUE_D, TEAL_D, TEAL_E)
+    rects = axes.get_riemann_rectangles(curve, dx=0.2, colors=colors)
+    """
     def get_riemann_rectangles(
         self,
         graph: ParametricCurve,

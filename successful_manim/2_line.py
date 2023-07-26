@@ -15,7 +15,7 @@ class VariableC(InteractiveScene):
         axes = self.get_axes()
         self.add(axes)
 
-        curve = axes.get_graph(lambda x: self.func(x, 1))
+        curve = axes.get_graph(lambda x: self.func(x, 0.5))
         curve.set_stroke(RED, 3)
         self.add(curve)
 
@@ -33,8 +33,11 @@ class VariableC(InteractiveScene):
             dot = Dot(point)
             self.add(dot)
 
-        sp = axes.get_scatterplot(3, 1)
-        self.add(sp)
+        colors = (BLUE_E, BLUE_D, TEAL_D, TEAL_E)
+        rects = axes.get_riemann_rectangles(curve, dx=0.2, colors=colors)
+        rects.set_stroke(WHITE, 1)
+        rects.set_fill(opacity=0.75)
+        self.add(rects)
 
         self.wait()
 
