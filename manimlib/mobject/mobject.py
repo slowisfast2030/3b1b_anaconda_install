@@ -1256,6 +1256,7 @@ class Mobject(object):
         aligned_edge: Vect3 = ORIGIN,
         coor_mask: Vect3 = np.array([1, 1, 1])
     ) -> Self:
+        '''移动到 ``point_or_mobject`` 的位置'''
         if isinstance(point_or_mobject, Mobject):
             target = point_or_mobject.get_bounding_box_point(aligned_edge)
         else:
