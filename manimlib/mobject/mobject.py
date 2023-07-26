@@ -1059,6 +1059,9 @@ class Mobject(object):
     # Positioning methods
 
     def center(self) -> Self:
+        """
+        放到画面中心
+        """
         self.shift(-self.get_center())
         return self
 
