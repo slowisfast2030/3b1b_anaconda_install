@@ -266,6 +266,16 @@ class CoordinateSystem(ABC):
         function: Callable[[float], Vect3],
         **kwargs
     ) -> ParametricCurve:
+        """
+        传入一个参数方程，绘制一条参数曲线
+        """
+        """
+        需要注意，这里的function(t)返回的是一个三维向量
+        计算顺序如下：
+        function(t)
+        function(t)[:dim]
+        *function(t)[:dim]
+        """
         dim = self.dimension
         graph = ParametricCurve(
             lambda t: self.coords_to_point(*function(t)[:dim]),
@@ -279,9 +289,10 @@ class CoordinateSystem(ABC):
         x: float,
         graph: ParametricCurve
     ) -> Vect3 | None:
+        """
+        传入一个x和一条参数曲线，返回图像上以该x为横坐标的点的绝对坐标
+        """
         if hasattr(graph, "underlying_function"):
-            #print("linus"*10)
-            #print(graph.underlying_function)
             return self.coords_to_point(x, graph.underlying_function(x))
         else:
             alpha = binary_search(
@@ -545,8 +556,15 @@ class Axes(VGroup, CoordinateSystem):
 
     def coords_to_point(self, *coords: float | VectN) -> Vect3 | Vect3Array:
         """输入坐标轴上的二维坐标，返回场景的绝对坐标，(x, y) -> array([x', y', 0])"""
+        # 坐标原点的绝对坐标
         origin = self.x_axis.number_to_point(0)
         # 从向量合成的角度去理解
+        """
+        1.计算point在x轴的投影向量
+        2.计算point在y轴的投影向量
+        3.将两个投影向量相加，得到point相对于origin的向量
+        4. origin + point相对于origin的向量 = point的绝对坐标
+        """
         return origin + sum(
             axis.number_to_point(coord) - origin # x or y向量
             for axis, coord in zip(self.get_axes(), coords)
