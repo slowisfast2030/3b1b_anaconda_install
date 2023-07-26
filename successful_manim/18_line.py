@@ -146,6 +146,10 @@ class ShowIntegrals(InteractiveScene):
         # 这是啥？注释掉似乎没影响
         #globals().update(locals()) 
 
+        print("\n", "*"*100)
+        print(axes.i2gp(-get_x(), graph))
+        # [-7.39555588 -0.58333333  0.        ]
+
         dots.add_updater(lambda d: d[0].move_to(axes.i2gp(-get_x(), graph)))
         dots.add_updater(lambda d: d[1].move_to(axes.i2gp(get_x(), graph)))
         # 下面一行注释掉，似乎对效果没影响

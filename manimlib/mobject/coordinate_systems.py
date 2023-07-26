@@ -234,6 +234,9 @@ class CoordinateSystem(ABC):
         """
         Alias for input_to_graph_point
         """
+        """
+        给定横坐标，返回图像上的点
+        """
         return self.input_to_graph_point(x, graph)
 
     def bind_graph_to_func(
