@@ -14,6 +14,27 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
 
 
+"""
+注意这个函数：输入是一维，输出是三维
+def parametric_function(t: float) -> Vect3:
+    return self.c2p(t, function(t))
+
+graph = ParametricCurve(
+    parametric_function,
+    t_range=tuple(t_range),
+    **kwargs
+)
+"""
+"""
+Callable[[float], Sequence[float]] is a type annotation that indicates a callable object 
+that takes a float as an argument and returns a sequence of floats.
+
+the following function is compatible with the type Callable[[float], Sequence[float]]:
+
+def square_and_cube(x: float) -> Sequence[float]:
+    return [x**2, x**3]
+
+"""
 class ParametricCurve(VMobject):
     "参数曲线"
     def __init__(
