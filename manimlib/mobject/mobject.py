@@ -291,7 +291,7 @@ class Mobject(object):
     def get_bounding_box(self) -> Vect3Array:
         '''获取物件的长方体包围框（碰撞箱）
         
-        包含三个点，分别为左下，中心，右上
+        包含三个点，分别为（后）左下，中心，（前）右上
         '''
         if self.needs_new_bounding_box:
             self.bounding_box[:] = self.compute_bounding_box()
