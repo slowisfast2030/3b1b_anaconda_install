@@ -140,7 +140,7 @@ class ShowIntegrals(InteractiveScene):
         lim = OldTex(R"\lim_{x \to 0} {\sin(x) \over x} = 1")
         lim.move_to(zero_eq, LEFT)
 
-        x_tracker = ValueTracker(2.5 * PI)
+        x_tracker = ValueTracker(8 * PI)
         get_x = x_tracker.get_value
         dots = GlowDot().replicate(2)
         # 这是啥？注释掉似乎没影响
