@@ -153,11 +153,12 @@ class ShowIntegrals(InteractiveScene):
 
         self.play(Write(zero_eq), FadeIn(hole, scale=0.35))
         self.wait()
-        self.play(FadeTransform(zero_eq, lim))
+        # 第一个参数会fade
+        self.play(FadeTransform(zero_eq, lim)) 
         self.add(dots)
         self.play(
             x_tracker.animate.set_value(0).set_anim_args(run_time=2),
-            UpdateFromAlphaFunc(dots, lambda m, a: m.set_opacity(a)),
+            #UpdateFromAlphaFunc(dots, lambda m, a: m.set_opacity(a)), # 注释掉似乎没影响
         )
         self.wait()
         self.play(FadeOut(dots), FadeOut(hole), FadeOut(lim))
