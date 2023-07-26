@@ -536,7 +536,8 @@ class CoordinateSystem(ABC):
             )
             # 矩形在x轴上方还是下方
             rect.positive = height_vect[1] > 0
-            # 需要深刻理解move_to函数
+            # 如果矩形在x轴上方，那么矩形的左下角和self.c2p(x0, 0)重合
+            # 如果矩形在x轴下方，那么矩形的左上角和self.c2p(x0, 0)重合
             rect.move_to(self.c2p(x0, 0), DL if rect.positive else UL)
             rects.append(rect)
         
