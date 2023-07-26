@@ -4,9 +4,7 @@ sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3
 from manim_imports_ext import *
 from _2023.clt.main import *
 
-# /Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/_2023/gauss_int/herschel.py
 
-# ok
 class VariableC(InteractiveScene):
     c_values = [1.0, 0.5, -1.0, -0.7, -0.5, 0.25, -0.2, -0.4, -0.9, -0.1, 0.5, 0.3, 0.1]
 
@@ -51,7 +49,6 @@ class VariableC(InteractiveScene):
 
    
     def get_axes(self):
-        # 这里的坐标和宽高的关系是什么？
         axes = Axes(
             (-1, 5), (0, 4),
             width=6, height=4,
