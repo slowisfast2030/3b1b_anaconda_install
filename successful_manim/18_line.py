@@ -140,14 +140,16 @@ class ShowIntegrals(InteractiveScene):
         lim = OldTex(R"\lim_{x \to 0} {\sin(x) \over x} = 1")
         lim.move_to(zero_eq, LEFT)
 
-        x_tracker = ValueTracker(1.5 * PI)
+        x_tracker = ValueTracker(2.5 * PI)
         get_x = x_tracker.get_value
         dots = GlowDot().replicate(2)
-        globals().update(locals()) # 这是啥？
+        # 这是啥？注释掉似乎没影响
+        #globals().update(locals()) 
 
         dots.add_updater(lambda d: d[0].move_to(axes.i2gp(-get_x(), graph)))
         dots.add_updater(lambda d: d[1].move_to(axes.i2gp(get_x(), graph)))
-        dots.update()
+        # 下面一行注释掉，似乎对效果没影响
+        #dots.update()
 
         self.play(Write(zero_eq), FadeIn(hole, scale=0.35))
         self.wait()
