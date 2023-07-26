@@ -731,6 +731,7 @@ class VMobject(Mobject):
         self.make_smooth(approx=True, recurse=recurse)
         return self
 
+    # 使曲线变为折现
     def make_jagged(self, recurse=True) -> Self:
         for submob in self.get_family(recurse):
             submob.change_anchor_mode("jagged")
