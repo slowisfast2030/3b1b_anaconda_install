@@ -43,6 +43,15 @@ EPSILON = 1e-8
 DEFAULT_X_RANGE = (-8.0, 8.0, 1.0)
 DEFAULT_Y_RANGE = (-4.0, 4.0, 1.0)
 
+"""
+        CoordinateSystem
+              
+             Axes
+
+    ThreeDAxes   NumberPlane
+
+                 ComplexPlane
+"""
 
 class CoordinateSystem(ABC):
     """
@@ -187,6 +196,8 @@ class CoordinateSystem(ABC):
         def parametric_function(t: float) -> Vect3:
             return self.c2p(t, function(t))
 
+        # 这里给出了ParametricCurve类的实例化方法
+        # 何谓参数方程
         graph = ParametricCurve(
             parametric_function,
             t_range=tuple(t_range),
