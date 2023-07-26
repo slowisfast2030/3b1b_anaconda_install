@@ -280,7 +280,8 @@ class VMobject(Mobject):
             "stroke_background": self.stroke_behind,
             "shading": self.get_shading(),
         }
-
+    
+    # 将自身的样式与传入的vmobject的样式匹配
     def match_style(self, vmobject: VMobject, recurse: bool = True) -> Self:
         self.set_style(**vmobject.get_style(), recurse=False)
         if recurse:
