@@ -563,8 +563,21 @@ class Line(TipableVMobject):
         """
         Return projection of a point onto the line
         """
+        """
+        获取点在直线上的投影点
+        """
         unit_vect = self.get_unit_vector()
         start = self.get_start()
+        """
+        np.dot(point - start, unit_vect)：
+        (start, point)向量和unit_vect之间的点积，几何意义是(start, point)向量在unit_vect方向上的投影长度
+
+        start + np.dot(point - start, unit_vect) * unit_vect：
+        (start, point)向量在unit_vect方向上的投影向量
+
+        start + np.dot(point - start, unit_vect) * unit_vect：
+        投影点
+        """
         return start + np.dot(point - start, unit_vect) * unit_vect
 
     def get_slope(self) -> float:
