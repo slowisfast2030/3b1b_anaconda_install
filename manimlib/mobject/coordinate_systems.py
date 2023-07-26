@@ -220,6 +220,17 @@ class CoordinateSystem(ABC):
         x_range: Sequence[float] | None = None,
         **kwargs
     ) -> ParametricCurve:
+        """
+        绘制函数图像，并自动移动到坐标轴的相对位置，使用``ParametricCurve``类
+        - ``x_range=[x_min, x_max, dx]`` : 图像定义域
+        """
+
+        """
+        一个问题：哪里可以看出移到了坐标轴的相对位置？
+
+        def parametric_function(t: float) -> Vect3:
+            return self.c2p(t, function(t))
+        """
         x_range = x_range or self.x_range
         t_range = np.ones(3) # array([1., 1., 1.])
         t_range[:len(x_range)] = x_range
@@ -230,7 +241,7 @@ class CoordinateSystem(ABC):
         tick frequency: 刻度频率
         sample frequency: 采样频率
         """
-        t_range[2] /= self.num_sampled_graph_points_per_tick
+        t_range[2] /= self.num_sampled_graph_points_per_tick # 1/5 = 0.2，即每单位刻度上采样5个点
 
         def parametric_function(t: float) -> Vect3:
             return self.c2p(t, function(t))
