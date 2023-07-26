@@ -25,7 +25,10 @@ class VariableC(InteractiveScene):
         
         label = axes.get_graph_label(curve)
         self.add(label)
-        
+
+        sp = axes.get_scatterplot(3, 1)
+        self.add(sp)
+
         self.wait()
 
         # axes.bind_graph_to_func(curve, lambda x: self.func(x, 1))

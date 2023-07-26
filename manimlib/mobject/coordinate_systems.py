@@ -421,9 +421,11 @@ class CoordinateSystem(ABC):
         return label
 
     def get_v_line_to_graph(self, x: float, graph: ParametricCurve, **kwargs):
+        '''以 x 为横坐标作铅垂线并与函数图像相交'''
         return self.get_v_line(self.i2gp(x, graph), **kwargs)
 
     def get_h_line_to_graph(self, x: float, graph: ParametricCurve, **kwargs):
+        '''以 x 为纵坐标~~（为什么不用 y 呢）~~作水平线并与函数图像相交'''
         return self.get_h_line(self.i2gp(x, graph), **kwargs)
 
     def get_scatterplot(self,
@@ -439,6 +441,7 @@ class CoordinateSystem(ABC):
         graph: ParametricCurve,
         dx: float = EPSILON
     ) -> float:
+        '''获取横坐标为 x 的点处切线的倾斜角'''
         p0 = self.input_to_graph_point(x, graph)
         p1 = self.input_to_graph_point(x + dx, graph)
         return angle_of_vector(p1 - p0)
@@ -449,6 +452,7 @@ class CoordinateSystem(ABC):
         graph: ParametricCurve,
         **kwargs
     ) -> float:
+        '''获取横坐标为 x 的点处切线的斜率'''
         return np.tan(self.angle_of_tangent(x, graph, **kwargs))
 
     def get_tangent_line(
@@ -458,6 +462,8 @@ class CoordinateSystem(ABC):
         length: float = 5,
         line_func: Type[T] = Line
     ) -> T:
+        '''绘制横坐标为 x 的点处的切线，返回一个 Line Mobject'''
+        # 思路巧妙
         line = line_func(LEFT, RIGHT)
         line.set_width(length)
         line.rotate(self.angle_of_tangent(x, graph))
@@ -478,6 +484,12 @@ class CoordinateSystem(ABC):
         stroke_background: bool = True,
         show_signed_area: bool = True
     ) -> VGroup:
+        '''
+        绘制一系列黎曼矩形填充图像下方的区域
+
+        - ``x_range = [x_min, x_max, dx]`` 可以指定范围，其中 ``dx`` 为分割精度
+        - ``input_sample_type`` 指定矩形的左上角、上边缘中心、右上角抵在图像上
+        '''
         if x_range is None:
             x_range = self.x_range[:2]
         if dx is None:
