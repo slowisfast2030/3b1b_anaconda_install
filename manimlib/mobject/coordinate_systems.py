@@ -69,6 +69,7 @@ class CoordinateSystem(ABC):
     ):
         self.x_range = x_range
         self.y_range = y_range
+        # 这个属性是干嘛的？
         self.num_sampled_graph_points_per_tick = num_sampled_graph_points_per_tick
 
     @abstractmethod
