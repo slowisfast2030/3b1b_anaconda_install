@@ -289,12 +289,19 @@ class Mobject(object):
         return len(self.get_points()) > 0
 
     def get_bounding_box(self) -> Vect3Array:
+        '''获取物件的长方体包围框（碰撞箱）
+        
+        包含三个点，分别为左下，中心，右上
+        '''
         if self.needs_new_bounding_box:
             self.bounding_box[:] = self.compute_bounding_box()
             self.needs_new_bounding_box = False
         return self.bounding_box
 
     def compute_bounding_box(self) -> Vect3Array:
+        """
+        计算长方体的包围框
+        """
         all_points = np.vstack([
             self.get_points(),
             *(
@@ -310,6 +317,8 @@ class Mobject(object):
             mins = all_points.min(0)
             maxs = all_points.max(0)
             mids = (mins + maxs) / 2
+            # print("~"*100)
+            # print(all_points)
             return np.array([mins, mids, maxs])
 
     def refresh_bounding_box(
@@ -1569,7 +1578,16 @@ class Mobject(object):
     def get_nadir(self) -> Vect3:
         return self.get_edge_center(IN)
 
+    """
+    这里需要建立一个概念：
+    任何一个mobject都是一个点集
+    而这些点集都被框定在一个长方体内
+    我们可以获得这个长方体的3个顶点：左下，中心，右上
+    """
     def length_over_dim(self, dim: int) -> float:
+        """
+        在dim维的长度
+        """
         bb = self.get_bounding_box()
         return abs((bb[2] - bb[0])[dim])
 
@@ -1577,6 +1595,9 @@ class Mobject(object):
         return self.length_over_dim(0)
 
     def get_height(self) -> float:
+        """
+        获取物体的高度
+        """
         return self.length_over_dim(1)
 
     def get_depth(self) -> float:

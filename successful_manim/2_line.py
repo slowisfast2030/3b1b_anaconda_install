@@ -26,6 +26,13 @@ class VariableC(InteractiveScene):
         label = axes.get_graph_label(curve)
         self.add(label)
 
+        bb = label.get_bounding_box()
+        print("*"*100)
+        print(bb)
+        for point in bb:
+            dot = Dot(point)
+            self.add(dot)
+
         sp = axes.get_scatterplot(3, 1)
         self.add(sp)
 
