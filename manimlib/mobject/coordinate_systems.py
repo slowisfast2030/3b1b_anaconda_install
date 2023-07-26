@@ -192,6 +192,10 @@ class CoordinateSystem(ABC):
             t_range=tuple(t_range),
             **kwargs
         )
+
+        # ParametricCurve类的源码中没有定义underlying_function属性
+        # 但是这个函数为ParametricCurve类的实例添加了underlying_function属性
+        # 进一步思考：为何不在ParametricCurve类中定义underlying_function属性呢？
         graph.underlying_function = function
         graph.x_range = x_range
         return graph
