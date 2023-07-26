@@ -230,6 +230,9 @@ class CoordinateSystem(ABC):
             else:
                 return None
 
+    """
+    dots.add_updater(lambda d: d[0].move_to(axes.i2gp(get_x(), graph)))
+    """
     def i2gp(self, x: float, graph: ParametricCurve) -> Vect3 | None:
         """
         Alias for input_to_graph_point
