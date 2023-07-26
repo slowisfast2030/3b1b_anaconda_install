@@ -22,7 +22,10 @@ class VariableC(InteractiveScene):
 
         # 需要深入研究下函数实现
         axes.bind_graph_to_func(curve, lambda x: self.func(x, 0.5))
-
+        
+        label = axes.get_graph_label(curve)
+        self.add(label)
+        
         self.wait()
 
         # axes.bind_graph_to_func(curve, lambda x: self.func(x, 1))

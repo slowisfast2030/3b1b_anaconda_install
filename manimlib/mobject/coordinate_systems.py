@@ -391,6 +391,9 @@ class CoordinateSystem(ABC):
         buff: float = MED_SMALL_BUFF,
         color: ManimColor | None = None
     ) -> Tex | Mobject:
+        """
+        给函数图像标上文本标签
+        """
         if isinstance(label, str):
             label = Tex(label)
         if color is None:
