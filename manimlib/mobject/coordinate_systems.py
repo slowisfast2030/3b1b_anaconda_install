@@ -737,6 +737,7 @@ class ThreeDAxes(Axes):
 
 
 class NumberPlane(Axes):
+    '''带有网格线的二维坐标系'''
     default_axis_config: dict = dict(
         stroke_color=WHITE,
         stroke_width=2,
@@ -834,10 +835,12 @@ class NumberPlane(Axes):
         return self.axes
 
     def get_vector(self, coords: Iterable[float], **kwargs) -> Arrow:
+        '''输入一个二维坐标，绘制一个【从坐标轴原点到该点的向量】'''
         kwargs["buff"] = 0
         return Arrow(self.c2p(0, 0), self.c2p(*coords), **kwargs)
 
     def prepare_for_nonlinear_transform(self, num_inserted_curves: int = 50) -> Self:
+        '''将坐标系的每一条线进行分割，以适配即将施加的非线性变换'''
         for mob in self.family_members_with_points():
             num_curves = mob.get_num_curves()
             if num_inserted_curves > num_curves:

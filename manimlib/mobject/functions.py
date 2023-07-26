@@ -15,6 +15,7 @@ if TYPE_CHECKING:
 
 
 class ParametricCurve(VMobject):
+    "参数曲线"
     def __init__(
         self,
         t_func: Callable[[float], Sequence[float] | Vect3],
