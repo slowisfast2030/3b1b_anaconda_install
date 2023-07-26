@@ -221,11 +221,15 @@ class CoordinateSystem(ABC):
         **kwargs
     ) -> ParametricCurve:
         x_range = x_range or self.x_range
-        t_range = np.ones(3)
+        t_range = np.ones(3) # array([1., 1., 1.])
         t_range[:len(x_range)] = x_range
         # For axes, the third coordinate of x_range indicates
         # tick frequency.  But for functions, it indicates a
         # sample frequency
+        """
+        tick frequency: 刻度频率
+        sample frequency: 采样频率
+        """
         t_range[2] /= self.num_sampled_graph_points_per_tick
 
         def parametric_function(t: float) -> Vect3:
