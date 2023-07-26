@@ -328,6 +328,12 @@ class CoordinateSystem(ABC):
         """
         return self.input_to_graph_point(x, graph)
 
+    """
+    curve = axes.get_graph(lambda x: self.func(x, 1))
+    axes.bind_graph_to_func(curve, lambda x: self.func(x, get_c()))
+
+    视觉效果是：随着get_c()的变化，curve的图像也在变化
+    """
     def bind_graph_to_func(
         self,
         graph: VMobject,
@@ -338,6 +344,16 @@ class CoordinateSystem(ABC):
         """
         Use for graphing functions which might change over time, or change with
         conditions
+        """
+        """
+        graph本身是由点构成的
+        传入了func，就可以得到新的一系列点
+        进而可以绘制新的graph
+
+        如果func是固定的，那么graph也是固定的
+        然而，如果func中有一个参数可以变化，那么graph也会随参数变化而变化
+
+        这才是这个函数的正确使用方法
         """
         x_values = np.array([self.x_axis.p2n(p) for p in graph.get_points()])
 
