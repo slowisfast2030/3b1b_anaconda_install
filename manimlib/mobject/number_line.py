@@ -188,6 +188,7 @@ class NumberLine(Line):
         font_size: int = 24,
         **kwargs
     ) -> VGroup:
+        '''给数轴标上数字'''
         if x_values is None:
             x_values = self.get_tick_range()
 
