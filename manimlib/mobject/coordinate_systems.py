@@ -40,10 +40,12 @@ if TYPE_CHECKING:
 
 
 EPSILON = 1e-8
-DEFAULT_X_RANGE = (-8.0, 8.0, 1.0)
-DEFAULT_Y_RANGE = (-4.0, 4.0, 1.0)
+DEFAULT_X_RANGE = (-8.0, 8.0, 1.0) 
+DEFAULT_Y_RANGE = (-4.0, 4.0, 1.0) # 默认的frame_height为8.0
 
 """
+类继承关系：
+
         CoordinateSystem
               
              Axes
