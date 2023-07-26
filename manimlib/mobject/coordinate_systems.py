@@ -494,6 +494,7 @@ class Axes(VGroup, CoordinateSystem):
         return axis
 
     def coords_to_point(self, *coords: float | VectN) -> Vect3 | Vect3Array:
+        """输入坐标轴上的二维坐标，返回场景的绝对坐标，(x, y) -> array([x', y', 0])"""
         origin = self.x_axis.number_to_point(0)
         return origin + sum(
             axis.number_to_point(coord) - origin
@@ -501,6 +502,7 @@ class Axes(VGroup, CoordinateSystem):
         )
 
     def point_to_coords(self, point: Vect3 | Vect3Array) -> tuple[float | VectN, ...]:
+        """输入场景的绝对坐标，返回坐标轴上的二维坐标，array([x, y, 0]) -> (x', y')"""
         return tuple([
             axis.point_to_number(point)
             for axis in self.get_axes()
