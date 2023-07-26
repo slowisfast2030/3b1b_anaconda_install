@@ -39,7 +39,7 @@ if TYPE_CHECKING:
     T = TypeVar("T", bound=Mobject)
 
 
-EPSILON = 1e-8
+EPSILON = 1e-8 # 这个极小值是为了获得一个增量，可以用于计算切线
 DEFAULT_X_RANGE = (-8.0, 8.0, 1.0) 
 DEFAULT_Y_RANGE = (-4.0, 4.0, 1.0) # 默认的frame_height为8.0
 
