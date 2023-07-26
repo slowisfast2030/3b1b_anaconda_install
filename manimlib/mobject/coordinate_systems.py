@@ -411,6 +411,11 @@ class CoordinateSystem(ABC):
             # whose y value is in bounds
             max_y = FRAME_Y_RADIUS - label.get_height()
             max_x = FRAME_X_RADIUS - label.get_width()
+            # print("_"*100)
+            # print(label.get_height(), label.get_width())
+            # print(self.x_range)
+            # print(np.arange(*self.x_range)[::-1])
+
             for x0 in np.arange(*self.x_range)[::-1]:
                 pt = self.i2gp(x0, graph)
                 if abs(pt[0]) < max_x and abs(pt[1]) < max_y:
@@ -418,9 +423,12 @@ class CoordinateSystem(ABC):
                     break
             if x is None:
                 x = self.x_range[1]
+        # print(x)
 
         point = self.input_to_graph_point(x, graph)
         angle = self.angle_of_tangent(x, graph)
+        # print(point, angle)
+
         normal = rotate_vector(RIGHT, angle + 90 * DEGREES)
         if normal[1] < 0:
             normal *= -1
