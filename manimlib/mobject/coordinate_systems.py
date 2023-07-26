@@ -542,7 +542,7 @@ class CoordinateSystem(ABC):
             rects.append(rect)
         
         result = VGroup(*rects)
-        # 大为震惊
+        # 大为震惊，可以为submobject设置渐变色
         result.set_submobject_colors_by_gradient(*colors)
         result.set_style(
             stroke_width=stroke_width,
