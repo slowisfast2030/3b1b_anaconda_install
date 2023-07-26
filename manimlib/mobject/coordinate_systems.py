@@ -71,6 +71,9 @@ class CoordinateSystem(ABC):
 
     @abstractmethod
     def coords_to_point(self, *coords: float | VectN) -> Vect3 | Vect3Array:
+        """
+        抽象方法，需在子类中实现
+        """
         raise Exception("Not implemented")
 
     @abstractmethod
