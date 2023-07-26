@@ -355,7 +355,12 @@ class CoordinateSystem(ABC):
 
         这才是这个函数的正确使用方法
         """
+        # graph.get_points(): 获取graph的点（贝塞尔点），三维绝对坐标
+        # self.x_axis.p2n(p): 将三维绝对坐标转换为x轴上的坐标
+        # 这一步主要是想得到原先graph在x轴上的取值范围，方法会有很多
+        # 特别需要注意的是graph.get_points()获得的是二维贝塞尔曲线的点集，包含曲线的首尾两个点
         x_values = np.array([self.x_axis.p2n(p) for p in graph.get_points()])
+        #print("+"*100, "\n", x_values)
 
         def get_graph_points():
             xs = x_values
@@ -364,8 +369,12 @@ class CoordinateSystem(ABC):
                 ep = 1e-6
                 added_xs = it.chain(*((d - ep, d + ep) for d in ds))
                 xs[:] = sorted([*x_values, *added_xs])[:len(x_values)]
+                #print("all is well"*10)
+            # 注意，这里的xs是列表，func(xs)也是列表
+            # self.c2p(xs, func(xs))返回的是一个三维向量的列表，点集
             return self.c2p(xs, func(xs))
 
+        #print("-"*100, "\n", get_graph_points())
         graph.add_updater(
             lambda g: g.set_points_as_corners(get_graph_points())
         )
