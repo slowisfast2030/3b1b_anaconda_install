@@ -501,7 +501,7 @@ class Axes(VGroup, CoordinateSystem):
         origin = self.x_axis.number_to_point(0)
         # 从向量合成的角度去理解
         return origin + sum(
-            axis.number_to_point(coord) - origin
+            axis.number_to_point(coord) - origin # x or y向量
             for axis, coord in zip(self.get_axes(), coords)
         )
 
