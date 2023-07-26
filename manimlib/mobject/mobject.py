@@ -1251,7 +1251,10 @@ class Mobject(object):
         return self
 
     """
+    矩形的左下角和axes.c2p(3, 0)重合
+    ```
     rect.move_to(axes.c2p(3, 0), DL)
+    ```
     当rect移动到some point的时候
     究竟是rect的哪一个点移动到了some point呢
     """
