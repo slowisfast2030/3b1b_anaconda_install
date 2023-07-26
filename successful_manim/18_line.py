@@ -66,9 +66,15 @@ class ShowIntegrals(InteractiveScene):
 
         graph = axes.get_graph(sinc, color=BLUE)
         graph.set_stroke(width=3)
-        points = graph.get_anchors()
+        
+        # 二阶贝塞尔曲线，每一段两个anchor，一个handle
+        points = graph.get_anchors() 
+        for point in points:
+            dot = Dot(point, radius=0.03, fill_color=WHITE)
+            self.add(dot)
+
         right_sinc = VMobject().set_points_smoothly(points[len(points) // 2:])
-        left_sinc = VMobject().set_points_smoothly(points[:len(points) // 2]).reverse_points()
+        left_sinc = VMobject().set_points_smoothly(points[:len(points) // 2+1]).reverse_points()
         VGroup(left_sinc, right_sinc).match_style(graph).make_jagged()
 
         func_label = Tex(R"{\sin(x) \over x}")
