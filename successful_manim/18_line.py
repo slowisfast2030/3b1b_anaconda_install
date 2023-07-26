@@ -74,7 +74,8 @@ class ShowIntegrals(InteractiveScene):
             dot = Dot(point, radius=0.03, fill_color=WHITE)
             vg.add(dot)
 
-        self.play(Write(vg))
+        #self.play(Write(vg))
+        self.add(vg)
 
         right_sinc = VMobject().set_points_smoothly(points[len(points) // 2:])
         left_sinc = VMobject().set_points_smoothly(points[:len(points) // 2+1]).reverse_points()
@@ -91,6 +92,72 @@ class ShowIntegrals(InteractiveScene):
         )
         self.add(graph)
         self.wait()
+
+        # Discuss sinc function?
+        sinc_label = OldTex(R"\text{sinc}(x)")
+        sinc_label.next_to(func_label, UR, buff=LARGE_BUFF)
+        arrow = Arrow(func_label, sinc_label)
+
+        one_over_x_graph = axes.get_graph(lambda x: 1 / x, x_range=(0.1, 8 * PI))
+        one_over_x_graph.set_stroke(YELLOW, 2)
+        one_over_x_label = OldTex("1 / x")
+        one_over_x_label.next_to(axes.i2gp(1, one_over_x_graph), RIGHT)
+        sine_wave = axes.get_graph(np.sin, x_range=(0, 8 * PI)).set_stroke(TEAL, 3)
+        half_sinc = axes.get_graph(sinc, x_range=(0, 8 * PI)).set_stroke(BLUE, 3)
+
+        self.play(
+            GrowArrow(arrow),
+            FadeIn(sinc_label, UR)
+        )
+        self.wait()
+
+        self.play(
+            ShowCreation(sine_wave, run_time=2),
+            graph.animate.set_stroke(width=1, opacity=0.5)
+        )
+        self.wait()
+        self.play(
+            ShowCreation(one_over_x_graph),
+            FadeIn(one_over_x_label),
+            Transform(sine_wave, half_sinc),
+        )
+        self.wait()
+        self.play(
+            FadeOut(one_over_x_graph),
+            FadeOut(one_over_x_label),
+            FadeOut(sine_wave),
+            graph.animate.set_stroke(width=3, opacity=1),
+        )
+
+        # At 0
+        hole = Dot()
+        hole.set_stroke(BLUE, 2)
+        hole.set_fill(BLACK, 1)
+        hole.move_to(axes.c2p(0, 1))
+
+        zero_eq = OldTex(R"{\sin(0) \over 0} = ???")
+        zero_eq.next_to(hole, UR)
+        lim = OldTex(R"\lim_{x \to 0} {\sin(x) \over x} = 1")
+        lim.move_to(zero_eq, LEFT)
+        x_tracker = ValueTracker(1.5 * PI)
+        get_x = x_tracker.get_value
+        dots = GlowDot().replicate(2)
+        globals().update(locals())
+        dots.add_updater(lambda d: d[0].move_to(axes.i2gp(-get_x(), graph)))
+        dots.add_updater(lambda d: d[1].move_to(axes.i2gp(get_x(), graph)))
+        dots.update()
+
+        self.play(Write(zero_eq), FadeIn(hole, scale=0.35))
+        self.wait()
+        self.play(FadeTransform(zero_eq, lim))
+        self.add(dots)
+        self.play(
+            x_tracker.animate.set_value(0).set_anim_args(run_time=2),
+            UpdateFromAlphaFunc(dots, lambda m, a: m.set_opacity(a)),
+        )
+        self.wait()
+        self.play(FadeOut(dots), FadeOut(hole), FadeOut(lim))
+        self.play(FadeOut(arrow), FadeOut(sinc_label))
 
     def get_axes(self,
                  x_range=(-10 * PI, 10 * PI, PI),
