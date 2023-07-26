@@ -68,10 +68,13 @@ class ShowIntegrals(InteractiveScene):
         graph.set_stroke(width=3)
         
         # 二阶贝塞尔曲线，每一段两个anchor，一个handle
-        points = graph.get_anchors() 
-        for point in points:
+        points = graph.get_anchors()
+        vg = VGroup() 
+        for point in points[::-1]:
             dot = Dot(point, radius=0.03, fill_color=WHITE)
-            self.add(dot)
+            vg.add(dot)
+
+        self.play(Write(vg))
 
         right_sinc = VMobject().set_points_smoothly(points[len(points) // 2:])
         left_sinc = VMobject().set_points_smoothly(points[:len(points) // 2+1]).reverse_points()

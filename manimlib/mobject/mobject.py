@@ -223,6 +223,10 @@ class Mobject(object):
 
     @affects_family_data
     def reverse_points(self) -> Self:
+        """
+        两条曲线即使形状完全一样，意味着构成曲线的点集是一样的
+        但是，点集顺序和倒序，会影响一些动作
+        """
         for mob in self.get_family():
             mob.data = mob.data[::-1]
         return self
