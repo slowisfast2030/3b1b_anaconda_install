@@ -215,6 +215,8 @@ class CoordinateSystem(ABC):
         graph: ParametricCurve
     ) -> Vect3 | None:
         if hasattr(graph, "underlying_function"):
+            #print("linus"*10)
+            #print(graph.underlying_function)
             return self.coords_to_point(x, graph.underlying_function(x))
         else:
             alpha = binary_search(
