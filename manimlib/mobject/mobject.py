@@ -302,6 +302,12 @@ class Mobject(object):
         """
         计算长方体的包围框
         """
+        """
+        获取构成mobject的所有点集
+        取
+        points.min(0)
+        points.max(0)
+        """
         all_points = np.vstack([
             self.get_points(),
             *(
@@ -317,8 +323,6 @@ class Mobject(object):
             mins = all_points.min(0)
             maxs = all_points.max(0)
             mids = (mins + maxs) / 2
-            # print("~"*100)
-            # print(all_points)
             return np.array([mins, mids, maxs])
 
     def refresh_bounding_box(
