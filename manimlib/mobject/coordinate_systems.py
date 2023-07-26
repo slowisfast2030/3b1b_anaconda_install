@@ -196,6 +196,7 @@ class CoordinateSystem(ABC):
     ) -> T:
         axis = self.get_axis(index)
         # axis.get_projection(point)：point到坐标轴上的投影
+        # 基本的向量知识
         line = line_func(axis.get_projection(point), point)
         line.set_stroke(color, stroke_width)
         return line
