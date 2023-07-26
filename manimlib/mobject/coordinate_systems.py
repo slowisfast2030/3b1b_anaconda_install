@@ -369,7 +369,7 @@ class CoordinateSystem(ABC):
                 ep = 1e-6
                 added_xs = it.chain(*((d - ep, d + ep) for d in ds))
                 xs[:] = sorted([*x_values, *added_xs])[:len(x_values)]
-                #print("all is well"*10)
+                
             # 注意，这里的xs是列表，func(xs)也是列表
             # self.c2p(xs, func(xs))返回的是一个三维向量的列表，点集
             return self.c2p(xs, func(xs))
