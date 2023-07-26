@@ -692,6 +692,7 @@ class ThreeDAxes(Axes):
             ),
             length=depth,
         )
+        # 对于rotate函数的理解还不到位
         self.z_axis.rotate(-PI / 2, UP, about_point=ORIGIN)
         self.z_axis.rotate(
             angle_of_vector(z_normal), OUT,

@@ -917,6 +917,12 @@ class VMobject(Mobject):
 
     """
     self.y_axis.rotate(90 * DEGREES, about_point=ORIGIN)
+    
+    self.z_axis.rotate(-PI / 2, UP, about_point=ORIGIN)
+    self.z_axis.rotate(
+        angle_of_vector(z_normal), OUT,
+        about_point=ORIGIN
+    )
     """
     def rotate(
         self,
