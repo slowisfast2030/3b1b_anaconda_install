@@ -17,7 +17,6 @@ class VariableC(InteractiveScene):
         curve.set_stroke(RED, 3)
         self.add(curve)
 
-
         # 需要深入研究下函数实现
         axes.bind_graph_to_func(curve, lambda x: self.func(x, 0.5))
         
