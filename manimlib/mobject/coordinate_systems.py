@@ -239,6 +239,14 @@ class CoordinateSystem(ABC):
         """
         """
         给定横坐标，返回图像上的点
+        这里的x就是坐标轴的横坐标
+
+        在manim中，有两种坐标系：
+        1.axes中的坐标
+        2.绝对坐标
+
+        这里的x就是axes中的横坐标
+        返回的绝对坐标（三维，第三维为0）
         """
         return self.input_to_graph_point(x, graph)
 
