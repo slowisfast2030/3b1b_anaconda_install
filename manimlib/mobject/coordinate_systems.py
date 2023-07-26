@@ -655,6 +655,7 @@ class Axes(VGroup, CoordinateSystem):
         excluding: Iterable[float] = [0],
         **kwargs
     ) -> VGroup:
+        '''给坐标轴标上数字'''
         axes = self.get_axes()
         self.coordinate_labels = VGroup()
         for axis, values in zip(axes, [x_values, y_values]):
