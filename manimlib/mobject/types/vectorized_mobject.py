@@ -915,6 +915,9 @@ class VMobject(Mobject):
         self.get_unit_normal()
         return self
 
+    """
+    self.y_axis.rotate(90 * DEGREES, about_point=ORIGIN)
+    """
     def rotate(
         self,
         angle: float,
