@@ -378,6 +378,7 @@ class CoordinateSystem(ABC):
         graph.add_updater(
             lambda g: g.set_points_as_corners(get_graph_points())
         )
+        # 同一个Mobject可以有多个updater
         if not jagged:
             graph.add_updater(lambda g: g.make_smooth(approx=True))
         return graph
