@@ -66,6 +66,7 @@ class ParametricCurve(VMobject):
         """
         t_min, t_max, step = self.t_range
 
+        # 在没有间断点的时候，jumps = []
         jumps = np.array(self.discontinuities)
         jumps = jumps[(jumps > t_min) & (jumps < t_max)]
         boundary_times = [t_min, t_max, *(jumps - self.epsilon), *(jumps + self.epsilon)]
