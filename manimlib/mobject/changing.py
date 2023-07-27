@@ -176,7 +176,8 @@ class TracedPath(VMobject):
 
         self.time += dt
         #print(self.time)
-        
+        # 通过打印self.time可以断定，update_path函数每帧执行一次，每帧执行的时间间隔为dt。
+
         return self
 
 
