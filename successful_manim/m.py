@@ -5,6 +5,20 @@ from manim_imports_ext import *
 
 class test(Scene):
     def construct(self):
-        m = Matrix(matrix = np.ones((3, 4)))
+        m = Matrix(matrix = np.ones((3, 4)), 
+                   include_background_rectangle=True, 
+                   add_background_rectangles_to_entries=True
+                   )
+        for row in m.mob_matrix:
+            for col in row:
+                print(col)
+
+        print(m.elements)
+
+        print("-"*100)
+
+        for i in range(len(m)):
+            print(m[i])
+
         self.add(m)
         self.wait()

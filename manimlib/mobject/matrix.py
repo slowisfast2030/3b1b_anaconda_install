@@ -90,10 +90,10 @@ class Matrix(VMobject):
     def __init__(
         self,
         matrix: Sequence[Sequence[str | float | VMobject]],
-        v_buff: float = 0.8,
-        h_buff: float = 1.0,
-        bracket_h_buff: float = 0.2,
-        bracket_v_buff: float = 0.25,
+        v_buff: float = 0.8, # 两元素竖直距离
+        h_buff: float = 1.0, # 两元素水平距离
+        bracket_h_buff: float = 0.2, # 左右括号与中间元素的距离
+        bracket_v_buff: float = 0.25, # 左右括号高度超出中间元素的长度
         add_background_rectangles_to_entries: bool = False,
         include_background_rectangle: bool = False,
         element_alignment_corner: Vect3 = DOWN,
