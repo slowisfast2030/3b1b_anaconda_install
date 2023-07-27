@@ -18,6 +18,7 @@ if TYPE_CHECKING:
 
 
 class DecimalNumber(VMobject):
+    '''十进制（浮点）数'''
     def __init__(
         self,
         number: float | complex = 0,
@@ -36,6 +37,12 @@ class DecimalNumber(VMobject):
         text_config: dict = dict(),  # Do not pass in font_size here
         **kwargs
     ):
+        '''
+        - ``num_decimal_places`` : 小数点位数
+        - ``unit`` : 单位符号
+        - ``show_ellipsis`` : 显示省略号
+        - ``group_with_commas`` : 3 位一组，用逗号隔开
+        '''
         self.num_decimal_places = num_decimal_places
         self.include_sign = include_sign
         self.group_with_commas = group_with_commas
@@ -125,6 +132,9 @@ class DecimalNumber(VMobject):
 
     def get_formatter(self, **kwargs) -> str:
         """
+        配置基于第一个实例属性，但被任何关键字参数覆盖，相关参数如下（这句话看不懂，看下面的英文解释）
+        """
+        """
         Configuration is based first off instance attributes,
         but overwritten by any kew word argument.  Relevant
         key words:
@@ -184,6 +194,7 @@ class DecimalNumber(VMobject):
 
 
 class Integer(DecimalNumber):
+    '''十进制整数'''
     def __init__(
         self,
         number: int = 0,
