@@ -135,7 +135,7 @@ class TracedPath(VMobject):
         self.time_per_anchor = time_per_anchor
         self.time: float = 0
         self.traced_points: list[np.ndarray] = []
-        self.add_updater(lambda m, dt: m.update_path(dt))
+        self.add_updater(lambda m, dt: m.update_path(dt)) # dt是帧间隔。1s有30帧，dt=1/30。
 
     def update_path(self, dt: float) -> Self:
         if dt == 0:
@@ -147,6 +147,12 @@ class TracedPath(VMobject):
         if self.time_traced < np.inf:
             n_relevant_points = int(self.time_traced / dt + 0.5)
             n_tps = len(self.traced_points)
+            #print("+_"*100, "\n")
+            #print(self.traced_points) 
+            #print(n_tps)
+            #print(n_relevant_points)
+            #print(dt)
+
             if n_tps < n_relevant_points:
                 points = self.traced_points + [point] * (n_relevant_points - n_tps)
             else:
