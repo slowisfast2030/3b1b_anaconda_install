@@ -205,11 +205,17 @@ class Matrix(VMobject):
 
 
 class DecimalMatrix(Matrix):
+    """
+    数字矩阵（元素套用 ``DecimalNumber``）
+    """
     def element_to_mobject(self, element: float, num_decimal_places: int = 1, **config) -> DecimalNumber:
         return DecimalNumber(element, num_decimal_places=num_decimal_places, **config)
 
 
 class IntegerMatrix(Matrix):
+    """
+    整数矩阵（元素套用 ``Integer``）
+    """
     def __init__(
         self,
         matrix: npt.ArrayLike,
@@ -223,6 +229,9 @@ class IntegerMatrix(Matrix):
 
 
 class MobjectMatrix(Matrix):
+    """
+    由物体构成的矩阵（直接由物体构成矩阵）
+    """
     def element_to_mobject(self, element: VMobject, **config) -> VMobject:
         return element
 
@@ -233,6 +242,12 @@ def get_det_text(
     background_rect: bool = False,
     initial_scale_factor: int = 2
 ) -> VGroup:
+    """
+    获取行列式的其余文字（det(matrix)=determinant）
+    
+    - ``matrix`` : 为要求行列式的矩阵
+    - ``determinant`` : 行列式的值，如果传入了，则包含 ``=determinant``
+    """
     parens = Tex("()")
     parens.scale(initial_scale_factor)
     parens.stretch_to_fit_height(matrix.get_height())
