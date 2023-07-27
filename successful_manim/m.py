@@ -6,8 +6,8 @@ from manim_imports_ext import *
 class test(Scene):
     def construct(self):
         m = Matrix(matrix = np.ones((3, 4)), 
-                   include_background_rectangle=True, 
-                   add_background_rectangles_to_entries=True
+                   include_background_rectangle=False, 
+                   add_background_rectangles_to_entries=False
                    )
         for row in m.mob_matrix:
             for col in row:
