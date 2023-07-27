@@ -136,7 +136,8 @@ class TracedPath(VMobject):
         self.time: float = 0
         self.traced_points: list[np.ndarray] = []
         # 每一帧都会自动调动update_path函数
-        self.add_updater(lambda m, dt: m.update_path(dt)) # dt是帧间隔。1s有30帧，dt=1/30。
+        # dt是帧间隔。1s有30帧，dt=1/30
+        self.add_updater(lambda m, dt: m.update_path(dt)) 
 
     def update_path(self, dt: float) -> Self:
         if dt == 0:
