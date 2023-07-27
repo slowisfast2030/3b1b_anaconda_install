@@ -116,7 +116,7 @@ class TracedPath(VMobject):
     """
     def __init__(
         self,
-        traced_point_func: Callable[[], Vect3], # 一般为 mob.get_center
+        traced_point_func: Callable[[], Vect3], # 一般为 ``mob.get_center``
         time_traced: float = np.inf, # 追踪时间
         time_per_anchor: float = 1.0 / 15, # 采样时间间隔？
         stroke_width: float | Iterable[float] = 2.0,
@@ -140,7 +140,8 @@ class TracedPath(VMobject):
     def update_path(self, dt: float) -> Self:
         if dt == 0:
             return self
-        point = self.traced_point_func().copy()
+        # traced_point_func一般为mob.get_center，所以这里是mob.get_center().copy()
+        point = self.traced_point_func().copy() 
         self.traced_points.append(point)
 
         if self.time_traced < np.inf:
