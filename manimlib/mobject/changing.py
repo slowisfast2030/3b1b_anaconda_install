@@ -107,6 +107,7 @@ class AnimatedBoundary(VGroup):
 """
 c = Dot()
 p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
+self.add(c, p)
 self.play(c.animate.shift(200 * RIGHT), run_time=20)
 """
 class TracedPath(VMobject):
@@ -115,9 +116,9 @@ class TracedPath(VMobject):
     """
     def __init__(
         self,
-        traced_point_func: Callable[[], Vect3],
-        time_traced: float = np.inf,
-        time_per_anchor: float = 1.0 / 15,
+        traced_point_func: Callable[[], Vect3], # 一般为 mob.get_center
+        time_traced: float = np.inf, # 追踪时间
+        time_per_anchor: float = 1.0 / 15, # 采样时间间隔？
         stroke_width: float | Iterable[float] = 2.0,
         stroke_color: ManimColor = WHITE,
         fill_opacity: float = 0.0,
