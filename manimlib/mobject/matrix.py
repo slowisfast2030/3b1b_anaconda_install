@@ -70,7 +70,22 @@ def vector_coordinate_label(
     label.add_to_back(label.rect)
     return label
 
+"""
+Sequence[Sequence[str | float | VMobject]] 
+is a type hint in Python that indicates the 
+expected type of an argument or a return value of a function. 
 
+Sequence[Sequence[str | float | VMobject]] means a sequence of sequences of 
+strings, floats, or VMobjects. For example:
+
+```
+[
+    ["hello", 3.14],
+    [Circle(), Text("world")],
+    [-0.5]
+]
+```
+"""
 class Matrix(VMobject):
     def __init__(
         self,
