@@ -76,7 +76,9 @@ class ParametricCurve(VMobject):
             t_range = [*np.arange(t1, t2, step), t2]
             # 这里特别提醒：t_func(t)的输出是三维点的，而不是点的y值。和我们常见的参数方程有些不一样
             points = np.array([self.t_func(t) for t in t_range])
+            # 设定曲线的第一个点
             self.start_new_path(points[0])
+            # 用折线连接剩余的点
             self.add_points_as_corners(points[1:])
         
         if self.use_smoothing:

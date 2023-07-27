@@ -10,8 +10,10 @@ class test(InteractiveScene):
         # 为什么这种写法？直接定义不好吗？
         axes = self.get_axes()
         self.add(axes)
+        # 设置曲线的采样点
+        axes.num_sampled_graph_points_per_tick = 1
 
-        curve = axes.get_graph(lambda x: self.func(x, 0.5))
+        curve = axes.get_graph(lambda x: self.func(x, 0.5), use_smoothing=False)
         curve.set_stroke(RED, 3)
         self.add(curve)
         self.wait()
