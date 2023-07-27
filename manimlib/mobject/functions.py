@@ -105,6 +105,10 @@ class ParametricCurve(VMobject):
 
 
 class FunctionGraph(ParametricCurve):
+    """
+    x-y函数图像
+    z轴坐标为0
+    """
     def __init__(
         self,
         function: Callable[[float], float],
@@ -122,6 +126,9 @@ class FunctionGraph(ParametricCurve):
 
 
 class ImplicitFunction(VMobject):
+    """
+    隐函数
+    """
     def __init__(
         self,
         func: Callable[[float, float], float],
