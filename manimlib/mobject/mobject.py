@@ -818,12 +818,17 @@ class Mobject(object):
     # Updating
 
     def init_updaters(self):
-        self.time_based_updaters: list[TimeBasedUpdater] = []
-        self.non_time_updaters: list[NonTimeUpdater] = []
+        # update函数有dt参数
+        self.time_based_updaters: list[TimeBasedUpdater] = [] # TimeBasedUpdater = Callable[[Mobject, float], None]
+        # update函数没有dt参数
+        self.non_time_updaters: list[NonTimeUpdater] = [] # NonTimeUpdater = Callable[[Mobject], None]
         self.has_updaters: bool = False
         self.updating_suspended: bool = False
 
     def update(self, dt: float = 0, recurse: bool = True) -> Self:
+        '''
+        更新物件状态，为 **动画 (Animation)** 、 **更新 (updater)** 调用
+        '''
         if not self.has_updaters or self.updating_suspended:
             return self
         for updater in self.time_based_updaters:
@@ -834,6 +839,12 @@ class Mobject(object):
             for submob in self.submobjects:
                 submob.update(dt, recurse)
         return self
+
+    """
+    可以进一步思考下
+    time_based_updaters和non_time_updaters的区别
+    多出了dt参数，会在渲染每一帧画面的时候用于确定一些状态
+    """
 
     def get_time_based_updaters(self) -> list[TimeBasedUpdater]:
         return self.time_based_updaters
@@ -853,6 +864,7 @@ class Mobject(object):
         index: int | None = None,
         call_updater: bool = True
     ) -> Self:
+        '''添加 ``updater`` 函数'''
         if "dt" in get_parameters(update_function):
             updater_list = self.time_based_updaters
         else:
