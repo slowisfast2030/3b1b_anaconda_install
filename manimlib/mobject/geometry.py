@@ -949,21 +949,22 @@ class CubicBezier(VMobject):
 
 
 class Polygon(VMobject):
+    """多边形"""
     def __init__(
         self,
         *vertices: Vect3,
         **kwargs
     ):
+        """传入多个 ``vertices`` (点坐标)表示顶点"""
         super().__init__(**kwargs)
         self.set_points_as_corners([*vertices, vertices[0]])
 
     def get_vertices(self) -> Vect3Array:
+        """获取所有顶点"""
         return self.get_start_anchors()
 
     def round_corners(self, radius: Optional[float] = None) -> Self:
-        """
-        圆角
-        """
+        """形成圆角（圆角半径为 ``radius``）"""
         if radius is None:
             verts = self.get_vertices()
             min_edge_length = min(
@@ -1010,6 +1011,7 @@ class Polyline(VMobject):
 
 
 class RegularPolygon(Polygon):
+    """正多边形"""
     def __init__(
         self,
         n: int = 6,
