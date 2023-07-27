@@ -110,6 +110,14 @@ p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
 self.add(c, p)
 self.play(c.animate.shift(200 * RIGHT), run_time=20)
 """
+"""
+这里衍生出一个思考:
+1.所有的动画的发起都是通过play函数
+2.play函数会改变一些mobject对象的一些属性
+3.如果有另一些mobject对象的属性是依赖于这些属性的，那么这些mobject对象的属性也会发生改变
+
+mobjet_a(play) ---> mobject_a属性改变 ---> mobject_b(add_updater) ---> mobject_b属性改变
+"""
 class TracedPath(VMobject):
     """
     记录路径
