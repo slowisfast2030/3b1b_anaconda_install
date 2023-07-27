@@ -855,6 +855,10 @@ class Mobject(object):
     def get_updaters(self) -> list[Updater]:
         return self.time_based_updaters + self.non_time_updaters
 
+    """
+    The chain() function is useful when you want to combine multiple iterables 
+    into one without creating intermediate copies or concatenating them.
+    """
     def get_family_updaters(self) -> list[Updater]:
         return list(it.chain(*[sm.get_updaters() for sm in self.get_family()]))
 
