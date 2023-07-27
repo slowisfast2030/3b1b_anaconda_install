@@ -70,15 +70,21 @@ class ParametricCurve(VMobject):
         jumps = jumps[(jumps > t_min) & (jumps < t_max)]
         boundary_times = [t_min, t_max, *(jumps - self.epsilon), *(jumps + self.epsilon)]
         boundary_times.sort()
+
+        # 在没有间断点的时候，下述循环只执行一次
         for t1, t2 in zip(boundary_times[0::2], boundary_times[1::2]):
             t_range = [*np.arange(t1, t2, step), t2]
+            # 这里特别提醒：t_func(t)的输出是三维点的，而不是点的y值。和我们常见的参数方程有些不一样
             points = np.array([self.t_func(t) for t in t_range])
             self.start_new_path(points[0])
             self.add_points_as_corners(points[1:])
+        
         if self.use_smoothing:
             self.make_smooth(approx=True)
+        
         if not self.has_points():
             self.set_points(np.array([self.t_func(t_min)]))
+        
         return self
 
     def get_t_func(self):
