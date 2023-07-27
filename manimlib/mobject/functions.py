@@ -32,7 +32,7 @@ that takes a float as an argument and returns a sequence of floats.
 the following function is compatible with the type Callable[[float], Sequence[float]]:
 
 def square_and_cube(x: float) -> Sequence[float]:
-    return [x**2, x**3]
+    return [x, x**2, x**3]
 
 """
 class ParametricCurve(VMobject):
