@@ -18,6 +18,10 @@ class test(InteractiveScene):
         self.add(curve)
         self.wait()
 
+        # a = MotionMobject(axes)
+        # self.add(a)
+        # self.wait()
+
     def get_axes(self):
         axes = Axes(
             (-1, 5), (0, 4),
