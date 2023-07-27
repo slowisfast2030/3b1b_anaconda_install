@@ -144,6 +144,12 @@ class TracedPath(VMobject):
         point = self.traced_point_func().copy() 
         self.traced_points.append(point)
 
+        """
+        self.time_traced: 1
+        dt: 1/30
+        n_relevant_points: 30
+        n_tps: 1...301, 31...301, 31...301 
+        """
         if self.time_traced < np.inf:
             n_relevant_points = int(self.time_traced / dt + 0.5)
             n_tps = len(self.traced_points)
@@ -162,11 +168,15 @@ class TracedPath(VMobject):
                 self.traced_points = self.traced_points[-n_relevant_points:]
         else:
             points = self.traced_points
+        
+        #print("-"*100, "\n", points, len(points))
 
         if points:
             self.set_points_smoothly(points)
 
         self.time += dt
+        #print(self.time)
+        
         return self
 
 
