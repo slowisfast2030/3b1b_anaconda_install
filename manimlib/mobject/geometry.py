@@ -60,6 +60,19 @@ class TipableVMobject(VMobject):
             - Straightforward accessors, returning information pertaining
                 to the TipableVMobject instance's tip(s), its length etc
     """
+
+    """
+    可以带箭头的物体（实现了和箭头 tip 有关的方法）
+
+    - ``tip_config`` 字典中传入与箭头相关的参数，最终会将这个字典中的参数传入 ``ArrowTip`` 类来生成箭头。
+      这一部分将在 ``ArrowTip`` 中详细阐述。
+    """
+
+    """
+    这个类和Mobject的作用差不多，是方便继承
+    self.add()并不会显示
+    因为没有初始化点
+    """
     tip_config: dict = dict(
         fill_opacity=1.0,
         stroke_width=0.0,
@@ -505,6 +518,7 @@ class Line(TipableVMobject):
         return self
 
     def set_path_arc(self, new_value: float) -> Self:
+        """设置 ``path_arc``"""
         self.path_arc = new_value
         self.init_points()
         return self
@@ -530,6 +544,9 @@ class Line(TipableVMobject):
         Take an argument passed into Line (or subclass) and turn
         it into a 3d point.
         """
+        '''
+        将一个参数传递给 Line (或子类) 并将其转换为一个 3D 点。
+        '''
         if isinstance(mob_or_point, Mobject):
             mob = mob_or_point
             if direction is None:
@@ -543,6 +560,7 @@ class Line(TipableVMobject):
             return result
 
     def put_start_and_end_on(self, start: Vect3, end: Vect3) -> Self:
+        """把直线的首尾放在 ``start, end`` 上"""
         curr_start, curr_end = self.get_start_and_end()
         if np.isclose(curr_start, curr_end).all():
             # Handle null lines more gracefully
@@ -551,12 +569,15 @@ class Line(TipableVMobject):
         return super().put_start_and_end_on(start, end)
 
     def get_vector(self) -> Vect3:
+        """获取直线的方向向量"""
         return self.get_end() - self.get_start()
 
     def get_unit_vector(self) -> Vect3:
+        """获取直线方向上的单位向量"""
         return normalize(self.get_vector())
 
     def get_angle(self) -> float:
+        """获取直线倾斜角"""
         return angle_of_vector(self.get_vector())
 
     def get_projection(self, point: Vect3) -> Vect3:
@@ -581,9 +602,11 @@ class Line(TipableVMobject):
         return start + np.dot(point - start, unit_vect) * unit_vect
 
     def get_slope(self) -> float:
+        """获取直线斜率"""
         return np.tan(self.get_angle())
 
     def set_angle(self, angle: float, about_point: Optional[Vect3] = None) -> Self:
+        """设置直线倾斜角为 ``angle``"""
         if about_point is None:
             about_point = self.get_start()
         self.rotate(
@@ -593,6 +616,7 @@ class Line(TipableVMobject):
         return self
 
     def set_length(self, length: float, **kwargs):
+        """缩放到 ``length`` 长度"""
         self.scale(length / self.get_length(), **kwargs)
         return self
 
