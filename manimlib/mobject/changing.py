@@ -16,6 +16,10 @@ if TYPE_CHECKING:
 
 
 class AnimatedBoundary(VGroup):
+    '''
+    动态变化的边界
+
+    '''
     def __init__(
         self,
         vmobject: VMobject,

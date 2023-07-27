@@ -21,5 +21,10 @@ class test(Scene):
         screen_rect.next_to(title, DOWN, MED_LARGE_BUFF)
         self.add(screen_rect)
 
-        self.add(AnimatedBoundary(screen_rect))
-        self.wait(6)
+        self.add(AnimatedBoundary(screen_rect, colors=[RED, YELLOW, GREEN]))
+        self.wait(20)
+
+        # circle = Circle()
+        # circle.set_height(3)
+        # self.add(AnimatedBoundary(circle, colors=[RED, YELLOW, GREEN]))
+        # self.wait(20)
