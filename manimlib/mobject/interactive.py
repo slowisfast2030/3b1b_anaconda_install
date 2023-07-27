@@ -35,7 +35,13 @@ class MotionMobject(Mobject):
     """
         You could hold and drag this object to any position
     """
+    """
+    可以用鼠标拖拽移动的物件
+    """
     def __init__(self, mobject: Mobject, **kwargs):
+        '''
+        传入一个 ``mobject`` 将这个物件封装成可以用鼠标拖动的
+        '''
         super().__init__(**kwargs)
         assert(isinstance(mobject, Mobject))
         self.mobject = mobject
@@ -55,8 +61,16 @@ class Button(Mobject):
 
         The on_click method takes mobject as argument like updater
     """
+    """
+    按钮
+    """
 
     def __init__(self, mobject: Mobject, on_click: Callable[[Mobject]], **kwargs):
+        '''
+        传入一个 ``mobject``，并注册一个 ``on_click`` 方法
+
+        ``on_click`` 方法的参数列表中包含一个 ``mobject``，该响应函数需要使用者自行定义
+        '''
         super().__init__(**kwargs)
         assert(isinstance(mobject, Mobject))
         self.on_click = on_click
@@ -72,6 +86,9 @@ class Button(Mobject):
 # Controls
 
 class ControlMobject(ValueTracker):
+    '''
+    变量控制器（以下几个类的基类）
+    '''
     def __init__(self, value: float, *mobjects: Mobject, **kwargs):
         super().__init__(value=value, **kwargs)
         self.add(*mobjects)
@@ -136,6 +153,9 @@ class EnableDisableButton(ControlMobject):
 
 
 class Checkbox(ControlMobject):
+    '''
+    复选框
+    '''
     def __init__(
         self,
         value: bool = True,
@@ -156,6 +176,12 @@ class Checkbox(ControlMobject):
         box_content_buff: float = SMALL_BUFF,
         **kwargs
     ):
+        '''
+        功能与 启用/禁用按钮 类似
+
+        - ``checkmark_kwargs`` : 控制✔️外形的参数
+        - ``cross_kwargs`` : 控制❌外形的参数
+        '''
         self.value_type = value_type
         self.rect_kwargs = rect_kwargs
         self.checkmark_kwargs = checkmark_kwargs
