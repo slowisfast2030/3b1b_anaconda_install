@@ -67,6 +67,10 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3
 
 
+"""
+3b1b视频中大量使用svg图片
+当然，也可以自己绘制
+"""
 class Checkmark(TexTextFromPresetString):
     '''
     ✔
