@@ -17,6 +17,11 @@ class ValueTracker(Mobject):
     uses for its update function, and by treating it as a mobject it can
     still be animated and manipulated just like anything else.
     """
+    """
+    记录一个数值（不在画面中显示）
+
+    传入的 ``value`` 为初始数值
+    """
     value_type: type = np.float64
 
     def __init__(
@@ -54,6 +59,11 @@ class ExponentialValueTracker(ValueTracker):
     exponential of a position coordinate, which changes how interpolation
     behaves
     """
+    """
+    以指数形式变化的存值器
+
+    传入的 ``value`` 为初始数值
+    """
 
     def get_value(self) -> float | complex:
         return np.exp(ValueTracker.get_value(self))
@@ -63,4 +73,9 @@ class ExponentialValueTracker(ValueTracker):
 
 
 class ComplexValueTracker(ValueTracker):
+    '''
+    记录一个复数数值
+
+    传入的 ``value`` 为初始数值
+    '''
     value_type: type = np.complex128

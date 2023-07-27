@@ -29,6 +29,7 @@ if TYPE_CHECKING:
 
 
 class SurfaceMesh(VGroup):
+    '''表面网格'''
     def __init__(
         self,
         uv_surface: Surface,

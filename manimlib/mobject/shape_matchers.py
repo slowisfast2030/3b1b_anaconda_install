@@ -20,6 +20,7 @@ if TYPE_CHECKING:
 
 
 class SurroundingRectangle(Rectangle):
+    '''包围矩形框'''
     def __init__(
         self,
         mobject: Mobject,
@@ -37,6 +38,7 @@ class SurroundingRectangle(Rectangle):
 
 
 class BackgroundRectangle(SurroundingRectangle):
+    '''背景矩形框'''
     def __init__(
         self,
         mobject: Mobject,
@@ -85,8 +87,9 @@ class BackgroundRectangle(SurroundingRectangle):
     def get_fill_color(self) -> Color:
         return Color(self.color)
 
-# 叉号
+
 class Cross(VGroup):
+    '''叉叉'''
     def __init__(
         self,
         mobject: Mobject,
@@ -104,6 +107,7 @@ class Cross(VGroup):
 
 
 class Underline(Line):
+    '''下划线'''
     def __init__(
         self,
         mobject: Mobject,
