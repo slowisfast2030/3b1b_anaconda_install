@@ -5,7 +5,7 @@ from manim_imports_ext import *
 
 class test(InteractiveScene):
     def construct(self):
-        c = Dot()
+        c = GlowDot()
         self.add(c)
         p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
         

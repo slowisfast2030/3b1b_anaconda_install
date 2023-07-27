@@ -15,10 +15,16 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3, Self
 
 
+"""
+screen_rect = ScreenRectangle()
+self.add(AnimatedBoundary(screen_rect, colors=[RED, YELLOW, GREEN]))
+self.add(20)
+
+效果：screen_rect的边界从红色到黄色到绿色，然后再从绿色到红色，循环往复
+"""
 class AnimatedBoundary(VGroup):
     '''
     动态变化的边界
-
     '''
     def __init__(
         self,
@@ -98,8 +104,15 @@ class AnimatedBoundary(VGroup):
             sm1.pointwise_become_partial(sm2, a, b)
         return self
 
-# 可以在代码库中搜索TracedPath，看看3b1b的使用方法
+"""
+c = Dot()
+p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
+self.play(c.animate.shift(200 * RIGHT), run_time=20)
+"""
 class TracedPath(VMobject):
+    """
+    记录路径
+    """
     def __init__(
         self,
         traced_point_func: Callable[[], Vect3],
