@@ -117,7 +117,17 @@ def get_sample_points_from_coordinate_system(
 
 
 # Mobjects
+"""
+Callable[[float, float], Sequence[float]] 
+means a callable that takes two float arguments and returns a sequence of floats.
 
+Here is an example of a function that matches this type annotation:
+
+```
+def average_two_numbers(x: float, y: float) -> Sequence[float]:
+    return [x, y, (x + y) / 2]
+```
+"""
 class VectorField(VGroup):
     def __init__(
         self,
