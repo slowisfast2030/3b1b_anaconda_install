@@ -5,6 +5,15 @@ from manim_imports_ext import *
 
 class test(Scene):
     def construct(self):
-        code = Code("def fun():\n     print('hello world'))")
-        self.add(code)
+        code = '''
+                from manim import Scene, Square
+
+                class FadeInSquare(Scene):
+                    def construct(self):
+                        s = Square()
+                        self.play(FadeIn(s))
+                        self.play(s.animate.scale(2))
+                        self.wait()
+                '''
+        self.add(Code(code))
         self.wait()
