@@ -185,11 +185,18 @@ class TracedPath(VMobject):
 
 
 class TracingTail(TracedPath):
+    """
+    自动减淡的轨迹
+
+    需要注意：
+    stroke_width和stroke_opacity的默认参数是tuple
+    执行会报错
+    """
     def __init__(
         self,
         mobject_or_func: Mobject | Callable[[], np.ndarray],
         time_traced: float = 1.0,
-        stroke_width: float | Iterable[float] = (0, 3),
+        stroke_width: float | Iterable[float] = (0, 3), 
         stroke_opacity: float | Iterable[float] = (0, 1),
         stroke_color: ManimColor = WHITE,
         **kwargs

@@ -7,9 +7,9 @@ class test(InteractiveScene):
     def construct(self):
         c = GlowDot()
         self.add(c)
-        p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
+        #p = TracedPath(c.get_center, stroke_color=TEAL, time_traced=1)
         
-        #p = TracingTail(c.get_center, stroke_color=RED)
+        p = TracingTail(c, stroke_color=RED, stroke_width=1, stroke_opacity=1)
 
         self.add(p)
 
