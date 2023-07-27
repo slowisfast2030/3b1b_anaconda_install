@@ -961,6 +961,9 @@ class Polygon(VMobject):
         return self.get_start_anchors()
 
     def round_corners(self, radius: Optional[float] = None) -> Self:
+        """
+        圆角
+        """
         if radius is None:
             verts = self.get_vertices()
             min_edge_length = min(

@@ -66,18 +66,27 @@ if TYPE_CHECKING:
     from typing import Tuple, Sequence, Callable
     from manimlib.typing import ManimColor, Vect3
 
-# 对号
+
 class Checkmark(TexTextFromPresetString):
+    '''
+    ✔
+    使用了 LaTex 的 ``\ding{51}``
+    '''
     tex: str = R"\ding{51}"
     default_color: ManimColor = GREEN
 
 
 class Exmark(TexTextFromPresetString):
+    '''
+    ❌
+    使用了 LaTex 的 ``\ding{55}``
+    '''
     tex: str = R"\ding{55}"
     default_color: ManimColor = RED
 
 
 class Lightbulb(SVGMobject):
+    '''暂无 SVG，如有需求可以去 Grant 那里取'''
     file_name = "lightbulb"
 
     def __init__(
@@ -99,6 +108,7 @@ class Lightbulb(SVGMobject):
 
 
 class Speedometer(VMobject):
+    '''汽车速度表盘'''
     def __init__(
         self,
         arc_angle: float = 4 * PI / 3,
@@ -167,6 +177,7 @@ class Speedometer(VMobject):
         return self
 
     def move_needle_to_velocity(self, velocity):
+        '''将指针旋转至指定速度'''
         max_velocity = 10 * (self.num_ticks - 1)
         proportion = float(velocity) / max_velocity
         start_angle = np.pi / 2 + self.arc_angle / 2
@@ -176,6 +187,7 @@ class Speedometer(VMobject):
 
 
 class Laptop(VGroup):
+    '''笔记本电脑'''
     def __init__(
         self,
         width: float = 3,
@@ -254,6 +266,10 @@ class Laptop(VGroup):
 
 
 class VideoIcon(SVGMobject):
+    '''
+    视频播放按钮
+    暂无 SVG
+    '''
     file_name: str = "video_icon"
 
     def __init__(
@@ -267,6 +283,10 @@ class VideoIcon(SVGMobject):
 
 
 class VideoSeries(VGroup):
+    '''
+    视频系列
+    暂无 SVG
+    '''
     def __init__(
         self,
         num_videos: int = 11,
@@ -284,6 +304,7 @@ class VideoSeries(VGroup):
 
 
 class Clock(VGroup):
+    '''时钟'''
     def __init__(
         self,
         stroke_color: ManimColor = WHITE,
@@ -311,6 +332,7 @@ class Clock(VGroup):
 
 
 class ClockPassesTime(AnimationGroup):
+    '''时钟前进'''
     def __init__(
         self,
         clock: Clock,
@@ -340,6 +362,7 @@ class ClockPassesTime(AnimationGroup):
 
 
 class Bubble(SVGMobject):
+    '''气泡'''
     file_name: str = "Bubbles_speech.svg"
     #file_name: str = "/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master/custom/characters/Bubbles_speech.svg"
 
@@ -582,6 +605,9 @@ class Piano3D(VGroup):
 
 
 class DieFace(VGroup):
+    """
+    骰子
+    """
     def __init__(
         self,
         value: int,
