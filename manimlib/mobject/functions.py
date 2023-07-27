@@ -36,7 +36,10 @@ def square_and_cube(x: float) -> Sequence[float]:
 
 """
 class ParametricCurve(VMobject):
-    "参数曲线"
+    """
+    参数曲线
+    ``discontinuities`` : 间断点列表（在这个列表中的值所对应的点将会是图像的间断点）
+    """
     def __init__(
         self,
         t_func: Callable[[float], Sequence[float] | Vect3],
