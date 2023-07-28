@@ -355,7 +355,25 @@ class SVGMobject(VMobject):
 
 
 class VMobjectFromSVGPath(VMobject):
-    """传入svg的path元素的字符串，得到一个由其生成的VMobject，即只处理path"""
+    """传入svg的path元素的字符串，得到一个由其生成的VMobject，即只处理path
+    
+    下面的命令可用于路径数据：
+    M = moveto
+    L = lineto
+    H = horizontal lineto
+    V = vertical lineto
+    C = curveto
+    S = smooth curveto
+    Q = quadratic Bézier curve
+    T = smooth quadratic Bézier curveto
+    A = elliptical Arc
+    Z = closepath
+
+    示例：
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path d="M150 0 L75 200 L225 200 Z" />
+        </svg>
+    """
     def __init__(
         self,
         path_obj: se.Path,
