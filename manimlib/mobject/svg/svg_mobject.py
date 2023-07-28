@@ -32,6 +32,11 @@ dict[int, list[VMobject]] in Python is a type annotation
 that indicates a dictionary whose keys are integers and whose values are lists of VMobjects.
 """
 SVG_HASH_TO_MOB_MAP: dict[int, list[VMobject]] = {}
+"""
+dict[str, Vect3Array] in Python is a type annotation 
+that indicates a dictionary whose keys are strings and whose values are Vect3Arrays. 
+A Vect3Array is a custom class that represents a 3D array of vectors. 
+"""
 PATH_TO_POINTS: dict[str, Vect3Array] = {}
 
 
@@ -40,6 +45,7 @@ def _convert_point_to_3d(x: float, y: float) -> np.ndarray:
 
 
 class SVGMobject(VMobject):
+    """传入一个文件名指向输入的SVG文件"""
     file_name: str = ""
     height: float | None = 2.0
     width: float | None = None
