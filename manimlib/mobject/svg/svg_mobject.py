@@ -115,6 +115,7 @@ class SVGMobject(VMobject):
             SVG_HASH_TO_MOB_MAP[hash_val] = [sm.copy() for sm in submobs]
 
         self.add(*submobs)
+        # 这里为什么要flip
         self.flip(RIGHT)  # Flip y
 
     @property
@@ -301,6 +302,7 @@ class SVGMobject(VMobject):
 
 
 class VMobjectFromSVGPath(VMobject):
+    """传入svg的path元素的字符串，得到一个由其生成的VMobject，即只处理path"""
     def __init__(
         self,
         path_obj: se.Path,
