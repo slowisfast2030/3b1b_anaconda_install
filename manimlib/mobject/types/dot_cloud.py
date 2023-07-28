@@ -23,6 +23,7 @@ DEFAULT_GRID_HEIGHT = 6
 DEFAULT_BUFF_RATIO = 0.5
 
 class DotCloud(PMobject):
+    '''点云图'''
     shader_folder: str = "true_dot"
     render_primitive: int = moderngl.POINTS
     shader_dtype: Sequence[Tuple[str, type, Tuple[int]]] = [
@@ -41,6 +42,7 @@ class DotCloud(PMobject):
         anti_alias_width: float = 2.0,
         **kwargs
     ):
+        '''传入一系列三维坐标，在这些坐标的位置生成点物件'''
         self.radius = radius
         self.glow_factor = glow_factor
         self.anti_alias_width = anti_alias_width
@@ -71,6 +73,7 @@ class DotCloud(PMobject):
         d_buff_ratio: float = 1.0,
         height: float = DEFAULT_GRID_HEIGHT,
     ) -> Self:
+        '''重置点的数量为 ``n_rows*n_cols*n_layers``，并将点按照 [行, 列, 层] 排列'''
         n_points = n_rows * n_cols * n_layers
         points = np.repeat(range(n_points), 3, axis=0).reshape((n_points, 3))
         points[:, 0] = points[:, 0] % n_cols
@@ -97,6 +100,7 @@ class DotCloud(PMobject):
 
     @Mobject.affects_data
     def set_radii(self, radii: npt.ArrayLike) -> Self:
+        '''传入一个数组，逐一设置点的半径'''
         n_points = self.get_num_points()
         radii = np.array(radii).reshape((len(radii), 1))
         self.data["radius"][:] = resize_with_interpolation(radii, n_points)
@@ -104,16 +108,19 @@ class DotCloud(PMobject):
         return self
 
     def get_radii(self) -> np.ndarray:
+        '''获取所有点的半径'''
         return self.data["radius"]
 
     @Mobject.affects_data
     def set_radius(self, radius: float) -> Self:
+        '''传入一个数值，统一设置点的半径'''
         data = self.data if self.get_num_points() > 0 else self._data_defaults
         data["radius"][:] = radius
         self.refresh_bounding_box()
         return self
 
     def get_radius(self) -> float:
+        '''获取点半径的最大值'''
         return self.get_radii().max()
 
     def set_glow_factor(self, glow_factor: float) -> Self:
@@ -136,6 +143,7 @@ class DotCloud(PMobject):
         scale_radii: bool = True,
         **kwargs
     ) -> Self:
+        '''点集大小，``scale_radii`` 控制是否同时缩放每个点的大小'''
         super().scale(scale_factor, **kwargs)
         if scale_radii:
             self.set_radii(scale_factor * self.get_radii())
@@ -147,17 +155,23 @@ class DotCloud(PMobject):
         gloss: float = 0.1,
         shadow: float = 0.2
     ) -> Self:
+        '''给点集添加光泽'''
         self.set_shading(reflectiveness, gloss, shadow)
         self.apply_depth_test()
         return self
 
 
 class TrueDot(DotCloud):
+    '''一个单点'''
     def __init__(self, center: Vect3 = ORIGIN, **kwargs):
+        '''
+        - ``center`` : 点的中心
+        '''
         super().__init__(points=np.array([center]), **kwargs)
 
 
 class GlowDots(DotCloud):
+    '''带光泽的点，``glow_factor`` 表示光泽'''
     def __init__(
         self,
         points: Vect3Array = NULL_POINTS,
