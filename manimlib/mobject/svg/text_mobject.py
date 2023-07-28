@@ -48,6 +48,11 @@ class _Alignment:
     def __init__(self, s: str):
         self.value = _Alignment.VAL_DICT[s.upper()]
 
+"""
+MarkupText
+
+Text  Code
+"""
 
 class MarkupText(StringMobject):
     # See https://docs.gtk.org/Pango/pango_markup.html
