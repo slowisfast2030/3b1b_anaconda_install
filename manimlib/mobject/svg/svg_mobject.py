@@ -27,7 +27,10 @@ if TYPE_CHECKING:
     from manimlib.typing import ManimColor, Vect3Array
 
 
-
+"""
+dict[int, list[VMobject]] in Python is a type annotation 
+that indicates a dictionary whose keys are integers and whose values are lists of VMobjects.
+"""
 SVG_HASH_TO_MOB_MAP: dict[int, list[VMobject]] = {}
 PATH_TO_POINTS: dict[str, Vect3Array] = {}
 
