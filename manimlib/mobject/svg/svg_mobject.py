@@ -262,6 +262,12 @@ class SVGMobject(VMobject):
         return VMobjectFromSVGPath(path, **self.path_string_config)
 
     def line_to_mobject(self, line: se.SimpleLine) -> Line:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <line x1="0" y1="0" x2="200" y2="200"
+        style="stroke:rgb(255,0,0);stroke-width:2"/>
+        </svg>
+        """
         return Line(
             start=_convert_point_to_3d(line.x1, line.y1),
             end=_convert_point_to_3d(line.x2, line.y2)
@@ -270,8 +276,9 @@ class SVGMobject(VMobject):
     def rect_to_mobject(self, rect: se.Rect) -> Rectangle:
         """
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <line x1="0" y1="0" x2="200" y2="200"
-        style="stroke:rgb(255,0,0);stroke-width:2"/>
+        <rect x="50" y="20" rx="20" ry="20" width="150"
+        height="150"
+        style="fill:red;stroke:black;stroke-width:5;opacity:0.5"/>
         </svg>
         """
         if rect.rx == 0 or rect.ry == 0:
@@ -293,6 +300,12 @@ class SVGMobject(VMobject):
         return mob
 
     def ellipse_to_mobject(self, ellipse: se.Circle | se.Ellipse) -> Circle:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <ellipse cx="300" cy="80" rx="100" ry="50"
+        style="fill:yellow;stroke:purple;stroke-width:2"/>
+        </svg>
+        """
         mob = Circle(radius=ellipse.rx)
         mob.stretch_to_fit_height(2 * ellipse.ry)
         mob.shift(_convert_point_to_3d(
@@ -301,6 +314,12 @@ class SVGMobject(VMobject):
         return mob
 
     def polygon_to_mobject(self, polygon: se.Polygon) -> Polygon:
+        """
+        <svg  height="210" width="500">
+        <polygon points="200,10 250,190 160,210"
+        style="fill:lime;stroke:purple;stroke-width:1"/>
+        </svg>
+        """
         points = [
             _convert_point_to_3d(*point)
             for point in polygon
