@@ -30,6 +30,7 @@ if TYPE_CHECKING:
 
 
 class Brace(Tex):
+    """大括号"""
     def __init__(
         self,
         mobject: Mobject,
@@ -38,6 +39,10 @@ class Brace(Tex):
         tex_string: str = R"\underbrace{\qquad}",
         **kwargs
     ):
+        """传入 ``mobject`` 表示大括号包起来的物体
+        
+        ``direction`` 表示大括号指向的方位（从哪个方向括住物体）
+        """
         super().__init__(tex_string, **kwargs)
 
         angle = -math.atan2(*direction[:2]) + PI
@@ -71,6 +76,7 @@ class Brace(Tex):
         use_next_to: bool = True,
         **kwargs
     ):
+        """把 ``mob`` 放在大括号尖端指向的位置"""
         if use_next_to:
             mob.next_to(
                 self.get_tip(),
@@ -85,28 +91,33 @@ class Brace(Tex):
         return self
 
     def get_text(self, text: str, **kwargs) -> Text:
+        """返回放到了大括号尖端位置的 Text"""
         buff = kwargs.pop("buff", SMALL_BUFF)
         text_mob = Text(text, **kwargs)
         self.put_at_tip(text_mob, buff=buff)
         return text_mob
 
     def get_tex(self, *tex: str, **kwargs) -> Tex:
+        """返回放到了大括号尖端位置的 Tex"""
         tex_mob = Tex(*tex)
         self.put_at_tip(tex_mob, **kwargs)
         return tex_mob
 
     def get_tip(self) -> np.ndarray:
+        """获取大括号尖端位置的点"""
         # Very specific to the LaTeX representation
         # of a brace, but it's the only way I can think
         # of to get the tip regardless of orientation.
         return self.get_all_points()[self.tip_point_index]
 
     def get_direction(self) -> np.ndarray:
+        """获取大括号的方向"""
         vect = self.get_tip() - self.get_center()
         return vect / get_norm(vect)
 
 
 class BraceLabel(VMobject):
+    """带有 ``Tex`` 作为 label 的大括号"""
     label_constructor: type = Tex
 
     def __init__(
@@ -118,6 +129,12 @@ class BraceLabel(VMobject):
         label_buff: float = DEFAULT_MOBJECT_TO_MOBJECT_BUFFER,
         **kwargs
     ) -> None:
+        """
+        传入 ``obj`` 为大括号括住的物体，``brace_direction`` 为大括号的方向
+        
+        ``text`` 为大括号上面标注的文字
+        Brace[0] 为大括号，Brace[1] 为文字
+        """
         super().__init__(**kwargs)
         self.brace_direction = brace_direction
         self.label_scale = label_scale
@@ -138,9 +155,11 @@ class BraceLabel(VMobject):
         label_anim: Animation = FadeIn,
         brace_anim: Animation = GrowFromCenter
     ) -> AnimationGroup:
+        """返回创建 label 的动画 (AnimationGroup)"""
         return AnimationGroup(brace_anim(self.brace), label_anim(self.label))
 
     def shift_brace(self, obj: VMobject | list[VMobject], **kwargs):
+        """更改括起来的物体"""
         if isinstance(obj, list):
             obj = VMobject(*obj)
         self.brace = Brace(obj, self.brace_direction, **kwargs)
@@ -149,6 +168,7 @@ class BraceLabel(VMobject):
         return self
 
     def change_label(self, *text: str, **kwargs):
+        """更改标注的文字"""
         self.label = self.label_constructor(*text, **kwargs)
         if self.label_scale != 1:
             self.label.scale(self.label_scale)
@@ -158,6 +178,7 @@ class BraceLabel(VMobject):
         return self
 
     def change_brace_label(self, obj: VMobject | list[VMobject], *text: str):
+        """更改括起来的物体的文字"""
         self.shift_brace(obj)
         self.change_label(*text)
         return self
@@ -172,4 +193,5 @@ class BraceLabel(VMobject):
 
 
 class BraceText(BraceLabel):
+    """带有 ``TexText`` 作为 label 的大括号"""
     label_constructor: type = TexText
