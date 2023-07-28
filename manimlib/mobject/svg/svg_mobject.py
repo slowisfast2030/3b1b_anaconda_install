@@ -190,6 +190,17 @@ class SVGMobject(VMobject):
         return result
 
     def mobjects_from_svg(self, svg: se.SVG) -> list[VMobject]:
+        """
+        https://www.runoob.com/svg/svg-path.html
+        svg元素如下：
+        1.<path>     最复杂，既包含简单的移动，也包含复杂的贝塞尔曲线
+        2.<line>
+        3.<rect>
+        4.<circle>
+        5.<ellipse>
+        6.<polygon>  多边形
+        7.<polyline> 多线段
+        """
         result = []
         for shape in svg.elements():
             if isinstance(shape, (se.Group, se.Use)):
@@ -257,6 +268,12 @@ class SVGMobject(VMobject):
         )
 
     def rect_to_mobject(self, rect: se.Rect) -> Rectangle:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <line x1="0" y1="0" x2="200" y2="200"
+        style="stroke:rgb(255,0,0);stroke-width:2"/>
+        </svg>
+        """
         if rect.rx == 0 or rect.ry == 0:
             mob = Rectangle(
                 width=rect.width,
