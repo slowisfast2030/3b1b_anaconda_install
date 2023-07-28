@@ -200,6 +200,7 @@ class SVGMobject(VMobject):
         5.<ellipse>
         6.<polygon>  多边形
         7.<polyline> 多线段
+        8.<text>     Todo
         """
         result = []
         for shape in svg.elements():
@@ -259,6 +260,11 @@ class SVGMobject(VMobject):
         return mob
 
     def path_to_mobject(self, path: se.Path) -> VMobjectFromSVGPath:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path d="M150 0 L75 200 L225 200 Z" />
+        </svg>
+        """
         return VMobjectFromSVGPath(path, **self.path_string_config)
 
     def line_to_mobject(self, line: se.SimpleLine) -> Line:
@@ -327,6 +333,12 @@ class SVGMobject(VMobject):
         return Polygon(*points)
 
     def polyline_to_mobject(self, polyline: se.Polyline) -> Polyline:
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <polyline points="20,20 40,25 60,40 80,120 120,140 200,180"
+        style="fill:none;stroke:black;stroke-width:3" />
+        </svg>
+        """
         points = [
             _convert_point_to_3d(*point)
             for point in polyline
@@ -334,6 +346,11 @@ class SVGMobject(VMobject):
         return Polyline(*points)
 
     def text_to_mobject(self, text: se.Text):
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <text x="0" y="15" fill="red">I love SVG</text>
+        </svg>
+        """
         pass
 
 
