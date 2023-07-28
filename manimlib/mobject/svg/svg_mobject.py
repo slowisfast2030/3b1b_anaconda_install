@@ -43,6 +43,13 @@ PATH_TO_POINTS: dict[str, Vect3Array] = {}
 def _convert_point_to_3d(x: float, y: float) -> np.ndarray:
     return np.array([x, y, 0.0])
 
+"""
+SVGMobject就是取出svg文件里的命令，绘制出对应的图形
+
+所以，你可以用inkscape等工具，绘制出你想要的图形，然后导出为svg文件，再用SVGMobject读取，就可以得到对应的图形了
+
+也可以通过manim去绘制，工作量比较大
+"""
 
 class SVGMobject(VMobject):
     """传入一个文件名指向输入的SVG文件"""
