@@ -1,6 +1,7 @@
-from manimlib import *
-import numpy as np
-import random
+import sys
+sys.path.append('/Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/3b1b-videos-master')
+
+from manim_imports_ext import *
 
 class colorme2(Scene):
 	def construct(self): 
