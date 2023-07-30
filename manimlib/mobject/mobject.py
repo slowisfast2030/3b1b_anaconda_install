@@ -725,6 +725,9 @@ class Mobject(object):
     # manimce版本给出了示例
     def become(self, mobject: Mobject, match_updaters=False) -> Self:
         """
+        重构物件数据并将它变成传入的 ``mobject``
+        """
+        """
         Edit all data and submobjects to be idential
         to another mobject
         """
