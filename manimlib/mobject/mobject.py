@@ -685,16 +685,21 @@ class Mobject(object):
         return result
 
     def generate_target(self, use_deepcopy: bool = False) -> Self:
+        '''通过复制自身作为自己的 target, 生成一个 target 属性'''
         self.target = self.copy(deep=use_deepcopy)
         self.target.saved_state = self.saved_state
         return self.target
 
     def save_state(self, use_deepcopy: bool = False) -> Self:
+        '''保留状态，即复制一份作为 ``saved_state`` 属性'''
         self.saved_state = self.copy(deep=use_deepcopy)
         self.saved_state.target = self.target
         return self
 
     def restore(self) -> Self:
+        '''恢复为 ``saved_state`` 的状态'''
+        # 如果想恢复到一开始的状态，可以调用这个函数
+        # become函数值得学习
         if not hasattr(self, "saved_state") or self.saved_state is None:
             raise Exception("Trying to restore without having saved")
         self.become(self.saved_state)
