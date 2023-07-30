@@ -16,6 +16,7 @@ class colorme1(Scene):
 		stuff.append( Text("This is text").shift(LEFT*4) )
 		stuff.append(  Square(fill_opacity=1).set_color(YELLOW).shift(RIGHT*4) )
 		stuff.append(  Rectangle(fill_opacity=1).set_color(GREEN).shift(DOWN*2) )
+		# 报错：TypeError: __init__() got an unexpected keyword argument 'fill_opacity'
 		stuff.append(  Sphere(fill_opacity=1).set_color(RED).shift(UP*2) )
 		
 		for i in stuff:
