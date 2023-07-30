@@ -27,3 +27,5 @@ class updatering(Scene):
 		while x < 3:
 			x += 0.01
 			self.wait(0.001)
+
+		# 和tracker.py的代码对比起来，很有启发
