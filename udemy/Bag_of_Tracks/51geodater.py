@@ -41,6 +41,7 @@ class geodater(Scene):
 		d1 = dimMeasure(UP, "Width", obj.get_width)
 		d2 = dimMeasure(RIGHT, "Height", obj.get_height)
 		self.add(d1, d2)
+		
 		self.play(
 			obj.animate.set_width(5, stretch=True),
 			run_time=3,
