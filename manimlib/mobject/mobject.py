@@ -643,6 +643,20 @@ class Mobject(object):
         return result
 
     def copy(self, deep: bool = False) -> Self:
+        """
+        深拷贝很简单，浅拷贝很复杂
+
+        在通常描述深拷贝和浅拷贝区别，都会用这个例子：
+        [1,2, [1,2,3]]
+
+        但这里的类是Mobject，与列表显著不同的是，列表和元素是包含关系，对于这种包含关系，用深浅拷贝理解是没有问题的
+
+        但是，还有很多的类没有元素，只有属性
+
+        那么，深浅拷贝对属性的影响是什么呢？
+
+        再很多python教程中并没有解释这个问题
+        """
         if deep:
             return self.deepcopy()
 
