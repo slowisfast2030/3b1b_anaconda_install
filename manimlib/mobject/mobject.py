@@ -749,6 +749,9 @@ class Mobject(object):
         to another mobject
         """
         # 属性全部复制一遍
+        # square.become(circle)
+        # 这种变化是瞬时变化，不会有动画效果
+        # 动画是逐帧插值
         self.align_family(mobject)
         family1 = self.get_family()
         family2 = mobject.get_family()
