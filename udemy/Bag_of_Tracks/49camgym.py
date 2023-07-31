@@ -27,6 +27,7 @@ class camgym(Scene):
 		print(frame.get_theta()) # 0
 		print(frame.get_phi()) # 0
 		print(frame.get_gamma()) # 0
+		print(frame.get_euler_angles()) # [0, 0, 0]
 		#Old Method
 		"""
 		frame2 = frame.copy()

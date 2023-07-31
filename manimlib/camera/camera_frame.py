@@ -38,9 +38,10 @@ class CameraFrame(Mobject):
         self.camera_location = OUT # This will be updated by set_points
 
         self.set_points(np.array([ORIGIN, LEFT, RIGHT, DOWN, UP]))
-        # 设置了frame的宽和高
+        # 设置了frame的宽和高。可以对frame进行缩放
         self.set_width(frame_shape[0], stretch=True)
         self.set_height(frame_shape[1], stretch=True)
+        # 设置了frame的中心点。可以对frame进行平移
         self.move_to(center_point)
 
     def set_orientation(self, rotation: Rotation):
@@ -61,15 +62,24 @@ class CameraFrame(Mobject):
         return self
 
     def get_euler_angles(self) -> np.ndarray:
+        """
+        获取欧拉角，默认[0, 0, 0]
+        """
         orientation = self.get_orientation()
         if all(orientation.as_quat() == [0, 0, 0, 1]):
             return np.zeros(3)
         return orientation.as_euler("zxz")[::-1]
 
     def get_theta(self):
+        """
+        左右转动
+        """
         return self.get_euler_angles()[0]
 
     def get_phi(self):
+        """
+        上下转动
+        """
         return self.get_euler_angles()[1]
 
     def get_gamma(self):
@@ -121,6 +131,9 @@ class CameraFrame(Mobject):
         gamma: float | None = None,
         units: float = RADIANS
     ):
+        """
+        设置欧拉角
+        """
         eulers = self.get_euler_angles()  # theta, phi, gamma
         for i, var in enumerate([theta, phi, gamma]):
             if var is not None:
@@ -141,6 +154,9 @@ class CameraFrame(Mobject):
         """
         Shortcut for set_euler_angles, defaulting to taking
         in angles in degrees
+        """
+        """
+        设置欧拉角
         """
         self.set_euler_angles(theta_degrees, phi_degrees, gamma_degrees, units=DEGREES)
         return self
