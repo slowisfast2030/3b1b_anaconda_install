@@ -87,6 +87,11 @@ class Transform(Animation):
             )
 
     def clean_up_from_scene(self, scene: Scene) -> None:
+        """
+        play函数真是黑箱啊
+        这个clean_up_from_scene函数是在play的哪一个阶段执行的？
+        应该是alpha = 1之后才执行
+        """
         super().clean_up_from_scene(scene)
         if self.replace_mobject_with_target_in_scene:
             scene.remove(self.mobject)
