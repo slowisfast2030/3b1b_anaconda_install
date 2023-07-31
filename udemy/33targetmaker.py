@@ -27,3 +27,4 @@ class targetmaker(Scene):
 		self.play(MoveToTarget(obj2))
 
 		# 视频作者对这个函数的评价特别高，target属性很有用
+		# 比如还可以应用于axes, camera, frame等

@@ -167,6 +167,21 @@ self.play(
     run_time=12,
     )
 """
+"""
+MoveToTarget这个类名字起得不好，容易让人误解
+直观的印象就是将mobect移动到target的位置
+但实际上，这个类的作用是将mobject的属性变成target的属性
+包括点集，颜色，透明度等等
+
+MoveToTarget这个类初始化需要一个mobject
+给人的感觉是这个transform只需要一个对象
+但实际上，这个类还需要一个target
+只是这个target是通过拷贝mobject得到的
+"""
+"""
+MoveToTarget这个类的作用是将mobject的属性变成target的属性
+是现在的自己和过去的自己之间的一次变化
+"""
 class MoveToTarget(Transform):
     def __init__(self, mobject: Mobject, **kwargs):
         self.check_validity_of_input(mobject)
