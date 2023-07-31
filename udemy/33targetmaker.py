@@ -38,10 +38,20 @@ mobject本质是点集（内容） + 颜色（形式）
 
 transform是如何完成两个不同点集和颜色的变化呢？
 
-所有的play，本质都是一个while循环
+所有的play和updater，本质都是一个while循环
 
 while t < duration:
 	# 完成当前时间t的帧渲染
 	frame.render(t) 
 	t += dt
+
+	
+def render(t):
+	do transform
+	do updater
+
+
+以正方形变成圆举例
+颜色暂且不考虑，只考虑点集
+正方形的点集是如何变成圆的点集的呢？	
 """

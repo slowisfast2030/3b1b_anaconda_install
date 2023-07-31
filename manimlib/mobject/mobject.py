@@ -1890,7 +1890,17 @@ class Mobject(object):
         return self.copy().set_opacity(0)
 
     # Interpolate
+    """
+    如果将动画类比一次走路
+    每次动画都有一个起始点和一个终点
+    那么这个函数就是在起始点和终点之间插值
 
+    走路的插值很容易理解，就是路途中的一个milestone
+    但是这里的插值是什么意思呢？
+    内容的插值 + 形式的插值
+    即
+    点集 + 颜色
+    """
     def interpolate(
         self,
         mobject1: Mobject,
@@ -1906,6 +1916,31 @@ class Mobject(object):
         # 直接调用这个函数，会报错
         # 真奇怪
 
+        """
+        仔细观察这个函数，主要完成了3个属性的插值：
+
+        self.data[key] = interpolate(
+            mobject1.data[key], 
+            mobject2.data[key], 
+            alpha)
+        
+        self.uniforms[key] = interpolate(
+            mobject1.uniforms[key],
+            mobject2.uniforms[key],
+            alpha)
+
+        self.bounding_box[:] = interpolate(
+            mobject1.bounding_box, 
+            mobject2.bounding_box, 
+            alpha)
+
+        想象不出点集的插值是什么样子的
+        如果两个对象的点集是一一对应，那么插值可以理解
+        如果两个对象的点集数目不一致，那么如何插值呢？
+        真是费解？
+
+        可以写一段代码验证下
+        """
         keys = [k for k in self.data.dtype.names if k not in self.locked_data_keys]
         if keys:
             self.note_changed_data()
