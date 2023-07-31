@@ -662,6 +662,7 @@ class Mobject(object):
             return self.deepcopy()
 
         # 这里的浅拷贝，老实讲，按照python教程，实在不理解究竟完成了什么功能
+        # 也不理解，后面进行了很多属性的浅拷贝
         result = copy.copy(self)
 
         result.parents = []
