@@ -24,7 +24,8 @@ class geodater(Scene):
 		frame.add_updater(rotCam)
 
 
-		obj = Square3D(color=ORANGE)
+		#obj = Square3D(color=ORANGE)
+		obj = Square().set_fill(ORANGE, opacity=1)
 		self.play(FadeIn(obj, UP))
 
 		def dimMeasure(dir, dic, ord):
@@ -38,10 +39,15 @@ class geodater(Scene):
 			f_always(number.set_value, ord)
 			return Group(brace, label)
 
+		"""
+		猜想：
+		因为dimMeasure函数内部有updater
+		进而导致dimMeasure函数也会在每帧进行调用
+		"""
 		d1 = dimMeasure(UP, "Width", obj.get_width)
 		d2 = dimMeasure(RIGHT, "Height", obj.get_height)
 		self.add(d1, d2)
-		
+
 		self.play(
 			obj.animate.set_width(5, stretch=True),
 			run_time=3,
