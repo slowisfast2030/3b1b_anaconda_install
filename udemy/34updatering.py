@@ -36,6 +36,7 @@ class updatering(Scene):
 		obj2.add_updater(moveSquare)
 		self.add(obj2)
 
+		# 这里的while循环并不是最优的方式，可以使用ValueTracker
 		while x < 3:
 			x += 0.01
 			# wait就是保持上一个frame的状态0.001s
