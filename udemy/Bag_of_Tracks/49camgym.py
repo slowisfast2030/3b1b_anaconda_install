@@ -26,6 +26,7 @@ class camgym(Scene):
 		print("+"*100)
 		print(frame.get_theta()) # 0
 		print(frame.get_phi()) # 0
+		print(frame.get_gamma()) # 0
 		#Old Method
 		"""
 		frame2 = frame.copy()
@@ -57,16 +58,16 @@ class camgym(Scene):
 		"""
 
 		#New Method
-		def rotCam(self):
-			self.increment_theta(0.005)
-		frame.add_updater(rotCam)
-		self.wait(5)
+		# def rotCam(self):
+		# 	self.increment_theta(0.005)
+		# frame.add_updater(rotCam)
+		# self.wait(5)
 
-		frame.remove_updater(rotCam)
-		self.wait(1)
-		frame.target.shift(LEFT*7) #Camera to look at (x, y, z) that is not (0, 0, 0)
-		#Then shift target amount RIGHT*x + UP*y + OUT*z
-		self.play(MoveToTarget(frame))
+		# frame.remove_updater(rotCam)
+		# self.wait(1)
+		# frame.target.shift(LEFT*7) #Camera to look at (x, y, z) that is not (0, 0, 0)
+		# #Then shift target amount RIGHT*x + UP*y + OUT*z
+		# self.play(MoveToTarget(frame))
 		
 
 
