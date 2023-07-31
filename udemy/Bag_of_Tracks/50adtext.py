@@ -30,7 +30,7 @@ class adtext(Scene):
 		self.play(FadeOut(text, UP))
 
 		
-		y_tex = "\\textbf{y}"
+		y_tex = r"\textbf{y}"
 		x_tex = r"\underline{x}"
 		kw = {"color":WHITE}
 

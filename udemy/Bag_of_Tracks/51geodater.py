@@ -24,7 +24,7 @@ class geodater(Scene):
 		frame.add_updater(rotCam)
 
 
-		obj = Prism(dimensions=[2, 2, 2], color=ORANGE)
+		obj = Square3D(color=ORANGE)
 		self.play(FadeIn(obj, UP))
 
 		def dimMeasure(dir, dic, ord):
@@ -39,7 +39,7 @@ class geodater(Scene):
 			return Group(brace, label)
 
 		d1 = dimMeasure(UP, "Width", obj.get_width)
-		d2 = dimMeasure(RIGHT, "Depth", obj.get_height)
+		d2 = dimMeasure(RIGHT, "Height", obj.get_height)
 		self.add(d1, d2)
 		self.play(
 			obj.animate.set_width(5, stretch=True),
