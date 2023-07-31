@@ -22,9 +22,22 @@ class targetmaker(Scene):
 
 		self.add(obj2)
 		self.wait(1)
-		obj2.generate_target()
+		# 这里默认使用浅拷贝。使用深拷贝，不知为啥报错。
+		use_deepcopy = False
+		obj2.generate_target(use_deepcopy)
 		obj2.target.scale(0.5).set_color(YELLOW).shift(LEFT*3) #Important, type .target
 		self.play(MoveToTarget(obj2))
 
 		# 视频作者对这个函数的评价特别高，target属性很有用
 		# 比如还可以应用于axes, camera, frame等
+
+"""
+深度思考：
+transform是完成两个mobject之间的转变
+mobject本质是点集（内容） + 颜色（形式）
+
+transform是如何完成两个不同点集和颜色的变化呢？
+
+所有的play，本质都是一个while循环
+
+"""
