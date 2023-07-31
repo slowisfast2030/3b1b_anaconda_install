@@ -13,6 +13,7 @@ class geodater(Scene):
 		self.play(FadeIn(title))
 
 		frame = self.camera.frame
+
 		frame.generate_target()
 		frame.target.set_euler_angles(
 			theta = -10*DEGREES,
