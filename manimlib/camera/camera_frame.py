@@ -17,7 +17,10 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from manimlib.typing import Vect3
 
-
+"""
+使用起来难度不高
+完全理解，不易
+"""
 class CameraFrame(Mobject):
     def __init__(
         self,
