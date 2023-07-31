@@ -657,9 +657,11 @@ class Mobject(object):
 
         再很多python教程中并没有解释这个问题
         """
+        # 给人的感觉是深拷贝会复制所有的属性，完全创造另一个对象
         if deep:
             return self.deepcopy()
 
+        # 这里的浅拷贝，老实讲，按照python教程，实在不理解究竟完成了什么功能
         result = copy.copy(self)
 
         result.parents = []
