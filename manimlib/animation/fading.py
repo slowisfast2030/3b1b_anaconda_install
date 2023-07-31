@@ -22,6 +22,9 @@ if TYPE_CHECKING:
 
 
 class Fade(Transform):
+    """
+    淡化
+    """
     def __init__(
         self,
         mobject: Mobject,
@@ -35,18 +38,24 @@ class Fade(Transform):
 
 
 class FadeIn(Fade):
+    """
+    淡入
+    """
     def create_target(self) -> Mobject:
         return self.mobject.copy()
 
     def create_starting_mobject(self) -> Mobject:
         start = super().create_starting_mobject()
-        start.set_opacity(0)
+        start.set_opacity(0) # 0 means transparent
         start.scale(1.0 / self.scale_factor)
         start.shift(-self.shift_vect)
         return start
 
 
 class FadeOut(Fade):
+    """
+    淡出
+    """
     def __init__(
         self,
         mobject: Mobject,
@@ -71,6 +80,7 @@ class FadeOut(Fade):
 
 
 class FadeInFromPoint(FadeIn):
+    '''从传入的一个坐标点淡入'''
     def __init__(self, mobject: Mobject, point: Vect3, **kwargs):
         super().__init__(
             mobject,
@@ -81,6 +91,7 @@ class FadeInFromPoint(FadeIn):
 
 
 class FadeOutToPoint(FadeOut):
+    '''淡出到指定的坐标点'''
     def __init__(self, mobject: Mobject, point: Vect3, **kwargs):
         super().__init__(
             mobject,
@@ -91,6 +102,7 @@ class FadeOutToPoint(FadeOut):
 
 
 class FadeTransform(Transform):
+    '''渐变'''
     def __init__(
         self,
         mobject: Mobject,
@@ -138,6 +150,7 @@ class FadeTransform(Transform):
 
 
 class FadeTransformPieces(FadeTransform):
+    '''子物件分别渐变为目标'''
     def begin(self) -> None:
         self.mobject[0].align_family(self.mobject[1])
         super().begin()
@@ -150,6 +163,9 @@ class FadeTransformPieces(FadeTransform):
 class VFadeIn(Animation):
     """
     VFadeIn and VFadeOut only work for VMobjects,
+    """
+    """
+    淡入
     """
     def __init__(self, vmobject: VMobject, suspend_mobject_updating: bool = False, **kwargs):
         super().__init__(
@@ -173,6 +189,9 @@ class VFadeIn(Animation):
 
 
 class VFadeOut(VFadeIn):
+    """
+    淡出
+    """
     def __init__(
         self,
         vmobject: VMobject,
@@ -197,6 +216,7 @@ class VFadeOut(VFadeIn):
 
 
 class VFadeInThenOut(VFadeIn):
+    '''淡入后淡出'''
     def __init__(
         self,
         vmobject: VMobject,
