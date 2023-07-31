@@ -40,4 +40,8 @@ transform是如何完成两个不同点集和颜色的变化呢？
 
 所有的play，本质都是一个while循环
 
+while t < duration:
+	# 完成当前时间t的帧渲染
+	frame.render(t) 
+	t += dt
 """
