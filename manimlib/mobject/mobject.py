@@ -748,6 +748,7 @@ class Mobject(object):
         Edit all data and submobjects to be idential
         to another mobject
         """
+        # 属性全部复制一遍
         self.align_family(mobject)
         family1 = self.get_family()
         family2 = mobject.get_family()
