@@ -205,6 +205,13 @@ class _MethodAnimation(MoveToTarget):
         super().__init__(mobject, **kwargs)
 
 
+"""
+x = ValueTracker(0)
+self.play(ApplyMethod(x.increment_value, 3, run_time=5))
+
+不是兼容理解ApplyMethod和Transform类
+ApplyMethod类隐含了插值么？
+"""
 class ApplyMethod(Transform):
     def __init__(self, method: Callable, *args, **kwargs):
         """
