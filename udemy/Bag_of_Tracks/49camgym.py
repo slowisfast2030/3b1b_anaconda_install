@@ -45,8 +45,11 @@ class camgym(Scene):
 			phi = 50 * DEGREES
 		)
 		frame.target.set_width(9)
-		#frame.target.shift(LEFT)
 		self.play(MoveToTarget(frame))
+
+		# self.play(
+		# 	frame.animate.set_width(9).set_euler_angles(-10*DEGREES, 50*DEGREES) # 这里两个属性设置的先后顺序无关
+		# )
 
 
 		#Old Method
