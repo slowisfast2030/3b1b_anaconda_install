@@ -92,7 +92,11 @@ class test(Scene):
 		title = Text("Triangular Prism").shift(UP*3.5).scale(0.6)
 		self.play(FadeIn(title))
 
-		obj1 = TriangularPrism(length=2, width=0.5, height=1)
+		obj1 = TriangularPrism(
+			length=2, 
+			width=0.5, 
+			height=1
+			)
 		self.add(obj1)
 
 		obj2 = Cube().shift(IN*1)
