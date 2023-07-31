@@ -22,11 +22,11 @@ class tops1(Scene):
 		self.add(*stuff)
 		self.wait(1)
 
-		stuff[0].target.flip([0.2,0.3, 0])
+		stuff[0].target.flip([0.2,0.3, 0]) # 翻折
 		stuff[1].target.stretch(0.5, 1) #0 is X, 1 is Y, 2 is Z (only 3d objects)
-		stuff[2].target.scale(0.5)
+		stuff[2].target.scale(0.5) # 伸缩
 		#stuff[3].target.rotate(PI/3)
-		stuff[3].target.shift(DOWN*1)
+		stuff[3].target.shift(DOWN*1) # 平移
 
 		for i in stuff:
 			self.play(MoveToTarget(i))

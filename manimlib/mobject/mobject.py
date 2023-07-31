@@ -1014,8 +1014,10 @@ class Mobject(object):
         # In case subclasses, such as DecimalNumber, need to make
         # any other changes when the size gets altered
         pass
-
+    
+    # scale是所有维度都放大缩小，而stretch是只对某一维度进行放大缩小
     def stretch(self, factor: float, dim: int, **kwargs) -> Self:
+        '''把 ``dim`` 维度伸缩到原来的 ``factor`` 倍'''
         def func(points):
             points[:, dim] *= factor
             return points
@@ -1023,8 +1025,10 @@ class Mobject(object):
         return self
 
     def rotate_about_origin(self, angle: float, axis: Vect3 = OUT) -> Self:
+        '''绕原点旋转 ``angle`` 弧度'''
         return self.rotate(angle, axis, about_point=ORIGIN)
 
+    # 涉及到矩阵变换。这个函数值得学习
     def rotate(
         self,
         angle: float,
@@ -1032,6 +1036,7 @@ class Mobject(object):
         about_point: Vect3 | None = None,
         **kwargs
     ) -> Self:
+        '''以 ``axis`` 为方向，``angle`` 为角度旋转，``kwargs`` 中可传入 ``about_point``'''
         rot_matrix_T = rotation_matrix_transpose(angle, axis)
         self.apply_points_function(
             lambda points: np.dot(points, rot_matrix_T),
@@ -1040,10 +1045,13 @@ class Mobject(object):
         )
         return self
 
+    # 绕轴的翻转是rotate函数的特例
     def flip(self, axis: Vect3 = UP, **kwargs) -> Self:
+        '''绕 ``axis`` 轴翻转'''
         return self.rotate(TAU / 2, axis, **kwargs)
 
     def apply_function(self, function: Callable[[np.ndarray], np.ndarray], **kwargs) -> Self:
+        '''把 ``function`` 作用到所有点上'''
         # Default to applying matrix about the origin, not mobjects center
         if len(kwargs) == 0:
             kwargs["about_point"] = ORIGIN
