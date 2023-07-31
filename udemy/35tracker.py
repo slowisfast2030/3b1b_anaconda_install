@@ -24,4 +24,9 @@ class tracker(Scene):
 		obj2.add_updater(moveSquare)
 		self.add(obj2)
 
+		# 尝试从插值的角度理解AppyMethod
+		# Transform类从表面上看是从一个对象变成另一个对象，即obj1 ---> obj2
+		# 但，本质上是state1 ---> state2
+		# 这里的state可以来源于两个不同的对象，也可以来源于同一个对象
+		# 这里的ApplyMethod，本质上是同一个obj的state1 ---> state2
 		self.play(ApplyMethod(x.increment_value, 3, run_time=5))
