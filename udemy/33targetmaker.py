@@ -25,3 +25,5 @@ class targetmaker(Scene):
 		obj2.generate_target()
 		obj2.target.scale(0.5).set_color(YELLOW).shift(LEFT*3) #Important, type .target
 		self.play(MoveToTarget(obj2))
+
+		# 视频作者对这个函数的评价特别高，target属性很有用
