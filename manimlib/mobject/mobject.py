@@ -194,6 +194,11 @@ class Mobject(object):
         new_length: int,
         resize_func: Callable[[np.ndarray, int], np.ndarray] = resize_array
     ) -> Self:
+        '''
+        重置锚点数组大小
+        使用场景：在保持图形形状不变的情况下，改变图形的点集数量
+        可以方便插值
+        '''
         if new_length == 0:
             if len(self.data) > 0:
                 self._data_defaults[:1] = self.data[:1]
@@ -1838,7 +1843,10 @@ class Mobject(object):
         return Group
 
     # Alignment
-
+    """
+    对齐是为了插值做准备
+    当两个mob的点集数量不一样的时候，就需要对齐
+    """
     def is_aligned_with(self, mobject: Mobject) -> bool:
         if len(self.data) != len(mobject.data):
             return False
@@ -1860,6 +1868,9 @@ class Mobject(object):
         return self
 
     def align_points(self, mobject: Mobject) -> Self:
+        """
+        取两个mobject中点集数量较多的那个
+        """
         max_len = max(self.get_num_points(), mobject.get_num_points())
         for mob in (self, mobject):
             mob.resize_points(max_len, resize_func=resize_preserving_order)
@@ -1917,6 +1928,9 @@ class Mobject(object):
         return self.copy().set_opacity(0)
 
     # Interpolate
+    """
+    有了上述对齐的准备，就可以进行插值了
+    """
     """
     如果将动画类比一次走路
     每次动画都有一个起始点和一个终点
