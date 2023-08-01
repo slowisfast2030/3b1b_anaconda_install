@@ -201,7 +201,11 @@ class Animation(object):
     ):
         # Typically ipmlemented by subclass
         pass
-
+    
+    """
+    特别注意这个函数
+    self.rate_func函数会影响alpha值
+    """
     def get_sub_alpha(
         self,
         alpha: float,
