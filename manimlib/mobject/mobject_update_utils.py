@@ -122,6 +122,8 @@ turn_animation_into_updater(ShowCreation(stuff[1]), cycle=True)
 turn_animation_into_updater(FadeIn(stuff[2]), cycle=True)
 cycle_animation(FadeOut(stuff[3]))
 """
+# 不得不赞叹！只有对animation和updater理解的足够深，才能完成两者之间的转换
+# 佩服不已
 def turn_animation_into_updater(
     animation: Animation,
     cycle: bool = False,
