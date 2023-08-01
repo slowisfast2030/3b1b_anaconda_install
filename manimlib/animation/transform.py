@@ -140,6 +140,14 @@ class Transform(Animation):
         # 但我直接调用却会报错
 
         # 这一行代码是没有返回值的，然而，我可以给它加一个
+        """
+        这一行代码是一个纽带，将动画的插值和对象的更新联系在一起
+        从本质上来说，动画的插值就是对象的更新
+        因为动画总是针对某一个特定的对象
+
+        动画的插值是一个更加抽象的表述
+        对象的更新是一个更加具体的表述
+        """
         submob.interpolate(start, target_copy, alpha, self.path_func)
         # mm = submob.interpolate(start, target_copy, alpha, self.path_func)
         # print(start.get_points())
