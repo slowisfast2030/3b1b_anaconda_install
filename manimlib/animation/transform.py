@@ -182,6 +182,9 @@ class ReplacementTransform(Transform):
 
 
 class TransformFromCopy(Transform):
+    """
+    经过实际测试，TransformFromCopy和Transform的效果是一样的
+    """
     replace_mobject_with_target_in_scene: bool = True
 
     def __init__(self, mobject: Mobject, target_mobject: Mobject, **kwargs):
@@ -218,6 +221,7 @@ MoveToTarget这个类的作用是将mobject的属性变成target的属性
 """
 class MoveToTarget(Transform):
     def __init__(self, mobject: Mobject, **kwargs):
+        # 检查mobject是否有target属性
         self.check_validity_of_input(mobject)
         super().__init__(mobject, mobject.target, **kwargs)
 
