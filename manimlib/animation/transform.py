@@ -99,6 +99,8 @@ class Transform(Animation):
         应该是alpha = 1之后才执行
         """
         super().clean_up_from_scene(scene)
+        # 一个疑问：动画结束之后，self.mobject和self.target_mobject是不是相等的？
+        # 如果相等，这里的remove和add操作是不是多余的？
         if self.replace_mobject_with_target_in_scene:
             scene.remove(self.mobject)
             scene.add(self.target_mobject)
