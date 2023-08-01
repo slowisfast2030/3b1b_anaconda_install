@@ -62,6 +62,7 @@ class Transform(Animation):
             # call so that the actual target_mobject stays
             # preserved, since calling align_data will potentially
             # change the structure of both arguments
+            # 对齐操作会改变两个mobject的结构
             self.target_copy = self.target_mobject.copy()
         """
         以前有一个很大的疑问：如何对circle和square进行插值？
