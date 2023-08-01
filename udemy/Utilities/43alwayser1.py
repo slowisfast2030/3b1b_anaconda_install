@@ -16,7 +16,7 @@ class alwayser1(Scene):
 		stuff.append( Text("This is text").shift(LEFT*4) )
 		stuff.append(  Square(fill_opacity=1).set_color(YELLOW).shift(RIGHT*4) )
 		stuff.append(  Rectangle(fill_opacity=1).set_color(GREEN).shift(DOWN*2) )
-		stuff.append(  Sphere(fill_opacity=1).set_color(RED).shift(UP*2) )
+		stuff.append(  Triangle(fill_opacity=1).set_color(RED).shift(UP*2) )
 		
 		for i in stuff:
 			i.generate_target()
@@ -39,7 +39,7 @@ class alwayser1(Scene):
 		stuff.append( Text("This is text").shift(LEFT*4) )
 		stuff.append(  Square(fill_opacity=1).set_color(YELLOW).shift(RIGHT*4) )
 		stuff.append(  Rectangle(fill_opacity=1).set_color(GREEN).shift(DOWN*2) )
-		stuff.append(  Sphere(fill_opacity=1).set_color(RED).shift(UP*2) )
+		stuff.append(  Triangle(fill_opacity=1).set_color(RED).shift(UP*2) )
 		
 		for i in stuff:
 			i.generate_target()
