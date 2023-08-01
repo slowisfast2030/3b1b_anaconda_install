@@ -63,6 +63,11 @@ class Transform(Animation):
             # preserved, since calling align_data will potentially
             # change the structure of both arguments
             self.target_copy = self.target_mobject.copy()
+        """
+        以前有一个很大的疑问：如何对circle和square进行插值？
+        它们的点集的数目是不一样的
+        现在看来，这个问题的关键在于，如何对两个mobject进行对齐
+        """
         self.mobject.align_data_and_family(self.target_copy)
         super().begin()
         if not self.mobject.has_updaters:
