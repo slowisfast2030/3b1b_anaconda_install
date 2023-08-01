@@ -37,6 +37,9 @@ def always(method, *args, **kwargs):
     # 所以可以从method中提取mob和func
     mobject = method.__self__
     func = method.__func__
+    # 困惑：不应该是
+    # lambda m: m.func(*args, **kwargs)
+    # 难道等价？
     mobject.add_updater(lambda m: func(m, *args, **kwargs))
     return mobject
 
