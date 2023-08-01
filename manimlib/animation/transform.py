@@ -242,6 +242,13 @@ class _MethodAnimation(MoveToTarget):
 x = ValueTracker(0)
 self.play(ApplyMethod(x.increment_value, 3, run_time=5))
 
+self.play(ApplyMethod(sine.shift, 4*LEFT, **kwargs))
+
+self.play(*[
+            ApplyMethod(mob.scale, 0.5*random.random(), **kwargs)
+            for mob in self.intervals
+        ])
+        
 ApplyMethod类隐含了插值么？没搞懂
 
 感觉用updater实现同样的效果更加简单
