@@ -14,20 +14,22 @@ class alwayser2(Scene):
 
 		stuff = []
 		stuff.append( Text("This is text").shift(LEFT*4) )
-		stuff.append(  Cube(fill_opacity=1).set_color(YELLOW).shift(RIGHT*4) )
+		stuff.append(  Square(fill_opacity=1).set_color(YELLOW).shift(RIGHT*4) )
 		stuff.append(  Rectangle(fill_opacity=1).set_color(GREEN).shift(DOWN*2) )
-		stuff.append(  Sphere(fill_opacity=1).set_color(RED).shift(UP*2) )
+		stuff.append(  Triangle(fill_opacity=1).set_color(RED).shift(UP*2) )
 		
 		for i in stuff:
 			i.generate_target()
 		self.add(*stuff)
 		self.wait(1)
 
-
-		always_shift(stuff[0], RIGHT, rate=0.1)
-		always_rotate(stuff[1], axis=OUT)
+		# 右移
+		always_shift(stuff[0], RIGHT, rate=0.1) 
+		# 原地旋转
+		always_rotate(stuff[1], axis=OUT) 
+		# 绕原点旋转
 		always(stuff[2].rotate_about_origin, angle=0.01) #rotate, scale, shift, set_color
-		self.wait(30)
+		self.wait(10)
 
 
 		

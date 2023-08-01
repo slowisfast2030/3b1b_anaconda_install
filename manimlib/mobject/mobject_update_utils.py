@@ -17,6 +17,9 @@ if TYPE_CHECKING:
     from manimlib.animation.animation import Animation
 
 
+# /Users/linus/Desktop/less-is-more/3b1b_anaconda_install/manim/udemy/Bag_of_Tracks/51geodater.py
+# 上面的示例是最好的
+
 # 特别需要注意，这里的method方法的格式：mob.func
 # 不是method
 def assert_is_mobject_method(method):
@@ -70,6 +73,12 @@ def f_always(method, *arg_generators, **kwargs):
     return mobject
 
 
+"""
+brace = always_redraw(Brace, obj, dir)
+
+这里的Brace是一个可调用对象，更具体的说，是一个类，返回一个Mobject
+*args是obj, dir
+"""
 def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     """始终重复调用 ``func`` 生成新物体"""
     mob = func(*args, **kwargs)
