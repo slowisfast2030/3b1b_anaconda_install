@@ -2028,6 +2028,10 @@ class Mobject(object):
         interpolate can skip this, and so that it's not
         read into the shader_wrapper objects needlessly
         """
+        """
+        为了加速一些动画，尤其是 Transform，它可以很方便地确认哪些数据片段不会在动画期间改变，
+        以便调用插值可以跳过这一点，这样它就不会被不必要地读入 shader_wrapper 对象
+        """
         if self.has_updaters:
             return self
         self.locked_data_keys = set(keys)
@@ -2092,11 +2096,13 @@ class Mobject(object):
 
     @affects_shader_info_id
     def fix_in_frame(self, recurse: bool = True) -> Self:
+        '''将物件锁定在屏幕上，常用于 3D 场景需要旋转镜头的情况'''
         self.set_uniform(recurse, is_fixed_in_frame=1.0)
         return self
 
     @affects_shader_info_id
     def unfix_from_frame(self, recurse: bool = True) -> Self:
+        '''将锁定在屏幕上的物件解锁'''
         self.set_uniform(recurse, is_fixed_in_frame=0.0)
         return self
 
@@ -2132,6 +2138,20 @@ class Mobject(object):
         vec4 color, vec3 point, vec3 unit_normal.
         The code should change the color variable
         """
+        """
+        传入一段 ``glsl`` 代码，用这段代码来给物件上色
+
+        代码中包含以下变量：
+
+        - ``vec4 color``
+        - ``vec3 point``
+        - ``vec3 unit_normal``
+        - ``vec3 light_coords``
+        - ``float gloss``
+        - ``float shadow``
+
+        如果想要学习如何用 glsl 上色，推荐去 `<https://thebookofshaders/>`_ 和 `<https://shadertoy.com/>`_ 学习一番`
+        """
         self.replace_shader_code(
             "///// INSERT COLOR FUNCTION HERE /////",
             glsl_code
@@ -2148,6 +2168,12 @@ class Mobject(object):
         """
         Pass in a glsl expression in terms of x, y and z which returns
         a float.
+        """
+        """
+        传入一个关于 ``x, y, z`` 的字符串表达式，这个表达式应当返回一个 float 值
+
+        这个方法不是非常智能，因为会把所有匹配到的 ``x, y, z`` 都认为是变量，
+        所以如果有特殊必要的话请查看该方法的源码，进行一些更改，取消字符串的匹配和替换
         """
         # TODO, add a version of this which changes the point data instead
         # of the shader code
@@ -2183,6 +2209,7 @@ class Mobject(object):
         return self
 
     def get_shader_wrapper(self, ctx: Context) -> ShaderWrapper:
+        '''获取 shader 包装'''
         if not self._shaders_initialized:
             self.init_shader_data(ctx)
             self._shaders_initialized = True
@@ -2196,6 +2223,7 @@ class Mobject(object):
         return self.shader_wrapper
 
     def get_shader_wrapper_list(self, ctx: Context) -> list[ShaderWrapper]:
+        '''获取 shader 包装列表'''
         shader_wrappers = it.chain(
             [self.get_shader_wrapper(ctx)],
             *[sm.get_shader_wrapper_list(ctx) for sm in self.submobjects]
