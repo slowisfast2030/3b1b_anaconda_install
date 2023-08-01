@@ -26,6 +26,9 @@ class ShowPartial(Animation, ABC):
     """
     Abstract class for ShowCreation and ShowPassingFlash
     """
+    """
+    ShowCreation 和 ShowPassingFlash 的抽象类
+    """
     def __init__(self, mobject: Mobject, should_match_start: bool = False, **kwargs):
         self.should_match_start = should_match_start
         super().__init__(mobject, **kwargs)
@@ -46,6 +49,7 @@ class ShowPartial(Animation, ABC):
 
 
 class ShowCreation(ShowPartial):
+    '''显示创建过程'''
     def __init__(self, mobject: Mobject, lag_ratio: float = 1.0, **kwargs):
         super().__init__(mobject, lag_ratio=lag_ratio, **kwargs)
 
@@ -54,6 +58,7 @@ class ShowCreation(ShowPartial):
 
 # 需要研究下倒放机制
 class Uncreate(ShowCreation):
+    '''显示销毁过程（ ``ShowCreation`` 的倒放）'''
     def __init__(
         self,
         mobject: Mobject,
@@ -72,6 +77,7 @@ class Uncreate(ShowCreation):
 
 
 class DrawBorderThenFill(Animation):
+    '''画出边缘，然后填充颜色'''
     def __init__(
         self,
         vmobject: VMobject,
@@ -141,6 +147,7 @@ class DrawBorderThenFill(Animation):
 
 
 class Write(DrawBorderThenFill):
+    '''写（对子物件逐个使用 ``DrawBorderThenFill`` ）'''
     def __init__(
         self,
         vmobject: VMobject,
