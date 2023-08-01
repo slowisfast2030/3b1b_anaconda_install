@@ -168,6 +168,17 @@ def turn_animation_into_updater(
         # 很好奇一点：动画的插值和对象的更新是什么逻辑关系？
         # WTF!!!!!下面这一行注释掉，也能正常运行！！！！！
         # 也就是说插值的过程中已经将mobject更新了
+        """
+        上述的注解是片面的
+        在manim中严格区分animation和updater
+        不论是animation和updater，都是对mobject的操作
+        上述animation插值之后，mobject的属性发生了变化
+        同时，需要注意，在animation发生的时候，updater一般会被暂停
+        所以，需要再animation进行之中主动的调用updater
+
+        这样其实会带来一个副作用：同时渲染了animation和updater
+        会显得不伦不类
+        """
         animation.update_mobjects(dt)
         animation.total_time += dt
 
