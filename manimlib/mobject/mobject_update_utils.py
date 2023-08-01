@@ -116,6 +116,12 @@ def always_rotate(
     return mobject
 
 
+"""
+turn_animation_into_updater(Write(stuff[0]), cycle=True)
+turn_animation_into_updater(ShowCreation(stuff[1]), cycle=True)
+turn_animation_into_updater(FadeIn(stuff[2]), cycle=True)
+cycle_animation(FadeOut(stuff[3]))
+"""
 def turn_animation_into_updater(
     animation: Animation,
     cycle: bool = False,
