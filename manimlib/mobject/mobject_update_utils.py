@@ -147,6 +147,7 @@ def turn_animation_into_updater(
     animation.total_time = 0
 
     def update(m, dt):
+        # 动画的持续时间
         run_time = animation.get_run_time()
         time_ratio = animation.total_time / run_time
         if cycle:
@@ -157,7 +158,11 @@ def turn_animation_into_updater(
                 animation.finish()
                 m.remove_updater(update)
                 return
+        # 插值
         animation.interpolate(alpha)
+        # 很好奇一点：动画的插值和对象的更新是什么逻辑关系？
+        # 通过动画的实例调用update_mobjects方法，实现对象的更新
+        # 这是点睛之笔！完成了动画的插值和对象的更新之间的逻辑关系
         animation.update_mobjects(dt)
         animation.total_time += dt
 
