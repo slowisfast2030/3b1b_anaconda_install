@@ -283,6 +283,9 @@ class ApplyMethod(Transform):
         也就是说，动画在begin函数中就结束了
 
         困惑...
+
+        实际print后发现，执行method.__func__(target, *args, **method_kwargs)之后
+        self.method.__self__.get_value()仍然是初始值
         """
         method = self.method
         # Make sure it's a list so that args.pop() works
@@ -295,6 +298,9 @@ class ApplyMethod(Transform):
         target = method.__self__.copy()
         # 函数被调用
         method.__func__(target, *args, **method_kwargs)
+        
+        #print("&"*100)
+        #print(self.method.__self__.get_value())
         return target
 
 

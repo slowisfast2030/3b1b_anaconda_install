@@ -9,8 +9,12 @@ class test(Scene):
 		self.play(TransformFromCopy(obj1, obj2))
 		
 
-
-
+class test1(Scene):
+    def construct(self):
+        x = ValueTracker(1)
+        self.play(ApplyMethod(x.increment_value, 3, run_time=5))
+        print("^"*100)
+        print(x.get_value())
 
 
 
