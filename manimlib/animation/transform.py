@@ -242,7 +242,7 @@ class _MethodAnimation(MoveToTarget):
 x = ValueTracker(0)
 self.play(ApplyMethod(x.increment_value, 3, run_time=5))
 
-ApplyMethod类隐含了插值么？
+ApplyMethod类隐含了插值么？没搞懂
 
 感觉用updater实现同样的效果更加简单
 """
@@ -305,6 +305,12 @@ class ApplyMethod(Transform):
 
 
 class ApplyPointwiseFunction(ApplyMethod):
+    """
+    将function作用于mobject的每一个点
+
+    本可以直接调用mob.apply_function(function)
+    但是这样做的话，就没有动画效果了
+    """
     def __init__(
         self,
         function: Callable[[np.ndarray], np.ndarray],
