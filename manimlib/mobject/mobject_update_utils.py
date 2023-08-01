@@ -17,6 +17,8 @@ if TYPE_CHECKING:
     from manimlib.animation.animation import Animation
 
 
+# 特别需要注意，这里的method方法的格式：mob.func
+# 不是method
 def assert_is_mobject_method(method):
     """判断 ``method`` 是否是 Mobject 的方法"""
     assert(inspect.ismethod(method))
@@ -26,10 +28,13 @@ def assert_is_mobject_method(method):
 
 """
 always(label.next_to, brace, dir)
+always(stuff[0].next_to, stuff[1], LEFT, buff=MED_SMALL_BUFF)
 """
 def always(method, *args, **kwargs):
     """一直调用 ``method``，传入 ``*args, **kwargs``"""
     assert_is_mobject_method(method)
+    # 因为method的格式是mob.func
+    # 所以可以从method中提取mob和func
     mobject = method.__self__
     func = method.__func__
     mobject.add_updater(lambda m: func(m, *args, **kwargs))

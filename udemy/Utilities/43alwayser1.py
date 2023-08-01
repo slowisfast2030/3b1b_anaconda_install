@@ -47,6 +47,8 @@ class alwayser1(Scene):
 		self.wait(1)
 		x = ValueTracker(-3)
 		f_always(stuff[0].set_x, x.get_value)
+		# 改成下面格式会报错
+		#always(stuff[0].set_x, x.get_value) 
 		self.play(ApplyMethod(x.increment_value, 10, run_time=20))
 		
 
