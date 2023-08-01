@@ -258,6 +258,8 @@ class ApplyMethod(Transform):
         self.check_validity_of_input(method)
         self.method = method
         self.method_args = args
+        # 需要注意，这里的参数method是mob.func这种格式
+        # 所以，method.__self__是mob
         super().__init__(method.__self__, **kwargs)
 
     def check_validity_of_input(self, method: Callable) -> None:
@@ -269,6 +271,18 @@ class ApplyMethod(Transform):
         assert(isinstance(method.__self__, Mobject))
 
     def create_target(self) -> Mobject:
+        """
+        这个函数会在begin函数中被调用
+        但是在整个动画过程中，只会被调用一次
+        
+        而这个方法中
+        method.__func__(target, *args, **method_kwargs)
+        被调用了
+        那么，这次的ApplyMethod不就一步到位了么？
+        也就是说，动画在begin函数中就结束了
+
+        困惑...
+        """
         method = self.method
         # Make sure it's a list so that args.pop() works
         args = list(self.method_args)
@@ -278,6 +292,7 @@ class ApplyMethod(Transform):
         else:
             method_kwargs = {}
         target = method.__self__.copy()
+        # 函数被调用
         method.__func__(target, *args, **method_kwargs)
         return target
 
