@@ -916,6 +916,7 @@ class Mobject(object):
         return self
 
     def remove_updater(self, update_function: Updater) -> Self:
+        '''移除指定的 ``updater`` 函数'''
         for updater_list in [self.time_based_updaters, self.non_time_updaters]:
             while update_function in updater_list:
                 updater_list.remove(update_function)
@@ -923,6 +924,7 @@ class Mobject(object):
         return self
 
     def clear_updaters(self, recurse: bool = True) -> Self:
+        '''清空所有的 ``updater`` 函数'''
         self.time_based_updaters = []
         self.non_time_updaters = []
         if recurse:
@@ -932,12 +934,14 @@ class Mobject(object):
         return self
 
     def match_updaters(self, mobject: Mobject) -> Self:
+        '''将自己的 ``updater`` 函数与 ``mobject`` 匹配'''
         self.clear_updaters()
         for updater in mobject.get_updaters():
             self.add_updater(updater)
         return self
 
     def suspend_updating(self, recurse: bool = True) -> Self:
+        '''停止物件更新'''
         self.updating_suspended = True
         if recurse:
             for submob in self.submobjects:
@@ -945,6 +949,7 @@ class Mobject(object):
         return self
 
     def resume_updating(self, recurse: bool = True, call_updater: bool = True) -> Self:
+        '''恢复物件更新'''
         self.updating_suspended = False
         if recurse:
             for submob in self.submobjects:
