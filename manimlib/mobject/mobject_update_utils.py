@@ -41,6 +41,10 @@ def always(method, *args, **kwargs):
     return mobject
 
 
+"""
+x = ValueTracker(-3)
+f_always(stuff[0].set_x, x.get_value)
+"""
 def f_always(method, *arg_generators, **kwargs):
     """
     More functional version of always, where instead
