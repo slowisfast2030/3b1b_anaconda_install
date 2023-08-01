@@ -24,6 +24,9 @@ if TYPE_CHECKING:
 class Fade(Transform):
     """
     淡化
+
+    这个动画类不能执行，因为没有target_mobject
+    用来继承的
     """
     def __init__(
         self,
