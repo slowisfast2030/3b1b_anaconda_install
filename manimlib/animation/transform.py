@@ -80,6 +80,8 @@ class Transform(Animation):
     def finish(self) -> None:
         super().finish()
         self.mobject.unlock_data()
+        #print("-"*100)
+        #print("transform class finish method ===>")
 
     def create_target(self) -> Mobject:
         # Has no meaningful effect here, but may be useful
@@ -97,7 +99,11 @@ class Transform(Animation):
         play函数真是黑箱啊
         这个clean_up_from_scene函数是在play的哪一个阶段执行的？
         应该是alpha = 1之后才执行
+
+        通过print语句，发现这个函数是在finish函数之后执行的
         """
+        #print("-"*100)
+        #print("transform class clean_up_from_scene method ===>")
         super().clean_up_from_scene(scene)
         # 一个疑问：动画结束之后，self.mobject和self.target_mobject是不是相等的？
         # 如果相等，这里的remove和add操作是不是多余的？
@@ -169,6 +175,9 @@ class Transform(Animation):
 
 
 class ReplacementTransform(Transform):
+    """
+    经过实际测试，ReplacementTransform和Transform的效果是一样的
+    """
     replace_mobject_with_target_in_scene: bool = True
 
 
