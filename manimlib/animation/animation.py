@@ -52,6 +52,7 @@ class Animation(object):
         self.lag_ratio = lag_ratio
         self.suspend_mobject_updating = suspend_mobject_updating
 
+        # 自己加的
         self.count = 0
 
         assert(isinstance(mobject, Mobject))
