@@ -166,8 +166,8 @@ def turn_animation_into_updater(
         # 插值
         animation.interpolate(alpha)
         # 很好奇一点：动画的插值和对象的更新是什么逻辑关系？
-        # 通过动画的实例调用update_mobjects方法，实现对象的更新
-        # 这是点睛之笔！完成了动画的插值和对象的更新之间的逻辑关系
+        # WTF!!!!!下面这一行注释掉，也能正常运行！！！！！
+        # 也就是说插值的过程中已经将mobject更新了
         animation.update_mobjects(dt)
         animation.total_time += dt
 
