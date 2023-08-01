@@ -124,6 +124,10 @@ cycle_animation(FadeOut(stuff[3]))
 """
 # 不得不赞叹！只有对animation和updater理解的足够深，才能完成两者之间的转换
 # 佩服不已
+
+# 可以进一步思考这个函数
+# 如果将cycle设置为False，那么这个函数就是一个普通的animation
+# 本质上，就将play(animation)的内部过程展现了出来
 def turn_animation_into_updater(
     animation: Animation,
     cycle: bool = False,
@@ -146,6 +150,7 @@ def turn_animation_into_updater(
     animation.begin()
     animation.total_time = 0
 
+    # 每隔dt时间，就会自动调用update方法
     def update(m, dt):
         # 动画的持续时间
         run_time = animation.get_run_time()
