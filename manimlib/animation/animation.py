@@ -31,7 +31,9 @@ class Animation(object):
         # If 0, the animation is applied to all submobjects at the same time
         # If 1, it is applied to each successively.
         # If 0 < lag_ratio < 1, its applied to each with lagged start times
-        lag_ratio: float = DEFAULT_ANIMATION_LAG_RATIO, # 以前一直误解了lag_ratio这个参数的含义
+        # 以前一直误解了lag_ratio这个参数的含义
+        # 需要建立animation和submobject的关系
+        lag_ratio: float = DEFAULT_ANIMATION_LAG_RATIO, 
         rate_func: Callable[[float], float] = smooth,
         name: str = "",
         # Does this animation add or remove a mobject form the screen
