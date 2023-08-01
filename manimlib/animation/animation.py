@@ -74,7 +74,11 @@ class Animation(object):
             )
         # 设置mob._is_animating = True
         self.mobject.set_animating_status(True)
+        # return self.mobject.copy()，记录mobject的初始状态
         self.starting_mobject = self.create_starting_mobject()
+        
+        # 这里有一个特殊情况，如果一个mob同时具有updater和animation，那么它的updater会在这里被暂停
+        # 相对应的，在fininsh函数中会恢复updater
         if self.suspend_mobject_updating:
             # All calls to self.mobject's internal updaters
             # during the animation, either from this Animation
@@ -83,6 +87,7 @@ class Animation(object):
             # the internal updaters of self.starting_mobject,
             # or any others among self.get_all_mobjects()
             self.mobject.suspend_updating()
+        
         self.families = list(self.get_all_families_zipped())
         self.interpolate(0)
 
@@ -90,11 +95,18 @@ class Animation(object):
         #print('\n')
         #log.info(f"animation finish ===>")
         self.interpolate(self.final_alpha_value)
+        
+        # 设置mob._is_animating = False
         self.mobject.set_animating_status(False)
+
+        # 和begin函数中的暂停更新相对应
         if self.suspend_mobject_updating:
             self.mobject.resume_updating()
 
     def clean_up_from_scene(self, scene: Scene) -> None:
+        """
+        这个函数应该是在finish函数之后或在finish函数内部靠后的位置被调用
+        """
         if self.is_remover():
             scene.remove(self.mobject)
 
