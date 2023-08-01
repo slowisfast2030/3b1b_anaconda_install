@@ -265,10 +265,16 @@ def complex_func_to_R3_func(complex_func: Callable[[complex], complex]) -> Calla
 
 
 def center_of_mass(points: Sequence[Vect3]) -> Vect3:
+    """
+    质心
+    """
     return np.array(points).sum(0) / len(points)
 
 
 def midpoint(point1: VectN, point2: VectN) -> VectN:
+    """
+    两个点的中间点
+    """
     return center_of_mass([point1, point2])
 
 
