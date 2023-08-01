@@ -45,6 +45,9 @@ def cross(
 
 
 def get_norm(vect: VectN | List[float]) -> float:
+    """
+    向量长度
+    """
     return sum((x**2 for x in vect))**0.5
 
 
@@ -52,6 +55,9 @@ def normalize(
     vect: VectN | List[float],
     fall_back: VectN | List[float] | None = None
 ) -> VectN:
+    """
+    向量归一化，获取单位向量
+    """
     norm = get_norm(vect)
     if norm > 0:
         return np.array(vect) / norm
@@ -171,6 +177,12 @@ def z_to_vector(vector: Vect3) -> Matrix3x3:
 def angle_of_vector(vector: Vect2 | Vect3) -> float:
     """
     Returns polar coordinate theta when vector is project on xy plane
+    """
+    """
+    The math.atan2 function is a built-in function in python that returns 
+    the arc tangent of y/x in radians. The arc tangent is the angle between 
+    the positive x-axis and the line that passes through the origin and the point (x, y). 
+    The radians are a unit of angle measurement that are equal to about 57.3 degrees.
     """
     return math.atan2(vector[1], vector[0])
 
