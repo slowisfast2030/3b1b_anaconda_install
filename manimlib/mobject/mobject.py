@@ -969,6 +969,14 @@ class Mobject(object):
     def is_changing(self) -> bool:
         return self._is_animating or self.has_updaters
 
+    """
+    manim_kindergarten的代码要简单很多
+
+    def set_animating_status(self, is_animating: bool, recurse: bool = True) -> None:
+        for mob in self.get_family(recurse):
+            mob._is_animating = is_animating
+        return self
+    """
     def set_animating_status(self, is_animating: bool, recurse: bool = True) -> Self:
         for mob in (*self.get_family(recurse), *self.get_ancestors()):
             mob._is_animating = is_animating
