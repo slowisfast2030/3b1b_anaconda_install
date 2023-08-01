@@ -144,6 +144,11 @@ class Transform(Animation):
         # print(submob, start, target_copy, alpha)
         # 打印的参数也符合预期
         # 但我直接调用却会报错
+        """
+        终于找到了原因：因为没有alignment
+        begin函数中有对齐操作
+        只有对齐了之后的mob之间才能进行插值
+        """
 
         # 这一行代码是没有返回值的，然而，我可以给它加一个
         """
