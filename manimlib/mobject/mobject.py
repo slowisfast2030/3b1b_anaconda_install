@@ -860,8 +860,10 @@ class Mobject(object):
         '''
         if not self.has_updaters or self.updating_suspended:
             return self
+        # self.time_based_updaters一系列带有dt参数的函数
         for updater in self.time_based_updaters:
             updater(self, dt)
+        # self.non_time_updaters一系列不带有dt参数的函数
         for updater in self.non_time_updaters:
             updater(self)
         if recurse:

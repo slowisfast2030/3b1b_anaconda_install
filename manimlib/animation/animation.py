@@ -126,6 +126,14 @@ class Animation(object):
             for mob in self.get_all_mobjects()
         ])
     
+    """
+    在manim中，animation和updater是两个不同的概念
+
+    但是都会对mobject的属性进行修改
+
+    animation的修改是通过插值实现的
+    updater的修改是通过调用mobject的update方法实现的
+    """
     def update_mobjects(self, dt: float) -> None:
         """
         更新 starting_mobject，以及 Transform 中的 target_mobject 的状态
@@ -139,6 +147,8 @@ class Animation(object):
         nothing to self.mobject.
         """
         for mob in self.get_all_mobjects_to_update():
+            # 调用mob的update方法对mob的属性进行更新
+            # update方法可能有多个
             mob.update(dt)
 
     def get_all_mobjects_to_update(self) -> list[Mobject]:
