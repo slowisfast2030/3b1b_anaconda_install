@@ -290,6 +290,7 @@ class ApplyMethod(Transform):
         也就是说，动画在begin函数中就结束了
 
         困惑...
+        搞错了，上述函数是设置了target的属性
 
         实际print后发现，执行method.__func__(target, *args, **method_kwargs)之后
         self.method.__self__.get_value()仍然是初始值
@@ -303,11 +304,13 @@ class ApplyMethod(Transform):
         else:
             method_kwargs = {}
         target = method.__self__.copy()
-        # 函数被调用
+        # 函数被调用，为target设置属性
+        # 这样target就准备好了，后续就可以插值了
         method.__func__(target, *args, **method_kwargs)
         
         #print("&"*100)
         #print(self.method.__self__.get_value())
+        # 这里打印的是self.mobject的value值
         return target
 
 
