@@ -24,7 +24,7 @@ from manimlib.logger import log
 class Animation(object):
     def __init__(
         self,
-        mobject: Mobject,
+        mobject: Mobject, # 疑问：在动画过程中，mobject的属性是变化的吗？
         run_time: float = DEFAULT_ANIMATION_RUN_TIME,
         # Tuple of times, between which the animation will run
         time_span: tuple[float, float] | None = None,
@@ -125,10 +125,7 @@ class Animation(object):
             mob.get_family()
             for mob in self.get_all_mobjects()
         ])
-
-    # 有一个深刻的问题值得思考：
-    # 动画的插值和对象的更新的先后关系是什么？
-    # 按道理来说，是先有插值，再有对象的更新
+    
     def update_mobjects(self, dt: float) -> None:
         """
         更新 starting_mobject，以及 Transform 中的 target_mobject 的状态

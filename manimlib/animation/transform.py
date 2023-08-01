@@ -141,12 +141,11 @@ class Transform(Animation):
 
         # 这一行代码是没有返回值的，然而，我可以给它加一个
         """
-        这一行代码是一个纽带，将动画的插值和对象的更新联系在一起
-        从本质上来说，动画的插值就是对象的更新
-        因为动画总是针对某一个特定的对象
+        animation一般有self.mobject和self.target_mobject
+        在animation开始的时候，会设置self.starting_mobject = self.mobject.copy()
 
-        动画的插值是一个更加抽象的表述
-        对象的更新是一个更加具体的表述
+        然后，在后续所有的插值过程中，都是通过self.starting_mobject和self.target_mobject
+        来更新self.mobject的属性
         """
         submob.interpolate(start, target_copy, alpha, self.path_func)
         # mm = submob.interpolate(start, target_copy, alpha, self.path_func)
