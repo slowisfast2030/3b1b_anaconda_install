@@ -86,6 +86,9 @@ def always_redraw(func: Callable[..., Mobject], *args, **kwargs) -> Mobject:
     return mob
 
 
+"""
+always_shift(stuff[0], RIGHT, rate=0.1) 
+"""
 def always_shift(
     mobject: Mobject,
     direction: np.ndarray = RIGHT,
@@ -98,12 +101,15 @@ def always_shift(
     return mobject
 
 
+"""
+always_rotate(stuff[1], axis=OUT) 
+"""
 def always_rotate(
     mobject: Mobject,
     rate: float = 20 * DEGREES,
     **kwargs
 ) -> Mobject:
-    """将 ``mobject`` 始终旋转"""
+    """将 ``mobject`` 始终旋转，速度为 ``rate``"""
     mobject.add_updater(
         lambda m, dt: m.rotate(dt * rate, **kwargs)
     )
