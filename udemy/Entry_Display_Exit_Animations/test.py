@@ -24,11 +24,13 @@ class test1(Scene):
 class test2(Scene):
     def construct(self):
         c = Circle().set_color(RED)
-        #self.play(ShowCreation(c))
-        vm = VMobject()
-        vm.set_points(c.get_points())
-        self.add(vm)
-        self.wait(1)
+        s = Square().set_color(BLUE)
+        t = Triangle().set_color(GREEN)
+        c.add(s, t)
+        self.play(ShowCreation(c, lag_ratio=0))
+        print("\n", "-"*100)
+        print(c.submobjects)
+        print("-"*100)
 
 
 

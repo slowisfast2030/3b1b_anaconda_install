@@ -431,6 +431,7 @@ class Mobject(object):
 
     # 注意观察，这里的mobjects是如何被处理的
     def add(self, *mobjects: Mobject) -> Self:
+        '''将 ``mobjects`` 添加到子物体中'''
         if self in mobjects:
             raise Exception("Mobject cannot contain self")
         for mobject in mobjects:
