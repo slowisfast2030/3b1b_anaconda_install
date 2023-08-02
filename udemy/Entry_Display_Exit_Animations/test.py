@@ -71,9 +71,11 @@ class test6(Scene):
         c = Circle().set_color(RED)
         s = Square().set_color(BLUE)
         t = Triangle().set_color(GREEN)
+        d = Dot().set_color(YELLOW)
         animations = [Write(c),
                       Write(s),
-                      Write(t)]   
+                      Write(t),
+                      d.animate.shift(LEFT*2)]   
         
-        self.play(AnimationGroup(*animations, lag_ratio=1, run_time=3))
+        self.play(AnimationGroup(*animations, lag_ratio=1, run_time=4))
 

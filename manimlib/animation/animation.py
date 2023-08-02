@@ -280,6 +280,8 @@ class Animation(object):
 
 def prepare_animation(anim: Animation | _AnimationBuilder):
     if isinstance(anim, _AnimationBuilder):
+        # print("--"*100)
+        # print(anim)
         return anim.build()
 
     if isinstance(anim, Animation):
