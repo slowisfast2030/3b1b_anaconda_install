@@ -2421,6 +2421,19 @@ class Point(Mobject):
 
 
 class _AnimationBuilder:
+    '''动画编译器'''
+    '''用于场景类 ``Scene`` 的 ``play`` 中，用法如下：
+
+        .. code:: python
+
+            self.play(mob.animate.shift(UP).scale(2).rotate(PI))
+
+        该示例中，会使 mob 生成一个 **向上移动 2 个单位，放大至 2 倍，旋转 180 度** 的目标，并使用 
+        ``MoveToTarget`` 进行转变
+
+        这个方法可以采用 **链式操作**，即像样例中给的那样连续施加 3 个方法。这得益于 Mobject 的这些方法都返回自身，
+        也就是 ``return self``，有兴趣的读者可以仔细研究一下源码
+        '''
     def __init__(self, mobject: Mobject):
         self.mobject = mobject
         self.overridden_animation = None
