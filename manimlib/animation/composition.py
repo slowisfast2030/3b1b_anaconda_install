@@ -94,6 +94,9 @@ class AnimationGroup(Animation):
             anim.update_mobjects(dt)
 
     def calculate_max_end_time(self) -> None:
+        """
+        计算最大的结束时间
+        """
         self.max_end_time = max(
             (awt[2] for awt in self.anims_with_timings),
             default=0,
@@ -115,6 +118,7 @@ class AnimationGroup(Animation):
                 (anim, start_time, end_time)
             )
             # Start time of next animation is based on the lag_ratio
+            # 秀的头皮发麻
             curr_time = interpolate(
                 start_time, end_time, lag_ratio
             )
