@@ -90,8 +90,6 @@ class AnimationGroup(Animation):
     def get_all_mobjects(self) -> Mobject:
         return self.group
 
-    # python中可以并行吗？
-    # 可以多个动画begin吗？
     def begin(self) -> None:
         self.group.set_animating_status(True)
         for anim in self.animations:
