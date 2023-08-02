@@ -71,7 +71,11 @@ class FocusOn(Transform):
             fill_opacity=0,
         )
 
-
+"""
+self.play(Indicate(obj2), Indicate(obj1))
+放大，颜色变黄
+恢复原状
+"""
 class Indicate(Transform):
     def __init__(
         self,

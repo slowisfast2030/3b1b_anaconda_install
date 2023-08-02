@@ -17,11 +17,11 @@ class indicator(Scene):
 		obj3 = Circle(fill_opacity=1).set_color(YELLOW)
 		obj4 = Rectangle(fill_opacity=1).set_color(GREEN)
 
-		self.play(GrowFromPoint(obj1, [5, 3, 0]), FadeIn(obj2)) #Not FadeInFromPoint, Not GrowFromCenter
-		self.play(FocusOn(obj2), FocusOn(obj1))
+		# self.play(GrowFromPoint(obj1, [5, 3, 0]), FadeIn(obj2)) #Not FadeInFromPoint, Not GrowFromCenter
+		# self.play(FocusOn(obj2), FocusOn(obj1))
 		self.play(Indicate(obj2), Indicate(obj1))
-		self.play(Flash(obj1), Flash(obj2))
-		self.play(CircleIndicate(obj1), CircleIndicate(obj2))
+		# self.play(Flash(obj1), Flash(obj2))
+		# self.play(CircleIndicate(obj1), CircleIndicate(obj2))
 		
 
 
