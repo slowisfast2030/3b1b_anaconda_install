@@ -25,6 +25,16 @@ if TYPE_CHECKING:
 DEFAULT_LAGGED_START_LAG_RATIO = 0.05
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+animations = [Write(c),
+              Write(s),
+              Write(t)]   
+
+self.play(AnimationGroup(*animations, lag_ratio=1, run_time=3))
+"""
 class AnimationGroup(Animation):
     '''动画组，可以传入一系列动画，统一播放'''
     def __init__(self,
