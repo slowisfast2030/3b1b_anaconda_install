@@ -33,10 +33,12 @@ print("-"*100)
 
 有关lag_ratio的思考：
 1.如果lag_ratio=0，那么所有的submobject的alpha值都是一样的。如果整个动画的时间固定，那么每一个submobject的动画时间比较长
+
 2.如果lag_ratio=1，那么所有的submobject的alpha值都是不一样的。如果整个动画的时间固定，那么每一个submobject的动画时间比较短
 以上面的代码为例
 lag_ratio=1时，每个submobject的动画时间是1
 lag_ratio=0时，每个submobject的动画时间是3
+
 3.当lag_ratio=0时，每一个submobject看上去是同时完成的，那么是并行的吗？
 其实并不是，具体执行时是通过for循环，仍然是串行的
 因为是一帧帧渲染的
