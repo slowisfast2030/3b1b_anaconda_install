@@ -93,6 +93,10 @@ class Uncreate(ShowCreation):
         )
 
 
+"""
+c = Circle().set_stroke(RED).set_fill(GREEN, opacity=0.5)        
+self.play(DrawBorderThenFill(c, lag_ratio=1, run_time=3, remover=True))
+"""
 class DrawBorderThenFill(Animation):
     '''
     画出边缘，然后填充颜色（包括边缘和内部）

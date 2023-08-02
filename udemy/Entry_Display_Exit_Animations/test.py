@@ -58,7 +58,7 @@ class test4(Scene):
 
 class test5(Scene):
     def construct(self):
-        c = Circle().set_color(RED, opacity=0.5)
+        c = Circle().set_stroke(RED).set_fill(GREEN, opacity=0.5)
         
         self.play(DrawBorderThenFill(c, lag_ratio=1, run_time=3, remover=True))
         print("\n", "-"*100)
