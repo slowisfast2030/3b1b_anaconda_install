@@ -129,3 +129,14 @@ class test10(Scene):
             UpdateFromFunc(ball_1, lambda m: m.move_to(rect.get_end())),
             ball_2.animate.move_to(rect.get_end())              
         )
+
+
+class test11(Scene):
+    def construct(self):
+        ball_1 = Dot().set_color(RED).shift(LEFT*2)
+        ball_2 = Dot().set_color(YELLOW)
+        self.add(ball_1, ball_2)
+
+        self.play(
+            ball_2.animate.shift(RIGHT*2),
+            MaintainPositionRelativeTo(ball_1, ball_2))
