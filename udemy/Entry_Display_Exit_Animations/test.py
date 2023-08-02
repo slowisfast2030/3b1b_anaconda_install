@@ -56,6 +56,15 @@ class test4(Scene):
         print(c.submobjects)
         print("-"*100)
 
+class test5(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        
+        self.play(DrawBorderThenFill(c, lag_ratio=1, run_time=3, remover=True))
+        print("\n", "-"*100)
+        print(c.submobjects)
+        print("-"*100)
+
 
 
 
