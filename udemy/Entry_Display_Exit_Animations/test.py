@@ -110,3 +110,9 @@ class test8(Scene):
                       d.animate.shift(LEFT*2)]   
         
         self.play(LaggedStart(*animations, lag_ratio=0))
+
+class test9(Scene):
+    def construct(self):
+        t1 = Text("Hello World")
+        t2 = Text("All is well")
+        self.play(TransformMatchingParts(t1, t2))

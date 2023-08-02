@@ -18,6 +18,11 @@ if TYPE_CHECKING:
     from manimlib.scene.scene import Scene
 
 
+"""
+t1 = Text("Hello World")
+t2 = Text("All is well")
+self.play(TransformMatchingParts(t1, t2))
+"""
 class TransformMatchingParts(AnimationGroup):
     def __init__(
         self,
