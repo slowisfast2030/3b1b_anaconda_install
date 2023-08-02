@@ -94,7 +94,10 @@ class Uncreate(ShowCreation):
 
 
 class DrawBorderThenFill(Animation):
-    '''画出边缘，然后填充颜色'''
+    '''
+    画出边缘，然后填充颜色（包括边缘和内部）
+    0 ---> outline(只有轮廓，轮廓有颜色) ---> target(既有轮廓，又有内部颜色)
+    '''
     def __init__(
         self,
         vmobject: VMobject,
@@ -131,8 +134,17 @@ class DrawBorderThenFill(Animation):
         self.mobject.refresh_joint_products()
 
     def get_outline(self) -> VMobject:
+        """
+        整个动画分为两个阶段：
+        1.画出轮廓
+        2.填充颜色
+
+        这里的轮廓就是动画的第一个阶段的目标，边缘有颜色，内部透明
+        """
         outline = self.mobject.copy()
+        # 内部填充，透明
         outline.set_fill(opacity=0)
+        # 边缘颜色
         for sm in outline.family_members_with_points():
             sm.set_stroke(
                 color=self.stroke_color or sm.get_stroke_color(),
@@ -169,6 +181,7 @@ class DrawBorderThenFill(Animation):
             submob.pointwise_become_partial(outline, 0, subalpha)
         else:
             # 边缘颜色
+            # outline是轮廓，start是最终形态
             submob.interpolate(outline, start, subalpha)
 
 
