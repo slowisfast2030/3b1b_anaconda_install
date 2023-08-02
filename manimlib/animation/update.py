@@ -54,7 +54,7 @@ class UpdateFromAlphaFunc(Animation):
     def __init__(
         self,
         mobject: Mobject,
-        update_function: Callable[[Mobject, float], Mobject | None],
+        update_function: Callable[[Mobject, float], Mobject | None], # update函数需要mob和dt两个参数
         suspend_mobject_updating: bool = False,
         **kwargs
     ):
