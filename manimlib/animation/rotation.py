@@ -54,7 +54,10 @@ class Rotating(Animation):
             about_edge=self.about_edge,
         )
 
-
+"""
+self.play(Rotate(obj1, TAU, run_time=3))
+绕着obj1的中心点旋转TAU度，旋转时间为3秒
+"""
 class Rotate(Rotating):
     def __init__(
         self,

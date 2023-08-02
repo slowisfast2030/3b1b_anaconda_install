@@ -19,8 +19,8 @@ class rotator(Scene):
 
 		self.add(obj2)
 		self.play(Rotate(obj1, TAU, run_time=3))
-		self.play(TurnInsideOut(obj2))
-		self.play(WiggleOutThenIn(obj2))
+		#self.play(TurnInsideOut(obj2))
+		#self.play(WiggleOutThenIn(obj2))
 
 
 
