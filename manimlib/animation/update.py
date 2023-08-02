@@ -20,7 +20,11 @@ self.play(
     ball_2.animate.move_to(rect.get_end())              
 )
 
-
+ball_1的动画符合预期
+ball_2的动画不符合预期
+这里需要对animate函数的本质有着进一步的理解
+animate后面可以跟着很多的属性设置，本质上会产生一个target_mobject
+整个animate动画等价于MoveToTarget(ball_2)
 """
 class UpdateFromFunc(Animation):
     """
