@@ -56,7 +56,11 @@ class ShowCreation(ShowPartial):
     def get_bounds(self, alpha: float) -> tuple[float, float]:
         return (0, alpha)
 
-# 需要研究下倒放机制
+"""
+倒放机制
+核心是rate_func
+rate_func可以控制插值的alpha值
+"""
 class Uncreate(ShowCreation):
     '''显示销毁过程（ ``ShowCreation`` 的倒放）'''
     def __init__(
