@@ -249,6 +249,7 @@ class Mobject(object):
         about_edge: Vect3 = ORIGIN,
         works_on_bounding_box: bool = False
     ) -> Self:
+        """以 ``about_point`` 为不变基准点，或以 ``about_edge`` 为不变基准边，对所有点执行 ``func``"""
         if about_point is None and about_edge is not None:
             about_point = self.get_bounding_box_point(about_edge)
 
@@ -276,26 +277,32 @@ class Mobject(object):
     # Others related to points
 
     def match_points(self, mobject: Mobject) -> Self:
+        '''将自身锚点与 ``mobject`` 的锚点匹配'''
         self.set_points(mobject.get_points())
         return self
 
     def get_points(self) -> Vect3Array:
+        '''获取物件锚点'''
         return self.data["point"]
 
     def clear_points(self) -> Self:
+        '''清空物件锚点'''
         self.resize_points(0)
         return self
 
     def get_num_points(self) -> int:
+        '''获取锚点数量'''
         return len(self.get_points())
 
     def get_all_points(self) -> Vect3Array:
+        '''获取物件所有锚点'''
         if self.submobjects:
             return np.vstack([sm.get_points() for sm in self.get_family()])
         else:
             return self.get_points()
 
     def has_points(self) -> bool:
+        '''判断是否有锚点'''
         return len(self.get_points()) > 0
 
     def get_bounding_box(self) -> Vect3Array:
@@ -340,6 +347,7 @@ class Mobject(object):
         recurse_down: bool = False,
         recurse_up: bool = True
     ) -> Self:
+        '''更新包围框'''
         for mob in self.get_family(recurse_down):
             mob.needs_new_bounding_box = True
         if recurse_up:
@@ -352,6 +360,7 @@ class Mobject(object):
         points: Vect3Array,
         buff: float = 0
     ) -> np.ndarray:
+        '''判断某一点是否在本物件的包围框范围内'''
         bb = self.get_bounding_box()
         mins = (bb[0] - buff)
         maxs = (bb[2] + buff)
