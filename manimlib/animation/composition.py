@@ -46,13 +46,19 @@ class AnimationGroup(Animation):
         group: Optional[Mobject] = None,
         group_type: Optional[type] = None,
         **kwargs
-    ):
+    ):  
+        # 动画列表
         self.animations = [prepare_animation(anim) for anim in animations]
+        # 计算每一个动画的开始时间和结束时间
         self.build_animations_with_timings(lag_ratio)
+        # 计算所有动画的最大的结束时间
         self.max_end_time = max((awt[2] for awt in self.anims_with_timings), default=0)
+        # 动画的持续时间
         self.run_time = self.max_end_time if run_time < 0 else run_time
         self.lag_ratio = lag_ratio
+        # 去除冗余的mobject
         mobs = remove_list_redundancies([a.mobject for a in self.animations])
+        # 设置group属性
         if group is not None:
             self.group = group
         if group_type is not None:
@@ -96,6 +102,8 @@ class AnimationGroup(Animation):
     def calculate_max_end_time(self) -> None:
         """
         计算最大的结束时间
+
+        备注：这个函数似乎没有被调用过
         """
         self.max_end_time = max(
             (awt[2] for awt in self.anims_with_timings),
