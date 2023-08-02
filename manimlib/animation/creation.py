@@ -154,11 +154,10 @@ class DrawBorderThenFill(Animation):
         函数历程分为两个阶段：
         1.index=0, subalpha从0到1, 设置轮廓
         2.index=1, subalpha从0到1, 设置边缘颜色
-
         """
         index, subalpha = integer_interpolate(0, 2, alpha)
-        print("-"*10)
-        print(index, subalpha)
+        # print("-"*10)
+        # print(index, subalpha)
 
         if index == 1 and self.sm_to_index[hash(submob)] == 0:
             # First time crossing over
