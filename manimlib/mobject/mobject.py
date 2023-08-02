@@ -2494,6 +2494,28 @@ class _AnimationBuilder:
         return self
 
     def build(self):
+        '''
+        在动画播放之前，:func:`~manimlib.animation.animation.prepare_animation` 
+        会先自动调用 ``build()`` 方法，将方法编译为 **动画实例**
+
+        将一系列在 ``.animate`` 之后的方法合并为一个 ``MoveToTarget``，并返回这个 
+        ``MoveToTraget`` 的动画实例。也就是说，可以用下面的代码来播放动画，也可以将动画转变为更新
+
+        .. code:: python
+
+            # 直接用 play 方法播放
+            self.play(mob.animate.shift(UP).scale(2).rotate(PI/2))
+            
+            # 播放动画
+            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build() # 此处有无 .build() 均可
+            self.play(anim)
+    
+            # 将动画实例用一个变量保存，并将动画转变为更新
+            anim = mob.animate.shift(UP).scale(2).rotate(PI/2).build()
+            turn_animation_into_updater(anim)
+            self.add(mob)
+            self.wait(2)
+        '''
         from manimlib.animation.transform import _MethodAnimation
 
         if self.overridden_animation:
