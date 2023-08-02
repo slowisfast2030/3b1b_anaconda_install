@@ -14,10 +14,10 @@ class homoto(Scene):
 
 		obj1 = Text("This is text").shift(LEFT*4)
 		obj2 = Square(fill_opacity=1).set_color(YELLOW).shift(LEFT*3 + DOWN*3)
-		obj3 = Circle(fill_opacity=1).set_color(BLUE).shift(UP*2)
+		obj3 = Circle(fill_opacity=1).set_color(BLUE)
 		obj4 = Rectangle(fill_opacity=1).set_color(GREEN).shift(DOWN*2)
 
-		self.add(obj2)
+		#self.add(obj2)
 
 
 		test_homotopy = lambda x, y, z, t: (
@@ -36,7 +36,7 @@ class homoto(Scene):
 		
 
 		
-		self.play(Homotopy(test_homotopy, obj2, run_time=10, rate_func=linear))
+		self.play(Homotopy(test_homotopy, obj3, run_time=10, rate_func=linear))
 		#ComplexHomotopy
 
 
