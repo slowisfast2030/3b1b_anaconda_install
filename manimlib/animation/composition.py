@@ -36,6 +36,18 @@ animations = [Write(c),
               d.animate.shift(LEFT*2)]   
 
 self.play(AnimationGroup(*animations, lag_ratio=1, run_time=4))
+
+ag = AnimationGroup(*animations, lag_ratio=1, run_time=4)
+print(ag.group, ag.group.submobjects)
+
+VGroup 
+
+[
+<manimlib.mobject.geometry.Circle object at 0x142e17a90>, 
+<manimlib.mobject.geometry.Square object at 0x14300f730>, 
+<manimlib.mobject.geometry.Triangle object at 0x14300f790>, 
+<manimlib.mobject.geometry.Dot object at 0x14300f8e0>
+]
 """
 class AnimationGroup(Animation):
     '''动画组，可以传入一系列动画，统一播放'''
