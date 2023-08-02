@@ -123,7 +123,9 @@ class test10(Scene):
     def construct(self):
         rect = Rectangle().set_color(BLUE)
         ball = Dot().set_color(RED)
+        ball1 = Dot().set_color(YELLOW)
         self.play(
             ShowCreation(rect, run_time=2),
-            UpdateFromFunc(ball, lambda m: m.move_to(rect.get_end()))
+            UpdateFromFunc(ball, lambda m: m.move_to(rect.get_end())),
+            #ball1.animate.move_to(rect.get_end())              
         )
