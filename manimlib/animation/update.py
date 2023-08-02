@@ -90,3 +90,6 @@ class MaintainPositionRelativeTo(Animation):
         target = self.tracked_mobject.get_center()
         location = self.mobject.get_center()
         self.mobject.shift(target - location + self.diff)
+        # 下面代码是自己加的，可以将整个向量的移动分解为两个部分
+        # self.mobject.shift(target - location)
+        # self.mobject.shift(self.diff)
