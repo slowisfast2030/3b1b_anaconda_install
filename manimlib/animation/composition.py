@@ -106,6 +106,10 @@ class AnimationGroup(Animation):
             anim.clean_up_from_scene(scene)
 
     def update_mobjects(self, dt: float) -> None:
+        """
+        animation和update应该是不能同时执行的
+        这里为什么又定义了这个函数？
+        """
         for anim in self.animations:
             anim.update_mobjects(dt)
 
@@ -136,7 +140,9 @@ class AnimationGroup(Animation):
                 (anim, start_time, end_time)
             )
             # Start time of next animation is based on the lag_ratio
-            # 秀的头皮发麻
+            """
+            秀的头皮发麻
+            """
             curr_time = interpolate(
                 start_time, end_time, lag_ratio
             )
@@ -147,6 +153,11 @@ class AnimationGroup(Animation):
         # times might not correspond to actual times,
         # e.g. of the surrounding scene.  Instead they'd
         # be a rescaled version.  But that's okay!
+        """
+        alpha: 整个动画的进度
+        sub_alpha: 每一个动画的进度
+        可以通过alpha计算出sub_alpha
+        """
         time = alpha * self.max_end_time
         for anim, start_time, end_time in self.anims_with_timings:
             anim_time = end_time - start_time

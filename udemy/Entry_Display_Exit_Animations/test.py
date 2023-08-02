@@ -79,6 +79,6 @@ class test6(Scene):
         
         self.play(AnimationGroup(*animations, lag_ratio=1, run_time=4))
 
-        ag = AnimationGroup(*animations, lag_ratio=1, run_time=4)
-        print("-"*100, ag.group, ag.group.submobjects)
+        # ag = AnimationGroup(*animations, lag_ratio=1, run_time=4)
+        # print("-"*100, ag.group, ag.group.submobjects)
 
