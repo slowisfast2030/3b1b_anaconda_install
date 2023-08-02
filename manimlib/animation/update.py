@@ -9,12 +9,13 @@ if TYPE_CHECKING:
 
     from manimlib.mobject.mobject import Mobject
 
-# 非常有用的动画类
-# manimce版本没有这个类
+
 """
+rect = Rectangle().set_color(BLUE)
+ball = Dot().set_color(RED)
 self.play(
-    ShowCreation(inner_rect, run_time=2),
-    UpdateFromFunc(ball, lambda m: m.move_to(inner_rect.get_end()))
+    ShowCreation(rect, run_time=2),
+    UpdateFromFunc(ball, lambda m: m.move_to(rect.get_end()))
 )
 """
 class UpdateFromFunc(Animation):

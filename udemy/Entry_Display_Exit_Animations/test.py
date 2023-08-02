@@ -111,8 +111,19 @@ class test8(Scene):
         
         self.play(LaggedStart(*animations, lag_ratio=0))
 
+
 class test9(Scene):
     def construct(self):
         t1 = Text("Hello World")
         t2 = Text("All is well")
         self.play(TransformMatchingParts(t1, t2))
+
+
+class test10(Scene):
+    def construct(self):
+        rect = Rectangle().set_color(BLUE)
+        ball = Dot().set_color(RED)
+        self.play(
+            ShowCreation(rect, run_time=2),
+            UpdateFromFunc(ball, lambda m: m.move_to(rect.get_end()))
+        )
