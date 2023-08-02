@@ -66,6 +66,13 @@ class ShowCreation(ShowPartial):
 倒放机制
 核心是rate_func
 rate_func可以控制插值的alpha值
+
+remover这个参数应该是多余的
+不论设置为True或者False
+都不会影响最终的结果
+因为是倒放，在动画结束的时候，self.mobject显示的是正放的时候第一帧的状态
+
+以前似乎看过一个问题：动画的最后一帧似乎有什么问题
 """
 class Uncreate(ShowCreation):
     '''显示销毁过程（ ``ShowCreation`` 的倒放）'''

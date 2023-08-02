@@ -32,6 +32,18 @@ class test2(Scene):
         print(c.submobjects)
         print("-"*100)
 
+class test3(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        s = Square().set_color(BLUE)
+        t = Triangle().set_color(GREEN)
+        c.add(s, t)
+        self.play(Uncreate(c, lag_ratio=0, run_time=3, remover=True))
+        self.wait()
+        print("\n", "-"*100)
+        print(c.submobjects)
+        print("-"*100)
+
 
 
 
