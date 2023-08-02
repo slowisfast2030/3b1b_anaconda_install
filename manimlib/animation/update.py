@@ -65,6 +65,16 @@ class UpdateFromAlphaFunc(Animation):
         self.update_function(self.mobject, alpha)
 
 
+"""
+ball_1 = Dot().set_color(RED).shift(LEFT*2)
+ball_2 = Dot().set_color(YELLOW)
+self.add(ball_1, ball_2)
+
+self.play(
+    ball_2.animate.shift(RIGHT*2),
+    MaintainPositionRelativeTo(ball_1, ball_2)
+)
+"""
 class MaintainPositionRelativeTo(Animation):
     def __init__(
         self,

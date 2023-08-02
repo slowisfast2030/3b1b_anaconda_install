@@ -139,4 +139,5 @@ class test11(Scene):
 
         self.play(
             ball_2.animate.shift(RIGHT*2),
-            MaintainPositionRelativeTo(ball_1, ball_2))
+            MaintainPositionRelativeTo(ball_1, ball_2)
+        )
