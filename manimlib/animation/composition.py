@@ -168,12 +168,27 @@ class AnimationGroup(Animation):
             anim.interpolate(sub_alpha)
 
 
+"""
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+d = Dot().set_color(YELLOW)
+
+animations = [Write(c),
+              Write(s),
+              Write(t),
+              d.animate.shift(LEFT*2)]   
+
+self.play(Succession(*animations))
+
+基本功能是实现了，但是不明白为什么在动画开始前，屏幕上已经显示了部分mob
+"""
 class Succession(AnimationGroup):
     '''使子动画逐一播放'''
     def __init__(
         self,
         *animations: Animation,
-        lag_ratio: float = 1.0,
+        lag_ratio: float = 1.0, #这里即使改成0，各个动画也是依次执行 
         **kwargs
     ):
         super().__init__(*animations, lag_ratio=lag_ratio, **kwargs)
@@ -193,6 +208,15 @@ class Succession(AnimationGroup):
         index, subalpha = integer_interpolate(
             0, len(self.animations), alpha
         )
+        # print("+-"*50)
+        # print(index, subalpha)
+        """
+        以上面的代码为例
+        index: 0, subalpha: 0.0~1.0
+        index: 1, subalpha: 0.0~1.0
+        index: 2, subalpha: 0.0~1.0
+        index: 3, subalpha: 0.0~1.0
+        """
         animation = self.animations[index]
         if animation is not self.active_animation:
             self.active_animation.finish()
@@ -200,23 +224,30 @@ class Succession(AnimationGroup):
             self.active_animation = animation
         animation.interpolate(subalpha)
 
+
 """
-self.play(LaggedStart(
-        Transform(dots[0].copy(), dots[2].copy().set_opacity(0.5), remover=True),
-        Transform(dots[1].copy(), dots[2].copy().set_opacity(0.5), remover=True),
-        FadeTransform(sum_label[:3].copy(), sum_label[3:]),
-        run_time=1.0 if animate else 0,
-))
+c = Circle().set_color(RED)
+s = Square().set_color(BLUE)
+t = Triangle().set_color(GREEN)
+d = Dot().set_color(YELLOW)
+
+animations = [c.animate.shift(DOWN*2),
+                s.animate.shift(UP*2),
+                t.animate.shift(RIGHT*2),
+                d.animate.shift(LEFT*2)]   
+
+self.play(LaggedStart(*animations, lag_ratio=0))
 """
 class LaggedStart(AnimationGroup):
     '''可以统一控制 ``lag_ratio`` 的动画组'''
     def __init__(
         self,
         *animations,
-        lag_ratio: float = DEFAULT_LAGGED_START_LAG_RATIO,
+        lag_ratio: float = DEFAULT_LAGGED_START_LAG_RATIO, # lag_ratio = 0时，所有动画同时开始
         **kwargs
     ):
         super().__init__(*animations, lag_ratio=lag_ratio, **kwargs)
+
 
 """
 self.play(

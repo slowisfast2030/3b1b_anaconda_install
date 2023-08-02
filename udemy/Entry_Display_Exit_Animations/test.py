@@ -95,3 +95,18 @@ class test7(Scene):
                       d.animate.shift(LEFT*2)]   
         
         self.play(Succession(*animations))
+
+
+class test8(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        s = Square().set_color(BLUE)
+        t = Triangle().set_color(GREEN)
+        d = Dot().set_color(YELLOW)
+
+        animations = [c.animate.shift(DOWN*2),
+                      s.animate.shift(UP*2),
+                      t.animate.shift(RIGHT*2),
+                      d.animate.shift(LEFT*2)]   
+        
+        self.play(LaggedStart(*animations, lag_ratio=0))
