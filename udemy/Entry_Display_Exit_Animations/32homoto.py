@@ -36,7 +36,7 @@ class homoto(Scene):
 		
 
 		
-		self.play(Homotopy(test_homotopy2, obj2, run_time=10, rate_func=linear))
+		self.play(Homotopy(test_homotopy, obj2, run_time=10, rate_func=linear))
 		#ComplexHomotopy
 
 
