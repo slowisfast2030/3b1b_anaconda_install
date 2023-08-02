@@ -21,6 +21,14 @@ class test1(Scene):
         print("^"*100)
         print(x.get_value())
 
+class test2(Scene):
+    def construct(self):
+        c = Circle().set_color(RED)
+        #self.play(ShowCreation(c))
+        vm = VMobject()
+        vm.set_points(c.get_points())
+        self.add(vm)
+        self.wait(1)
 
 
 

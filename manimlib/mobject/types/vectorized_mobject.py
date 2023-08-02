@@ -1064,13 +1064,14 @@ class VMobject(Mobject):
         return self
 
     def pointwise_become_partial(self, vmobject: VMobject, a: float, b: float) -> Self:
+        '''返回 vmobject 上百分比从 a 到 b 的部分曲线的拷贝'''
         assert(isinstance(vmobject, VMobject))
         vm_points = vmobject.get_points()
         self.data["joint_product"] = vmobject.data["joint_product"]
         if a <= 0 and b >= 1:
-            self.set_points(vm_points, refresh_joints=False)
+            self.set_points(vm_points, refresh_joints=False) # 即self.become(vmobject)
             return self
-        num_curves = vmobject.get_num_curves()
+        num_curves = vmobject.get_num_curves() # 构成整条曲线的贝塞尔曲线的数量
 
         # Partial curve includes three portions:
         # - A start, which is some ending portion of an inner quadratic
