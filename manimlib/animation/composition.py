@@ -31,9 +31,9 @@ s = Square().set_color(BLUE)
 t = Triangle().set_color(GREEN)
 d = Dot().set_color(YELLOW)
 animations = [Write(c),
-                Write(s),
-                Write(t),
-                d.animate.shift(LEFT*2)]   
+              Write(s),
+              Write(t),
+              d.animate.shift(LEFT*2)]   
 
 self.play(AnimationGroup(*animations, lag_ratio=1, run_time=4))
 """
