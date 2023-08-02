@@ -182,6 +182,7 @@ class VMobject(Mobject):
         border_width: float | None = None,
         recurse: bool = True
     ) -> Self:
+        '''设置填充色'''
         self.set_rgba_array_by_color(color, opacity, 'fill_rgba', recurse)
         if border_width is not None:
             for mob in self.get_family(recurse):
@@ -197,6 +198,7 @@ class VMobject(Mobject):
         background: bool | None = None,
         recurse: bool = True
     ) -> Self:
+        '''设置轮廓线（轮廓线浮于填充色上方）'''
         self.set_rgba_array_by_color(color, opacity, 'stroke_rgba', recurse)
 
         if width is not None:
@@ -222,6 +224,7 @@ class VMobject(Mobject):
         width: float | Iterable[float] = 3,
         background: bool = True
     ) -> Self:
+        """设置背景轮廓线（轮廓线衬于填充色下方）"""
         self.set_stroke(color, width, background=background)
         return self
 
@@ -239,6 +242,7 @@ class VMobject(Mobject):
         shading: Tuple[float, float, float] | None = None,
         recurse: bool = True
     ) -> Self:
+        '''整体设置样式'''
         for mob in self.get_family(recurse):
             if fill_rgba is not None:
                 mob.data['fill_rgba'][:] = resize_with_interpolation(fill_rgba, len(mob.data['fill_rgba']))
