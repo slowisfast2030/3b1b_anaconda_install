@@ -50,7 +50,7 @@ class test1(Scene):
 		#stuff in scene
 		obj1 = Cube().shift(LEFT*4 + IN*4).set_color(GREEN)
 		obj2 = Torus(r1=1, r2=0.5).shift(RIGHT*3 + UP*1 + OUT*1).set_color(RED)
-		obj3 = Sphere().shift(DOWN*2).set_color(BLUE)
+		obj3 = Cylinder().shift(DOWN*2).set_color(BLUE)
 		self.play(FadeIn(Group(obj1, obj2, obj3)))
 
 		#Camera
