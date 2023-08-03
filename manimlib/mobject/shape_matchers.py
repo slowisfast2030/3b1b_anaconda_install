@@ -20,7 +20,13 @@ if TYPE_CHECKING:
 
 
 class SurroundingRectangle(Rectangle):
-    '''包围矩形框'''
+    '''
+    包围矩形框
+    
+    create minimum rectangle that surrounds the bounding box
+
+    长方形的宽和高的计算都依赖于bounding box
+    '''
     def __init__(
         self,
         mobject: Mobject,
