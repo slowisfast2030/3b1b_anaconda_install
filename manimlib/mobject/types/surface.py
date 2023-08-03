@@ -103,7 +103,8 @@ class Surface(Mobject):
 
     def apply_points_function(self, *args, **kwargs) -> Self:
         super().apply_points_function(*args, **kwargs)
-        self.get_unit_normals()
+        # 下面这行代码总是报错，就注释掉了
+        #self.get_unit_normals()
         return self
 
     def compute_triangle_indices(self) -> np.ndarray:
