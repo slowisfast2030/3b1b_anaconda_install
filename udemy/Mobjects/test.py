@@ -49,7 +49,7 @@ class test1(Scene):
 
 		#stuff in scene
 		obj1 = Cube().shift(LEFT*4 + IN*4).set_color(GREEN)
-		obj2 = Prism().shift(RIGHT*3 + UP*1 + OUT*1).set_color(RED)
+		obj2 = Torus(r1=1, r2=0.5).shift(RIGHT*3 + UP*1 + OUT*1).set_color(RED)
 		obj3 = Sphere().shift(DOWN*2).set_color(BLUE)
 		self.play(FadeIn(Group(obj1, obj2, obj3)))
 
@@ -86,6 +86,7 @@ class test1(Scene):
 								"include_ticks": False
 							}
 							)
+		axes3d.z_axis.set_opacity(0)
 		
 		self.play(FadeIn(axes3d))
 
@@ -97,13 +98,13 @@ class test1(Scene):
 			5*np.sin(t)*np.cos(4*t)*np.cos(0.5)**9,
 			5*np.sin(0.5)*np.cos(4*t)*np.cos(0.5)**8])
 		
-		func4 = lambda q: [np.sin(q), np.cos(q), q]
+		func4 = lambda q: [np.sin(q), np.cos(q), 0.2*q]
 
 		graph = axes3d.get_parametric_curve(
 					  func4, 
 				      color=BLUE, 
 					  #step_size=0.001, 
-					  t_range=[-10, 10, 0.01]
+					  t_range=[-15, 15, 0.01]
 					  )
 		self.play(ShowCreation(graph), run_time=3)
 		rotateScene()
