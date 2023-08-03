@@ -281,6 +281,29 @@ class SGroup(Surface):
         pass  # Needed?
 
 
+"""
+#Function has u and v parameters
+func3 = lambda u, v: [
+			3*np.cos(u)*np.cos(4*u)*np.cos(v)**9,
+			3*np.sin(u)*np.cos(4*u)*np.cos(v)**9,
+			3*np.sin(v)*np.cos(4*u)*np.cos(v)**8
+            ]
+		
+psurface = ParametricSurface(
+            func3, 
+            u_range=(-PI, PI), 
+            v_range=(-PI, PI), 
+            color=TEAL_E,
+            resolution=(300, 300),
+            )
+
+tsurface = TexturedSurface(
+            psurface, 
+            "./images.jpeg"
+            )
+
+self.play(FadeIn(tsurface))
+"""
 class TexturedSurface(Surface):
     shader_folder: str = "textured_surface"
     shader_dtype: Sequence[Tuple[str, type, Tuple[int]]] = [

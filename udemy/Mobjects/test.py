@@ -107,6 +107,65 @@ class test1(Scene):
 		rotateScene()
 
 
+class test2(Scene):
+	
+	def construct(self): 
+		#Camera
+		frame = self.camera.frame
+
+		frame2 = frame.copy()
+		frame2.set_euler_angles(
+			theta = -10*DEGREES,
+			phi = 50 *DEGREES
+		)
+		self.play(Transform(frame, frame2))
+
+		def rotateScene():
+			for i in range(200):
+				frame.increment_theta(0.01)
+				self.wait(0.001)
+				
+
+		axes3d = ThreeDAxes(x_range=(-5, 5, 1), 
+		      				y_range=(-5, 5, 1),
+							height = 12,
+							width = 12,
+							axis_config = {
+								"stroke_color": WHITE,
+								"stroke_width": 1,
+								"include_tip": True,
+								"include_ticks":True
+							},
+							z_axis_config = {
+								"stroke_color": WHITE,
+								"stroke_width": 1,
+								"include_tip": True,
+								"include_ticks":True
+							}
+							)
+		
+		self.play(FadeIn(axes3d))
+
+		func3 = lambda u, v: [
+			3*np.cos(u)*np.cos(4*u)*np.cos(v)**9,
+			3*np.sin(u)*np.cos(4*u)*np.cos(v)**9,
+			3*np.sin(v)*np.cos(4*u)*np.cos(v)**8]
+		#Function has u and v parameters
+		psurface = ParametricSurface(
+							func3, 
+							u_range=(-PI, PI), 
+							v_range=(-PI, PI), 
+							color=TEAL_E,
+							resolution=(300, 300),
+							shading=(0.6, 0.1, 0.2),
+							#shadow=0.5
+							)
+		#self.play(FadeIn(psurface))
+		
+		tsurface = TexturedSurface(psurface, "./images.jpeg")
+		self.play(FadeIn(tsurface))
+
+		rotateScene()
 
 
 
