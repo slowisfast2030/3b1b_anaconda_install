@@ -204,6 +204,12 @@ class SampleSpace(Rectangle):
         return self.split()[index]
 
 
+"""
+b = BarChart([5-k for k in range(3)], 
+            bar_names=["A", "B", "C"], 
+            bar_colors=[BLUE, GREEN, YELLOW],
+            max_value=5)
+"""
 class BarChart(VGroup):
     '''柱状图'''
     def __init__(
