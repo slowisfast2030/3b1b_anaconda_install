@@ -97,8 +97,10 @@ class test1(Scene):
 			5*np.sin(t)*np.cos(4*t)*np.cos(0.5)**9,
 			5*np.sin(0.5)*np.cos(4*t)*np.cos(0.5)**8])
 		
+		func4 = lambda q: [np.sin(1), np.cos(1), q]
+
 		graph = axes3d.get_parametric_curve(
-					  func2, 
+					  func4, 
 				      color=BLUE, 
 					  #step_size=0.001, 
 					  t_range=[-10, 10, 0.01]
