@@ -82,7 +82,7 @@ class test1(Scene):
 							z_axis_config = {
 								"stroke_color": WHITE,
 								"stroke_width": 1,
-								"include_tip": True,
+								"include_tip": False,
 								"include_ticks":True
 							}
 							)
@@ -97,7 +97,7 @@ class test1(Scene):
 			5*np.sin(t)*np.cos(4*t)*np.cos(0.5)**9,
 			5*np.sin(0.5)*np.cos(4*t)*np.cos(0.5)**8])
 		
-		func4 = lambda q: [np.sin(1), np.cos(1), q]
+		func4 = lambda q: [np.sin(q), np.cos(q), q]
 
 		graph = axes3d.get_parametric_curve(
 					  func4, 
@@ -105,7 +105,7 @@ class test1(Scene):
 					  #step_size=0.001, 
 					  t_range=[-10, 10, 0.01]
 					  )
-		self.play(FadeIn(graph))
+		self.play(ShowCreation(graph), run_time=3)
 		rotateScene()
 
 		frame3 = frame.copy()
