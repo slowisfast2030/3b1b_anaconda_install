@@ -184,12 +184,16 @@ class test2(Scene):
 
 class test3(Scene):
 	def construct(self):
-		c = Circle()
+		frame = self.camera.frame
+		frame.set_euler_angles(
+			theta = -20*DEGREES,
+			phi = 50 *DEGREES
+		)
+		c = Cube(shading=(0.9, 0.9, 0.9))
 		self.play(FadeIn(c))
-		print("\n")
-		print(type(c.data))
-		print(type(c.uniforms))
-		print(c.data[:2])
+
+		print(c.data)
+		
 
 
 
