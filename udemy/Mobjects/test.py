@@ -64,7 +64,7 @@ class test1(Scene):
 		self.play(Transform(frame, frame2))
 
 		def rotateScene():
-			for i in range(1000):
+			for i in range(200):
 				frame.increment_theta(0.01)
 				self.wait(0.001)
 				
@@ -105,6 +105,13 @@ class test1(Scene):
 					  )
 		self.play(FadeIn(graph))
 		rotateScene()
+
+		frame3 = frame.copy()
+		frame3.set_euler_angles(
+			theta = 0*DEGREES,
+			phi = 0 *DEGREES
+		)
+		self.play(Transform(frame, frame3))
 
 
 class test2(Scene):
