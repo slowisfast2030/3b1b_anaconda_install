@@ -189,7 +189,7 @@ class test3(Scene):
 			theta = -20*DEGREES,
 			phi = 50 *DEGREES
 		)
-		c = Cube(shading=(0.9, 0.9, 0.9))
+		c = Cube(shading=(100, 20, 0.9))
 		self.play(FadeIn(c))
 
 		print(c.data)
