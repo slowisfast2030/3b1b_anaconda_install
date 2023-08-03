@@ -182,7 +182,14 @@ class test2(Scene):
 		rotateScene()
 
 
-
+class test3(Scene):
+	def construct(self):
+		c = Circle()
+		self.play(FadeIn(c))
+		print("\n")
+		print(type(c.data))
+		print(type(c.uniforms))
+		print(c.data[:2])
 
 
 

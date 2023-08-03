@@ -67,6 +67,9 @@ class Mobject(object):
     shader_folder: str = ""
     render_primitive: int = moderngl.TRIANGLE_STRIP
     # Must match in attributes of vert shader
+    # 这是self.data的dtype，尤其需要注意
+    # 打印出来后，还是不理解这个dtype
+    # 为何不像以前的代码一样，将self.data设置为字典
     shader_dtype: np.dtype = np.dtype([
         ('point', np.float32, (3,)),
         ('rgba', np.float32, (4,)),
