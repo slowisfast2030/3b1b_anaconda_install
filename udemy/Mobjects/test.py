@@ -86,8 +86,8 @@ class test1(Scene):
 								"include_ticks": False
 							}
 							)
-		axes3d.z_axis.set_opacity(0)
-		
+		axes3d.z_axis.set_opacity(0.5)
+
 		self.play(FadeIn(axes3d))
 
 		
