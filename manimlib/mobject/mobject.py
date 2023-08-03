@@ -62,6 +62,7 @@ class Mobject(object):
     """
     Mathematical Object
     """
+    """数学物品（屏幕上的所有物体的超类）"""
     dim: int = 3
     shader_folder: str = ""
     render_primitive: int = moderngl.TRIANGLE_STRIP
@@ -146,6 +147,7 @@ class Mobject(object):
         pass
 
     def set_uniforms(self, uniforms: dict) -> Self:
+        '''设置 uniform 变量，以字典形式传入'''
         for key, value in uniforms.items():
             if isinstance(value, np.ndarray):
                 value = value.copy()
@@ -197,7 +199,7 @@ class Mobject(object):
         '''
         重置锚点数组大小
         使用场景：在保持图形形状不变的情况下，改变图形的点集数量
-        可以方便插值
+        可以方便插值（要求两个图形的点集数量相等）
         '''
         if new_length == 0:
             if len(self.data) > 0:
