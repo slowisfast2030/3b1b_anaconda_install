@@ -14,7 +14,7 @@ class images(Scene):
 		#Does not Import the Color! And some other stuff..
 		umbrella = SVGMobject("./svgs.svg")
 		#self.play(FadeIn(umbrella))
-		colors = it.cycle([BLACK, ORANGE])
+		colors = it.cycle([GREY, TEAL_E, RED])
 		print("Processing SVG...")
 		i = 0
 		svgLayers = []
@@ -26,6 +26,10 @@ class images(Scene):
 			i += 1
 		print("Finished Processing SVG!")
 		self.play(FadeIn(Group(*svgLayers)))
+
+		print("\n")
+		print(svgLayers)
+		print(umbrella.submobjects)
 	
 
 
