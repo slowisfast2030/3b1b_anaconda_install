@@ -83,7 +83,7 @@ class test1(Scene):
 								"stroke_color": WHITE,
 								"stroke_width": 1,
 								"include_tip": False,
-								"include_ticks":True
+								"include_ticks": False
 							}
 							)
 		
