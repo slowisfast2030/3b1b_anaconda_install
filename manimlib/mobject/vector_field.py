@@ -157,6 +157,11 @@ class test(Scene):
 		)
 		stream_lines.scale(0.5)
 		self.play(FadeIn(stream_lines))
+		self.play(FadeOut(stream_lines))
+		
+		asl = AnimatedStreamLines(stream_lines)
+		self.add(asl)
+		self.wait(3)
 """
 class VectorField(VGroup):
     def __init__(
