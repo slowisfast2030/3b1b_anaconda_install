@@ -64,7 +64,7 @@ class test1(Scene):
 		self.play(Transform(frame, frame2))
 
 		def rotateScene():
-			for i in range(200):
+			for i in range(1000):
 				frame.increment_theta(0.01)
 				self.wait(0.001)
 				
