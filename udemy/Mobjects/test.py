@@ -69,20 +69,25 @@ class test1(Scene):
 				self.wait(0.001)
 				
 
-
 		axes3d = ThreeDAxes(x_range=(-5, 5, 1), 
 		      				y_range=(-5, 5, 1),
 							height = 12,
 							width = 12,
-							#stroke_color = WHITE,
-							#stroke_width =  4,
-							#include_tip = True,
-							#include_ticks = True,
+							axis_config = {
+								"stroke_color": WHITE,
+								"stroke_width": 1,
+								"include_tip": True,
+								"include_ticks":True
+							},
+							z_axis_config = {
+								"stroke_color": WHITE,
+								"stroke_width": 1,
+								"include_tip": True,
+								"include_ticks":True
+							}
 							)
 		
 		self.play(FadeIn(axes3d))
-		
-		rotateScene()
 
 		
 		func2 = lambda q: [np.sin(q), np.cos(q), q]
